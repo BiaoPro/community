@@ -20,4 +20,4 @@ public class User extends GenericModel {
 
     @Column(name = "password")
     public String password;
-}
+public String hello;}
