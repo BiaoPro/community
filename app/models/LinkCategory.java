@@ -13,6 +13,13 @@ import javax.persistence.Table;
 import play.db.jpa.GenericModel;
 import play.libs.Codec;
 
+
+/**
+ * 链接分类表
+ * @author 吴泽标
+ *
+ */
+
 @Entity
 @Table(name = "link_category")
 public class LinkCategory extends GenericModel {
@@ -20,13 +27,13 @@ public class LinkCategory extends GenericModel {
 	public String id;
 
 	@Column(name = "category_name")
-	public String name;
+	public String name;//类别名称
 
 	@Column(name = "sequence")
 	public long sequence; //链接顺序
 
 	@Column(name = "status",columnDefinition="int default 1")
-	public int status;// 状态，0：不发布，1：发布
+	public int status;// 状态，0：不显示，1：显示
 
 	public LinkCategory() {
 		this.id = Codec.UUID();
