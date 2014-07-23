@@ -13,6 +13,11 @@ import play.libs.Codec;
 import utils.PageBean;
 import utils.StringUtils;
 
+/**
+ * 链接表
+ * @author 吴泽标
+ *
+ */
 @Entity
 @Table(name="link")
 public class Link  extends GenericModel{
@@ -20,19 +25,17 @@ public class Link  extends GenericModel{
 	public String id;
 	
 	@Column(name="link_name")
-	public String name;
+	public String name;//链接显示名称
 	
-	@Column(name="url")
+	@Column(name="link_url")
 	public String url;// 链接的url
 	
 	@Column(name="status",columnDefinition="int default 1")
 	public int status;// 状态0：未发布，1：发布
 	
 	@Column(name="category_id")
-	public String categoryId;
+	public String categoryId;//链接类别id
 	
-	@Column(name="user_id")
-	public String userId;
 	
 	public Link() {
 		this.status = 1;

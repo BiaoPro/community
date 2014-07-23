@@ -11,22 +11,21 @@ import play.data.validation.Unique;
 import play.db.jpa.GenericModel;
 import play.libs.Codec;
 
-/*
+/**
+ * 
  * 系统参数表
  * 用于记录系统特定参数
+ * @author 吴泽标
+ *
  */
-
 @Entity
 @Table(name = "SystemParameter")
 public class SystemParameter  extends GenericModel{
 	
 	@Id
 	public String id;
-	
-	@Column(name = "showActNum")
-	public int showActNum;//主页活动显示条数
-	
-	@Column(name = "indexName")
+
+	@Column(name = "index_name")
 	public  String indexName;//主页网站名称
 	
 	@Column(name = "copyright")
@@ -44,11 +43,11 @@ public class SystemParameter  extends GenericModel{
 	
 	
 	public SystemParameter() {
+	  
 		this.id = Codec.UUID();
-		this.showActNum=4;
-		this.indexName="教师发展中心";
-		this.copyright="华南农业大学教务处";
-		this.address="华南农业大学行政办公楼三楼 广州市天河区五山路483号 510642";
+		this.indexName="新广州人社区服务";
+		this.copyright="天河区新广州人社区服务中心";
+		this.address="华南农业大学 广州市天河区五山路483号 510642";
 		this.telephone="";
 		this.mailbox="";
 
@@ -63,6 +62,9 @@ public class SystemParameter  extends GenericModel{
 	}
 	
 	
+	/**
+     * 获取系统参数
+     */
 	public static SystemParameter getSystemParameter(){
 		if(SystemParameter.count()>0) {
 			return (SystemParameter) SystemParameter.findAll().get(0);
