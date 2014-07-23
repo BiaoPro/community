@@ -21,7 +21,7 @@ public class User extends GenericModel {
     @Column(name = "password")
     public String password;
 
-    String hello;}
+    String hello;
 
 }
 
