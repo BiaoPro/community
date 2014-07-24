@@ -35,7 +35,7 @@ h6, .h6 {
  * Masthead for nav
  */
 
-.main-masthead {
+.main-masthead,nav {
   background-color: #428bca;
   -webkit-box-shadow: inset 0 -2px 5px rgba(0,0,0,.1);
           box-shadow: inset 0 -2px 5px rgba(0,0,0,.1);
@@ -155,13 +155,13 @@ h6, .h6 {
  * Footer
  */
 
-.main-footer {
+.main-footer,footer {
   padding: 40px 0;
   color: #000;
   text-align: center;
   background-color: #f9f9f9;
   border-top: 1px solid #e5e5e5;
 }
-.main-footer p:last-child {
+.main-footer,footer p:last-child {
   margin-bottom: 0;
 }
