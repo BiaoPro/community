@@ -1,0 +1,772 @@
+﻿<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bootstrap 101 Template</title>
+
+
+<!-- Bootstrap -->
+
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="css/style.css" rel="stylesheet">
+
+
+</head>
+<body>
+	<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+		<div class="container">
+
+			<div class="navbar-collapse collapse">
+				<ul class="nav  navbar-nav nav-tabs nav-justified">
+					<li class="active"><a href="#">首页</a></li>
+					<li><a href="#">社区动态</a></li>
+					<li><a href="#">房屋出租</a></li>
+					<li><a href="#">招聘信息</a></li>
+					<li><a href="#">社区大课堂</a></li>
+					<li><a href="#">建议与反馈</a></li>
+				</ul>
+			</div>
+			<!--/.navbar-collapse -->
+		</div>
+	</div>
+
+	<!-- Main jumbotron for a primary marketing message or call to action -->
+	<div class="jumbotron">
+		<p>
+			<a href="#">了解更多 &raquo;</a>
+		</p>
+	</div>
+	<div class="panel panel-danger">
+		<div class="panel-heading">
+			<h3 class="panel-title">最新动态</h3>
+		</div>
+		<div class="panel-body">
+			<div class="row clearfix">
+				<div class="col-xs-4">
+					<div id="myCarousel" class="carousel slide" data-ride="carousel">
+						<!-- Indicators -->
+						<ol class="carousel-indicators">
+							<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+							<li data-target="#myCarousel" data-slide-to="1"></li>
+							<li data-target="#myCarousel" data-slide-to="2"></li>
+						</ol>
+						<div class="carousel-inner">
+							<div class="item active">
+								<img src="image/4.jpg" alt="">
+
+							</div>
+							<div class="item">
+								<img src="image/2.jpg" alt="">
+
+							</div>
+							<div class="item">
+								<img src="image/3.jpg" alt="">.
+
+							</div>
+						</div>
+
+					</div>
+					<!-- /.carousel -->
+
+				</div>
+				<div class="col-xs-8 column">
+					<ul class="nav  nav-stacked" style="max-width: 660px;">
+						<li class="active"><a href="#"> <span
+								class="badge pull-left">NEW</span> <span
+								class="badge pull-right">2014.7.17</span>
+								市社会组织服务交流中心组织社会组织党员参观黄埔军校
+						</a></li>
+						<li><a href="#"> <span class="badge pull-left">NEW</span>
+								<span class="badge pull-right">2014.7.17</span>
+								市社会组织服务交流中心组织社会组织党员参观黄埔军校
+						</a></li>
+						<li><a href="#"> <span class="badge pull-left">NEW</span>
+								<span class="badge pull-right">2014.7.17</span>
+								市社会组织服务交流中心组织社会组织党员参埔军校
+						</a></li>
+						<li><a href="#"> <span class="badge pull-left">NEW</span>
+								<span class="badge pull-right">2014.7.17</span>
+								市社会组织服务交流中心组织社会组织党员参观黄埔军校
+						</a></li>
+						<li><a href="#"> <span class="badge pull-left">NEW</span>
+								<span class="badge pull-right">2014.7.17</span>
+								市社会组织服务交流中心组织社会组织党员参观
+						</a></li>
+						<li><a href="#"> <span class="badge pull-left">NEW</span>
+								<span class="badge pull-right">2014.7.17</span>
+								市社会组织服务交流中心组织社会组织党员参观黄埔军校
+						</a></li>
+						<li><a href="#"> <span class="badge pull-left">NEW</span>
+								<span class="badge pull-right">2014.7.17</span>
+								市社会组织服务交流中心组织社会组织党员参观黄埔军校参观黄埔军校
+						</a></li>
+
+					</ul>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-sm-3 col-md-2 sidebar">
+				<div class="panel-group" id="accordion">
+					<div class="panel panel-success">
+						<div class="panel-heading">
+							<h4 class="panel-title">
+								<a data-toggle="collapse" data-parent="#accordion"
+									href="#collapseOne"> 公告通知 </a>
+							</h4>
+						</div>
+						<div id="collapseOne" class="panel-collapse collapse in">
+							<div class="panel-body">1</div>
+							<div class="panel-body">2</div>
+							<div class="panel-body">3</div>
+							<div class="panel-body">4</div>
+
+						</div>
+					</div>
+					<div class="panel panel-success">
+						<div class="panel-heading">
+							<h4 class="panel-title">
+								<a data-toggle="collapse" data-parent="#accordion"
+									href="#collapseTwo"> 维权咨询 </a>
+							</h4>
+						</div>
+						<div id="collapseTwo" class="panel-collapse collapse">
+							<div class="panel-body">1</div>
+							<div class="panel-body">2</div>
+							<div class="panel-body">3</div>
+							<div class="panel-body">4</div>
+						</div>
+					</div>
+					<div class="panel panel-success">
+						<div class="panel-heading">
+							<h4 class="panel-title">
+								<a data-toggle="collapse" data-parent="#accordion"
+									href="#collapseFour"> 友情链接 </a>
+							</h4>
+						</div>
+						<div id="collapseFour" class="panel-collapse collapse">
+							<div class="panel-body">
+
+
+								<select class="form-control"
+									onchange="if (this.options[this.selectedIndex].value!=&quot;&quot;) window.location=this.options[this.selectedIndex].value">
+									<option>区县级市</option>
+
+
+									<option value="http://www.getdd.gov.cn/">广州市开发区</option>
+
+									<option value="http://www.conghua.gov.cn/">从化市信息网</option>
+
+									<option value="http://www.zengcheng.gov.cn/">增城区信息网</option>
+
+									<option value="http://www.huadu.gov.cn">花都区信息网</option>
+
+									<option value="http://www.panyu.gov.cn">番禺区信息网</option>
+
+									<option value="http://www.hp.gov.cn/">黄埔区信息网</option>
+
+									<option value="http://www.by.gov.cn/">白云区信息网</option>
+
+									<option value="http://www.haizhu.gov.cn/">海珠区信息网</option>
+
+									<option value="http://www.lw.gov.cn/">荔湾区信息网</option>
+
+									<option value="http://www.yuexiu.gov.cn/">越秀区信息网</option>
+
+
+
+								</select>
+							</div>
+							<div class="panel-body">
+
+								<select class="form-control"
+									onchange="if (this.options[this.selectedIndex].value!=&quot;&quot;) window.location=this.options[this.selectedIndex].value">
+									<option>省市</option>
+
+
+									<option value="http://www.gzwjj.gov.cn">广州价格信息网</option>
+
+									<option value="http://www.96909.gd.cn/">广州社区服务网</option>
+
+									<option value="http://www.gzds.gov.cn/">广州市地方税务局</option>
+
+									<option value="http://www.gzfair.com.cn/asp/">广州博览会</option>
+
+									<option value="http://www.gzmtr.com/">广州地铁</option>
+
+									<option value="http://www.gzgp.org/">广州政府采购中心</option>
+
+									<option value="http://www.guangzhou.gov.cn">中国·广州</option>
+
+									<option value="http://www.gz.gov.cn/">广州政府门户网站</option>
+
+
+
+								</select>
+							</div>
+							<div class="panel-body">
+
+								<select class="form-control"
+									onchange="if (this.options[this.selectedIndex].value!=&quot;&quot;) window.location=this.options[this.selectedIndex].value">
+									<option>相关链接</option>
+
+
+									<option value="http://yigong.thnet.gov.cn">天河区义工信息网</option>
+
+									<option value="http://new.thstp.cn/">天河科技园</option>
+
+									<option value="http://www.gzhero.org">广州英烈网</option>
+
+									<option value="http://www.gmss.cn">广州市气象卫星地面站</option>
+
+									<option value="http://www.gz19.net">
+										广州市十九路军淞沪抗日战士亡将士陵园</option>
+
+									<option value="http://kepu.scbg.ac.cn/">华南植物园科普</option>
+
+									<option value="http://www.scbg.ac.cn">华南植物园</option>
+
+									<option value="http://www.zhengjia.com.cn/">正佳广场</option>
+
+
+
+								</select>
+
+
+							</div>
+
+						</div>
+					</div>
+					<div class="panel panel-success">
+						<div class="panel-heading">
+							<h4 class="panel-title">
+								<a data-toggle="modal" data-target="#myModal"> 政府机构 </a>
+							</h4>
+						</div>
+						<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+							aria-labelledby="myModalLabel" aria-hidden="true">
+							<div class="modal-dialog">
+								<div class="modal-content">
+									<div class="modal-header">
+										<button type="button" class="close" data-dismiss="modal"
+											aria-hidden="true">&times;</button>
+										<h4 class="modal-title" id="myModalLabel">政府机构</h4>
+									</div>
+									<div class="modal-body">
+										<ul id="myTab" class="nav nav-tabs">
+											<li class="active"><a href="#one" data-toggle="tab">
+													五套班子 </a></li>
+											<li><a href="#two" data-toggle="tab">区委/区政府系统</a></li>
+											<li><a href="#three" data-toggle="tab">政法系统</a></li>
+											<li><a href="#four" data-toggle="tab">人民团体</a></li>
+											<li><a href="#five" data-toggle="tab">计划/经济/商业系统</a></li>
+											<li><a href="#six" data-toggle="tab">科教文体卫系统</a></li>
+											<li><a href="#seven" data-toggle="tab">城建/城管系统</a></li>
+											<li><a href="#eight" data-toggle="tab">街道办事处</a></li>
+										</ul>
+										<div id="myTabContent" class="tab-content">
+											<div class="tab-pane fade in active" id="one">
+
+
+												<ol>
+
+													<li><a title="中共天河区委员会" href="#" target="_blank">中共天河区委员会</a></li>
+
+													<li><a title="天河区人大" href="http://renda.thnet.gov.cn"
+														target="_blank">天河区人大</a></li>
+
+													<li><a title="天河区人民政府" href="http://www.thnet.gov.cn/"
+														target="_blank">天河区人民政府</a></li>
+
+													<li><a title="人民政协天河区委员会"
+														href="http://zhengxie.thnet.gov.cn" target="_blank">人民政协天河区委员会</a></li>
+
+													<li><a title="中共天河区纪律检查委员会"
+														href="http://jiwei.thnet.gov.cn/" target="_blank">中共天河区纪律检查委员会</a></li>
+
+												</ol>
+
+											</div>
+
+											<div class="tab-pane fade" id="two">
+
+												<ol>
+													<li><a title="区委组织部" href="http://www.thdjw.cn"
+														target="_blank">区委组织部</a></li>
+
+													<li><a title="区委宣传部" href="http://xchb.thnet.gov.cn/"
+														target="_blank">区委宣传部</a></li>
+
+													<li><a title="天河报社" href="#" target="_blank">天河报社</a></li>
+
+													<li><a title="区委统一战线工作部"
+														href="http://www.thnet.gov.cn/" target="_blank">区委统一战线工作部</a></li>
+
+													<li><a title="区委老干部局" href="http://thlg.thnet.gov.cn"
+														target="_blank">区委老干部局</a></li>
+
+													<li><a title="区干部保健局"
+														href="http://thgbbj.thnet.gov.cn/" target="_blank">区干部保健局</a></li>
+
+													<li><a title="区机构编制委员会办公室"
+														href="http://bianban.thnet.gov.cn" target="_blank">区机构编制委员会办公室</a></li>
+
+													<li><a title="区直属机关委员会" href="#" target="_blank">区直属机关委员会</a></li>
+
+													<li><a title="区委党校"
+														href="http://dangxiao.thnet.gov.cn" target="_blank">区委党校</a></li>
+
+													<li><a title="天河科技园管委会" href="http://new.thstp.cn/"
+														target="_blank">天河科技园管委会</a></li>
+
+													<li><a title="区地方志编纂委员会办公室"
+														href="http://thq.gd-info.gov.cn/" target="_blank">区地方志编纂委员会办公室</a>
+													</li>
+
+													<li><a title="人力资源和社会保障局"
+														href="http://ldbz.thnet.gov.cn/" target="_blank">人力资源和社会保障局</a></li>
+
+													<li><a title="区政府侨务和外事办公室"
+														href="http://qwws.thnet.gov.cn/" target="_blank">区政府侨务和外事办公室</a></li>
+
+													<li><a title="区档案局" href="http://dangan.thnet.gov.cn"
+														target="_blank">区档案局</a></li>
+
+													<li><a title="区机关事务管理局"
+														href="http://jgswj.thnet.gov.cn" target="_blank">区机关事务管理局</a></li>
+
+													<li><a title="区出租屋管理工作领导小组办公室"
+														href="http://chuzuwu.thnet.gov.cn/" target="_blank">区出租屋管理工作领导小...</a></li>
+
+												</ol>
+											</div>
+											<div class="tab-pane fade" id="three">
+
+												<ol>
+													<li><a title="区人民武装部" href="#" target="_blank">区人民武装部</a></li>
+
+													<li><a title="区委政法委"
+														href="http://zhengfa.thnet.gov.cn/" target="_blank">区委政法委</a></li>
+
+													<li><a title="区政府法制办公室" href="#" target="_blank">区政府法制办公室</a></li>
+
+													<li><a title="市公安局天河区分局"
+														href="http://gongan.thnet.gov.cn/" target="_blank">市公安局天河区分局</a></li>
+
+													<li><a title="区司法局" href="http://sifa.thnet.gov.cn/"
+														target="_blank">区司法局</a></li>
+
+													<li><a title="区人民法院" href="http://www.gzthfy.gov.cn"
+														target="_blank">区人民法院</a></li>
+
+													<li><a title="区人民检察院"
+														href="http://jiancha.thnet.gov.cn/" target="_blank">区人民检察院</a></li>
+
+													<li><a title="区民政局"
+														href="http://minzheng.thnet.gov.cn/" target="_blank">区民政局</a></li>
+
+												</ol>
+											</div>
+											<div class="tab-pane fade" id="four">
+												<ol>
+
+													<li><a title="区总工会" href="http://gonghui.thnet.gov.cn"
+														target="_blank">区总工会</a></li>
+
+													<li><a title="共青团天河区委" href="http://tqw.thnet.gov.cn"
+														target="_blank">共青团天河区委</a></li>
+
+													<li><a title="区妇女联合会"
+														href="http://fulian.thnet.gov.cn" target="_blank">区妇女联合会</a></li>
+
+													<li><a title="区科学技术协会"
+														href="http://kexie.thnet.gov.cn" target="_blank">区科学技术协会</a></li>
+
+													<li><a title="区归国华侨联合会" href="#" target="_blank">区归国华侨联合会</a></li>
+
+													<li><a title="区工商业联合会、区总商会"
+														href="http://gshlian.thnet.gov.cn/" target="_blank">区工商业联合会、区总商会</a></li>
+
+													<li><a title="区文学艺术界联合会"
+														href="http://flac.thnet.gov.cn/" target="_blank">区文学艺术界联合会</a></li>
+
+													<li><a title="天河区慈善会" href="http://thcs.thnet.gov.cn"
+														target="_blank">天河区慈善会</a></li>
+
+													<li><a title="区残疾人联合会"
+														href="http://canlian.thnet.gov.cn" target="_blank">区残疾人联合会</a></li>
+
+													<li><a title="中国国际贸易促进委员会广州天河区支会"
+														href="http://ccpit.thnet.gov.cn" target="_blank">中国国际贸易促进委员会...</a></li>
+
+												</ol>
+											</div>
+											<div class="tab-pane fade" id="five">
+												<ol>
+
+													<li><a title="区发展和改革局（粮食局、物价局）"
+														href="http://fagai.thnet.gov.cn" target="_blank">区发展和改革局（粮食局...</a></li>
+
+													<li><a title="区经济贸易局（对外贸易经济合作局、区旅游局）"
+														href="http://jingmao.thnet.gov.cn" target="_blank">区经济贸易局（对外贸易...</a></li>
+
+													<li><a title="区财政局"
+														href="http://caizheng.thnet.gov.cn" target="_blank">区财政局</a></li>
+
+													<li><a title="区交通局"
+														href="http://jiaotong.thnet.gov.cn" target="_blank">区交通局</a></li>
+
+													<li><a title="区审计局" href="http://shenji.thnet.gov.cn"
+														target="_blank">区审计局</a></li>
+
+													<li><a title="区统计局" href="http://tj.thnet.gov.cn"
+														target="_blank">区统计局</a></li>
+
+													<li><a title="区食品药品监督管理局"
+														href="http://th.gzfda.gov.cn/" target="_blank">区食品药品监督管理局</a></li>
+
+													<li><a title="区安全生产监督管理局"
+														href="http://ajj.thnet.gov.cn/" target="_blank">区安全生产监督管理局</a></li>
+
+													<li><a title="区协作办公室" href="#" target="_blank">区协作办公室</a></li>
+
+													<li><a title="区供销合作社联合社"
+														href="http://gxl.thnet.gov.cn/" target="_blank">区供销合作社联合社</a></li>
+
+													<li><a title="市工商行政管理局天河分局"
+														href="http://www.gzaic.gov.cn:8811/thfj/" target="_blank">市工商行政管理局天河分局</a></li>
+
+													<li><a title="市天河区国家税务局"
+														href="http://www.gd-n-tax.gov.cn/portal/site/site/portal/gdgz/tianhe/index.jsp"
+														target="_blank">市天河区国家税务局</a></li>
+
+													<li><a title="市天河区地方税务局" href="#" target="_blank">市天河区地方税务局</a></li>
+
+													<li><a title="市质量技术监督局天河分局" href="#" target="_blank">市质量技术监督局天河分局</a></li>
+
+													<li><a title="市烟草专卖局天河分局" href="#" target="_blank">市烟草专卖局天河分局</a></li>
+
+
+												</ol>
+											</div>
+											<div class="tab-pane fade" id="six">
+												<ol>
+													<li><a title="区科技和信息化局（区知识产权局）"
+														href="http://www.thst.gov.cn/" target="_blank">区科技和信息化局（区知...</a></li>
+
+													<li><a title="区教育局" href="http://www.tianhe.org.cn/"
+														target="_blank">区教育局</a></li>
+
+													<li><a title="区教育局教研室" href="http://www.thjy.org"
+														target="_blank">区教育局教研室</a></li>
+
+													<li><a title="区文化广电新闻出版局（区版权局）"
+														href="http://wenhua.thnet.gov.cn/" target="_blank">区文化广电新闻出版局（...</a></li>
+
+													<li><a title="区体育发展中心（体育局）"
+														href="http://tiyu.thnet.gov.cn/" target="_blank">区体育发展中心（体育局）</a></li>
+
+													<li><a title="区卫生局"
+														href="http://weisheng.thnet.gov.cn/" target="_blank">区卫生局</a></li>
+
+													<li><a title="区卫生监督所"
+														href="http://thwjs.thnet.gov.cn/" target="_blank">区卫生监督所</a></li>
+
+													<li><a title="区疾病预防控制中心"
+														href="http://jibingyufang.thnet.gov.cn/" target="_blank">区疾病预防控制中心</a></li>
+
+													<li><a title="区人口和计划生育局"
+														href="http://jisheng.thnet.gov.cn/" target="_blank">区人口和计划生育局</a></li>
+
+													<li><a title="区妇幼保健院" href="http://www.gzthfy.com"
+														target="_blank">区妇幼保健院</a></li>
+
+													<li><a title="区中医医院（区中心医院）"
+														href="http://zxyy.thnet.gov.cn/" target="_blank">区中医医院（区中心医院）</a></li>
+
+													<li><a title="天河区人民医院"
+														href="http://hszhyy.thnet.gov.cn/" target="_blank">天河区人民医院</a></li>
+
+
+												</ol>
+											</div>
+											<div class="tab-pane fade" id="seven">
+												<ol>
+
+													<li><a title="区城改办"
+														href="http://chenggai.thnet.gov.cn/lgbib/index.jsp"
+														target="_blank">区城改办</a></li>
+
+													<li><a title="区环境保护局" href="http://epb.thnet.gov.cn/"
+														target="_blank">区环境保护局</a></li>
+
+													<li><a title="区建设和水务局"
+														href="http://jianshe.thnet.gov.cn/" target="_blank">区建设和水务局</a></li>
+
+													<li><a title="区建设工程质量安全监督站"
+														href="http://jsza.thnet.gov.cn" target="_blank">区建设工程质量安全监督站</a></li>
+
+													<li><a title="区农业和园林局"
+														href="http://nlsl.thnet.gov.cn/" target="_blank">区农业和园林局</a></li>
+
+													<li><a title="区城市管理局" href="http://csgl.thnet.gov.cn/"
+														target="_blank">区城市管理局</a></li>
+
+													<li><a title="区民防办（人防办）"
+														href="http://renfang.thnet.gov.cn" target="_blank">区民防办（人防办）</a></li>
+
+													<li><a title="市国土资源和房屋管理局天河区分局"
+														href="http://tianhe.laho.gov.cn" target="_blank">市国土资源和房屋管理局...</a></li>
+
+													<li><a title="市规划局天河分局"
+														href="http://guihua.thnet.gov.cn" target="_blank">市规划局天河分局</a></li>
+
+													<li><a title="市城市管理综合执法局天河分局"
+														href="http://gzthcg.thnet.gov.cn/" target="_blank">市城市管理综合执法局天...</a></li>
+
+													<li><a title="区广州火车东站地区管理委员会办公室"
+														href="http://dzdq.thnet.gov.cn/" target="_blank">区广州火车东站地区管理...</a></li>
+
+
+												</ol>
+											</div>
+											<div class="tab-pane fade" id="eight">
+
+												<ol>
+													<li><a title="沙河街" href="http://shahe.thnet.gov.cn/"
+														target="_blank">沙河街</a></li>
+
+													<li><a title="五山街" href="http://wushan.thnet.gov.cn/"
+														target="_blank">五山街</a></li>
+
+													<li><a title="员村街" href="http://yuancun.thnet.gov.cn/"
+														target="_blank">员村街</a></li>
+
+													<li><a title="车陂街" href="http://chebei.thnet.gov.cn/"
+														target="_blank">车陂街</a></li>
+
+													<li><a title="石牌街" href="http://shipai.thnet.gov.cn/"
+														target="_blank">石牌街</a></li>
+
+													<li><a title="天河南街"
+														href="http://tianhenan.thnet.gov.cn/" target="_blank">天河南街</a></li>
+
+													<li><a title="林和街" href="http://linhe.thnet.gov.cn/"
+														target="_blank">林和街</a></li>
+
+													<li><a title="沙东街" href="http://shadong.thnet.gov.cn"
+														target="_blank">沙东街</a></li>
+
+													<li><a title="兴华街" href="http://xinghua.thnet.gov.cn"
+														target="_blank">兴华街</a></li>
+
+													<li><a title="棠下街" href="http://tangxia.thnet.gov.cn/"
+														target="_blank">棠下街</a></li>
+
+													<li><a title="天园街"
+														href="http://tianyuan.thnet.gov.cn/" target="_blank">天园街</a></li>
+
+													<li><a title="冼村街" href="http://xiancun.thnet.gov.cn/"
+														target="_blank">冼村街</a></li>
+
+													<li><a title="猎德街" href="http://liede.thnet.gov.cn/"
+														target="_blank">猎德街</a></li>
+
+													<li><a title="元岗街"
+														href="http://yuangang.thnet.gov.cn/" target="_blank">元岗街</a></li>
+
+													<li><a title="黄村街"
+														href="http://huangcun.thnet.gov.cn/" target="_blank">黄村街</a></li>
+
+													<li><a title="龙洞街"
+														href="http://longdong.thnet.gov.cn/" target="_blank">龙洞街</a></li>
+
+													<li><a title="长兴街"
+														href="http://changxing.thnet.gov.cn" target="_blank">长兴街</a></li>
+
+													<li><a title="凤凰街"
+														href="http://fenghuang.thnet.gov.cn/" target="_blank">凤凰街</a></li>
+
+													<li><a title="前进街" href="http://qianjin.thnet.gov.cn/"
+														target="_blank">前进街</a></li>
+
+													<li><a title="新塘街" href="http://xintang.thnet.gov.cn/"
+														target="_blank">新塘街</a></li>
+
+													<li><a title="珠吉街" href="http://zhuji.thnet.gov.cn/"
+														target="_blank">珠吉街</a></li>
+
+												</ol>
+											</div>
+
+										</div>
+									</div>
+									<div class="modal-footer">
+										<button type="button" class="btn btn-default"
+											data-dismiss="modal">关闭</button>
+
+									</div>
+								</div>
+								<!-- /.modal-content -->
+							</div>
+						</div>
+						<!-- /.modal -->
+					</div>
+
+				</div>
+			</div>
+
+			<div class="col-sm-9 col-md-10 sidebar">
+
+				<div class="panel panel-danger">
+					<div class="panel-heading">
+						<h3 class="panel-title"></h3>
+					</div>
+					<div class="panel-body">
+						<div class="row">
+							<div class="col-sm-6 col-md-6 sidebar">
+								<div class="panel panel-danger">
+									<div class="panel-heading">
+										<h3 class="panel-title">房屋出租</h3>
+									</div>
+									<div class="panel-body">1</div>
+									<div class="panel-body">2</div>
+									<div class="panel-body">3</div>
+									<div class="panel-body">4</div>
+									<div class="panel-body">5</div>
+									<div class="panel-body">6</div>
+								</div>
+							</div>
+
+							<div class="col-sm-6 col-md-6 sidebar">
+								<div class="panel panel-danger">
+									<div class="panel-heading">
+										<h3 class="panel-title">招聘信息</h3>
+									</div>
+									<div class="panel-body">1</div>
+									<div class="panel-body">2</div>
+									<div class="panel-body">3</div>
+									<div class="panel-body">4</div>
+									<div class="panel-body">5</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-9 col-md-12 sidebar">
+
+							<div class="panel panel-danger">
+								<div class="panel-heading">
+									<h3 class="panel-title">社区大课堂</h3>
+								</div>
+								<div class="panel-body">
+
+									<div class="row">
+										<div class="col-sm-4 col-md-4 sidebar">
+											<div class="panel panel-danger">
+												<div class="panel-heading">
+													<h3 class="panel-title">精彩课程</h3>
+												</div>
+												<div class="panel-body">1</div>
+												<div class="panel-body">2</div>
+												<div class="panel-body">3</div>
+												<div class="panel-body">4</div>
+												<div class="panel-body">5</div>
+
+											</div>
+										</div>
+
+										<div class="col-sm-5 col-md-5 sidebar">
+											<div class="panel panel-danger">
+												<div class="panel-heading">
+													<h3 class="panel-title">课程安排</h3>
+												</div>
+												<div class="panel-body">1</div>
+												<div class="panel-body">2</div>
+												<div class="panel-body">3</div>
+												<div class="panel-body">4</div>
+												<div class="panel-body">5</div>
+											</div>
+										</div>
+										<div class="col-sm-3 col-md-3 sidebar">
+											<div class="panel panel-danger">
+												<div class="panel-heading">
+													<h3 class="panel-title">已完成课程情况</h3>
+												</div>
+												<div class="panel-body">1</div>
+												<div class="panel-body">2</div>
+												<div class="panel-body">3</div>
+												<div class="panel-body">4</div>
+												<div class="panel-body">5</div>
+
+											</div>
+										</div>
+									</div>
+
+
+									<div class="row">
+										<div class="col-sm-4 col-md-4 sidebar">
+											<div class="panel panel-danger">
+												<div class="panel-heading">
+													<h3 class="panel-title">讲师风采</h3>
+												</div>
+												<div class="panel-body">1</div>
+												<div class="panel-body">2</div>
+												<div class="panel-body">3</div>
+												<div class="panel-body">4</div>
+												<div class="panel-body">5</div>
+
+											</div>
+										</div>
+
+										<div class="col-sm-5 col-md-5 sidebar">
+											<div class="panel panel-danger">
+												<div class="panel-heading">
+													<h3 class="panel-title">社区大课堂教室情况</h3>
+												</div>
+												<div class="panel-body">1</div>
+												<div class="panel-body">2</div>
+												<div class="panel-body">3</div>
+												<div class="panel-body">4</div>
+												<div class="panel-body">5</div>
+											</div>
+										</div>
+										<div class="col-sm-3 col-md-3 sidebar">
+											<div class="panel panel-danger">
+												<div class="panel-heading">
+													<h3 class="panel-title">理财知识园地</h3>
+												</div>
+												<div class="panel-body">1</div>
+												<div class="panel-body">2</div>
+												<div class="panel-body">3</div>
+												<div class="panel-body">4</div>
+												<div class="panel-body">5</div>
+											</div>
+										</div>
+									</div>
+
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<footer class="footer">
+		<p>&copy; 2014 Fatwo&nbspDUZI_A_QIN &middot;wzb &middot;Banana</p>
+
+	</footer>
+
+
+	<script src="js/jquery.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+</body>
+</html>

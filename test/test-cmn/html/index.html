@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>community-test</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 ,user-scalable=no">
+    <meta name="description" content="community">
+    <meta name="author" content="">
+
+    <!--link rel="stylesheet/less" href="less/bootstrap.less" type="text/css" /-->
+    <!--link rel="stylesheet/less" href="less/responsive.less" type="text/css" /-->
+    <!--script src="js/less-1.3.3.min.js"></script-->
+    <!--append ‘#!watch’ to the browser URL, then refresh the page. -->
+    
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/style.css" rel="stylesheet">
+
+  <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+  <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+  <![endif]-->
+  
+</head>
+<body>
+<!-- nav-set -->
+  <div class="nav-container container-fluid">
+      <!-- logo -->
+      <div class="row">
+        <h1 class="logo col-md-3 col-md-offset-2 "><a href="/">logo</a></h1>
+        <div class="col-md-3 col-md-offset-2 contact">
+            <ul class="list-inline">
+                <li><a>关于我们</a></li>
+                <li><a>联系我们</a></li>
+            </ul>
+            <h3>新广州人热线：</h3> 
+            <div class="hot-line">
+                <span>020-399-7093</span>           
+                <span>020-398-3073</span>
+            </div>
+        </div>
+      </div>
+      <!-- navbar -->
+      <div class="navbar navbar-inverse ">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="#">Brand</a>
+            </div>
+            <div class="collapse navbar-collapse">
+              <ul class="nav navbar-nav">
+                <li class="active"><a href="#">社区新闻</a></li>
+                <li><a href="#">社区课堂</a></li>
+                <li><a href="#">社区租房</a></li>
+                <li><a href="#">招工信息</a></li>
+                <li><a href="#">信息咨询</a></li>
+                <li><a href="#">维权</a></li>
+              </ul>
+            </div>
+        </div>
+      </div>
+    <!--/.nav-collapse -->
+      <!-- carousel for important news -->
+      <!-- Carousel================================================== -->
+        <div id="myCarousel" class="carousel slide">
+          <div class="carousel-inner">
+            <div class="item active">
+              <img src="../images/dama.jpg" class="img-responsive">
+              <div class="container">
+                <div class="carousel-caption">
+                  <h1>热烈欢迎广场舞大妈</h1>
+                  <pthis is="" an="" example="" layout="" with="" carousel="" that="" uses="" the="" bootstrap="" 3="" styles.<="" small=""><p></p>
+                  <p><a class="btn btn-large btn-success" href="http://getbootstrap.com">查看更多</a>
+                </p></pthis></div>
+              </div>
+            </div>
+            <div class="item">
+              <img src="../images/training.jpg" class="img-responsive">
+              <div class="container">
+                <div class="carousel-caption">
+                  <h1>暑期第二课堂顺利结束</h1>
+                  <p>新广州人网站旨在为新广州人提供便利的帮助。据悉于7月5号开展的为期10天的暑期第二课堂顺利结束，学员们表示收获颇丰</p>
+                  <p><a class="btn btn-large btn-success" href="#">查看全文</a></p>
+                </div>
+              </div>
+            </div>
+            <div class="item">
+              <img src="../images/rent.jpg" class="img-responsive">
+              <div class="container">
+                <div class="carousel-caption">
+                  <h1>华山区房屋出租</h1>
+                  <p>一房一厅一厕所一阳台，你值得拥有</p>
+                  <p><a class="btn btn-large btn-success" href="#">查看全文</a></p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Controls -->
+          <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+            <span class="icon-prev"></span>
+          </a>
+          <a class="right carousel-control" href="#myCarousel" data-slide="next">
+            <span class="icon-next"></span>
+          </a>           
+        </div>
+        <!-- /.carousel -->
+      <!-- search frame float , visible only above 768-->
+        <div class="search hidden-xs">
+            <form class="navbar-form " role="search">
+                <div class="form-group">
+                    <input type="text" class="form-control" />
+                </div> 
+                    <button type="submit" class="btn btn-large btn-danger">搜索</button>
+            </form>
+        </div>         
+<!--          <768
+        <div class="search visible-xs-inline-block center-block">
+            <form class="navbar-form " role="search">
+                <div class="form-group">
+                    <input type="text" class="form-control" />
+                </div> 
+                    <button type="submit" class="btn btn-large btn-danger">搜索</button>
+            </form>
+        </div> --> 
+  </div>
+<!-- main-container 8+4-->
+      <div class="main-container container-fluid">
+        <div class="row">
+      <!-- nessary information  8 -->
+          <div class="massage-info  col-md-8">
+              <div class="course panel panel-default row">
+                    <div class="col-md-1 title">
+                            <div class="label label-warning">
+                                社区课堂
+                            </div>
+                    </div>
+                    <div class="col-md-10 ">
+                        <!-- nav tabs  -->
+                         <ul class="nav nav-tabs" role="tablist">
+                            <li class="active"><a href="#future" role="tab" data-toggle="tab">即将开展</a></li>
+                            <li><a href="#now" role="tab" data-toggle="tab">进行中</a></li>
+                            <li><a href="#finish" role="tab" data-toggle="tab">已结束</a></li>
+                         </ul>
+                         <!-- Tab panes -->
+                         <div class="tab-content">
+                            <div class="tab-pane active" id="future">
+                                <ol>
+                                  <li>夏令营</li>
+                                  <li>培训班</li>
+                                  <li>每周一训</li>
+                                  <li>大妈培训班</li>
+                                  <li>成人教育</li>
+                                  <li>幼儿教育</li>
+                                  <li>暑假托养班</li>
+                                  <li>夏令营</li>
+                                </ol>
+                            <button class="btn btn-link pull-right">更多 >></button>
+                            </div>
+                            <div class="tab-pane" id="now">...</div>
+                            <div class="tab-pane" id="finish">...</div>
+                        </div>
+                  </div>
+              </div>
+              <div class="rent-house panel panel-default row">
+                    <div class="col-md-1 title">
+                        <div class="label label-danger">
+                                社区租房
+                        </div>
+                    </div>
+                    <div class="col-md-10 tab-content">
+                        <ol>
+                            <li>夏令营</li>
+                            <li>培训班</li>
+                            <li>每周一训</li>
+                            <li>大妈培训班</li>
+                            <li>成人教育</li>
+                            <li>幼儿教育</li>
+                            <li>暑假托养班</li>
+                            <li>夏令营</li>
+                        </ol>
+                        <button class="btn btn-link pull-right">更多 >></button>
+                        <button class="btn btn-link pull-right">我要出租</button>
+                    </div>                   
+              </div>
+              <div class="hunt-job panel panel-default row">
+                    <div class="col-md-1 title">
+                        <div class="label label-info">
+                                招工信息
+                        </div>
+                    </div>
+                    <div class="col-md-10 tab-content">
+                        <ol>
+                            <li>夏令营</li>
+                            <li>培训班</li>
+                            <li>每周一训</li>
+                            <li>大妈培训班</li>
+                            <li>成人教育</li>
+                            <li>幼儿教育</li>
+                            <li>暑假托养班</li>
+                            <li>夏令营</li>
+                        </ol>
+                        <button class="btn btn-link pull-right">更多 >></button>
+                        <button class="btn btn-link pull-right">我要招工</button>
+                    </div>                   
+              </div>                  
+            </div>
+      <!-- this is aside messages 4 -->
+          <div class="aside col-md-3">
+              <div class="news panel panel-default row">
+                    <div class="title">
+                        <div class="label label-info">
+                                社区新闻
+                        </div>
+                    </div>
+                    <div class="tab-content">
+                        <ol>
+                            <li>夏令营</li>
+                            <li>培训班</li>
+                            <li>每周一训</li>
+                            <li>大妈培训班</li>
+                            <li>成人教育</li>
+                            <li>幼儿教育</li>
+                            <li>暑假托养班</li>
+                            <li>夏令营</li>
+                        </ol>
+                        <button class="btn btn-link pull-right">更多 >></button>
+                        <button class="btn btn-link pull-right">我要招工</button>
+                    </div>                   
+              </div>
+              <div class="link panel panel-default row">
+                    <div class="title">
+                        <div class="label label-info">
+                                友情链接
+                        </div>
+                    </div>
+                    <div class="tab-content">
+                        <ol>
+                            <li>夏令营</li>
+                            <li>培训班</li>
+                            <li>每周一训</li>
+                            <li>大妈培训班</li>
+                            <li>成人教育</li>
+                            <li>幼儿教育</li>
+                            <li>暑假托养班</li>
+                            <li>夏令营</li>
+                        </ol>
+                        <button class="btn btn-link pull-right">更多 >></button>
+                        <button class="btn btn-link pull-right">我要招工</button>
+                    </div>                  
+              </div>
+          </div>
+      </div>
+    </div>
+  <!-- footer  contain athor and company message-->
+  <footer class="row">
+      <div class="basic-info col-md-7">
+          <p>address:South China Agriculture University ,wushan road</p>
+          <p>copyright:fatwo</p>
+      </div>
+      <div class="further-info col-md-3  hidden-xs">
+          <a href="">寻找帮助</a>
+          <ul class="">
+              <li><a>微博</a></li>
+              <li><a>Twitter</a></li>
+              <li><a>facebook</a></li>
+          </ul>
+      </div>
+  </footer>
+
+    <script type="text/javascript" src="../js/jquery.min.js"></script>
+    <script type="text/javascript" src="../js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../js/scripts.js"></script> 
+
+</body>
+</html>
