@@ -4,11 +4,13 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Lob;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import play.db.jpa.GenericModel;
 /*
- * @author:john
+ * 招工信息表
+ * @author john
  */
 @Entity
 @Table(name="work")
@@ -16,11 +18,10 @@ public class Work extends GenericModel {
 	@Id
 	public String id;
 	
-	public String author;
-	public String phone;
+	@ManyToOne
+	public User author;
 	
-	@Column(name="author_message")
-	public String authorMessage;
+	public String phone;
 	
 	public String unit;
 	public String salary;
