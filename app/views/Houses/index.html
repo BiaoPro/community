@@ -1,0 +1,12 @@
+#{extends 'main.html' /}
+#{set title:'application' /}
+#{set 'moStyles'}
+<script>document.getElementById('nav-Houses').setAttribute("class", "main-nav-item active");</script>
+#{/set}
+
+
+<ul class="pager">
+			<li><a href="@{Application.index}">Application</a></li>
+			Houses
+			<li><a href="@{Links.index}">Links</a></li>
+</ul>

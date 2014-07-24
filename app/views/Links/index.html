@@ -1,4 +1,12 @@
 #{extends 'main.html' /}
-#{set title:'link_index' /}
+#{set title:'application' /}
+#{set 'moStyles'}
+<script>document.getElementById('nav-Links').setAttribute("class", "main-nav-item active");</script>
+#{/set}
 
-index.html
+
+<ul class="pager">
+			<li><a href="@{Houses.index}">Houses</a></li>
+			Links
+			<li><a href="@{Questions.index}">Questions</a></li>
+</ul>

@@ -1,16 +1,43 @@
 <!DOCTYPE html>
-
 <html>
-    <head>
-        <title>#{get 'title' /}</title>
-        <meta charset="${_response_encoding}">
-        <link rel="stylesheet" media="screen" href="@{'/public/stylesheets/main.css'}">
-        #{get 'moreStyles' /}
-        <link rel="shortcut icon" type="image/png" href="@{'/public/images/favicon.png'}">
-        <script src="@{'/public/javascripts/jquery-1.6.4.min.js'}" type="text/javascript" charset="${_response_encoding}"></script>
-        #{get 'moreScripts' /}
-    </head>
-    <body>
-        #{doLayout /}
-    </body>
+  <head>
+    <title>#{get 'title' /}</title>
+    <meta charset="utf-8">
+     <meta charset="${_response_encoding}">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="public/images/favicon.ico">
+    <link href="../public/stylesheets/bootstrap.css" rel="stylesheet">  
+    <link href="../public/stylesheets/main.css" rel="stylesheet">  
+     #{get 'moreStyles' /}
+
+  </head>
+
+  <body>
+
+    <div class="main-masthead">
+      <div class="container">
+        <nav class="main-nav">
+          <a class="main-nav-item" id="nav-Application" href="@{Application.index}" onClick="clickNav(this)">Application</a>
+          <a class="main-nav-item" id="nav-Houses" href="@{Houses.index}" onClick="clickNav(this)">Houses</a>
+          <a class="main-nav-item" id="nav-Links" href="@{Links.index}" onClick="clickNav(this)">Links</a>
+          <a class="main-nav-item" id="nav-Questions" href="@{Questions.index}" onClick="clickNav(this)">Questions</a>
+          <a class="main-nav-item" id="nav-Users" href="@{Users.index}" onClick="clickNav(this)">Users</a>
+        </nav>
+      </div>
+    </div>
+
+    <div class="container">
+		#{doLayout /}
+	</div>
+
+    <div class="main-footer">
+      <p>@author biao</p>
+      <p>
+        <a href="#">Back to top</a>
+      </p>
+    </div>
+         <script>function clickNav(obj){ obj.className="main-nav-item active";}</script>
+    
+  </body>
 </html>
+

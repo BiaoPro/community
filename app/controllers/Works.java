@@ -6,5 +6,10 @@ import java.util.*;
 import models.*;
 
 public class Works extends Controller {
+  
+  
+  public static void index() {
+    render();
+  }
 
 }
