@@ -20,7 +20,7 @@ public class Links extends Controller {
 	 * 跳转基本页面
 	 */
 	public static void index() {
-		showLinks(null, null, 1);
+		render();
 	}
 
 	/**

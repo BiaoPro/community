@@ -2,7 +2,7 @@ package utils;
 
 /**
  * 字符工具类
- * @author leaf
+ * @author biao
  *
  */
 public class StringUtils {
