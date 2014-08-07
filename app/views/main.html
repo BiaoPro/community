@@ -4,14 +4,89 @@
     <head>
         <title>#{get 'title' /}</title>
         <meta charset="${_response_encoding}">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0 ,user-scalable=no">
+        <meta name="description" content="community">
+        <meta name="author" content="">
+
+        <!--link rel="stylesheet/less" href="less/bootstrap.less" type="text/css" /-->
+        <!--link rel="stylesheet/less" href="less/responsive.less" type="text/css" /-->
+        <!--script src="js/less-1.3.3.min.js"></script-->
+        <!--append ‘#!watch’ to the browser URL, then refresh the page. -->
+        <link rel="stylesheet" media="screen" href="@{'/public/stylesheets/bootstrap.min.css'}">
         <link rel="stylesheet" media="screen" href="@{'/public/stylesheets/main.css'}">
+        <link rel="stylesheet" media="screen" href="@{'/public/stylesheets/index.css'}">
         #{get 'moreStyles' /}
         <link rel="shortcut icon" type="image/png" href="@{'/public/images/favicon.png'}">
-        <script src="@{'/public/javascripts/jquery-1.6.4.min.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+
+        <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+        <!--[if lt IE 9]>
+        <script type="text/javascript" src="../public/javascripts/html5shiv.js" charset="${_response_encoding}"></script>
+        <![endif]-->
+
         #{get 'moreScripts' /}
+
     </head>
     <body>
+     <!-- nav-set -->
+      <div class="nav-container container-fluid">
+          <!-- logo -->
+          <div class="row">
+            <h1 class="logo col-md-3 col-md-offset-2 "><a href="/">logo</a></h1>
+            <div class="col-md-4 col-md-offset-2 contact">
+                <ul class="list-inline">
+                    <li><a>关于我们</a></li>
+                    <li><a>联系我们</a></li>
+                </ul>
+                <h3>新广州人热线：</h3> 
+                <div class="hot-line">
+                    <span>020-399-7093</span>           
+                    <span>020-398-3073</span>
+                </div>
+            </div>
+          </div>
+          <!-- 导航条 -->
+          <div class="navbar navbar-inverse ">
+              <div class="container">
+                <div class="navbar-header">
+                  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                  </button>
+                  <a class="navbar-brand hidden-xs" href="#">Brand</a>
+                </div>
+                <div class="collapse navbar-collapse">
+                  <ul class="nav navbar-nav">
+                    <li class="active"><a href="#">社区新闻</a></li>
+                    <li><a href="#">社区课堂</a></li>
+                    <li class="dropdown">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown">社区租房</a>
+                      <ul class="dropdown-menu hidden-xs" role="menu">
+                        <li><a href="#">我要租房</a></li>
+                        <li><a href="#">我要出租</a></li>
+                      </ul>
+                    </li>
+                    <li class="dropdown">
+                      <a href="http://www.baidu.com" class="dropdown-toggle" data-toggle="dropdown">招工信息</a>
+                      <ul class="dropdown-menu hidden-xs" role="menu">
+                        <li><a href="#">我要找工</a></li>
+                        <li><a href="#">我要招工</a></li>
+                      </ul>
+                    </li>
+                    <li><a href="#">信息咨询</a></li>
+                    <li><a href="#">维权</a></li>
+                  </ul>
+                </div>
+            </div>
+          </div>
+         </div>
+        <!--/.nav-collapse -->
+        <!--/.nav-collapse -->
     
         #{doLayout /}
+
+    <script type="text/javascript" src="@{'/public/javascripts/jquery-2.1.1.min.js'}" charset="${_response_encoding}"></script>
+    <script type="text/javascript" src="@{'/public/javascripts/bootstrap.js'}" charset="${_response_encoding}"></script>
+    <script type="text/javascript" src="@{'/public/javascripts/scripts.js'}" charset="${_response_encoding}"></script> 
     </body>
 </html>

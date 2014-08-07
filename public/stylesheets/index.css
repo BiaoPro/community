@@ -1,0 +1,347 @@
+/*社区新闻的Tab修改*/
+.tab-pane td>a{
+	color: #5351D2;
+	text-decoration: none;
+} 
+
+.tab-pane td>a:hover,ol>li>a:hover,td>a:hover{
+	color:red;
+}
+.panel-body ol>li{
+	margin:10px;
+}
+
+/* Carousel base class */
+/*set bg of the carousel*/
+#myCarousel {
+  	background:#efebea url(../images/bg-gallery.jpg) repeat-x 50% 100%;
+
+  	line-height: 25px;
+
+  	padding-bottom: 20px;
+}
+
+/*.carousel {
+	-webkit-box-shadow:inset 0 340px 50px -50px rgba(0,0,0,0.5);
+}
+*/
+/* Since positioning the image, we need to help out the caption */
+.carousel-caption {
+	left:55%;
+	width:35%;
+	min-height: 350px;
+  	z-index: 1;
+  	font-family: "幼圆";
+}
+/* Declare heights because of positioning of img element */
+.carousel .item {
+  height: 400px;
+}
+
+.carousel img {
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  margin:auto;
+  width:35%;
+}
+
+.carousel-inner{
+	width:90%;
+	margin: auto;
+	background: rgba(0,0,0,0.5);
+}
+
+/*search-bar*/
+.search.hidden-xs {
+	position: relative;
+	margin-top:-75px;
+	z-index: 200;
+	text-align: center;
+}
+
+.search.hidden-xs .btn{
+	margin-left:-8px; 
+	height: 50px;
+	width: 100px;
+}
+
+.search.hidden-xs .form-control{
+	width:300px;
+	height: 50px;
+}
+
+/*main content*/
+.main-container{
+	margin:40px auto;
+	margin-bottom: 0px;
+}
+
+/*社区课堂*/
+
+.main-container section{
+	background: #fff;
+	box-shadow: 0px 1px 8px 1.5px rgba(0, 0, 0, .35), 0px 20px 70px 8px rgba(0, 0, 0, 0.25);
+	padding:10px 20px;
+	border-radius: 5px;
+	line-height: 25px;
+	margin-bottom: 40px;
+}
+
+
+/*以下三项可从boostrap中去除的属性*/
+.nav-tabs{
+	float:left;
+	border-right: 1px solid #ccc;
+}
+
+.nav-tabs>li{
+	display: block;
+	float: none;
+}
+
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:hover, .nav-tabs>li.active>a:focus{
+	background-color:#428bca;
+	color:#fff;
+	border-radius: 10px;
+}
+
+.title{
+	font-family: "Helvetica Neue,Helvetica,Arial,sans-serif";
+	font-weight: bold;
+	background: -webkit-linear-gradient(top, rgba(70, 70, 70, 1) 0%,rgba(111, 111, 111, 1) 50%,rgba(10, 14, 10, 1) 51%,rgba(10, 8, 9, 1) 100%);
+	-webkit-box-reflect:below -7px -webkit-gradient(linear, 0 0, 0 100%, from(transparent), color-stop(.2, transparent), to(rgba(3,3,3,.1)));
+	-webkit-background-clip:text;
+	-webkit-text-fill-color:transparent;
+	-webkit-transition:.5s;
+	-moz-transition:.5s;
+	transition:.5s;
+} 
+.tab-pane{
+	margin-left: 10px;
+}
+/*清除浮动带来的影响*/
+.main-container section:after{
+	content:"";
+	height:0;
+	display:block;
+	clear:both;
+	zoom:1;
+}
+
+/*动画*/
+.more:hover{
+	position:relative;
+	animation:up 0.5s;
+	-webkit-animation:up 0.5s; /*Safari and Chrome*/
+	color: red;
+}
+
+	@keyframes up
+	{
+	0% {bottom: 5px;}
+	50% {bottom: 10px;}
+	100% {bottom: 0px;}
+	}
+
+	@-webkit-keyframes up /*Safari and Chrome*/
+	{
+	0% {bottom: 5px;}
+	50% {bottom: 10px;}
+	100% {bottom: 0px;}
+	}
+/*社区租房*/
+	ol{
+		margin-left: 0px;
+	}
+	.panel{
+		border: none;
+	}
+	
+	.rent img,.job img{
+		position: relative;
+		top:-20px;
+		width: 100%;
+		box-shadow: 0px 1px 4px 1.5px rgba(0, 0, 0, .35), 0px 10px 35px 4px rgba(0, 0, 0, 0.25);
+	}
+
+
+/*社区新闻*/
+.news .table td{
+	width:70%;
+}
+
+/*信息咨询*/
+section.consult{
+	box-shadow: none;
+	background: rgba(181,151,236,1);
+	height:95px;
+	padding: 10px;
+	padding-left: 15%;
+	color:#fff;
+	letter-spacing:0.4em;
+}
+
+.consult input{
+	font-size: 16px;
+	color: #000;
+	width: 50%;
+}
+.consult img{
+	position: relative;
+	top:-10px;
+}
+/*招工*/
+.job button{
+	position: relative;
+	top: 30%;
+	zoom:1;
+}
+/*footer*/
+    footer.row{
+    	font-size:14px;
+    	margin-top: 20px;
+    }
+	.basic-info {
+		float: left;
+		margin: 20px 5px;
+		font-family:Constantina, Georgia, 'Nimbus Roman No9 L', serif;
+	}
+	.further-info,aside{
+		margin-top:20px;
+	}
+	.further-info ul li,aside li{
+		list-style: none;
+		float: left;
+		padding-right: 10px;
+		margin: 15px;
+		border-right: solid 1px orange;
+	}
+
+	.further-info a,aside li a,aside a{
+		text-decoration: none;
+		color: #fff;
+	}
+	aside{
+		clear: both;
+		margin-left:5%;
+	}
+	aside li a:hover{
+		color: #ccc;
+		text-decoration: none;
+	}
+
+
+/*友情链接*/
+.link,.link:visited,.link:focus{
+	position: fixed;
+	bottom:0;
+	right:5%;
+	background: #023C78;
+	color: #fff;
+}
+
+.link:hover{
+	color: yellow;
+	background: #023C78;
+}
+
+.modal-body,.modal-header{
+	background:rgba(153,153,153,1);
+	color:#fff; 
+}
+.modal-body ul>li{
+	list-style: none;
+	display: inline-block;
+}
+
+.modal-body li a{
+	display: inline-block;
+	padding:5px 10px;
+	border:1px solid #333;
+	margin:10px; 
+	background: #fff;
+	color: #333;
+}
+
+
+@media screen and (max-width: 768px) { 
+  /*changes for carousel*/
+   .carousel-caption{
+   		left:0;
+   		right: 0;
+   		min-height: 0px;
+   		width:100%;
+   }
+
+   .carousel img{
+   	 	top: 25px;
+   	 	left: 0;
+   	 	right: 0;
+  		max-width: 90%;
+   }
+   /* Bump up size of carousel content */
+   .carousel-caption p {
+    	display: none;
+ 	}
+ 	.carousel-caption h1{
+ 		font-weight: bold;
+ 		font-size: 20px;
+ 	}
+
+ 	/*move the search bar*/
+ 	.search.visible-xs-inline-block {
+ 		text-align: center;
+ 		margin: 10px auto;
+ 	}
+
+}
+
+	@media screen and (max-width: 640px){	
+	.carousel-inner{
+		width:100%;
+	}
+
+	.carousel-inner img{
+		width:100%;
+	}
+
+	/*社区课堂修改大小*/
+		.nav-tabs{
+			display: block;
+			border-right: none;
+			padding: none;
+		}
+		.nav-tabs>li{
+			display: inline-block;
+			margin-bottom: 5px;
+		}
+
+		.nav-tabs li a{
+			padding: 5px;
+		}
+
+
+		.tab-content{
+			top:25px;
+			padding-left: 0;
+			margin:5px 0px;
+		}
+
+		.tab-pane{
+			margin-left: 0;
+		}
+		
+		.table{
+			border:none;
+		}
+
+	aside{
+		margin:10px;
+	}
+	aside li{
+		margin:10px 5px;
+		padding-right: 10px;
+	}
+}
+
