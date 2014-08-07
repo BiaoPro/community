@@ -5,7 +5,7 @@ import java.util.List;
 
 /**
  * 分页类
- * @author leaf
+ * @author biao
  *
  */
 public class PageBean {
@@ -15,10 +15,6 @@ public class PageBean {
 	 * 当前页
 	 */
     private int curPage;
-    /**
-     * 当前页附近多少页，例如当前为第10页，nearCount为5，那返回： 8，9，10，11，12
-     */
-    private int[] nearby;
     /**
      * 最大页
      */
@@ -31,10 +27,6 @@ public class PageBean {
      * 总共多少条数据
      */
     private long total;
-	private boolean needMinPage = true;
-    private boolean needMaxPage = true;
-    private boolean needMinPageRoad = true;
-    private boolean needMaxPageRoad = true;
     
     /**
      * 默认获取当前页附近的10页
@@ -88,8 +80,6 @@ public class PageBean {
         this.maxPage = maxPage;
         this.perPage = perPage;
         this.total = total;
-        nearby = new int[nearCount];
-        this.setNearby();
     }
 
     public int getCurPage() {
@@ -106,63 +96,6 @@ public class PageBean {
 
     public void setMaxPage(int maxPage) {
         this.maxPage = maxPage;
-    }
-
-    public int[] getNearby() {
-        return nearby;
-    }
-    public List<Integer> getNearList(){
-    	List<Integer> pageList = new ArrayList<Integer>();
-    	for(Integer i : getNearby()){
-    		pageList.add(i);
-    	}
-    	return pageList;
-    }
-    private void setNearby() {
-        int curIndex = nearby.length / 2;
-        if (curPage == maxPage) {
-            needMaxPage = false;
-            needMaxPageRoad = false;
-        }
-        for (int i = curIndex, j = 0; i >= 0 && curPage - j >= 1; i--, j++) {
-            nearby[i] = curPage - j;
-            if (nearby[i] == 1) {
-                needMinPage = false;
-                needMinPageRoad = false;
-            }
-        }
-        for (int i = curIndex + 1, j = 1; i < nearby.length && curPage + j <= maxPage; i++, j++) {
-            nearby[i] = curPage + j;
-            if (nearby[i] == maxPage) {
-                needMaxPage = false;
-                needMaxPageRoad = false;
-            }
-        }
-        
-        if(nearby[0] == 2){
-        	this.needMinPageRoad = false;
-        }
-        int nearBySize = nearby.length;
-        
-        if(nearby[nearBySize - 1] == (this.getMaxPage() - 1)){
-        	this.needMaxPageRoad = false;
-        }
-    }
-
-    public boolean getNeedMinPage() {
-        return needMinPage;
-    }
-
-    public boolean getNeedMaxPage() {
-        return needMaxPage;
-    }
-    
-    public boolean getNeedMinPageRoad() {
-    	return needMinPageRoad;
-    }
-    
-    public boolean getNeedMaxPageRoad() {
-    	return needMaxPageRoad;
     }
     
     public int getPerPage() {

@@ -1,0 +1,275 @@
+/*basic css*/
+* {
+	margin: 0;
+	padding: 0;
+	border: none;
+
+	font-family: '幼圆';
+}
+
+html{
+	margin: 0;
+}
+
+.nav-container {
+	margin-bottom: 30px;
+}
+
+/* nav-set */
+.logo {
+	background: url(../images/logo.png) no-repeat;
+
+	height: 95px;
+	float: left;
+
+	text-indent: -999px;
+}
+
+.contact {
+	margin-top:20px;
+}
+
+.contact ul{
+	border-bottom: solid 1px;
+	padding-bottom: 5px;
+}
+.contact .list-inline li a {
+	text-decoration: none;
+	color:#444444;
+
+	padding-right: 5px;
+}
+
+.contact h3 { 
+	font-family:Constantina, Georgia, 'Nimbus Roman No9 L', serif;
+
+	margin-top: 5px;
+	float: left;
+}
+
+.contact .hot-line {
+	padding-top: 5px;
+
+	line-height: 25px;
+}
+
+.contact span {
+	font-family:Constantina, Georgia, 'Nimbus Roman No9 L', serif;
+	font-size:18px;
+
+	display: block;
+}
+
+/*nav-bar*/
+.nav-container .navbar-inverse {
+	background: linear-gradient(to bottom, #034c98 0%, #0056a9 100%);
+	border-color: #034c98;
+	margin-bottom: 0px;
+}
+
+.navbar-inverse .navbar-toggle {
+	border-color: #034c98;
+}
+
+.navbar-inverse .navbar-toggle:hover, .navbar-inverse .navbar-toggle:focus {
+	background: #D04C33;
+}
+
+/*edit in boostrap to make it simple*/
+
+.navbar-inverse .navbar-nav>li>a {
+		font-size:16px;
+}
+.navbar-inverse .navbar-nav>li>a ,footer{
+	background: #034c98;
+	background: -moz-linear-gradient(top, #034c98 0%, #0056a9 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #034c98), color-stop(100%, #0056a9));
+	background: -webkit-linear-gradient(top, #034c98 0%, #0056a9 100%);
+	background: -o-linear-gradient(top, #034c98 0%, #0056a9 100%);
+	background: -ms-linear-gradient(top, #034c98 0%, #0056a9 100%);
+	background: linear-gradient(to bottom, #034c98 0%, #0056a9 100%);
+
+	color: #fff;
+}
+
+.navbar-inverse .navbar-nav>li>a:hover {
+	background: #EC9508;
+	background: -moz-linear-gradient(top, #FDAE04 0%, #EC9508 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #FDAE04), color-stop(100%, #EC9508));
+	background: -webkit-linear-gradient(top, #FDAE04 0%, #EC9508 100%);
+	background: -o-linear-gradient(top, #FDAE04 0%, #EC9508 100%);
+	background: -ms-linear-gradient(top, #FDAE04 0%, #EC9508 100%);
+	background: linear-gradient(to bottom, #FDAE04 0%, #EC9508 100%);
+}
+
+/* Carousel base class */
+/*set bg of the carousel*/
+#myCarousel {
+  	background:#efebea url(../images/bg-gallery.jpg) repeat-x 50% 100%;
+
+  	line-height: 25px;
+
+  	padding-bottom: 20px;
+}
+
+/*.carousel {
+	-webkit-box-shadow:inset 0 340px 50px -50px rgba(0,0,0,0.5);
+}
+*/
+/* Since positioning the image, we need to help out the caption */
+.carousel-caption {
+	background: rgba(0,0,0,0.3);
+	left:55%;
+	width:35%;
+	min-height: 350px;
+  	z-index: 1;
+}
+/* Declare heights because of positioning of img element */
+.carousel .item {
+  height: 400px;
+}
+
+.carousel img {
+  position: absolute;
+  top: 25px;
+  left: 10%;
+  min-height: 350px;
+  width: 35%;
+}
+
+/*search-bar*/
+.search.hidden-xs {
+	position: relative;
+	margin-top:-75px;
+	z-index: 999;
+	text-align: center;
+}
+
+.search.hidden-xs .btn{
+	margin-left:-8px; 
+	height: 50px;
+	width: 100px;
+}
+
+.search.hidden-xs .form-control{
+	width:300px;
+	height: 50px;
+}
+
+/*main content*/
+	.course ,.rent-house ,.hunt-job ,.news,.link{
+		padding: 10px;
+		margin:0px 3px 10px 3px;
+	}
+
+	.course .label ,.rent-house .label,.hunt-job .label ,.news .label,.link .label{
+		font-size: 14px;
+	}
+
+	.course .tab-content ,.rent-house .tab-content ,.hunt-job .tab-content,.news .tab-content, .link .tab-content{
+		padding-left: 40px; 
+	}
+	
+	.course .tab-content li,.rent-house .tab-content li,.hunt-job .tab-content li, .news .tab-content li,.link .tab-content li{
+		border-bottom: inset 1px;
+		margin: 5px;
+	}
+
+	.course .title ,.rent-house .title , .hunt-job .title ,.news .title, .link .title{
+		margin-right:15px;
+	}
+
+/*footer*/
+    footer.row{
+    	font-size:16px;
+    	margin-top: 20px;
+    	border-radius:4px;
+    	margin-left: 10px;
+    	margin-right: 10px;
+    }
+	.basic-info{
+		float: left;
+		margin: 20px;
+		font-family:Constantina, Georgia, 'Nimbus Roman No9 L', serif;
+	}
+	.further-info{
+		margin:20px;
+	}
+
+	.further-info ul li{
+		list-style: none;
+		float: left;
+		padding-right: 10px;
+		margin: 15px;
+		border-right: solid 1px orange;
+	}
+
+	.further-info a{
+		text-decoration: none;
+		color: #fff;
+	}
+
+
+/*for pad or something smaller*/
+@media screen and (max-width: 768px) { 
+	.logo{
+		background: url(../images/logo.png) center 13px no-repeat;
+
+  		float: none;
+		position: relative;
+
+  		width:372px;
+		margin:20px auto;
+	}
+
+	.nav-container .contact{
+		display: none;
+	}
+
+   /*changes for carousel*/
+   .carousel-caption{
+   		left:0;
+   		right: 0;
+   		min-height: 0px;
+   		width:100%;
+   }
+
+   .carousel img{
+   	 	top: 25px;
+  		left: 5%;
+  		right: 5%;
+  		max-height: 400px;
+  		width: 90%;
+   }
+   /* Bump up size of carousel content */
+   .carousel-caption p {
+    	display: none;
+ 	}
+ 	.carousel-caption h1{
+ 		font-weight: bold;
+ 		font-size: 20px;
+ 	}
+
+ 	/*move the search bar*/
+ 	.search.visible-xs-inline-block {
+ 		text-align: center;
+ 		margin: 10px auto;
+ 	}
+}
+
+@media screen and (max-width: 640px){
+/*	 .search.visible-xs-inline-block {
+ 		text-align: center;
+ 		margin: 5px auto;
+ 	}
+
+	.search.visible-xs-inline-block .form-group{
+ 	    margin:auto;
+		float: left;
+	}
+
+	.search.visible-xs-inline-block .btn{
+		margin-left:10px;
+		float: right;
+	}*/
+}

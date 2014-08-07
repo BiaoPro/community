@@ -20,8 +20,51 @@ public class Links extends Controller {
 	 * 跳转基本页面
 	 */
 	public static void index() {
-		showLinks(null, null, 1);
-	}
+		render();
+	}	
+	
+	/**
+     * 保存、编辑链接
+     * 
+     * @param link
+     */
+    public static void saveLink(Link link) {
+        link.save();
+       // showLinks();
+    }
+    
+    /**
+     * 删除链接
+     * 
+     * @param id
+     */
+    public static void delLink(String id) {
+        Link.delete("id", id);
+        // showLinks();
+    }
+    
+    /**
+     * 修改链接状态
+     * 
+     * @param linkId
+     * @param status
+     */
+    public static void changeLinkStatus(String linkId, int status) {
+        Link link = Link.findById(linkId);
+        link.status = status;
+        link.save();
+        index();
+    }
+
+    
+    /**
+     * 显示所有链接
+     * 
+     * @param link
+     */
+    public static void showLinks() {
+        showLinks();
+    }
 
 	/**
 	 * 显示所有链接
@@ -32,7 +75,7 @@ public class Links extends Controller {
 	public static void showLinks(String searchScope, String searchKey,
 			int curPage) {
 		curPage = curPage <= 0 ? 1 : curPage;
-		if (!StringUtils.isEmpty(searchKey)) {
+		if (!StringUtils.isEmpty(searchKey)){
 			// 搜索模式
 			if (StringUtils.isEmpty(searchScope) || searchScope.equals("name")) {
 				// 链接名搜索
@@ -64,25 +107,8 @@ public class Links extends Controller {
 		}
 	}
 
-	/**
-	 * 保存链接
-	 * 
-	 * @param link
-	 */
-	public static void saveLink(Link link) {
-		link.save();
-		index();
-	}
+	
 
-	/**
-	 * 删除链接
-	 * 
-	 * @param id
-	 */
-	public static void delLink(String id) {
-		Link.delete("id", id);
-		index();
-	}
 
 	/**
 	 * 跳转到添加链接的页面
@@ -103,16 +129,5 @@ public class Links extends Controller {
 		render(link, allCategoryList);
 	}
 
-	/**
-	 * 修改链接状态
-	 * 
-	 * @param linkId
-	 * @param status
-	 */
-	public static void changeLinkStatus(String linkId, int status) {
-		Link link = Link.findById(linkId);
-		link.status = status;
-		link.save();
-		index();
-	}
+
 }

@@ -25,7 +25,7 @@ public class Link  extends GenericModel{
 	public String id;
 	
 	@Column(name="link_name")
-	public String name;//链接显示名称
+	public String link_name;//链接显示名称
 	
 	@Column(name="link_url")
 	public String url;// 链接的url
