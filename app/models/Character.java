@@ -11,6 +11,7 @@ import play.libs.Codec;
 /**
  * 问题性质表
  * @author 吴泽标
+ * 
  *
  */
 @Entity

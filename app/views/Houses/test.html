@@ -1,0 +1,21 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>测试页面</title>
+</head>
+<body>
+<h1>hello test world</h1>
+<table>
+			#{list items:h,as:'house'}
+				<tr>
+					<td>${house.id}</td>
+					<td>${house.status}</td>
+					<td>hello</td>
+					<td><a href="@{Houses.delHouse(house.id)}">删除</a></td>
+				</tr>
+			#{/list}
+		</table>
+
+</body>
+</html>
