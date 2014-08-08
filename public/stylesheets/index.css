@@ -27,29 +27,36 @@
 */
 /* Since positioning the image, we need to help out the caption */
 .carousel-caption {
-	left:55%;
+	top:8%;
 	width:35%;
 	min-height: 350px;
   	z-index: 1;
   	font-family: "幼圆";
+  	left:55%;
 }
 /* Declare heights because of positioning of img element */
 .carousel .item {
   height: 400px;
 }
 
-.carousel img {
+.carousel-inner>.item>img{
   position: absolute;
   top: 10%;
   left: 10%;
   margin:auto;
   width:35%;
+  min-height: 60%;
 }
 
 .carousel-inner{
 	width:90%;
 	margin: auto;
+/*	background: #000;*/
 	background: rgba(0,0,0,0.5);
+	background: transparent\9;
+	zoom:1\8; /* required for the filters */
+	-ms-filter:"progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)"; /* IE8 */
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000); /* IE5.5-7 */
 }
 
 /*search-bar*/
@@ -70,6 +77,7 @@
 	width:300px;
 	height: 50px;
 }
+
 
 /*main content*/
 .main-container{
@@ -174,7 +182,7 @@
 /*信息咨询*/
 section.consult{
 	box-shadow: none;
-	background: rgba(181,151,236,1);
+	background: #B597EC;
 	height:95px;
 	padding: 10px;
 	padding-left: 15%;
@@ -247,7 +255,7 @@ section.consult{
 }
 
 .modal-body,.modal-header{
-	background:rgba(153,153,153,1);
+	background:#999999;
 	color:#fff; 
 }
 .modal-body ul>li{
@@ -265,16 +273,18 @@ section.consult{
 }
 
 
+
 @media screen and (max-width: 768px) { 
   /*changes for carousel*/
    .carousel-caption{
+   		top:70%;
    		left:0;
    		right: 0;
    		min-height: 0px;
    		width:100%;
    }
 
-   .carousel img{
+   .carousel-inner>.item>img{
    	 	top: 25px;
    	 	left: 0;
    	 	right: 0;
@@ -302,7 +312,7 @@ section.consult{
 		width:100%;
 	}
 
-	.carousel-inner img{
+	.carousel-inner>.item>img{
 		width:100%;
 	}
 
@@ -312,13 +322,20 @@ section.consult{
 			border-right: none;
 			padding: none;
 		}
+
+		.nav-tabs{
+			width: 100%;
+		}
 		.nav-tabs>li{
 			display: inline-block;
 			margin-bottom: 5px;
+			width:30%;
 		}
 
 		.nav-tabs li a{
+			width:100%;
 			padding: 5px;
+		
 		}
 
 

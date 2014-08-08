@@ -1,39 +1,35 @@
 #{extends 'main.html' /}
 #{set title:'Home' /}
 
+        <link rel="stylesheet" media="screen" href="@{'/public/stylesheets/index.css'}">
+
       <!-- carousel for important news -->
-      <!-- Carousel================================================== -->
+      <!-- 轮播图-->
       <div class="container-fluid">
         <div id="myCarousel" class="carousel slide">
           <div class="carousel-inner">
             <div class="item active">
               <img src="../public/images/dama.jpg" class="img-responsive">
-              <div class="container">
                 <div class="carousel-caption">
                   <h1>热烈欢迎广场舞大妈</h1>
                   <pthis is="" an="" example="" layout="" with="" carousel="" that="" uses="" the="" bootstrap="" 3="" styles.<="" small=""><p></p>
                   <p><a class="btn btn-large btn-success" href="http://getbootstrap.com">查看更多</a>
                 </p></pthis></div>
-              </div>
             </div>
             <div class="item">
-              <div class="container">
                 <img src="../public/images/training.jpg" class="img-responsive">
                 <div class="carousel-caption">
                   <h1>暑期第二课堂顺利结束</h1>
                   <p>新广州人网站旨在为新广州人提供便利的帮助。据悉于7月5号开展的为期10天的暑期第二课堂顺利结束，学员们表示收获颇丰</p>
                   <p><a class="btn btn-large btn-success" href="#">查看全文</a></p>
                 </div>
-              </div>
             </div>
             <div class="item">
               <img src="../public/images/rent.jpg" class="img-responsive">
-              <div class="container">
                 <div class="carousel-caption">
                   <h1>华山区房屋出租</h1>
                   <p>一房一厅一厕所一阳台，你值得拥有</p>
                   <p><a class="btn btn-large btn-success" href="#">查看全文</a></p>
-                </div>
               </div>
             </div>
           </div>
@@ -66,7 +62,7 @@
 				<section  class="course">
 					<h2 class="title">社区课堂</h2>
 	     			<!-- Nav tabs -->
-					<ul class="nav nav-tabs col-sm-3" role="tablist">
+					<ul class="nav nav-tabs col-md-3" role="tablist">
 					  <li><a href="#early" role="tab" data-toggle="tab">已结束</a></li>
 					  <li class="active"><a href="#now" role="tab" data-toggle="tab">正在进行</a></li>
 					  <li><a href="#future" role="tab" data-toggle="tab">即将开始</a></li>
