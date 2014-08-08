@@ -13,12 +13,14 @@ onscroll = function() {
 
   if (scrollTop > 100) {
     if (!appended) {
-      navbar.classList.add('show');
+      addClass(navbar,'show');
+      navbar.style.width = document.body.clientWidth + 'px';
       appended = true;
     }
   } else {
     if (appended) {
-      navbar.classList.remove('show');
+      removeClass(navbar,'show');
+      navbar.style.width = '';
       appended = false;
     }
   }
@@ -30,18 +32,40 @@ function dropdownOpen(){
 
 	for(var i=0;i<dropdownLi.length;i++){
 		dropdownLi[i].onmouseover = function(){
-			this.classList.add('open');
+			addClass(this,'open');
 			this.getElementsByTagName('a')[0].style.background = '#E56745';
 		}
 
 		dropdownLi[i].onmouseout = function(){
-			this.classList.remove('open');
+			removeClass(this,'open');
 			this.getElementsByTagName('a')[0].style.background = '';
 
 		}
 	}
 
 }
+
+// 说明：添加、移除、检测 className
+  
+function hasClass(element, className) {
+    var reg = new RegExp('(\\s|^)'+className+'(\\s|$)');
+    return element.className.match(reg);
+}
+  
+function addClass(element, className) {
+    if (!this.hasClass(element, className))
+    {
+        element.className += " "+className;
+    }
+}
+  
+function removeClass(element, className) {
+    if (hasClass(element, className)) {
+        var reg = new RegExp('(\\s|^)'+className+'(\\s|$)');
+        element.className = element.className.replace(reg,' ');
+    }
+}
+
 
 function link(){
 	var link = document.querySelectorAll('footer aside a');
@@ -89,7 +113,7 @@ var linkOne = new Array ('中共天河区委员会','http://www.thnet.gov.cn/','
 }
 //底部导航条链接modal生成
 function linkModal(title,num){
-	var oBody = document.getElementsByClassName('modal-body')[0];
+	var oBody = document.querySelector('.modal-body');
 	if(oBody.hasChildNodes()){
 		oBody.removeChild(oBody.childNodes[0]);
 	}

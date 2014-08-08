@@ -9,6 +9,7 @@ body{
 	margin: 0;
 	background:#fff;
 	font-family:Helvetica,Tahoma,Arial,"冬青黑体","Microsoft YaHei","微软雅黑",SimSun,"宋体",sans-serif;
+	overflow-X:hidden; 
 }
 
 a{
@@ -23,8 +24,12 @@ ol>li>a.disabled,td>a.disabled{
 	pointer-events:none;
 	cursor: not-allowed;
 	opacity:.6;
+	filter:alpha(opacity=60);
 }
 
+ol>li>a.disabled:hover,td>a.disabled:hover{
+	color:#333;
+}
 ul>li a{
 	color:#F24800;	
 }
@@ -98,13 +103,16 @@ ul>li a{
 }
 
 /*edit in boostrap to make it simple*/
-
-.navbar-inverse .navbar-nav>li>a {
+.navbar-inverse{
+	background-color: #034c98;
+	background: linear-gradient(to bottom, #034c98 0%, #0056a9 100%);
+}
+.navbar-inverse .navbar-nav>li>a{
 		font-size:16px;
 		text-decoration: none;
 }
-.navbar-inverse .navbar-nav>li>a ,footer{
-	background: #034c98;
+.navbar-inverse .navbar-nav>li>a ,footer,.navbar-inverse .navbar-nav>.active>a{
+	background-color: #034c98;
 	background: -moz-linear-gradient(top, #034c98 0%, #0056a9 100%);
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #034c98), color-stop(100%, #0056a9));
 	background: -webkit-linear-gradient(top, #034c98 0%, #0056a9 100%);
@@ -115,8 +123,8 @@ ul>li a{
 	color: #fff;
 }
 
-.navbar-inverse .navbar-nav>li>a:hover {
-	background: #EC9508;
+.navbar-inverse .navbar-nav>li>a:hover ,.navbar-inverse .navbar-nav>.active>a:hover{
+	background-color: #EC9508;
 	background: -moz-linear-gradient(top, #FDAE04 0%, #EC9508 100%);
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #FDAE04), color-stop(100%, #EC9508));
 	background: -webkit-linear-gradient(top, #FDAE04 0%, #EC9508 100%);
@@ -129,7 +137,6 @@ ul>li a{
 	position: fixed;
 	top:0;
 	left:0;
-	width: 100%;
 	z-index:999;
 	min-height: 30px;
 	max-height: 30px;
@@ -154,13 +161,15 @@ ul>li a{
 .dropdown-menu{
 	background: #E56745;
 }
-
+.dropdown-menu ul{
+	border: none;
+}
 .dropdown-menu li{
-	border-bottom: 1px solid #fff;
+	border-top: 1px solid #fff;
 }
 
-.dropdown-menu li:last-child{
-	border-bottom: none;
+.dropdown-menu li:first-child{
+	border-top: none;
 }
 
 .dropdown-menu>li>a{
