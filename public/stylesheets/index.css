@@ -205,72 +205,6 @@ section.consult{
 	top: 30%;
 	zoom:1;
 }
-/*footer*/
-    footer.row{
-    	font-size:14px;
-    	margin-top: 20px;
-    }
-	.basic-info {
-		float: left;
-		margin: 20px 5px;
-		font-family:Constantina, Georgia, 'Nimbus Roman No9 L', serif;
-	}
-	.further-info,aside{
-		margin-top:20px;
-	}
-	.further-info ul li,aside li{
-		list-style: none;
-		float: left;
-		padding-right: 10px;
-		margin: 15px;
-		border-right: solid 1px orange;
-	}
-
-	.further-info a,aside li a,aside a{
-		text-decoration: none;
-		color: #fff;
-	}
-	aside{
-		clear: both;
-		margin-left:5%;
-	}
-	aside li a:hover{
-		color: #ccc;
-		text-decoration: none;
-	}
-
-
-/*友情链接*/
-.link,.link:visited,.link:focus{
-	position: fixed;
-	bottom:0;
-	right:5%;
-	background: #023C78;
-	color: #fff;
-}
-
-.link:hover{
-	color: yellow;
-	background: #023C78;
-}
-
-.modal-body,.modal-header{
-	background:#999999;
-	color:#fff; 
-}
-.modal-body ul>li{
-	list-style: none;
-	display: inline-block;
-}
-
-.modal-body li a{
-	display: inline-block;
-	padding:5px 10px;
-	border:1px solid #333;
-	margin:10px; 
-	background: #fff;
-	color: #333;
-}
 
 
 
@@ -308,13 +242,13 @@ section.consult{
 }
 
 	@media screen and (max-width: 640px){	
-	.carousel-inner{
-		width:100%;
-	}
+		.carousel-inner{
+			width:100%;
+		}
 
-	.carousel-inner>.item>img{
-		width:100%;
-	}
+		.carousel-inner>.item>img{
+			width:100%;
+		}
 
 	/*社区课堂修改大小*/
 		.nav-tabs{
@@ -353,12 +287,5 @@ section.consult{
 			border:none;
 		}
 
-	aside{
-		margin:10px;
-	}
-	aside li{
-		margin:10px 5px;
-		padding-right: 10px;
-	}
 }
 
