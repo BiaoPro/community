@@ -8,7 +8,7 @@ html{
 body{
 	margin: 0;
 	background:#fff;
-	font-family:Helvetica,Tahoma,Arial,"冬青黑体","Microsoft YaHei","微软雅黑",SimSun,"宋体",sans-serif;
+	font-family:Helvetica,Tahoma,Arial,"鍐潚榛戜綋","Microsoft YaHei","寰蒋闆呴粦",SimSun,"瀹嬩綋",sans-serif;
 	overflow-X:hidden; 
 }
 
@@ -34,7 +34,7 @@ ul>li a{
 	color:#F24800;	
 }
 
-/*导航条*/
+/*瀵艰埅鏉�/
 .row{
 	margin-left: auto;
 	margin-right:auto;
@@ -183,6 +183,18 @@ ul>li a{
 	color:#fff;
 }
 
+.box-div {
+	background: #fff;
+	box-shadow: 0px 1px 8px 1.5px rgba(0, 0, 0, .35), 0px 20px 70px 8px
+		rgba(0, 0, 0, 0.25);
+	padding: 10px 20px;
+	border-radius: 5px;
+}
+.center{
+	text-align:center;
+	margin:auto;
+	padding:auto;	
+}
 
 @media screen and (min-width: 641px){
 		.show .nav>li>a,.show .navbar-brand{

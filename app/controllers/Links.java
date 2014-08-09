@@ -38,9 +38,9 @@ public class Links extends Controller {
      * 
      * @param id
      */
-    public static void delLink(String id) {
-        Link.delete("id", id);
-        // showLinks();
+    public static void delLinkCategory(String id) {
+         LinkCategory.delete("id", id);
+         showLinkCategories();
     }
     
     /**
@@ -58,66 +58,33 @@ public class Links extends Controller {
 
     
     /**
-     * 显示所有链接
-     * 
-     * @param link
+     * 显示所有链接类别
      */
-    public static void showLinks() {
-        showLinks();
+    public static void showLinkCategories() {
+        List<LinkCategory> linkCategoryList = LinkCategory.findAll();
+        render(linkCategoryList);
     }
+    
+    
+    /**
+     * 显示类别下所有链接
+     * @param category_id
+     */
+    public static void showLinks(String category_id) {
+      List<Link> linkList = Link.find("category_id",category_id).fetch();
+      render(linkList);
+  }
+    
+    
+    public static void base() {
+      render();
+  }
 
-	/**
-	 * 显示所有链接
-	 * 
-	 * @param searchKey
-	 * @param curPage
-	 */
-	public static void showLinks(String searchScope, String searchKey,
-			int curPage) {
-		curPage = curPage <= 0 ? 1 : curPage;
-		if (!StringUtils.isEmpty(searchKey)){
-			// 搜索模式
-			if (StringUtils.isEmpty(searchScope) || searchScope.equals("name")) {
-				// 链接名搜索
-				long total = Link.count("name LIKE ?", "%" + searchKey + "%");
-				List<Link> linkList = Link.find("name LIKE ? ORDER BY name",
-						"%" + searchKey + "%")
-						.fetch(curPage, PageBean.PER_PAGE);
-				PageBean pageBean = PageBean.getInstance(curPage, total);
-				render(linkList, searchScope, searchKey, curPage, pageBean);
-			} else {
-				// 类别搜索
-				long total = Link
-						.count("SELECT COUNT(link) FROM Link link,LinkCategory category WHERE link.categoryId=category.id AND category.name LIKE ?",
-								"%" + searchKey + "%");
-				List<Link> linkList = Link
-						.find("SELECT link FROM Link link,LinkCategory category WHERE link.categoryId=category.id AND category.name LIKE ? ORDER BY link.name",
-								"%" + searchKey + "%").fetch(curPage,
-								PageBean.PER_PAGE);
-				PageBean pageBean = PageBean.getInstance(curPage, total);
-				render(linkList, searchScope, searchKey, curPage, pageBean);
-			}
-		} else {
-			// 非搜索模式
-			long total = Link.count();
-			List<Link> linkList = Link.find("ORDER BY name").fetch(curPage,
-					PageBean.PER_PAGE);
-			PageBean pageBean = PageBean.getInstance(curPage, total);
-			render(linkList, searchScope, searchKey, curPage, pageBean);
-		}
-	}
-
+    public static void addLink() {
+      render();
+  }
 	
-
-
-	/**
-	 * 跳转到添加链接的页面
-	 */
-	public static void addLink() {
-		List<LinkCategory> allCategoryList = LinkCategory.findAll();
-		render(allCategoryList);
-	}
-
+		
 	/**
 	 * 跳转的到修改链接界面
 	 * 
