@@ -1,0 +1,57 @@
+#{extends 'manager.html' /}
+
+
+<div class="container">
+	<div class=" box-div">
+		<h2>链接类别</h2>
+		<table class="table">
+			<thead>
+				<th>类别名称</th>
+				<th>类别顺序</th>
+				<th>状态</th>
+				<th>操作</th>
+			</thead>
+			<tbody>
+			#{list items:linkCategoryList,as:'linkCategory'}
+				<tr>
+					<td>${linkCategory.name}</td>
+					<td>${linkCategory.sequence}</td>
+					<td>
+					    <select>
+					         #{if linkCategory.isShow()}
+							<option value="1">1-显示</option>
+							<option value="0">0-不显示</option>
+					         #{/if}
+					         #{else}
+							<option value="0">0-不显示</option>
+							<option value="1">1-显示</option>
+							#{/else}
+					    </select>
+					</td>
+					<td><a>修改</a>/<a href="@{Links.delLinkCategory(linkCategory.id)}" onclick="return confirm('删除类别：${linkCategory.name}?')">删除</a></td>
+				</tr>
+				#{/list}
+                
+				<tr>
+					<td>类别名称：<input type="text" name="linkCategory.name"></td>
+					<td>显示顺序：<input type="text" name="linkCategory.sequence"></td>
+					<td>是否显示：
+					    <select>
+							<option value="0">0-不显示</option>
+							<option value="1">1-显示</option>
+					   </select>
+					</td>
+
+
+					<td><button class="btn btn-success" href="#">添加</button></td>
+				</tr>
+			</tbody>
+		</table>
+
+		
+
+		
+	</div>
+</div>
+
+
