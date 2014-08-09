@@ -41,6 +41,10 @@ function dropdownOpen(){
 			this.getElementsByTagName('a')[0].style.background = '';
 
 		}
+
+		dropdownLi[i].ontouchmove = function(){
+			this.getElementsByTagName('a')[0].style.background = '';
+		}
 	}
 
 }

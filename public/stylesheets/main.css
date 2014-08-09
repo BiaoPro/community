@@ -8,7 +8,7 @@ html{
 body{
 	margin: 0;
 	background:#fff;
-	font-family:Helvetica,Tahoma,Arial,"鍐潚榛戜綋","Microsoft YaHei","寰蒋闆呴粦",SimSun,"瀹嬩綋",sans-serif;
+	font-family:Helvetica,Tahoma,Arial,"冬青黑体","Microsoft YaHei","微软雅黑",SimSun,"宋体",sans-serif;
 	overflow-X:hidden; 
 }
 
@@ -34,7 +34,7 @@ ul>li a{
 	color:#F24800;	
 }
 
-/*瀵艰埅鏉�/
+/*导航条*/
 .row{
 	margin-left: auto;
 	margin-right:auto;
@@ -103,7 +103,7 @@ ul>li a{
 }
 
 /*edit in boostrap to make it simple*/
-.navbar-inverse{
+.navbar-inverse , .dropdown-toggle:focus{
 	background-color: #034c98;
 	background: linear-gradient(to bottom, #034c98 0%, #0056a9 100%);
 }
@@ -196,6 +196,76 @@ ul>li a{
 	padding:auto;	
 }
 
+
+
+/*footer*/
+    footer.row{
+    	font-size:14px;
+    	margin-top: 20px;
+    }
+	.basic-info {
+		float: left;
+		margin: 20px 5px;
+		font-family:Constantina, Georgia, 'Nimbus Roman No9 L', serif;
+	}
+	.further-info,aside{
+		margin-top:20px;
+	}
+	.further-info ul li,aside li{
+		list-style: none;
+		float: left;
+		padding-right: 10px;
+		margin: 15px;
+		border-right: solid 1px orange;
+	}
+
+	.further-info a,aside li a,aside a{
+		text-decoration: none;
+		color: #fff;
+	}
+	aside{
+		clear: both;
+		margin-left:5%;
+	}
+	aside li a:hover{
+		color: #ccc;
+		text-decoration: none;
+	}
+
+
+/*友情链接*/
+.link,.link:visited,.link:focus{
+	position: fixed;
+	bottom:0;
+	right:5%;
+	background: #023C78;
+	color: #fff;
+}
+
+.link:hover{
+	color: yellow;
+	background: #023C78;
+}
+
+.modal-body,.modal-header{
+	background:#999999;
+	color:#fff; 
+}
+.modal-body ul>li{
+	list-style: none;
+	display: inline-block;
+}
+
+.modal-body li a{
+	display: inline-block;
+	padding:5px 10px;
+	border:1px solid #333;
+	margin:10px; 
+	background: #fff;
+	color: #333;
+}
+
+
 @media screen and (min-width: 641px){
 		.show .nav>li>a,.show .navbar-brand{
 			padding-top: 5px;
@@ -229,4 +299,14 @@ ul>li a{
 		padding-right: 0px;
 	}
 
+}
+
+@media screen and (max-width: 640px){
+		aside{
+		margin:10px;
+		}
+		aside li{
+			margin:10px 5px;
+			padding-right: 10px;
+		}
 }

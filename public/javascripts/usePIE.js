@@ -4,6 +4,9 @@ $(document).ready(function(){
 			$('section').each(function(){
 				PIE.attach(this);
 			});
+			$('img').each(function(){
+				PIE.attach(this);
+			});
 		}
 	});
 });

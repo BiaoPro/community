@@ -28,6 +28,7 @@
         <script type="text/javascript" src="../public/javascripts/usePIE.js"></script>
         <![endif]-->
       <!--[if IE 9]>
+          <script type="text/javascript" src="../public/javascripts/respond.min.js"></script>
           <script type="text/javascript" src="../public/javascripts/PIE_IE9.js"></script>
           <script type="text/javascript" src="../public/javascripts/usePIE.js"></script>
       <![endif]-->
@@ -93,8 +94,54 @@
     
 
         #{doLayout /}
+
+          <!-- footer  contain athor and company message-->
+      <footer class="row">
+            <aside class=" col-md-5 col-xs-12">
+            <span>友情链接</span>
+            <ul>
+              <li><a data-toggle="modal" data-target="#myModal">五套班子</a></li>
+              <li><a data-toggle="modal" data-target="#myModal">区委/区政府系统</a></li>
+              <li><a data-toggle="modal" data-target="#myModal">政法系统</a></li>
+              <li><a data-toggle="modal" data-target="#myModal">人民团体</a></li>
+              <li><a data-toggle="modal" data-target="#myModal">计划/经济/商业系统</a></li>
+              <li><a data-toggle="modal" data-target="#myModal">科教文体卫系统</a></li>
+              <li><a data-toggle="modal" data-target="#myModal">城建/城管系统</a></li>
+              <li><a data-toggle="modal" data-target="#myModal">街道办事处</a></li>
+            </ul>
+          </aside>
+          <div class="col-md-4 col-md-offset-2">
+            <div class="further-info  hidden-xs">
+                <span>寻找帮助</span>
+                <ul class="">
+                    <li><a>微博</a></li>
+                    <li><a>Twitter</a></li>
+                    <li><a>facebook</a></li>
+                </ul>
+            </div>
+            <div class="basic-info  col-xs-12">
+                <p>Address:South China Agriculture University ,wushan road</p>
+                <p>Copyright:fatwo</p>
+            </div>
+          </div>
+
+            <!-- Button trigger modal -->       
+        <!-- 内容那么多 考虑用js -->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+                 <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h3 class="text-center"></h3>
+                 </div>
+                  <div class="modal-body">
+                  </div>
+                </div>
+            </div>
+          </div>
+      </footer>
+
     <script type="text/javascript" src="@{'/public/javascripts/bootstrap.js'}" charset="${_response_encoding}"></script>
     <script type="text/javascript" src="@{'/public/javascripts/scripts.js'}" charset="${_response_encoding}"></script> 
     </body>
 </html>
-
