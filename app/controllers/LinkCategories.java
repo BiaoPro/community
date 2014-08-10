@@ -34,6 +34,15 @@ public class LinkCategories extends Controller {
     }
     
     /**
+     * 编辑链接类别
+     * @param linkcategory
+     */
+    public static void editLinkCategory(LinkCategory linkCategory) {
+        linkCategory.save();
+        showLinkCategoryInfo(linkCategory.id);
+    }
+    
+    /**
      * 删除链接类别
      * 
      * @param id
@@ -48,14 +57,13 @@ public class LinkCategories extends Controller {
 	 * @param categoryId
 	 */
 	public static void showLinkCategoryInfo(String categoryId) {
-		LinkCategory linkCategory = LinkCategory.findById(categoryId);
-		render(linkCategory);
+		Links.showLinkCategoryInfo(categoryId);
 	}
 	
 	
 	
 	/**
-	 * 改变导航栏的状态
+	 * 改变链接显示的状态
 	 * 
 	 * @param categoryId
 	 * @param status
