@@ -4,6 +4,8 @@ window.onload = function(){
 // 导航条hover下滑，关闭boostrapAPI后
 	dropdownOpen();
 
+
+
 //导航条固定显示顶部
 var appended = false;
  
@@ -11,7 +13,7 @@ onscroll = function() {
   var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
   var navbar = document.querySelector('.navbar');
 
-  if (scrollTop > 100) {
+  if (scrollTop > 50) {
     if (!appended) {
       addClass(navbar,'show');
       navbar.style.width = document.body.clientWidth + 'px';
@@ -72,7 +74,7 @@ function removeClass(element, className) {
 
 
 function link(){
-	var link = document.querySelectorAll('footer aside a');
+	var link = document.querySelectorAll('footer aside a') ;
 var linkOne = new Array ('中共天河区委员会','http://www.thnet.gov.cn/','天河区人大','http://renda.thnet.gov.cn','天河区人民政府','http://www.thnet.gov.cn/','人民政协天河区委员会','http://zhengxie.thnet.gov.cn','中共天河区纪律检查委员会','http://jiwei.thnet.gov.cn/') ,
 	linkTwo = new Array('区委组织部','http://www.thdjw.cn','区委宣传部' ,'http://xchb.thnet.gov.cn/','天河报社','http://www.thnet.gov.cn/','区委统一战线工作部','http://www.thnet.gov.cn/','区委老干部局','http://thlg.thnet.gov.cn','区干部保健局','http://thgbbj.thnet.gov.cn/','区机构编制委员会办公室','http://bianban.thnet.gov.cn','区直属机关委员会','http://www.thnet.gov.cn/','区委党校','http://dangxiao.thnet.gov.cn','天河科技园管委会','http://new.thstp.cn/','区地方志编纂委员会办公室','http://thq.gd-info.gov.cn/','人力资源和社会保障局','http://ldbz.thnet.gov.cn/','区政府侨务和外事办公室','http://qwws.thnet.gov.cn/','区档案局','http://dangan.thnet.gov.cn','区机关事务管理局','http://jgswj.thnet.gov.cn','区出租屋管理工作领导小组办公室','http://chuzuwu.thnet.gov.cn/' ),
 	linkThr = new Array('区人民武装部','http://www.thnet.gov.cn/','区委政法委','http://zhengfa.thnet.gov.cn/' ,'区政府法制办公室','http://www.thnet.gov.cn/','市公安局天河区分局','http://gongan.thnet.gov.cn/','区司法局' ,'http://sifa.thnet.gov.cn/','区人民法院','http://www.gzthfy.gov.cn' ,'区人民检察院','http://jiancha.thnet.gov.cn/' ,'区民政局','http://minzheng.thnet.gov.cn/'),
@@ -141,5 +143,53 @@ function linkModal(title,num){
 		oLi.appendChild(oA);
 
 	}
+
+
 }
 
+if(!+[1,]){
+	/*global document */
+/**
+ * define document.querySelector & document.querySelectorAll for IE7
+ *
+ * A not very fast but small hack. The approach is taken from
+ * http://weblogs.asp.net/bleroy/archive/2009/08/31/queryselectorall-on-old-ie-versions-something-that-doesn-t-work.aspx
+ *
+ */
+(function () {
+	var
+		style = document.createStyleSheet(),
+		select = function (selector, maxCount) {
+			var
+				all = document.all,
+				l = all.length,
+				i,
+				resultSet = [];
+ 
+			style.addRule(selector, "foo:bar");
+			for (i = 0; i < l; i += 1) {
+				if (all[i].currentStyle.foo === "bar") {
+					resultSet.push(all[i]);
+					if (resultSet.length > maxCount) {
+						break;
+					}
+				}
+			}
+			style.removeRule(0);
+			return resultSet;
+ 
+		};
+ 
+	//  be rly sure not to destroy a thing!
+	if (document.querySelectorAll || document.querySelector) {
+		return;
+	}
+ 
+	document.querySelectorAll = function (selector) {
+		return select(selector, Infinity);
+	};
+	document.querySelector = function (selector) {
+		return select(selector, 1)[0] || null;
+	};
+}());
+}

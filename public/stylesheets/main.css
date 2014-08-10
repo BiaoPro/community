@@ -1,17 +1,13 @@
 /*basic css*/
-html{
-	margin: 0;
-	padding: 0;
-	border: none;
-}
-
 body{
 	margin: 0;
 	background:#fff;
 	font-family:Helvetica,Tahoma,Arial,"冬青黑体","Microsoft YaHei","微软雅黑",SimSun,"宋体",sans-serif;
 	overflow-X:hidden; 
 }
-
+html,body{
+  height: 100%;	
+}
 a{
 	cursor: pointer;
 }
@@ -31,7 +27,7 @@ ol>li>a.disabled:hover,td>a.disabled:hover{
 	color:#333;
 }
 ul>li a{
-	color:#F24800;	
+	color:#756059;	
 }
 
 /*导航条*/
@@ -211,7 +207,7 @@ ul>li a{
 	.further-info,aside{
 		margin-top:20px;
 	}
-	.further-info ul li,aside li{
+	.further-info ul li,footer aside li{
 		list-style: none;
 		float: left;
 		padding-right: 10px;
@@ -223,29 +219,17 @@ ul>li a{
 		text-decoration: none;
 		color: #fff;
 	}
-	aside{
+	footer aside{
 		clear: both;
 		margin-left:5%;
 	}
-	aside li a:hover{
+	footer aside li a:hover{
 		color: #ccc;
 		text-decoration: none;
 	}
 
 
-/*友情链接*/
-.link,.link:visited,.link:focus{
-	position: fixed;
-	bottom:0;
-	right:5%;
-	background: #023C78;
-	color: #fff;
-}
 
-.link:hover{
-	color: yellow;
-	background: #023C78;
-}
 
 .modal-body,.modal-header{
 	background:#999999;
@@ -265,6 +249,21 @@ ul>li a{
 	color: #333;
 }
 
+
+.main-container{
+	padding-top:40px;
+}
+
+.main-container section{
+	background: #fff;
+	box-shadow: 0px 1px 8px 1.5px rgba(0, 0, 0, .35), 0px 20px 70px 8px rgba(0, 0, 0, 0.25);
+	-moz-box-shadow:0px 1px 8px 1.5px rgba(0, 0, 0, .35), 0px 20px 70px 8px rgba(0, 0, 0, 0.25);
+	-webkit-box-shadow:0px 1px 8px 1.5px rgba(0, 0, 0, .35), 0px 20px 70px 8px rgba(0, 0, 0, 0.25);
+	padding:10px 20px;
+	border-radius: 5px;
+	line-height: 25px;
+	margin-bottom: 40px;
+}
 
 @media screen and (min-width: 641px){
 		.show .nav>li>a,.show .navbar-brand{
@@ -305,7 +304,7 @@ ul>li a{
 		aside{
 		margin:10px;
 		}
-		aside li{
+		footer aside li{
 			margin:10px 5px;
 			padding-right: 10px;
 		}

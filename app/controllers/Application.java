@@ -19,4 +19,8 @@ public class Application extends Controller {
       render(str);
   }
 
+  	public static void news(){
+		render();
+	}
+
 }

@@ -1,0 +1,141 @@
+#{extends 'main.html' /}
+#{get 'moreSubpageStyles' /}
+#{set 'moreStyles'}
+<style type="text/css">
+	.aside li>a{
+			display: inline;
+			color: #333;
+			word-wrap:break-word;
+	}
+	.aside li>a:hover{
+		color: red;
+	}
+	.aside li{
+		list-style: none;
+		line-height: 25px;
+		border-right: none;
+	}
+	.aside li:before{
+		display: inline;
+		content:">>";
+		margin-right:1em;
+	}
+ 	.aside li{
+		list-style: none;
+		line-height: 25px;
+		border-right: none;
+	}
+	.aside li>a:hover{
+		color: red;
+	}
+	.aside li:before{
+		display: inline;
+		content:">>";
+		margin-right:1em;
+	}
+
+	.aside{
+		background: #f8f8f8;
+		-moz-box-shadow:0 600px 50px -50px rgba(235,230,225,0.3)  inset;
+		-webkit-box-shadow:0 600px 50px -50px rgba(235,230,225,0.3)  inset;
+		box-shadow:0 500px 50px -50px rgba(235,230,225,0.3)  inset;
+		padding: 10%;
+		margin-top:0;
+	}
+
+	.aside form{
+		background: #fff;
+		padding: 5%;
+		border: 3px solid #f3f0eb;
+		margin-bottom: 1px;
+	}
+	.aside form >input{
+		display:inline-block;
+		width:70%;
+	}
+	.aside>div{
+		background: #fff;
+		border: 3px solid #f3f0eb;
+		padding: 5%;
+		width: 100%;
+	}
+	
+	.aside form .btn{
+		background: #756059;
+		color: #fff;
+		width: 25%;
+	}
+
+	.aside ul{
+		position: relative;
+		display: inline-block;
+		left:-2.5em;
+	}
+	.aside:before{
+		content: "";
+		position: absolute;
+		top:0px;
+		left:20%;
+		border-top: 4px solid #008CA4;
+		width:60%;
+		z-index: 30;
+	}
+	.aside li{
+		margin:5px;
+	}
+	.aside h3{
+		border-bottom:1px solid #ebe8e4;
+		padding: 10px;
+	}
+
+	@media screen and (max-width : 480px){
+		.aside form>input{
+			width:100%;
+			margin-bottom: 5px;
+		}
+		.aside form>.btn{
+			display: block;
+			width:100%;
+		}
+	}
+ </style>
+ #{/set}
+
+
+
+ 		
+<div class="main-container container-fluid">
+		<div class="row">
+		  <section class="col-md-10 col-md-offset-1 col-xs-12">
+		  	<div class="col-md-8">
+				#{doLayout /}
+			</div>
+		  	<div class="col-md-4 col-xs-12">
+		  		<aside class="aside">
+		  			<form  role="form">
+						<input type="text" class="form-control" >
+						<button type="submit" class="btn btn-default">搜索</button>
+					</form>
+					<div >
+						<h3>热门搜索</h3>
+						<ul>
+							<li>
+								<a href="">阜阳疫情迟公开暴露人祸大于灾难</a>
+							</li>
+							<li>
+								<a href="">袁立和前夫博客开骂，创造现代炒作新高潮</a>
+							</li>
+							<li>
+								<a href="">新生 第五章 4，战地救护</a>
+							</li>
+							<li>
+								<a href="">失联航班，马方需要给出真相</a>
+							</li>
+						</ul>
+					</div>
+		  		</aside>
+		  	</div>
+		  </section>
+		</div>
+
+	</div>

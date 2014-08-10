@@ -66,7 +66,7 @@
                 </div>
                 <div class="collapse navbar-collapse">
                   <ul class="nav navbar-nav">
-                    <li class="active"><a href="@{Articles.showNews}">社区新闻</a></li>
+                    <li class="active"><a href="@{Application.news}">社区新闻</a></li>
                     <li><a href="#">社区课堂</a></li>
                     <li class="dropdown">
                       <a href="#" class="dropdown-toggle" data-toggle="dropdown">社区租房</a>
@@ -96,9 +96,9 @@
         #{doLayout /}
 
           <!-- footer  contain athor and company message-->
-      <footer class="row">
-            <aside class=" col-md-5 col-xs-12">
-            <span>友情链接</span>
+  <footer class="row">
+    <aside class=" col-md-5">
+          <span>友情链接</span>
             <ul>
               <li><a data-toggle="modal" data-target="#myModal">五套班子</a></li>
               <li><a data-toggle="modal" data-target="#myModal">区委/区政府系统</a></li>
@@ -108,7 +108,7 @@
               <li><a data-toggle="modal" data-target="#myModal">科教文体卫系统</a></li>
               <li><a data-toggle="modal" data-target="#myModal">城建/城管系统</a></li>
               <li><a data-toggle="modal" data-target="#myModal">街道办事处</a></li>
-            </ul>
+            </ul> 
           </aside>
           <div class="col-md-4 col-md-offset-2">
             <div class="further-info  hidden-xs">
@@ -126,7 +126,7 @@
           </div>
 
             <!-- Button trigger modal -->       
-        <!-- 内容那么多 考虑用js -->
+      
         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
           <div class="modal-dialog">
             <div class="modal-content">
@@ -138,7 +138,7 @@
                   </div>
                 </div>
             </div>
-          </div>
+          </div> 
       </footer>
 
     <script type="text/javascript" src="@{'/public/javascripts/bootstrap.js'}" charset="${_response_encoding}"></script>

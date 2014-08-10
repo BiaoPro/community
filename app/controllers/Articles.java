@@ -36,7 +36,11 @@ public class Articles extends Controller {
 	public static void index() {
 		render();
 	}
-	
+
+	  public static void showNews(){
+      render();
+  }
+
 ///*	
 //
 //	/**
