@@ -33,7 +33,6 @@ public class Links extends Controller {
        // showLinks();
     }
     
-
     
     /**
      * 显示所有链接类别
