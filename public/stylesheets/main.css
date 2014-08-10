@@ -11,10 +11,6 @@ html,body{
 a{
 	cursor: pointer;
 }
-ol>li>a,td>a{
-	color:#756059;
-	text-decoration:underline;
-}
 
 ol>li>a.disabled,td>a.disabled{
 	pointer-events:none;
@@ -265,8 +261,6 @@ ul>li a{
 	border-radius: 5px;
 	line-height: 25px;
 	margin-bottom: 40px;
-	
-
 
 }
 

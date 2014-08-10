@@ -1,3 +1,7 @@
+ol>li>a,td>a{
+	color:#756059;
+	text-decoration:underline;
+}
 /*社区新闻的Tab修改*/
 .tab-pane td>a{
 	color: #5351D2;
