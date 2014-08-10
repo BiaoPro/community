@@ -1,11 +1,17 @@
 #{extends 'manager.html' /}
 
+#{set 'moreStyles'}
+<style type="text/css">
+
+</style>
+#{/set}
 
 <div class="container">
 	<div class=" box-div">
 		<h2>链接类别</h2>
 		<table class="table">
 			<thead>
+			    <th>序号</th>
 				<th>类别名称</th>
 				<th>类别顺序</th>
 				<th>状态</th>
@@ -14,43 +20,39 @@
 			<tbody>
 			#{list items:linkCategoryList,as:'linkCategory'}
 				<tr>
+				    <td>${linkCategory_index}</td>
 					<td>${linkCategory.name}</td>
-					<td>${linkCategory.sequence}</td>
 					<td>
-					    <select>
-					         #{if linkCategory.isShow()}
-							<option value="1">1-显示</option>
-							<option value="0">0-不显示</option>
-					         #{/if}
-					         #{else}
-							<option value="0">0-不显示</option>
-							<option value="1">1-显示</option>
-							#{/else}
+						<a href="@{LinkCategories.sequenceUp(linkCategory.id)}" style="color:#08c;">前移</a>/
+						<a href="@{LinkCategories.sequenceDown(linkCategory.id)}" style="color:#08c;">后移</a>
+					</td>
+					<td>
+					    <select class='form-control'>
+							<option value="1" ${linkCategory.status==1?'selected':''}>1-显示</option>
+							<option value="0" ${linkCategory.status==0?'selected':''}>0-不显示</option>
 					    </select>
 					</td>
-					<td><a>修改</a>/<a href="@{Links.delLinkCategory(linkCategory.id)}" onclick="return confirm('删除类别：${linkCategory.name}?')">删除</a></td>
+					<td><a>修改</a>/<a href="@{LinkCategories.delLinkCategory(linkCategory.id)}" onclick="return confirm('删除类别：${linkCategory.name}?')">删除</a></td>
 				</tr>
 				#{/list}
-                
+
+                <form class="form-inline"  action="@{LinkCategories.saveLinkCategory}">
 				<tr>
-					<td>类别名称：<input type="text" name="linkCategory.name"></td>
-					<td>显示顺序：<input type="text" name="linkCategory.sequence"></td>
-					<td>是否显示：
-					    <select>
-							<option value="0">0-不显示</option>
-							<option value="1">1-显示</option>
-					   </select>
-					</td>
-
-
-					<td><button class="btn btn-success" href="#">添加</button></td>
+				    <td>${linkCategory_index+1}</td>
+					<td colspan="2" >
+						<div class="form-group">
+	    				<label class="sr-only" for="linkCategory.name">类别名称：</label>
+	    				<input type="text" name="linkCategory.name" class="form-control" placeholder="输入新类别名称：">
+	  				    </div>
+  				    </td>
+  				    <td></td>
+ 					<td><button type="submit" class="btn btn-success" href="#">添加</button></td>
 				</tr>
+				</form>
+
 			</tbody>
 		</table>
-
-		
-
-		
+	
 	</div>
 </div>
 

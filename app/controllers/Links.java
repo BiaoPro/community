@@ -33,15 +33,17 @@ public class Links extends Controller {
        // showLinks();
     }
     
+
+    
     /**
-     * 删除链接
-     * 
-     * @param id
+     * 显示所有链接类别
      */
-    public static void delLinkCategory(String id) {
-         LinkCategory.delete("id", id);
-         showLinkCategories();
+    public static void showLinkCategories() {
+      List<LinkCategory> linkCategoryList = LinkCategory.find("ORDER BY sequence").fetch();
+        render(linkCategoryList);
     }
+    
+    
     
     /**
      * 修改链接状态
@@ -54,15 +56,6 @@ public class Links extends Controller {
         link.status = status;
         link.save();
         index();
-    }
-
-    
-    /**
-     * 显示所有链接类别
-     */
-    public static void showLinkCategories() {
-        List<LinkCategory> linkCategoryList = LinkCategory.findAll();
-        render(linkCategoryList);
     }
     
     

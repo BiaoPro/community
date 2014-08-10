@@ -7,21 +7,41 @@ import java.util.List;
 
 
 
-/**
- * 仅供参看用，需做修改
+/**链接类别管理
  * 
  * @author 吴泽标
  *
  */
 
 public class LinkCategories extends Controller {
+  
 	/**
 	 * 显示所有链接类别
 	 */
 	public static void showLinkCategories() {
-		List<LinkCategory> allCategoryList = LinkCategory.find("ORDER BY sequence").fetch();
-		render(allCategoryList);
+
+		Links.showLinkCategories();
 	}
+	
+	
+	/**
+     * 保存新增链接类别
+     * @param linkcategory
+     */
+    public static void saveLinkCategory(LinkCategory linkCategory) {
+        linkCategory.save();
+        showLinkCategories();
+    }
+    
+    /**
+     * 删除链接类别
+     * 
+     * @param id
+     */
+    public static void delLinkCategory(String id) {
+        LinkCategory.deleteById(id);
+        showLinkCategories();
+    }
 	
 	/**
 	 * 跳转到显示信息页面
@@ -32,37 +52,7 @@ public class LinkCategories extends Controller {
 		render(linkCategory);
 	}
 	
-	/**
-	 * 保存新增链接类别
-	 * 
-	 * @param linkcategory
-	 */
-	public static void saveLinkCategory(LinkCategory linkCategory) {
-		linkCategory.save();
-
-		showLinkCategories();
-	}
 	
-	/**
-	 * 删除链接类别
-	 * 
-	 * @param id
-	 */
-	public static void delLinkCategory(String id) {
-		LinkCategory.deleteById(id);
-		showLinkCategories();
-	}
-	
-	/**
-	 * 修改链接类别
-	 * 
-	 * @param linkcategory
-	 */
-	public static void editLinkCategory(LinkCategory linkCategory) {
-		linkCategory.save();
-
-		showLinkCategories();
-	}
 	
 	/**
 	 * 改变导航栏的状态
