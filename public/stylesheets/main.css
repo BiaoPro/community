@@ -11,7 +11,9 @@ html,body{
 a{
 	cursor: pointer;
 }
-
+ul{
+	list-style: none;
+}
 ol>li>a.disabled,td>a.disabled{
 	pointer-events:none;
 	cursor: not-allowed;
@@ -205,7 +207,6 @@ ul>li a{
 		margin-top:20px;
 	}
 	.further-info ul li,footer aside li{
-		list-style: none;
 		float: left;
 		padding-right: 10px;
 		margin: 15px;
@@ -233,7 +234,6 @@ ul>li a{
 	color:#fff; 
 }
 .modal-body ul>li{
-	list-style: none;
 	display: inline-block;
 }
 

@@ -2,6 +2,35 @@
 #{get 'moreSubpageStyles' /}
 #{set 'moreStyles'}
 <link rel="stylesheet" type="text/css" href="../public/stylesheets/base.css">
+<style type="text/css">
+	.aside:before{
+		border-top:4px solid #EC9508;
+	}
+	.nav-side{
+		padding: 5%;
+		width: 100%;
+	}
+
+	.nav-side li:before{
+		content: "";
+	}
+
+	.nav-side li{
+		padding: 10px;
+		border-top: 1px solid #ebe8e4;
+		margin: 0;
+	}
+	.nav-side li:first-child{
+		border-top: none;
+	}
+
+	.nav-side li>a{
+		font:300 16px/18px 'Avenir LT W01 45 Book', Arial, Helvetica, sans-serif;
+		color:#EC9508;
+		display: inline-block;
+	}
+
+</style>
  #{/set}
 
 
@@ -11,16 +40,21 @@
 		<div class="row">
 		  <section class="col-md-10 col-md-offset-1 col-xs-12">
 		  	<div class="col-md-8">
+
 				#{doLayout /}
 			</div>
 		  	<div class="col-md-4 col-xs-12">
 		  		<aside class="aside">
+		  			<ul class="nav-side">
+		  				<li><a href="">我要租房</a></li>
+		  				<li><a href="">我要出租</a></li>
+		  			</ul>
 		  			<form  role="form">
 						<input type="text" class="form-control" >
 						<button type="submit" class="btn btn-default">搜索</button>
 					</form>
 					<div >
-						<h3>热门搜索</h3>
+						<h3>附近房源</h3>
 						<ul>
 							<li>
 								<a href="">阜阳疫情迟公开暴露人祸大于灾难</a>
