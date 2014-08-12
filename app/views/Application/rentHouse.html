@@ -24,7 +24,7 @@ dt{
 		top:-1px;
 	}
 
-	a.active{
+	.main-container a.active{
 		background: #EC9508;
 		color: #fff;
 	}
@@ -57,10 +57,14 @@ dt{
 	.moreitem li{
 		padding-left: .5em;
 	}
+	.moreitem li:hover{
+		background: #faebcc;
+	}
 	.choose-fliter a{
 		padding-left: .5em;
 		text-decoration: none;
 	}
+
 	.choose-fliter{
 		margin-bottom:0;
 	}
@@ -71,11 +75,6 @@ dt{
 	.panel-footer ul,.panel-footer dd{
 		margin-bottom: 0;
 	}
-	.thumbnail{
-		padding: 0;
-		border: none;
-		margin: 0;
-	}
 	.house-info a{
 		font-size: 1.3em;
 	}
@@ -85,7 +84,6 @@ dt{
 	}
 	.price{
 		font-size: 1.5em;
-		color:#f60;
 	}
 </style>
 #{/set}
@@ -98,14 +96,14 @@ dt{
 		  <div class="panel-body">
 		   		<dl>
 		   			<dt>租金</dt>
-		   				<dd>
-		   					<a href="" class="active">不限</a>
-		   					<a href="">800元以下</a>
-		   					<a href="">800-1500元</a>
-		   					<a href="">1500-2000元</a>
-		   					<a href="">2000-3000元</a>
-		   					<a href="">3000元-5000元</a>
-		   					<a href="">5000以上</a>
+		   				<dd  id = "price" class="chose-type">
+		   					<a class="active">不限</a>
+		   					<a >800元以下</a>
+		   					<a >800-1500元</a>
+		   					<a >1500-2000元</a>
+		   					<a >2000-3000元</a>
+		   					<a >3000元-5000元</a>
+		   					<a >5000以上</a>
 		   					<span>
 		   						<label>
 		   							<input type="text"/>
@@ -119,7 +117,7 @@ dt{
 		   					</span>
 		   				</dd>
 		   			<dt>房型</dt>
-		   				<dd>
+		   				<dd id="room" class="chose-type">
 		   					<a href="" class="active">不限</a>
 		   					<a href="">1室</a>
 		   					<a href="">2室</a>
@@ -145,13 +143,13 @@ dt{
 		   				</dd>
 		   			<dt>特色</dt>
 		   				<dd>
-		   					<a href="" class="active">不限</a>
-		   					<a href="">精装修</a>
-		   					<a href="">家电齐全</a>
-		   					<a href="">押一付一</a>
-		   					<a href="">单身公寓</a>
-		   					<a href="">临近地铁</a>
-		   					<a href="">市政供暖</a>
+		   					<a  class="active">不限</a>
+		   					<a>精装修</a>
+		   					<a>家电齐全</a>
+		   					<a>押一付一</a>
+		   					<a >单身公寓</a>
+		   					<a >临近地铁</a>
+		   					<a >市政供暖</a>
 		   				</dd>
 		   			<dt>方式</dt>
 		   				<dd>
@@ -163,7 +161,7 @@ dt{
 		   			<dt>其他</dt>
 		   				<dd>
 		   					<div class="moreitem-box">
-			   					<div class="moreitem-btn"><a href="" >楼层</a>
+			   					<div class="moreitem-btn"><a >楼层</a>
 			   					</div>
 			   					<ul class="moreitem" >
 			   						<li><a href="">1楼</a></li>
@@ -177,7 +175,7 @@ dt{
 			   					</ul>
 		   					</div>
 		   					<div class="moreitem-box">
-			   					<div class="moreitem-btn"><a href="" >朝向</a>
+			   					<div class="moreitem-btn"><a>朝向</a>
 			   					</div>
 			   					<ul class="moreitem" >
 			   						<li><a href="">东</a></li>
@@ -204,12 +202,12 @@ dt{
 		  </div>
 		</div>
 
-		<div class="house-show">
+		<div class="house-show main-content">
 			<table class="table table-hover">
 				<tr>
 					<td class="col-xs-4"><a href="#" class="thumbnail"><img src="../public/images/dama.jpg" data-src="holder.js/100%x180" alt="house"></a></td>
 					<td class="house-info">
-						<a>南洲花园两房 低楼层 有匙即看</a>
+						<a href="@{Houses.showHouse}">南洲花园两房 低楼层 有匙即看</a>
 						<p ><small>南洲花苑</small><small>2室1厅1卫</small></p>
 						<p class="hidden-xs">
 						<small>60.00 ㎡</small>
@@ -311,4 +309,51 @@ dt{
 					<td><p><em class="price">3300</em>元</p></td>
 				</tr>
 			</table>
+				<ul class="pagination pull-right">
+				     <li><a href="#">&laquo;</a></li>
+				     <li class="active"><span>1 <span class="sr-only">(current)</span></span></li>
+				     <li><a href="#">2</a></li>
+				     <li><a href="#">3</a></li>
+				     <li><a href="#">4</a></li>
+				     <li><a href="#">5</a></li>
+				     <li><a href="#">&raquo;</a></li>
+				</ul>			
 		</div>
+		#{set "moreScripts"}
+			<script type="text/javascript">
+				var oInput = document.querySelectorAll('.panel-body input');
+				var choice = document.querySelectorAll('.chose-type');
+				var price =  document.querySelectorAll('#price a');
+				var i ;
+				for(i=0;i<oInput.length;i++){
+					oInput[i].onkeyup = function(){
+						this.value = this.value.replace(/[^\d]/g,"");
+					}
+				}
+				for(i=1;i<price.length;i++){
+					price[i].index = i;
+					price[i].onclick = function(){
+						var link = this.innerHTML.split("-");
+							for(var n =0;n<2;n++){
+								oInput[n].value = "";
+								if(this.index ==1) oInput[1].value=parseInt(link[0]);
+								else{
+									if(link[n]) oInput[n].value = parseInt(link[n]);
+								}
+							}
+						}
+					}
+
+					var moreitem = document.querySelectorAll('.moreitem-box');
+					for(i=0;i<moreitem.length;i++){
+
+						moreitem[i].onmouseover = function(){
+							this.querySelector('ul.moreitem').style.display = "block";
+						}
+						moreitem[i].onmouseout = function(){
+							this.querySelector('ul.moreitem').style.display = "";
+						}
+					}
+
+			</script>
+		#{/set}

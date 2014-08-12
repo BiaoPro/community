@@ -26,4 +26,5 @@ public class Application extends Controller {
   public static void rentHouse(){
     render();
   }
+
 }

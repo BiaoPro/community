@@ -92,6 +92,17 @@
 	.main-container .row>section>div{
 		margin-bottom: 30px;
 	}
+	.main-content{
+		border-bottom: 1px solid #ebe8e4;
+	}
+	.sub>small{
+		display: inline-block;
+		width:25%;
+		color:#756059;
+	}
+	.sub{
+		border-bottom: 1px solid #ebe8e4 ;
+	}
 
 	@media screen and (max-width : 480px){
 		.aside form>input{
