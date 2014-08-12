@@ -18,41 +18,42 @@
 				<th>操作</th>
 			</thead>
 			<tbody>
-			#{list items:linkCategoryList,as:'linkCategory'}
+				#{list items:linkCategoryList,as:'linkCategory'}
 				<tr>
-				    <td>${linkCategory_index}</td>
+					<td>${linkCategory_index}</td>
 					<td>${linkCategory.name}</td>
-					<td>
-						<a href="@{LinkCategories.sequenceUp(linkCategory.id)}" style="color:#08c;">前移</a>/
-						<a href="@{LinkCategories.sequenceDown(linkCategory.id)}" style="color:#08c;">后移</a>
+					<td><a href="@{LinkCategories.sequenceUp(linkCategory.id)}"
+						style="color: #08c;">前移</a>/ <a
+						href="@{LinkCategories.sequenceDown(linkCategory.id)}"
+						style="color: #08c;">后移</a></td>
+					<td>#{if linkCategory.isShow()} <a
+						href="@{LinkCategories.changeStatus(linkCategory.id,0)}"
+						style="color: #08c;"> 已显示</a> #{/if} #{else} <a
+						href="@{LinkCategories.changeStatus(linkCategory.id,1)}"
+						style="color: #000;"> 未显示</a> #{/else} </select>
 					</td>
-					<td>
-					   #{if linkCategory.isShow()}
-							<a href="@{LinkCategories.changeStatus(linkCategory.id,0)}" style="color:#08c;" >
-							已显示</a>
-						#{/if}
-						#{else}	
-							<a href="@{LinkCategories.changeStatus(linkCategory.id,1)}" style="color:#000;" >
-							未显示</a>
-						#{/else}
-					    </select>
-					</td>
-					<td><a href="@{LinkCategories.showLinkCategoryInfo(linkCategory.id)}" style="color:#08c;">编辑</a>/<a href="@{LinkCategories.delLinkCategory(linkCategory.id)}" onclick="return confirm('删除类别：${linkCategory.name}?')" style="color:#08c;">删除</a></td>
+					<td><a
+						href="@{LinkCategories.showLinkCategoryInfo(linkCategory.id)}"
+						style="color: #08c;">编辑</a>/<a
+						href="@{LinkCategories.delLinkCategory(linkCategory.id)}"
+						onclick="return confirm('删除类别：${linkCategory.name}?')"
+						style="color: #08c;">删除</a></td>
 				</tr>
 				#{/list}
 
-                <form class="form-inline"  action="@{LinkCategories.saveLinkCategory}">
-				<tr>
-				    <td>${(linkCategory_index==null?'':linkCategory_index)+1}</td>
-					<td colspan="2" >
-						<div class="form-group">
-	    				<label class="sr-only" for="linkCategory.name">类别名称：</label>
-	    				<input type="text" maxlength="30" name="linkCategory.name" class="form-control" placeholder="输入新类别名称：" required="required">
-	  				    </div>
-  				    </td>
-  				    <td></td>
- 					<td><button type="submit" class="btn btn-success" href="#">添加</button></td>
-				</tr>
+				<form class="form-inline"  action="@{LinkCategories.saveLinkCategory}">
+					<tr>
+						<td>${(linkCategory_index==null?'':linkCategory_index)+1}</td>
+						<td colspan="2">
+							<div class="form-group">
+								<label class="sr-only" for="linkCategory.name">类别名称：</label> <input
+									type="text" maxlength="30" name="linkCategory.name"
+									class="form-control" placeholder="输入新类别名称：" required="required">
+							</div>
+						</td>
+						<td></td>
+						<td><button type="submit" class="btn btn-success" href="#">添加</button></td>
+					</tr>
 				</form>
 
 			</tbody>
