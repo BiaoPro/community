@@ -30,18 +30,40 @@ public class Links extends Controller {
      */
     public static void saveLink(Link link) {
         link.save();
-       // showLinks();
+        showLinkCategoryInfo(link.categoryId);
     }
     
     /**
      * 删除链接
      * 
-     * @param id
+     * @param link
      */
-    public static void delLinkCategory(String id) {
-         LinkCategory.delete("id", id);
-         showLinkCategories();
+    public static void delLink(String id,String categoryId) {
+        Link.deleteById(id);
+        showLinkCategoryInfo(categoryId);
     }
+    
+    
+    /**
+     * 显示所有链接类别
+     */
+    public static void showLinkCategories() {
+      List<LinkCategory> linkCategoryList = LinkCategory.find("ORDER BY sequence").fetch();
+        render(linkCategoryList);
+    }
+    
+    /**
+     * 显示链接类别下的所有链接
+     */
+    public static void showLinkCategoryInfo(String categoryId) {
+      LinkCategory linkCategory = LinkCategory.findById(categoryId);
+      List<Link> linkList = Link.find("category_id = ? ORDER BY sequence",categoryId).fetch();
+      render(linkCategory,linkList);
+    }
+    
+    
+    
+    
     
     /**
      * 修改链接状态
@@ -54,15 +76,6 @@ public class Links extends Controller {
         link.status = status;
         link.save();
         index();
-    }
-
-    
-    /**
-     * 显示所有链接类别
-     */
-    public static void showLinkCategories() {
-        List<LinkCategory> linkCategoryList = LinkCategory.findAll();
-        render(linkCategoryList);
     }
     
     
