@@ -1,5 +1,6 @@
 package models;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -25,13 +26,16 @@ public class Link  extends GenericModel{
 	public String id;
 	
 	@Column(name="link_name")
-	public String link_name;//链接显示名称
+	public String name;//链接显示名称
 	
 	@Column(name="link_url")
 	public String url;// 链接的url
 	
 	@Column(name="status",columnDefinition="int default 1")
 	public int status;// 状态0：未发布，1：发布
+	
+	@Column(name = "sequence")
+	public long sequence; //链接顺序
 	
 	@Column(name="category_id")
 	public String categoryId;//链接类别id
@@ -40,6 +44,7 @@ public class Link  extends GenericModel{
 	public Link() {
 		this.status = 1;
 		this.id = Codec.UUID();
+		this.sequence=new Date().getTime();
 	}
 	
 	/**
@@ -48,6 +53,11 @@ public class Link  extends GenericModel{
 	 */
 	public LinkCategory getLinkCategory() {
 		return LinkCategory.find("id", this.categoryId).first();
+	}
+	
+	public static void deleteById(String id){
+	   Link.delete("id", id);
+	  
 	}
 	
 	/**
