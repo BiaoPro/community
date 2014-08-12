@@ -19,12 +19,6 @@ public class Application extends Controller {
       render(str);
   }
 
-  	public static void news(){
-		render();
-	}
-  //仅仅为了测试页面
-  public static void rentHouse(){
-    render();
-  }
+
 
 }

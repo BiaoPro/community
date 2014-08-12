@@ -43,9 +43,5 @@ public class Houses extends Controller {
 	public static void updateHouse(){
 		
 	}
-	
-	public static void showHouse(){
-		render();
-	}
 
 }

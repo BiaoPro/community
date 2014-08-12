@@ -1,1 +1,359 @@
-Houses��html
+#{extends 'ShowHouses/base.html' /}
+#{set title:'House' /}
+
+#{set 'moreSubpageStyles'}
+<style type="text/css">
+dt{
+	float: left;
+}
+	dt,dd a,.choose-fliter li{
+		display: inline-block;
+		padding: 5px 8px;
+	}
+	dd{
+		margin-bottom: 10px;
+	}
+	dd label input{		
+		width: 40px;
+		padding-right: 5px;
+	}
+
+	.panel .btn{
+		margin-left: 10px;
+		position: relative;
+		top:-1px;
+	}
+
+	.main-container a.active{
+		background: #EC9508;
+		color: #fff;
+	}
+
+	.moreitem-btn,.moreitem-btn a,.moreitem-box{
+		display: inline-block;
+	}
+	.moreitem-btn a{
+		padding:5px 20px 5px 5px;
+		border: 1px solid #ccc;
+		background: url(../public/images/dropdown.png) no-repeat right;
+		margin-right: 1.5em;
+	}
+	.moreitem-btn a:hover{
+		text-decoration: none;
+	}
+	.moreitem-box{
+		position: relative;
+	}
+	.moreitem{
+		background: #fff;
+		border: 1px solid #ccc;
+		position: absolute;
+		top: 31px;
+		padding: 0 0 5px;
+		width: 103px;
+		display: none;
+	}
+
+	.moreitem li{
+		padding-left: .5em;
+	}
+	.moreitem li:hover{
+		background: #faebcc;
+	}
+	.choose-fliter a{
+		padding-left: .5em;
+		text-decoration: none;
+	}
+
+	.choose-fliter{
+		margin-bottom:0;
+	}
+	.panel-footer{
+		border-top: none;
+		padding-bottom: 0;
+	}
+	.panel-footer ul,.panel-footer dd{
+		margin-bottom: 0;
+	}
+	.house-info a{
+		font-size: 1.3em;
+	}
+	.house-info small{
+		color:#756059;
+		padding-right: 1em;
+	}
+	.price{
+		font-size: 1.5em;
+	}
+</style>
+#{/set}
+		<!-- 路径导航 -->
+		<ol class="breadcrumb">
+			<li><a href="#">首页</a></li>
+			<li class="active">社区租房</li>
+		</ol>
+		<div class="panel panel-default">
+		  <div class="panel-body">
+		   		<dl>
+		   			<dt>租金</dt>
+		   				<dd  id = "price" class="chose-type">
+		   					<a class="active">不限</a>
+		   					<a >800元以下</a>
+		   					<a >800-1500元</a>
+		   					<a >1500-2000元</a>
+		   					<a >2000-3000元</a>
+		   					<a >3000元-5000元</a>
+		   					<a >5000以上</a>
+		   					<span>
+		   						<label>
+		   							<input type="text"/>
+		   						</label>
+		   						-
+		   						<label>
+		   							<input type="text">
+		   						</label>
+								元
+								<button class="btn btn-default  btn-sm">筛选</button>
+		   					</span>
+		   				</dd>
+		   			<dt>房型</dt>
+		   				<dd id="room" class="chose-type">
+		   					<a href="" class="active">不限</a>
+		   					<a href="">1室</a>
+		   					<a href="">2室</a>
+		   					<a href="">3室</a>
+		   					<a href="">4室</a>
+		   					<a href="">5室</a>
+		   					<a href="">5室以上</a>
+		   					<span>
+		   						<label>
+		   							<input type="text"/>
+		   						</label>
+		   						室
+		   						<label>
+		   							<input type="text">
+		   						</label>
+								厅
+								<label>
+		   							<input type="text">
+		   						</label>
+		   						卫
+		   						<button class="btn btn-default btn-sm">筛选</button>
+		   					</span>
+		   				</dd>
+		   			<dt>特色</dt>
+		   				<dd>
+		   					<a  class="active">不限</a>
+		   					<a>精装修</a>
+		   					<a>家电齐全</a>
+		   					<a>押一付一</a>
+		   					<a >单身公寓</a>
+		   					<a >临近地铁</a>
+		   					<a >市政供暖</a>
+		   				</dd>
+		   			<dt>方式</dt>
+		   				<dd>
+		   					<a href="" class="active">不限</a>
+		   					<a href="">整租</a>
+		   					<a href="">合租单间</a>
+		   					<a href="">合租床位</a>
+		   				</dd>
+		   			<dt>其他</dt>
+		   				<dd>
+		   					<div class="moreitem-box">
+			   					<div class="moreitem-btn"><a >楼层</a>
+			   					</div>
+			   					<ul class="moreitem" >
+			   						<li><a href="">1楼</a></li>
+			   						<li><a href="">2楼</a></li>
+			   						<li><a href="">3楼</a></li>
+			   						<li><a href="">4楼</a></li>
+			   						<li><a href="">5楼</a></li>
+			   						<li><a href="">6楼</a></li>
+			   						<li><a href="">7楼</a></li>
+			   						<li><a href="">7楼以上</a></li>
+			   					</ul>
+		   					</div>
+		   					<div class="moreitem-box">
+			   					<div class="moreitem-btn"><a>朝向</a>
+			   					</div>
+			   					<ul class="moreitem" >
+			   						<li><a href="">东</a></li>
+			   						<li><a href="">西</a></li>
+			   						<li><a href="">南</a></li>
+			   						<li><a href="">北</a></li>
+			   						<li><a href="">南北</a></li>
+			   						<li><a href="">西东</a></li>
+			   					</ul> 
+		   					</div>
+		   				</dd>
+		   		</dl>
+		  </div>
+		  <div class="panel-footer">
+			  <dl class="choose-fliter">
+			  	<dt>筛选条件</dt>
+			  		<dd>
+			  			<ul>
+			  				<li class="alert alert-warning">1500-2000元<a>&times;</a></li>
+			  				<li class="alert alert-warning">1楼<a>&times;</a></li>
+			  			</ul>
+			  		</dd>
+			  	</dl>
+		  </div>
+		</div>
+
+		<div class="house-show main-content">
+			<table class="table table-hover">
+				<tr>
+					<td class="col-xs-4"><a href="#" class="thumbnail"><img src="../public/images/dama.jpg" data-src="holder.js/100%x180" alt="house"></a></td>
+					<td class="house-info">
+						<a href="@{ShowHouses.showHousesInfo}">南洲花园两房 低楼层 有匙即看</a>
+						<p ><small>南洲花苑</small><small>2室1厅1卫</small></p>
+						<p class="hidden-xs">
+						<small>60.00 ㎡</small>
+						<small>3/9</small>
+						<small>朝东</small>
+						<small>精装修</small></p>
+					</td>
+					<td><p><em class="price">3300</em>元</p></td>
+				</tr>
+				<tr>
+					<td class="col-xs-4"><a href="#" class="thumbnail"><img src="../public/images/dama.jpg" data-src="holder.js/100%x180" alt="house"></a></td>
+					<td class="house-info">
+						<a>南洲花园两房 低楼层 有匙即看</a>
+						<p ><small>南洲花苑</small><small>2室1厅1卫</small></p>
+						<p class="hidden-xs">
+						<small>60.00 ㎡</small>
+						<small>3/9</small>
+						<small>朝东</small>
+						<small>精装修</small></p>
+					</td>
+					<td><p><em class="price">3300</em>元</p></td>
+				</tr>
+				<tr>
+					<td class="col-xs-4"><a href="#" class="thumbnail"><img src="../public/images/dama.jpg" data-src="holder.js/100%x180" alt="house"></a></td>
+					<td class="house-info">
+						<a>南洲花园两房 低楼层 有匙即看</a>
+						<p ><small>南洲花苑</small><small>2室1厅1卫</small></p>
+						<p class="hidden-xs">
+						<small>60.00 ㎡</small>
+						<small>3/9</small>
+						<small>朝东</small>
+						<small>精装修</small></p>
+					</td>
+					<td><p><em class="price">3300</em>元</p></td>
+				</tr>
+				<tr>
+					<td class="col-xs-4"><a href="#" class="thumbnail"><img src="../public/images/dama.jpg" data-src="holder.js/100%x180" alt="house"></a></td>
+					<td class="house-info">
+						<a>南洲花园两房 低楼层 有匙即看</a>
+						<p ><small>南洲花苑</small><small>2室1厅1卫</small></p>
+						<p class="hidden-xs">
+						<small>60.00 ㎡</small>
+						<small>3/9</small>
+						<small>朝东</small>
+						<small>精装修</small></p>
+					</td>
+					<td><p><em class="price">3300</em>元</p></td>
+				</tr>
+				<tr>
+					<td class="col-xs-4"><a href="#" class="thumbnail"><img src="../public/images/dama.jpg" data-src="holder.js/100%x180" alt="house"></a></td>
+					<td class="house-info">
+						<a>南洲花园两房 低楼层 有匙即看</a>
+						<p ><small>南洲花苑</small><small>2室1厅1卫</small></p>
+						<p class="hidden-xs">
+						<small>60.00 ㎡</small>
+						<small>3/9</small>
+						<small>朝东</small>
+						<small>精装修</small></p>
+					</td>
+					<td><p><em class="price">3300</em>元</p></td>
+				</tr>
+				<tr>
+					<td class="col-xs-4"><a href="#" class="thumbnail"><img src="../public/images/dama.jpg" data-src="holder.js/100%x180" alt="house"></a></td>
+					<td class="house-info">
+						<a>南洲花园两房 低楼层 有匙即看</a>
+						<p ><small>南洲花苑</small><small>2室1厅1卫</small></p>
+						<p class="hidden-xs">
+						<small>60.00 ㎡</small>
+						<small>3/9</small>
+						<small>朝东</small>
+						<small>精装修</small></p>
+					</td>
+					<td><p><em class="price">3300</em>元</p></td>
+				</tr>
+				<tr>
+					<td class="col-xs-4"><a href="#" class="thumbnail"><img src="../public/images/dama.jpg" data-src="holder.js/100%x180" alt="house"></a></td>
+					<td class="house-info">
+						<a>南洲花园两房 低楼层 有匙即看</a>
+						<p ><small>南洲花苑</small><small>2室1厅1卫</small></p>
+						<p class="hidden-xs">
+						<small>60.00 ㎡</small>
+						<small>3/9</small>
+						<small>朝东</small>
+						<small>精装修</small></p>
+					</td>
+					<td><p><em class="price">3300</em>元</p></td>
+				</tr>
+				<tr>
+					<td class="col-xs-4"><a href="#" class="thumbnail"><img src="../public/images/dama.jpg" data-src="holder.js/100%x180" alt="house"></a></td>
+					<td class="house-info">
+						<a>南洲花园两房 低楼层 有匙即看</a>
+						<p ><small>南洲花苑</small><small>2室1厅1卫</small></p>
+						<p class="hidden-xs">
+						<small>60.00 ㎡</small>
+						<small>3/9</small>
+						<small>朝东</small>
+						<small>精装修</small></p>
+					</td>
+					<td><p><em class="price">3300</em>元</p></td>
+				</tr>
+			</table>
+				<ul class="pagination pull-right">
+				     <li><a href="#">&laquo;</a></li>
+				     <li class="active"><span>1 <span class="sr-only">(current)</span></span></li>
+				     <li><a href="#">2</a></li>
+				     <li><a href="#">3</a></li>
+				     <li><a href="#">4</a></li>
+				     <li><a href="#">5</a></li>
+				     <li><a href="#">&raquo;</a></li>
+				</ul>			
+		</div>
+		#{set "moreScripts"}
+			<script type="text/javascript">
+				var oInput = document.querySelectorAll('.panel-body input');
+				var choice = document.querySelectorAll('.chose-type');
+				var price =  document.querySelectorAll('#price a');
+				var i ;
+				for(i=0;i<oInput.length;i++){
+					oInput[i].onkeyup = function(){
+						this.value = this.value.replace(/[^\d]/g,"");
+					}
+				}
+				for(i=1;i<price.length;i++){
+					price[i].index = i;
+					price[i].onclick = function(){
+						var link = this.innerHTML.split("-");
+							for(var n =0;n<2;n++){
+								oInput[n].value = "";
+								if(this.index ==1) oInput[1].value=parseInt(link[0]);
+								else{
+									if(link[n]) oInput[n].value = parseInt(link[n]);
+								}
+							}
+						}
+					}
+
+					var moreitem = document.querySelectorAll('.moreitem-box');
+					for(i=0;i<moreitem.length;i++){
+
+						moreitem[i].onmouseover = function(){
+							this.querySelector('ul.moreitem').style.display = "block";
+						}
+						moreitem[i].onmouseout = function(){
+							this.querySelector('ul.moreitem').style.display = "";
+						}
+					}
+
+			</script>
+		#{/set}
