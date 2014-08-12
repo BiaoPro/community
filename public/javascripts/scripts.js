@@ -13,7 +13,7 @@ onscroll = function() {
   var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
   var navbar = document.querySelector('.navbar');
 
-  if (scrollTop > 50) {
+  if (scrollTop > 100) {
     if (!appended) {
       addClass(navbar,'show');
       navbar.style.width = document.body.clientWidth + 'px';

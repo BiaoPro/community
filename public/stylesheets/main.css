@@ -11,11 +11,9 @@ html,body{
 a{
 	cursor: pointer;
 }
-ol>li>a,td>a{
-	color:#756059;
-	text-decoration:underline;
+ul{
+	list-style: none;
 }
-
 ol>li>a.disabled,td>a.disabled{
 	pointer-events:none;
 	cursor: not-allowed;
@@ -83,6 +81,7 @@ ul>li a{
 /*nav-bar*/
 .navbar{
 	border-radius: 0px;
+	z-index: 100;
 }
 .nav-container .navbar-inverse {
 	background: linear-gradient(to bottom, #034c98 0%, #0056a9 100%);
@@ -208,7 +207,6 @@ ul>li a{
 		margin-top:20px;
 	}
 	.further-info ul li,footer aside li{
-		list-style: none;
 		float: left;
 		padding-right: 10px;
 		margin: 15px;
@@ -236,7 +234,6 @@ ul>li a{
 	color:#fff; 
 }
 .modal-body ul>li{
-	list-style: none;
 	display: inline-block;
 }
 
@@ -256,6 +253,7 @@ ul>li a{
 
 .main-container section{
 	background: #fff;
+	border:1px solid #ccc\9;
 	box-shadow: 0px 1px 8px 1.5px rgba(0, 0, 0, .35), 0px 20px 70px 8px rgba(0, 0, 0, 0.25);
 	-moz-box-shadow:0px 1px 8px 1.5px rgba(0, 0, 0, .35), 0px 20px 70px 8px rgba(0, 0, 0, 0.25);
 	-webkit-box-shadow:0px 1px 8px 1.5px rgba(0, 0, 0, .35), 0px 20px 70px 8px rgba(0, 0, 0, 0.25);
@@ -263,6 +261,7 @@ ul>li a{
 	border-radius: 5px;
 	line-height: 25px;
 	margin-bottom: 40px;
+
 }
 
 @media screen and (min-width: 641px){
