@@ -14,8 +14,12 @@
 
 	.table td small{
 		width: auto;
-		color: #666;
 		padding-right: 1em;
+		color: #666;
+	}
+	.table .price+small{
+		padding-left: 1em;
+		padding-right: 0;
 	}
 
 	.show-detail div>span{
@@ -26,6 +30,9 @@
 	}
 	.table > tbody > tr > td{
 		border-top: none;
+	}
+	.detail-item{
+		color: #999;
 	}
 </style>
 #{/set}
@@ -53,35 +60,79 @@
 				</ul>
 			</div>
 			<div class="show-detail col-md-7">
-				<table class="table table-hover">
+				<table class="table table-hover table-condensed">
 					<tr>
-						<td><p>价格</p></td>
+						<td class="detail-item col-md-3"><p>价格</p></td>
 						<td>
 							<p><span class="price">3300</span>元
 							<small>押一付一</small></p>
 						</td>
 					</tr>
 					<tr>
-						<td></td>
-						<td></td>
+						<td class="detail-item col-md-3"><p>概况</p></td>
+						<td>
+							<p>
+								<small>1室0厅1卫</small>
+								<small>30㎡</small>
+								<small>公寓</small>
+								<small>精装修</small>
+								<small>朝向南</small>
+							</p>
+						</td>
 					</tr>
 					<tr>
-						<td></td>
-						<td></td>
+						<td class="detail-item col-md-3"><p>概况</p></td>
+						<td>
+							<p>
+								<small>6/9层</small>
+							</p>
+						</td>
 					</tr>
 					<tr>
-						<td></td>
-						<td></td>
+						<td class="detail-item col-md-3"><p>区域</p></td>
+						<td>
+							<p>
+								<small>天河 - 棠下 - 员村新村</small>
+							</p>
+						</td>
 					</tr>
 					<tr>
-						<td></td>
-						<td></td>
+						<td class="detail-item col-md-3"><p>地址</p></td>
+						<td>
+							<p>
+								<small>天河区员村四横路自编8号石东商务中心6楼</small>
+							</p>
+						</td>
 					</tr>
 					<tr>
-						<td></td>
-						<td></td>
+						<td class="detail-item col-md-3"><p>联系人</p></td>
+						<td>
+							<p>
+								<small>时先生 （经纪人）</small>
+								<small>132-4560-2034</small>
+							</p>
+						</td>
 					</tr>
 				</table>
+			</div>
+			<!-- Nav tabs -->
+			<ul class="nav nav-tabs" role="tablist">
+			  <li class="active"><a href="#describe" role="tab" data-toggle="tab">房源描述</a></li>
+			  <li><a href="" role="tab" data-toggle="tab">小区介绍</a></li>
+			  <li><a href="#resource" role="tab" data-toggle="tab">附近房源推荐</a></li>
+			</ul>
+
+			<!-- Tab panes -->
+			<div class="tab-content">
+			  <div class="tab-pane  fade in active" id="describe">
+			  	
+			  </div>
+			  <div class="tab-pane fade" id="profile">
+			  	
+			  </div>
+			  <div class="tab-pane fade" id="resource">
+			  	
+			  </div>
 			</div>
 
 		</div>
