@@ -47,8 +47,7 @@
 		background-color: #f60;
 		color: #fff;
 	}
-	.tab-pane .sub li{
-		display: inline-block;
+	ul.sub li{
 		margin-left:20px; 
 	}
 	#describe .sub{
@@ -310,46 +309,46 @@
 				</div>
 			  </div>
 		</div>
-#{set "moreScripts"}
-	<script type="text/javascript">
-		var prevBox = document.querySelector('.preview-img');
-		var prevDiv = prevBox.querySelector('.img-small');
-		var prevUl = prevDiv.getElementsByTagName('ul')[0];
-		var prevLi= prevDiv.getElementsByTagName('li');
-		var show = document.querySelector('.show-img img');
-		var oPrev= document.getElementById('prev');
-		var oNext = document.getElementById('next');
+#{set "moreSubpageScripts"}
+      <script type="text/javascript">
+    var prevBox = document.querySelector('.preview-img');
+    var prevDiv = prevBox.querySelector('.img-small');
+    var prevUl = prevDiv.getElementsByTagName('ul')[0];
+    var prevLi= prevDiv.getElementsByTagName('li');
+    var show = document.querySelector('.show-img img');
+    var oPrev= document.getElementById('prev');
+    var oNext = document.getElementById('next');
 
-		var left = prevUl.offsetLeft;
-		var len = prevLi[0].offsetWidth*4;
-		var i;
+    var left = prevUl.offsetLeft;
+    var len = prevLi[0].offsetWidth*4;
+    var i;
 
-		prevUl.style.width = len;
-		for(i=0;i<prevLi.length;i++){
-			prevLi[i].onmouseover = function(){
-				show.src = this.getElementsByTagName('img')[0].src ;
-			}
-		}
-		oPrev.onclick = function(){
-			if(parseInt(prevUl.style.left)<=0-len){
-				Animation(prevUl,"left");
-				left = parseInt(prevUl.style.left) ;
-			}
-		}
-		oNext.onclick = function(){
-			if(left<=0&&(prevLi.length*(len/4)+left) > len){
-				Animation(prevUl,"right");
-				left = parseInt(prevUl.style.left) ;
-			}
-		}
+    prevUl.style.width = len;
+    for(i=0;i<prevLi.length;i++){
+      prevLi[i].onmouseover = function(){
+        show.src = this.getElementsByTagName('img')[0].src ;
+      }
+    }
+    oPrev.onclick = function(){
+      if(parseInt(prevUl.style.left)<=0-len){
+        Animation(prevUl,"left");
+        left = parseInt(prevUl.style.left) ;
+      }
+    }
+    oNext.onclick = function(){
+      if(left<=0&&(prevLi.length*(len/4)+left) > len){
+        Animation(prevUl,"right");
+        left = parseInt(prevUl.style.left) ;
+      }
+    }
 
-		function Animation(elem,dire){
-			if(dire == "left"){
-				prevUl.style.left = parseInt(prevUl.style.left) +len+"px";	
+    function Animation(elem,dire){
+      if(dire == "left"){
+        prevUl.style.left = parseInt(prevUl.style.left) +len+"px";  
 
-			}else{
-				prevUl.style.left= left -len+"px";		
-			}
-		}
-	</script>
+      }else{
+        prevUl.style.left= left -len+"px";    
+      }
+    }
+  </script> 
 #{/set}

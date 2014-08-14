@@ -1,0 +1,331 @@
+#{extends 'ShowHouses/base.html' /}
+#{set title:'rent-Houses' /}
+#{set "moreSubpageScripts"}
+	<style type="text/css">
+		.table > tbody > tr > td,.table>tbody>tr>th{
+			border-top:none;
+			font-size: 1.1em;
+			color: #333;
+			vertical-align: top;
+			margin: 10px 0px 0px 10px;
+		}
+		.table>tbody>tr>th{
+			width: 20%;
+			text-align: right;
+			padding-right:5%;
+		}
+		.main-content label,.table td a{
+			margin-right:10px;
+			font-weight: normal;
+		}
+		.form-control{
+			display: inline-block;
+			width: 50%;
+		}
+		.table th em{
+			color:red;
+			margin-right: 5px;
+		}
+		.moreitem a{
+			display: inline-block;
+			padding: 8px 10px;
+		}
+		td label input[type="text"]{		
+			width: 50px;
+			padding-right: 5px;
+		}
+		ul.sub{
+			padding-left: 0;
+			border-bottom: none;
+		}
+		ul.sub li{
+			margin:10px 0px 0px 10px;
+		}
+		.chose-all{
+			margin-left: 10px;
+		}
+		form:after{
+			content: '';
+			display: block;
+			height: 0;
+			clear: both;
+		}
+		.btn-lg{
+			margin:10px;
+		}
+		@media screen and (max-width: 480px){
+			.table>tbody>tr>th,.table>tbody>tr>td{
+				border-top: 1px solid #ccc;
+			}
+			.table>tbody>tr>th{
+				width: 35%;
+			}
+			.moreitem-box{
+				margin-bottom: 10px;
+			}
+		}
+	</style>
+#{/set}
+		<!-- 路径导航 -->
+		<ol class="breadcrumb">
+			<li><a href="#">首页</a></li>
+			<li ><a href="">社区租房</a></li>
+			<li class="active">出租信息填写</li>
+		</ol>
+<div class="alert alert-warning alert-dismissible" role="alert">
+  <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+  <p class="bg-warning">如果您有账号，可点击<a>登录</a>再填写 ; 或者点击<a>注册</a></p>
+</div>
+<div class="main-content">
+	<form>
+		<table class="table table-hover  table-condensed">
+			<tbody>
+				<tr>
+					<th><em>*</em><span>出租方式</span></th>
+					<td>
+						<label>
+						<input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+						    整租
+						</label>
+						<label>
+						<input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+						   合租
+						</label>
+						<span></span>
+					</td>
+				</tr>
+				<tr>
+					<th><em>*</em><span>您的身份</span></th>
+					<td>
+						<a class="btn btn-default">个人</a>
+						<a class="btn btn-default">经纪人</a>
+						<span></span>
+					</td>
+				</tr>
+				<tr>
+					<th><em>*</em><span>小区</span></th>
+					<td>
+						<label class="sr-only" for="community">小区地址</label>
+	    				<input type="text" class="form-control" id="community">
+	    				<span></span>
+					</td>
+				</tr>
+				<tr>
+					<th><em>*</em><span>地址</span></th>
+					<td>
+						<div class="moreitem-box ">
+			   				<div class="moreitem-btn"><a >街道</a>
+			   				</div>
+			   				<ul class="moreitem" >
+			   					<li><a href="">街道1</a></li>
+			   					<li><a href="">街道2</a></li>
+			   					<li><a href="">街道3</a></li>
+			   				</ul>
+		   				</div>
+		   				<div style="display:inline-block;">
+							<label for="address" class="control-label">详细地址</label>
+      						<input type="text" class="form-control" id="address"/>
+      					</div>
+      					<span></span>
+					</td>
+				</tr>
+				<tr>
+					<th><em>*</em><span>户型</span></th>
+					<td>
+		   				<label>
+		   					<input type="text" class="form-control" />
+		   				室
+		   				</label>		   				
+		   				<label>
+		   					<input type="text" class="form-control">
+		   					厅
+		   				</label>						
+						<label>
+		   					<input type="text" class="form-control">
+		   					卫	
+		   				</label>
+		   				<label>
+		   					<input type="text" class="form-control">
+		   					平方	
+		   				</label>		   								
+	    				<span></span>
+					</td>
+				</tr>
+				<tr>
+					<th><em>*</em><span>楼层</span></th>
+					<td>
+		   				<label>
+		   					<input type="text" class="form-control" />
+		   				层/共
+		   				</label>		   				
+		   				<label>
+		   					<input type="text" class="form-control">
+		   					层
+		   				</label>								   								
+	    				<span></span>
+					</td>
+				</tr>
+				<tr>
+					<th><em>*</em><span>房屋情况</span></th>
+					<td>
+						<div class="moreitem-box ">
+			   				<div class="moreitem-btn"><a >装修情况</a>
+			   				</div>
+			   				<ul class="moreitem" >
+			   					<li><a href="">豪华装修</a></li>
+			   					<li><a href="">精装修</a></li>
+			   					<li><a href="">中等</a></li>
+			   					<li><a href="">简单</a></li>
+			   					<li><a href="">毛胚</a></li>
+			   				</ul>
+		   				</div>
+		   				<div class="moreitem-box ">
+			   				<div class="moreitem-btn"><a >普通住宅</a>
+			   				</div>
+			   				<ul class="moreitem" >
+			   					<li><a href="">平房</a></li>
+			   					<li><a href="">普通住宅</a></li>
+			   					<li><a href="">公寓</a></li>
+			   					<li><a href="">商住两用</a></li>
+			   					<li><a href="">别墅</a></li>
+			   					<li><a href="">其他</a></li>
+			   				</ul>
+		   				</div>
+      					<span></span>
+					</td>
+				</tr>
+				<tr>
+					<th><em>*</em><span>出租间介绍</span></th>
+					<td>
+						<div class="moreitem-box ">
+			   				<div class="moreitem-btn"><a >请选择</a>
+			   				</div>
+			   				<ul class="moreitem" >
+			   					<li><a href="">出租主卧</a></li>
+			   					<li><a href="">出租侧卧</a></li>
+			   					<li><a href="">出租隔断间</a></li>
+			   					<li><a href="">出租床位</a></li>
+			   				</ul>
+		   				</div>
+		   				<div class="moreitem-box ">
+			   				<div class="moreitem-btn"><a >朝向</a>
+			   				</div>
+			   				<ul class="moreitem" >
+			   					<li><a href="">东</a></li>
+			   					<li><a href="">南</a></li>
+			   					<li><a href="">西</a></li>
+			   					<li><a href="">北</a></li>
+			   					<li><a href="">南北</a></li>
+			   					<li><a href="">西东</a></li>
+			   				</ul>
+		   				</div>
+		   				<div class="moreitem-box ">
+			   				<div class="moreitem-btn"><a >男女不限</a>
+			   				</div>
+			   				<ul class="moreitem" >
+			   					<li><a href="">男女不限</a></li>
+			   					<li><a href="">限男生</a></li>
+			   					<li><a href="">限女生</a></li>
+			   					<li><a href="">限夫妻</a></li>
+			   				</ul>
+		   				</div>
+		   				<label>
+		   					<input type="text" class="form-control">
+		   					平方
+		   				</label>
+      					<span></span>
+					</td>
+				</tr>
+				<tr>
+					<th><em>*</em><span>楼层</span></th>
+					<td>
+						<ul class="sub">
+			   				<li><input type="checkbox"/>床</li>
+				  			<li><input type="checkbox"/>衣柜</li>
+				  			<li><input type="checkbox"/>沙发</li>
+				  			<li><input type="checkbox"/>冰箱</li>
+				  			<li><input type="checkbox"/>洗衣机</li>
+				  			<li><input type="checkbox"/>空调</li>
+				  			<li><input type="checkbox"/>热水器</li>
+				  			<li><input type="checkbox"/>宽带</li>
+				  			<li><input type="checkbox"/>暖气</li>
+				  			<li><input type="checkbox"/>电视</li>
+				  			<button class="chose-all btn btn-default">全选</button>
+				  		</ul>							   								
+	    				<span></span>
+					</td>
+				</tr>
+				<tr>
+					<th><em>*</em><span>租金</span></th>
+					<td>
+						<label>
+		   					<input type="text" class="form-control" style="width:80px;"/>
+		   				元/月
+		   				</label>
+						<div class="moreitem-box ">
+			   				<div class="moreitem-btn"><a >押一付三</a>
+			   				</div>
+			   				<ul class="moreitem" style="width:115px;">
+			   					<li><a href="">押一付一</a></li>
+			   					<li><a href="">押一付三</a></li>
+			   					<li><a href="">押一付二</a></li>
+			   					<li><a href="">押二付一</a></li>
+			   					<li><a href="">押二付三</a></li>
+			   					<li><a href="">半年付不押</a></li>
+			   					<li><a href="">年付不押</a></li>
+			   					<li><a href="">押一付半年</a></li>
+			   					<li><a href="">押一付年</a></li>
+			   					<li><a href="">押二付年</a></li>
+			   					<li><a href="">押三付年</a></li>
+			   					<li><a href="">其它</a></li>
+			   				</ul>
+		   				</div>
+      					<span></span>
+					</td>
+				</tr>
+				<tr>
+					<th><em>*</em><span>标题</span></th>
+					<td>
+						<input type="text" class="form-control" style="width:70%;"/>
+						<span></span>
+					</td>
+				</tr>
+				<tr>
+					<th><span>标签</span></th>
+					<td>
+						<button class="btn btn-default">+</button>
+						<span style="margin-left:10px;">推荐： <a>精装修</a><a>低价格</a><a>精装修</a><a>低价格</a></span>
+						<span></span>
+					</td>
+				</tr>
+				<tr>
+					<th><em>*</em><span>描述</span></th>
+					<td>
+						<textarea class="form-control" rows="5" style="width:80%"></textarea>
+					</td>
+				</tr>
+				<tr>
+					<th><em>*</em><span>上传照片</span></th>
+					<td>
+						<span class="help-block">最多只能上传8张，最大10MB</span>
+					</td>
+				</tr>
+				<tr>
+					<th><em>*</em><span>联系人</span></th>
+					<td>
+						<label class="sr-only" for="contact">联系人</label>
+	    				<input type="text" class="form-control" id="contact">
+					</td>
+				</tr>
+				<tr>
+					<th><em>*</em><span>联系电话</span></th>
+					<td>
+						<label class="sr-only" for="phone">联系电话</label>
+	    				<input type="text" class="form-control" id="phone">
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<a type="button" class="btn btn-danger btn-lg pull-right">确认并发布</a>	
+	</form>
+</div>

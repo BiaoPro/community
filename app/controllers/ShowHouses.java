@@ -13,5 +13,8 @@ public class ShowHouses extends Controller{
 	// 展示单个租房信息页
 	public static void showHousesInfo(){
 		render();
+	}	
+	public static void rentHouses(){
+		render();
 	}
 }

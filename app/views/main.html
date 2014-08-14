@@ -30,7 +30,7 @@
     <body>
 
      <!-- nav-set -->
-      <div class="nav-container container-fluid" style="border:solid 1px #abc">
+      <div class="nav-container container-fluid">
           <!-- logo -->
           <div class="row">
             <h1 class="logo col-md-3 col-md-offset-2 "><a href="/">logo</a></h1>
@@ -65,7 +65,7 @@
                       <a href="@{ShowHouses.Houses}" class="dropdown-toggle" data-toggle="dropdown">社区租房</a>
                       <ul class="dropdown-menu hidden-xs" role="menu">
                         <li><a href="@{ShowHouses.Houses}">我要租房</a></li>
-                        <li><a href="#">我要出租</a></li>
+                        <li><a href="@{ShowHouses.rentHouses}">我要出租</a></li>
                       </ul>
                     </li>
                     <li class="dropdown">
@@ -137,7 +137,8 @@
 
     <script type="text/javascript" src="@{'/public/javascripts/jquery-1.11.1.min.js'}" charset="${_response_encoding}"></script>
     <script type="text/javascript" src="@{'/public/javascripts/bootstrap.js'}" charset="${_response_encoding}"></script>
-    <script type="text/javascript" src="@{'/public/javascripts/scripts.js'}" charset="${_response_encoding}"></script> 
+    <script type="text/javascript" src="@{'/public/javascripts/scripts.js'}" charset="${_response_encoding}"></script>
+
     #{get 'moreScripts' /}
     </body>
 </html>
