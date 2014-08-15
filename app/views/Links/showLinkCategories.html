@@ -1,4 +1,5 @@
-#{extends 'main.html' /}
+#{extends 'SystemSettings/base.html' /}
+#{set showLinkCategories : 'class=active' /}
 
 #{set 'moreStyles'}
 <style type="text/css">
@@ -6,7 +7,6 @@
 </style>
 #{/set}
 
-<div class="container">
 	<div class=" box-div">
 		<h2>链接类别</h2>
 		<table class="table">
@@ -23,7 +23,7 @@
 					<td>${linkCategory_index}</td>
 					<td>${linkCategory.name}</td>
 					<td><a href="@{LinkCategories.sequenceUp(linkCategory.id)}"
-						style="color: #08c;">前移</a>/ <a
+						style="color: #08c;">前移</a>/<a
 						href="@{LinkCategories.sequenceDown(linkCategory.id)}"
 						style="color: #08c;">后移</a></td>
 					<td>#{if linkCategory.isShow()} <a
@@ -60,6 +60,6 @@
 		</table>
 	
 	</div>
-</div>
+
 
 
