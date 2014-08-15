@@ -28,6 +28,7 @@ ul>li a{
 	color:#756059;	
 }
 
+
 /*导航条*/
 .row{
 	margin-left: auto;
@@ -263,6 +264,8 @@ ul>li a{
 	margin-bottom: 40px;
 
 }
+
+
 
 @media screen and (min-width: 641px){
 		.show .nav>li>a,.show .navbar-brand{

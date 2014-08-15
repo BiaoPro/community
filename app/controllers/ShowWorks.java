@@ -1,5 +1,13 @@
 package controllers;
 
-public class ShowWorks {
+import play.*;
+import play.mvc.*;
+import java.util.*;
+import models.*;
 
+public class ShowWorks extends Controller{
+	// 展示租房首页
+  	public static void Works(){
+		render();
+	}
 }

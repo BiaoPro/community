@@ -2,6 +2,23 @@
 		clear: both;
 		margin-bottom: 20px;
 	}
+	.main-container .panel-body{
+		padding: 15px 15px 0px 15px;
+	}
+	.main-container a.active{
+		background: #EC9508;
+		color: #fff;
+	}
+	dt{
+		float: left;
+	}
+	dt,dd a{
+		display: inline-block;
+		padding: 5px 8px;
+	}
+	dd{
+		margin-bottom: 10px;
+	}
 	.aside li>a{
 			display: inline;
 			color: #333;
@@ -103,6 +120,72 @@
 	.sub{
 		border-bottom: 1px solid #ebe8e4 ;
 	}
+	/*招工和租房用到的下拉框样式*/
+	.main-container a.active{
+		background: #EC9508;
+		color: #fff;
+	}
+
+	.moreitem-btn,.moreitem-btn a,.moreitem-box{
+		display: inline-block;
+	}
+	.moreitem-btn a{
+		padding:5px 20px 5px 5px;
+		border: 1px solid #ccc;
+		background: url(../images/dropdown.png) no-repeat right;
+		margin-right: 1.5em;
+	}
+	.moreitem-btn a:hover{
+		text-decoration: none;
+	}
+	.moreitem-box{
+		position: relative;
+		margin-right: 10px;
+	}
+	.moreitem{
+		background: #fff;
+		border: 1px solid #ccc;
+		position: absolute;
+		top: 31px;
+		padding: 0 0 5px;
+		width: 103px;
+		display: none;
+		z-index: 40;
+	}
+
+	.moreitem li{
+		padding-left: .5em;
+	}
+	.moreitem li a:hover{
+		text-decoration: none;
+	}
+	.moreitem li:hover{
+		background: #faebcc;
+	}
+	/*各分页面base.html用到的侧栏样式*/
+	.nav-side{
+		padding: 5%;
+		width: 100%;
+	}
+
+	.nav-side li:before{
+		content: "";
+	}
+
+	.nav-side li{
+		padding: 10px;
+		border-top: 1px solid #ebe8e4;
+		margin: 0;
+	}
+	.nav-side li:first-child{
+		border-top: none;
+	}
+
+	.nav-side li>a{
+		font:300 16px/18px 'Avenir LT W01 45 Book', Arial, Helvetica, sans-serif;
+		display: inline-block;
+	}
+
 
 	@media screen and (max-width : 480px){
 		.aside form>input{
