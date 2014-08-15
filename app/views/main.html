@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>#{get 'title' /}</title>
+        <title>${session['indexName']}</title>
         <meta charset="${_response_encoding}"> 
         <meta name="renderer" content="webkit">
         <meta name="viewport" content="width=device-width, initial-scale=1.0 ,user-scalable=no">
@@ -113,10 +113,13 @@
                 </ul>
             </div>
             <div class="basic-info  col-xs-12">
-                <p>Address:South China Agriculture University ,wushan road</p>
-                <p>Copyright:fatwo</p>
+                <p>版权所有：${session.copyright}  <br /> 地址：${session.address} <br>
+				电话：${ session.telephone }&nbsp 邮箱：${ session.mailbox }</p>
             </div>
-          </div>
+			<div>
+				
+			</div>
+		</div>
 
             <!-- Button trigger modal -->       
       

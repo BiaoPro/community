@@ -19,8 +19,8 @@ import play.libs.Codec;
  *
  */
 @Entity
-@Table(name = "SystemParameter")
-public class SystemParameter  extends GenericModel{
+@Table(name = "Setting")
+public class SystemSetting  extends GenericModel{
 	
 	@Id
 	public String id;
@@ -42,7 +42,7 @@ public class SystemParameter  extends GenericModel{
 	
 	
 	
-	public SystemParameter() {
+	public SystemSetting() {
 	  
 		this.id = Codec.UUID();
 		this.indexName="新广州人社区服务";
@@ -58,18 +58,20 @@ public class SystemParameter  extends GenericModel{
 	 * 判断特定参数是否存在
 	 */
 	public  boolean isParaExist(String ParaName){
-		return SystemParameter.count("? !=null",ParaName)>0;
+		return SystemSetting.count("? !=null",ParaName)>0;
 	}
 	
 	
 	/**
      * 获取系统参数
      */
-	public static SystemParameter getSystemParameter(){
-		if(SystemParameter.count()>0) {
-			return (SystemParameter) SystemParameter.findAll().get(0);
+	public static SystemSetting getSetting(){
+		if(SystemSetting.count()>0) {
+			return (SystemSetting) SystemSetting.findAll().get(0);
 		} else {
-			return null;
+		  SystemSetting sp = new SystemSetting();
+		  sp.save();
+		  return sp;
 		}
 	}
 	
