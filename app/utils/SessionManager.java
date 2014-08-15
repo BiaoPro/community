@@ -1,6 +1,6 @@
 package utils;
 
-import models.SystemParameter;
+import models.SystemSetting;
 import models.User;
 import play.mvc.Scope.Session;
 
@@ -35,7 +35,7 @@ public class SessionManager {
 	}
 	
 	public static void setHeader(Session session) {
-		SystemParameter sp=SystemParameter.getSystemParameter();
+		SystemSetting sp=SystemSetting.getSetting();
 		session.put("indexName",sp.indexName);
 	}
 	
@@ -44,7 +44,7 @@ public class SessionManager {
 	 * @return
 	 */
 	public static void setFooter(Session session) {
-		SystemParameter sp=SystemParameter.getSystemParameter();
+		SystemSetting sp=SystemSetting.getSetting();
 		session.put("indexName",sp.indexName);
 		session.put("copyright",sp.copyright);
 		session.put("address",sp.address);
