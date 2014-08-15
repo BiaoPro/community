@@ -24,42 +24,7 @@ dt{
 		top:-1px;
 	}
 
-	.main-container a.active{
-		background: #EC9508;
-		color: #fff;
-	}
 
-	.moreitem-btn,.moreitem-btn a,.moreitem-box{
-		display: inline-block;
-	}
-	.moreitem-btn a{
-		padding:5px 20px 5px 5px;
-		border: 1px solid #ccc;
-		background: url(../public/images/dropdown.png) no-repeat right;
-		margin-right: 1.5em;
-	}
-	.moreitem-btn a:hover{
-		text-decoration: none;
-	}
-	.moreitem-box{
-		position: relative;
-	}
-	.moreitem{
-		background: #fff;
-		border: 1px solid #ccc;
-		position: absolute;
-		top: 31px;
-		padding: 0 0 5px;
-		width: 103px;
-		display: none;
-	}
-
-	.moreitem li{
-		padding-left: .5em;
-	}
-	.moreitem li:hover{
-		background: #faebcc;
-	}
 	.choose-fliter a{
 		padding-left: .5em;
 		text-decoration: none;
@@ -164,14 +129,14 @@ dt{
 			   					<div class="moreitem-btn"><a >楼层</a>
 			   					</div>
 			   					<ul class="moreitem" >
-			   						<li><a href="">1楼</a></li>
-			   						<li><a href="">2楼</a></li>
-			   						<li><a href="">3楼</a></li>
-			   						<li><a href="">4楼</a></li>
-			   						<li><a href="">5楼</a></li>
-			   						<li><a href="">6楼</a></li>
-			   						<li><a href="">7楼</a></li>
-			   						<li><a href="">7楼以上</a></li>
+			   						<li><a>1楼</a></li>
+			   						<li><a>2楼</a></li>
+			   						<li><a>3楼</a></li>
+			   						<li><a>4楼</a></li>
+			   						<li><a>5楼</a></li>
+			   						<li><a>6楼</a></li>
+			   						<li><a>7楼</a></li>
+			   						<li><a >7楼以上</a></li>
 			   					</ul>
 		   					</div>
 		   					<div class="moreitem-box">
@@ -319,41 +284,3 @@ dt{
 				     <li><a href="#">&raquo;</a></li>
 				</ul>			
 		</div>
-		#{set "moreScripts"}
-			<script type="text/javascript">
-				var oInput = document.querySelectorAll('.panel-body input');
-				var choice = document.querySelectorAll('.chose-type');
-				var price =  document.querySelectorAll('#price a');
-				var i ;
-				for(i=0;i<oInput.length;i++){
-					oInput[i].onkeyup = function(){
-						this.value = this.value.replace(/[^\d]/g,"");
-					}
-				}
-				for(i=1;i<price.length;i++){
-					price[i].index = i;
-					price[i].onclick = function(){
-						var link = this.innerHTML.split("-");
-							for(var n =0;n<2;n++){
-								oInput[n].value = "";
-								if(this.index ==1) oInput[1].value=parseInt(link[0]);
-								else{
-									if(link[n]) oInput[n].value = parseInt(link[n]);
-								}
-							}
-						}
-					}
-
-					var moreitem = document.querySelectorAll('.moreitem-box');
-					for(i=0;i<moreitem.length;i++){
-
-						moreitem[i].onmouseover = function(){
-							this.querySelector('ul.moreitem').style.display = "block";
-						}
-						moreitem[i].onmouseout = function(){
-							this.querySelector('ul.moreitem').style.display = "";
-						}
-					}
-
-			</script>
-		#{/set}

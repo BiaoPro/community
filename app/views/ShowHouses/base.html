@@ -37,7 +37,47 @@
 	.price{
 		color:#f60;
 	}
+	.main-container a.active{
+		background: #EC9508;
+		color: #fff;
+	}
 
+	.moreitem-btn,.moreitem-btn a,.moreitem-box{
+		display: inline-block;
+	}
+	.moreitem-btn a{
+		padding:5px 20px 5px 5px;
+		border: 1px solid #ccc;
+		background: url(../public/images/dropdown.png) no-repeat right;
+		margin-right: 1.5em;
+	}
+	.moreitem-btn a:hover{
+		text-decoration: none;
+	}
+	.moreitem-box{
+		position: relative;
+		margin-right: 10px;
+	}
+	.moreitem{
+		background: #fff;
+		border: 1px solid #ccc;
+		position: absolute;
+		top: 31px;
+		padding: 0 0 5px;
+		width: 103px;
+		display: none;
+		z-index: 40;
+	}
+
+	.moreitem li{
+		padding-left: .5em;
+	}
+	.moreitem li:hover{
+		background: #faebcc;
+	}
+	ul.sub li{
+		display: inline-block;
+	}
 </style>
  #{/set}
 
@@ -52,8 +92,8 @@
 		  	<div class="col-md-4 col-xs-12">
 		  		<aside class="aside">
 		  			<ul class="nav-side">
-		  				<li><a href="">我要租房</a></li>
-		  				<li><a href="">我要出租</a></li>
+		  				<li><a href="@{ShowHouses.showHousesInfo}">我要租房</a></li>
+		  				<li><a href="@{ShowHouses.rentHouses}">我要出租</a></li>
 		  			</ul>
 		  			<form  role="form">
 						<input type="text" class="form-control" >
@@ -80,5 +120,51 @@
 		  	</div>
 		  </section>
 		</div>
-
 	</div>
+		#{set "moreScripts"}
+			<script type="text/javascript">
+				var oInput = document.querySelectorAll('.panel-body input');
+				var choice = document.querySelectorAll('.chose-type');
+				var price =  document.querySelectorAll('#price a');
+				var i ;
+				for(i=0;i<oInput.length;i++){
+					oInput[i].onkeyup = function(){
+						this.value = this.value.replace(/[^\d]/g,"");
+					}
+				}
+				for(i=1;i<price.length;i++){
+					price[i].index = i;
+					price[i].onclick = function(){
+						var link = this.innerHTML.split("-");
+							for(var n =0;n<2;n++){
+								oInput[n].value = "";
+								if(this.index ==1) oInput[1].value=parseInt(link[0]);
+								else{
+									if(link[n]) oInput[n].value = parseInt(link[n]);
+								}
+							}
+						}
+					}
+
+					var moreitem = document.querySelectorAll('.moreitem-box');
+					for(i=0;i<moreitem.length;i++){
+
+						moreitem[i].onmouseover = function(){
+							this.querySelector('ul.moreitem').style.display = "block";
+							var moreitemLink = this.querySelectorAll('.moreitem a');
+							var moreitemShow = this.querySelector('.moreitem-btn a')
+							for(var n=0;n<moreitemLink.length;n++){
+								moreitemLink[n].onclick = function(){
+									moreitemShow.innerHTML = this.innerHTML;
+									this.parentNode.parentNode.style.display = "";
+								}
+							}
+						}
+						moreitem[i].onmouseout = function(){
+							this.querySelector('ul.moreitem').style.display = "";
+						}
+					}
+
+			</script>
+		#{/set}
+		#{get "moreSubpageScripts"/}
