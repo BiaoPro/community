@@ -10,4 +10,11 @@ public class ShowWorks extends Controller{
   	public static void Works(){
 		render();
 	}
+	
+	public static void showWorksInfo(){
+		render();
+	}
+	public static void recruit(){
+		render();
+	}
 }
