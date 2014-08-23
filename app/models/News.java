@@ -8,6 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import play.db.jpa.GenericModel;
+import play.libs.Codec;
 
 /*
  * @author:john
@@ -16,8 +17,8 @@ import play.db.jpa.GenericModel;
 @Table(name = "news")
 public class News extends GenericModel{
 	@Id
-	@Column(name="news_id")
-    public String newsId;
+	@Column(name="id")
+    public String id;
 	
 	@Column(name="news_class_id")
 	public int newsClassId;
@@ -36,5 +37,9 @@ public class News extends GenericModel{
 	
 	@Column(name="news_audit")
 	public int newsAudit;
+	
+	public void News(){
+	  this.id = Codec.UUID();
+	}
 	
 }
