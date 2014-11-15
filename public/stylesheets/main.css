@@ -2,7 +2,7 @@
 body{
 	margin: 0;
 	background:#fff;
-	font-family:Helvetica,Tahoma,Arial,"冬青黑体","Microsoft YaHei","微软雅黑",SimSun,"宋体",sans-serif;
+	font-family:Helvetica,Tahoma,Arial,"鍐潚榛戜綋","Microsoft YaHei","寰蒋闆呴粦",SimSun,"瀹嬩綋",sans-serif;
 	overflow-X:hidden; 
 }
 html,body{
@@ -29,7 +29,7 @@ ul>li a{
 }
 
 
-/*导航条*/
+/*瀵艰埅鏉�/
 .row{
 	margin-left: auto;
 	margin-right:auto;
@@ -192,6 +192,12 @@ ul>li a{
 	margin:auto;
 	padding:auto;	
 }
+
+ol{list-style:none;}
+
+ol li{padding:10px;}
+
+div {display: block;}
 
 
 

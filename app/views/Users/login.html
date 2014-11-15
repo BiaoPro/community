@@ -1,0 +1,28 @@
+#{extends 'main.html' /}
+#{set title:'application' /}
+
+#{set 'moStyles'}
+<script></script>
+<style></style>
+#{/set}
+
+  <div class="container" style="width:400px;margin-top:20px;">
+  	<div class="box-div text-center">
+    <form action="@{Users.verificate}" method="post">
+    		<h3>login page</h3>
+          <ol class="well">
+            <li><strong>账号:</strong>
+              <input class="btn btn-default" type="text" name="account"  maxLength="10" required="required">
+            </li>
+            <li><strong>密码:</strong>
+              <input class="btn btn-default" type="password" name="password" required="required" maxLength="10">
+            </li>
+             <li>
+             <a href="@{Users.register}" class="btn btn-primary">注册</a>
+             <button class="btn btn-primary" type="submit">登陆</button>
+            </li>
+          </ol>
+        </form>
+   </div>
+</div>
+

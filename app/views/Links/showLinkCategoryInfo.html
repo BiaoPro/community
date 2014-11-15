@@ -43,11 +43,11 @@
 					<td>${link.getLinkCategory()?.name}</td>
 					<td><a href="@{Links.delLink(link.id,linkCategory.id)}" onclick="return confirm('删除链接：${link.name}?')" style="color:#08c;">删除</a></td>
 				</tr>
-				#{/list}
+			#{/list}
 
                 <form class="form-inline"  action="@{Links.saveLink}">
-				<tr>
-				    <td>${(link_index==null?'':link_index)+1}</td>
+					<tr>
+						<td>${(link_index==null?'':link_index)+1}</td>
 					<td>
 						<div class="form-group">
 	    				<label class="sr-only" for="link.name">名称：</label>
@@ -62,7 +62,7 @@
   				    </td>
  					<td><button type="submit" class="btn btn-success" href="#">添加</button></td>
  					<td><input type="hidden" name="link.categoryId" value='${linkCategory.id}'></td>
-				</tr>
+					</tr>
 				</form>
 
 			</tbody>
