@@ -1,1 +1,159 @@
-Works��html
+﻿#{extends 'ShowWorks/base.html' /}
+#{set title:'Works' /}
+#{set "moreSubpageStyles"}
+<style type="text/css">
+	dt{
+		padding-right: 20px;
+	}
+	.panel-body form{
+		display: inline-block;
+		width:200px;
+		margin-left:5px;		
+	}
+	.form-control{
+		display: inline-block;
+		width:70%;
+	}
+	.moreitem-box{
+		margin:0px 0px 10px 10px;
+	}
+	.table > tbody > tr > td,.table>tbody>tr>td a{
+		font-size: 12px;
+	}
+</style>
+#{/set}
+
+		<!-- 路径导航 -->
+	<ol class="breadcrumb">
+		<li><a href="#">首页</a></li>
+		<li class="active">社区招工</li>
+	</ol>
+
+		<div class="panel panel-default">
+		  <div class="panel-body">
+		   		<dl>
+		   			<dt>筛选条件</dt>
+		   			<dd>
+		   			<div class="moreitem-box">
+			   				<div class="moreitem-btn"><a >长/短期</a>
+			   				</div>
+				   			<ul class="moreitem" >
+				   				<li><a>不限</a></li>
+				   				<li><a>短期</a></li>
+				   				<li><a>长期</a></li>
+				   			</ul>
+			   			</div>
+						<div class="moreitem-box">
+			   				<div class="moreitem-btn"><a >薪资</a>
+			   				</div>
+				   			<ul class="moreitem" style="width:120px;">
+				   				<li><a>不限</a></li>
+				   				<li><a>1000-2000元</a></li>
+				   				<li><a>2000-3000元</a></li>
+				   				<li><a>3000-5000元</a></li>
+				   				<li><a>5000-8000元</a></li>
+				   				<li><a>8000元以上</a></li>
+				   			</ul>
+			   			</div>
+			   			<div class="moreitem-box">
+			   			<div class="moreitem-btn"><a >学历</a>
+			   				</div>
+				   			<ul class="moreitem" >
+				   				<li><a>不限</a></li>
+				   				<li><a>高中以下</a></li>
+				   				<li><a>高中</a></li>
+				   				<li><a>技校</a></li>
+				   				<li><a>中专</a></li>
+				   				<li><a>大专</a></li>
+				   				<li><a>本科</a></li>
+				   				<li><a >本科以上</a></li>
+				   			</ul>
+			   			</div>
+			   			<div class="moreitem-box" >
+			   			<div class="moreitem-btn"><a >发布时间</a>
+			   				</div>
+				   			<ul class="moreitem" >
+				   				<li><a>不限</a></li>
+				   				<li><a>一天以内</a></li>
+				   				<li><a>三天以内</a></li>
+				   				<li><a>五天以内</a></li>
+				   				<li><a>七天以内</a></li>
+				   				<li><a>十五天以内</a></li>
+				   				<li><a>一个月以内</a></li>
+				   			</ul>
+			   			</div>
+			   			<form  role="form">
+							<input type="text" class="form-control" >
+							<button type="submit" class="btn btn-default">搜索</button>
+					</form>
+			   		</dd>
+			   	</dl>
+			</div>
+		</div>
+		<div class="main-content">
+			<table class="table table-hover">
+				<tbody>
+					<tr>
+						<td><strong><a href="@{ShowWorks.showWorksInfo}">房产销售+五险一金+高薪</a></strong></td>
+						<td><a>长沙创飞凡地产</a></td>
+						<td>新星小区</td>
+						<td>今天</td>
+					</tr>
+					<tr>
+						<td><strong><a>创飞凡地产急聘房产经纪人</a></strong></td>
+						<td><a>长沙创飞凡地产</a></td>
+						<td>新星小区</td>
+						<td>今天</td>
+					</tr>
+					<tr>
+						<td><strong><a>普工学徒工</a></strong></td>
+						<td><a>长沙铝业门窗厂</a></td>
+						<td>新星小区</td>
+						<td>今天</td>
+					</tr>
+					<tr>
+						<td><strong><a>技师</a></strong></td>
+						<td><a>长沙保利休闲会所</a></td>
+						<td>新星小区</td>
+						<td>今天</td>
+					</tr>
+					<tr>
+						<td><strong><a>招学徒</a></strong></td>
+						<td><a>三码头嗦螺</a></td>
+						<td>新星小区</td>
+						<td>2个小时</td>
+					</tr>
+					<tr>
+						<td><strong><a>店长</a></strong></td>
+						<td><a>星辰眼镜</a></td>
+						<td>新星小区</td>
+						<td>3个小时</td>
+					</tr>
+					<tr>
+						<td><strong><a>收银员</a></strong></td>
+						<td><a>梦缘网络会所</a></td>
+						<td>新星小区</td>
+						<td>4个小时</td>
+					</tr>
+					<tr>
+						<td><strong><a>教务老师</a></strong></td>
+						<td><a>长沙大升教育咨询有限公司</a></td>
+						<td>新星小区</td>
+						<td>6个小时</td>
+					</tr>
+					<tr>
+						<td><strong><a>秩序维护员</a></strong></td>
+						<td><a>融科物业</a></td>
+						<td>新星小区</td>
+						<td>11个小时</td>
+					</tr>
+					<tr>
+						<td><strong><a>销售顾问</a></strong></td>
+						<td><a>南京超丰机械工程有限公司</a></td>
+						<td>新星小区</td>
+						<td>2014-05-12</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+

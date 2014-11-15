@@ -45,11 +45,11 @@ public class Users extends Controller {
 	 * @param password
 	 * @param type
 	 */
-	public static void verificate(String account, String password, int type) {
-		if (User.isExist(account, password,type)) {
+	public static void verificate(String account, String password) {
+		if (User.isExist(account, password)) {
 			// 用户
-			User user = User.find("account=? AND password=? AND type=?",
-					account, password, type).first();
+			User user = User.find("account=? AND password=? ",
+					account, password).first();
 			session.put("userId", user.id);
 			Application.index();
 		}
@@ -58,7 +58,7 @@ public class Users extends Controller {
 	/*
 	 * 跳转到注册页面
 	 */
-	public static void registrate() {
+	public static void register() {
 		render();
 	}
 

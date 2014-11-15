@@ -22,24 +22,26 @@ public class User extends GenericModel {
     public String id;
    
     @Column(name = "type")
-    public int type;
+    public int type; //用户类型：3- 管理员、2-社工、1-普通用户
 
     @Column(name = "account")
-    public String account;
+    public String account;//账号
     
     @Password
     @Column(name = "password")
-    public String password;
+    public String password;//密码
     
     //用户状态，1为正常，2为冻结
     public int status;
     
     
     public String rname;// 真实姓名
-	public int sex;
-	public int age;
-	public String introduce;
-	public String photo;
+    public String prc;// 身份证号
+    @Column(name = "sex",columnDefinition="int default 1")
+	public int sex;//性别 1-男 2-女
+	public int age;//年龄
+	public String introduce;//简介
+	public String photo;//照片路径
     
     
     @OneToMany
@@ -48,9 +50,22 @@ public class User extends GenericModel {
     List<Work> work;
     @OneToMany
     List<News> news;
+    
     public User(){
       this.id = Codec.UUID();
       this.status=1;
+    }
+    /*
+     * 用户是否存在
+     * @param account
+     * @param password
+     * @return
+     */
+    public static boolean isExist(String account, String password) {
+      if(User.count("account=? AND password=?", account,password) > 0) {
+          return true;
+      }
+      return false;
     }
 	/*
 	 * 用户是否存在
