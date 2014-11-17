@@ -139,6 +139,7 @@ public class Uploader {
     }
 
     public String getUrl() {
+        if(this.url.charAt(1)=='/') this.url=this.url.substring(1);
         return this.url;
     }
 

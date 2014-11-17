@@ -3,8 +3,14 @@ package controllers;
 import play.*;
 
 import play.mvc.*;
+import utils.FileUtils;
 import utils.SessionManager;
+import utils.StringUtils;
+import utils.Uploader;
+import utils.enumvalue.Config;
+import utils.enumvalue.FileUploadState;
 
+import java.io.File;
 import java.util.*;
 
 import models.*;
@@ -62,16 +68,46 @@ public class Users extends Controller {
 		render();
 	}
 
+	
 	/*
-	 * 保存注册的用户
-	 * 
-	 * @param user
-	 */
-	public static void saveUser(User user) {
-		user.save();
-		session.put("userId", user.id);
-		Application.index();
-	}
+     * 保存注册的用户
+     * 
+     * @param user
+     */
+    public static void saveUser(User user,File photo) {
+      
+      System.out.println(photo.getAbsolutePath());
+      if (photo != null) {
+        
+        if (!StringUtils.isEmpty(user.photo)) {
+            FileUtils.deleteFile(user.getPhoto());
+        }
+        
+        String baseUrl = Config.DEFAULT_BASE_URL;
+        String savePath = Config.USER_PHOTO_PATH;
+        Uploader uploader = new Uploader(baseUrl, savePath);
+        //System.out.println("savePath:"+savePath);
+        uploader.upload(photo);
+
+        if (uploader.getState() == FileUploadState.SUCCESS) {
+            // 文件上传成功
+          user.photo = uploader.getUrl();
+
+        } else {
+            flash.error("上传失败");
+            index();
+        }
+      } else{
+        if(user.photo==null||"".equals(user.photo))
+          user.photo = "/public/images/no_pic.jpg";
+        
+      } 
+      
+      
+        user.save();
+        session.put("userId", user.id);
+        register();
+    }
 	
 	/*
 	 * 修改用户信息

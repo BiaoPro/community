@@ -108,6 +108,13 @@ public class User extends GenericModel {
 	public boolean isFreeze(){
 		return this.status==2;
 	}
+  public String getPhoto() {
+    
+    if (this.photo != null && !"".equals(this.photo)) {
+      return this.photo;
+    }
+    return "";
+  }
 
 
 }
