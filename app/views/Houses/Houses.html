@@ -1,0 +1,161 @@
+#{extends 'ShowHouses/base.html' /}
+#{set title:'House' /}
+
+#{set 'moreSubpageStyles'}
+<style type="text/css">
+	.choose-fliter li{
+		display: inline-block;
+		padding: 5px 8px 0 8px;
+	}
+	dd label input{		
+		width: 40px;
+		padding-right: 5px;
+	}
+
+	.panel .btn{
+		margin-left: 10px;
+		position: relative;
+		top:-1px;
+	}
+
+
+	.choose-fliter a{
+		padding-left: .5em;
+		text-decoration: none;
+	}
+
+	.choose-fliter{
+		margin-bottom:0;
+	}
+	.panel-footer{
+		border-top: none;
+		padding-bottom: 0;
+	}
+	.panel-footer ul,.panel-footer dd{
+		margin-bottom: 0;
+	}
+	.house-info a{
+		font-size: 1.3em;
+	}
+	.house-info small{
+		color:#756059;
+		padding-right: 1em;
+	}
+	.price{
+		font-size: 1.5em;
+	}
+</style>
+#{/set}
+		<!-- 路径导航 -->
+		<ol class="breadcrumb">
+			<li><a href="#">首页</a></li>
+			<li class="active">社区租房</li>
+		</ol>
+		<div class="panel panel-default">
+		  <div class="panel-body">
+		   		<dl>
+		   			<dt>租金</dt>
+		   				<dd  id = "price" class="chose-type">
+		   					<a class="active">不限</a>
+		   					<a >800元以下</a>
+		   					<a >800-1500元</a>
+		   					<a >1500-2000元</a>
+		   					<a >2000-3000元</a>
+		   					<a >3000元-5000元</a>
+		   					<a >5000以上</a>
+		   					<span>
+		   						<label>
+		   							<input type="text" name="lowPrice"/>
+		   						</label>
+		   						-
+		   						<label>
+		   							<input type="text" name="higPrice">
+		   						</label>
+								元
+								<button class="btn btn-default  btn-sm">筛选</button>
+		   					</span>
+		   				</dd>
+		   			<dt>房型</dt>
+		   				<dd id="room" class="chose-type">
+		   					<a href="" class="active">不限</a>
+		   					
+		   					<span>
+		   						<label>
+		   							<input type="text"/>
+		   						</label>
+		   						室
+		   						<label>
+		   							<input type="text">
+		   						</label>
+								厅
+								<label>
+		   							<input type="text">
+		   						</label>
+		   						卫
+		   						<button class="btn btn-default btn-sm">筛选</button>
+		   					</span>
+		   				</dd>
+		   			
+		   			
+		   			<dt>楼层</dt>
+		   			<dd id="room" class="chose-type">
+		   				<a href="" class="active">不限</a>
+			   			<select name="currentFloor">
+			   				<option value="1楼" >1楼</option>
+			   				<option value="2楼" >2楼</option>
+			   				<option value="3楼" >3楼</option>
+			   				<option value="4楼" >4楼</option>
+			   				<option value="5楼" >5楼</option>
+			   				<option value="6楼" >6楼</option>
+			   				<option value="7楼以上" >7楼以上</option>
+			   			</select>
+			   					
+		   				</dd>
+		   		</dl>
+		  </div>
+		  <div class="panel-footer">
+			  <dl class="choose-fliter">
+			  	<dt>筛选条件</dt>
+			  		<dd>
+			  			<ul>
+			  				<li class="alert alert-warning">1500-2000元<a>&times;</a></li>
+			  				<li class="alert alert-warning">1楼<a>&times;</a></li>
+			  			</ul>
+			  		</dd>
+			  	</dl>
+		  </div>
+		</div>
+<!--****************************显示信息*****************************************-->
+#{list items:houseList ,as :'house'}
+	<!-- <h1>${house.phone}</h1> -->
+	
+		<div class="house-show main-content">
+			<table class="table table-hover">
+				<tr>
+					<td class="col-xs-4"><a href="#" class="thumbnail"><img src="../public/images/grace.jpg" data-src="holder.js/100%x180" alt="house"></a></td>
+					<td class="house-info">
+						<a href="@{ShowHouses.showHousesInfo}">${house.community} 
+							${house.address}</a>
+						<br>
+						<p>
+						<small>出租方式：${house.way}</small>
+						<small>户型：${house.bedRoom}室${house.livingRoom}厅${house.bathRoom}卫</small><br>
+						<small>楼层：${house.currentFloor}楼，共${house.countFloor}层</small><br>
+						<small>装修情况：${house.decorationSituation}</small><br>
+						<small>住宅类型：${house.classSituation}</small><br>
+						<small>联系人：${house.contacts}</small>
+						<small>联系方式：${house.phone}</small>
+						<p>
+					</td>
+					<td><p><em class="price">${house.price}</em>元</p></td>
+				</tr>
+				
+#{/list}				
+				
+			</table>
+				<ul class="pagination pull-right">
+				     <li><a href="#">&laquo;</a></li>
+				     <!-- <li class="active"><span>1 <span class="sr-only">(current)</span></span></li> -->
+				     <li><a href="/Houses/houses?id=2">2</a></li>
+				</ul>			
+		</div>
