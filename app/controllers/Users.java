@@ -128,14 +128,14 @@ public class Users extends Controller {
 	 * 显示所有用户（管理员用）
 	 */
 	public static void showUsers() {
-		if(SessionManager.getLoginedUser(session) != null) {
+//		if(SessionManager.getLoginedUser(session) != null) {
 			User user = SessionManager.getLoginedUser(session);
-			if(user != null && user.isAdmin()) {
+//			if(user != null && user.isAdmin()) {
 				// 是管理员
 				List<User> userList = User.findAll();
 				render(userList,user);
-			}
-		}
+//			}
+//		}
 	}
 	
 	/*
