@@ -1,0 +1,56 @@
+	#{extends 'back_common.html'/}
+	<form id="form" role="form" action="@{BackNews.addNews}" method="post">
+			<div class="container">
+				<h3 class="text-info">新闻发布</h3>
+				<div class="form-group">
+					<label for="article.title">标题：</label>
+					<input type="text" style="width:25%" class="form-control" name="title" />
+				</div>
+				<div class="form-group">
+					<label for="content">内容：</label>
+					<textarea  id="editor" style="width:70%;height:100%;" class="form-control" name="content" value="无内容"></textarea>
+				</div>
+				<div class="btn-group dropup">
+		        <button style="margin-bottom:10px;min-width:137px;"type="button" class="btn btn-primary">栏目 选择</button>
+		        <button style="height:34px;" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+		          <span class="caret"></span>
+		          <span class="sr-only">Toggle Dropdown</span>
+		        </button>
+		        <ul class="dropdown-menu dropdown-menu-right" role="menu">
+		          <li class="divider"></li>
+		          #{list items:newsClasslist, as:'item'}
+		          <li><a class="newsClassSelect" data="${item.newClassId}" href="#">${item.newClassType}</a></li>
+		          #{/list}
+		        </ul>
+		        <input id="selectData" type="hidden" name="classId" value="${newsClasslist[0].newClassId}"/>
+		       	<label id="selectShow" style="padding:6px 6px" >栏目：<strong class="text-info">${newsClasslist[0].newClassType}</strong></label>
+      			</div>
+    		<input id="submitbutton" type="submit" class="btn btn-info btn-block form-control" style="width:12%" value="发布"/>
+    			
+			</div>
+		</form>
+		<div id="myAlertContainer" class="container">
+			<input id="status" type="hidden" value="${status}" />
+		</div>
+		<script id="myAlertHtml" type="text/html">
+		
+		<div id="myAlert" style="margin-top:20px; width:70%" class="alert alert-danger alert-dismissible fade in" role="alert">
+  			<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+  		<strong>对不起！</strong>你输入的信息不能为空。</div>
+
+		</script>
+		#{set 'moreScripts' }
+		<script charset="utf-8" src="@{'/public/javascripts/sea.js'}"></script>
+		<script>
+			seajs.config({
+				base:"../public/javascripts/module/",
+				alias:{
+					"jquery":"jquery/jquery-1.7.1.min.js",
+					"kindeditor":"kindeditor/kindeditor-all-min.js",
+					"bootstrap":"bootstrap/main.js"
+				}
+			});
+			seajs.use("../public/javascripts/static/back_news/src/main");
+		</script>
+		#{/set}
+		
