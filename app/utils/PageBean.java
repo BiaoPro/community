@@ -28,6 +28,12 @@ public class PageBean {
      */
     private long total;
     
+    /*
+     * 当前页附近多少页，例如当前为第10页，nearCount为5，那返回： 8，9，10，11，12
+     */
+    private int nearCount;
+    
+    
     /**
      * 默认获取当前页附近的10页
      * @param curPage 当前页
@@ -76,6 +82,7 @@ public class PageBean {
     	if(curPage > maxPage){
     		curPage = maxPage;
     	}
+    	this.nearCount=nearCount; 
         this.curPage = curPage;
         this.maxPage = maxPage;
         this.perPage = perPage;
@@ -113,7 +120,10 @@ public class PageBean {
 	public void setTotal(long total) {
 		this.total = total;
 	}
-
+	
+	/*
+	 * @description 得到最大的页数
+	 */
 	public static int getMaxPage(long total, int perPage) {
         float tmpF = (float) total / perPage;
         int tmpI = (int) tmpF;
