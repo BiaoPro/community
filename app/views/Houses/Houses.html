@@ -126,6 +126,7 @@
 		  </div>
 		</div>
 <!--****************************显示信息*****************************************-->
+<h4>当前页为第${pageBean.curPage}页，总计${pageBean.total}条结果</h4>	
 #{list items:houseList ,as :'house'}
 	<!-- <h1>${house.phone}</h1> -->
 	
@@ -153,9 +154,13 @@
 #{/list}				
 				
 			</table>
+			
 				<ul class="pagination pull-right">
-				     <li><a href="#">&laquo;</a></li>
-				     <!-- <li class="active"><span>1 <span class="sr-only">(current)</span></span></li> -->
-				     <li><a href="/Houses/houses?id=2">2</a></li>
-				</ul>			
+					<li><a href="#">&laquo;</a></li>
+					%{ for(int i=1;i<=(pageBean.total+4)/pageBean.perPage;i++) {  }%
+    				 <li><a href="/Houses/houses?page=${i}">${i}</a></li>
+					%{ } }%
+					<li><a href="#">&raquo;</a></li>
+				</ul>
+
 		</div>

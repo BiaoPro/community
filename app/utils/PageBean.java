@@ -9,7 +9,7 @@ import java.util.List;
  *
  */
 public class PageBean {
-	public static final int PER_PAGE = 10;
+	public static final int PER_PAGE = 5;
 
 	/**
 	 * 当前页
