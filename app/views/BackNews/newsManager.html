@@ -1,6 +1,6 @@
 	#{extends 'back_common.html'/}
 		<div class="container">
-		<form class="form-inline">
+		<form action="@{BackNews.newsManager}" class="form-inline">
 			<select class="form-control">
 				<option value="0" selected="selected">批量操作</option>
 				<option value="0" >批量删除</option>
@@ -9,17 +9,17 @@
 			</select>
 				<input type="submit" class="btn btn-primary form-control bin-inline" value="应用"/>
 				
-			<select class="form-control">
-			<option selected="selected" value="0">全部日期</option>
+			<select name="date" class="form-control">
+			<option selected="selected" value="">全部日期</option>
 				#{list items:newsDateList,as:'item'}
-				<option value="${item}">${item}</option>
+				<option  value="${item}">${item}</option>
 				#{/list}
 			</select>
 			
-			<select class="form-control">
-				<option value="0">查看所有分类目录</option>
+			<select name="newClassType" class="form-control">
+				<option value="">查看所有分类目录</option>
 				#{list items:newsClasslist,as:'item'}
-				<option value="${item.newClassId}">${item.newClassType}</option>
+				<option  value="${item.newClassType}">${item.newClassType}</option>
 				#{/list}
 			</select>
 			
@@ -41,7 +41,7 @@
 			      </thead>
 			      
 			      <tbody>
-			      #{list items:newsList,as:'item'}
+			      #{list items:currentList,as:'item'}
 			        <tr class="oneRow">
 			          <td><input type="checkbox" /></td>
 			          <td>

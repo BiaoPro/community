@@ -62,12 +62,24 @@ public class BackNews extends Controller{
 		//获取文章存在的日期
 		List newsDateList = News.getNewsDateExist();
 		
+		
+		String newsTitle = params.get("newsTitle");
+		String newsCreateDate = params.get("date");
+		String newClassType = params.get("type");
+		PageBean pageBean;
+		List currentList;
 		//获取首页文章
-		PageBeanFactory pageBeanFact = new PageBeanFactory(curpage, 7);
-		List<NewsBean> newsList = News.getAllNews(pageBeanFact,"2014","","");
+		if(newsTitle==null&&newsCreateDate==null&&newClassType==null){
+			pageBean = PageBean.getInstance(curpage, News.count());
+			currentList= NewsBean.getIndexCurrentList(curpage,7);
+		}
+		else{
+			currentList= NewsBean.getIndexCurrentList(curpage,7);
+			pageBean = PageBean.getInstance(curpage, News.count());
+		}
+			
 		//获取最大页数
-		int maxpage = pageBeanFact.getMaxPage();
-		System.out.print(maxpage);
+		int maxpage =pageBean.getMaxPage();
 		int[] maxPageArgs=new int[maxpage];
 		for(int i=0;i<maxpage;i++){
 			maxPageArgs[i]=i+1;
@@ -82,9 +94,7 @@ public class BackNews extends Controller{
 			nextPage=maxpage;
 		}
 		//渲染界面
-		render(newsClasslist,newsDateList,newsList,maxPageArgs,fontPage,nextPage);
-		
-		
+		render(newsClasslist,newsDateList,currentList,maxPageArgs,fontPage,nextPage);
 	}
 	
 	

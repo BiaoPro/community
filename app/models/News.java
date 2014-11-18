@@ -78,35 +78,53 @@ public class News extends GenericModel{
 	
 	/**
 	 * @description 获取所有文章列表
-	 * @param pageBean 一个pageBean对象
+	 * @param date 日期
+	 * @param newTitle 标题
+	 * @param newClassType 新闻栏目
 	 * @return list
 	 */
-	public static List getAllNews(PageBeanFactory pageBeanFactory,String date,String newsTitle,String newClassType){
+	public static List getAllNews(String date,String newsTitle,String newClassType,PageBean pageBean){
+		String hql="select a.newsTitle,a.newsCreateDate,b.newClassType "+
+		"from News a,NewsClass b where a.newsClassId = b.newClassId and a.newsTitle like '%"
+		+newsTitle+"%' and a.newsCreateDate like '"+date+"%' and b.newClassType like '"+newClassType+"' order by a.newsCreateDate desc";
+		
+		int curpage=pageBean.getCurPage();
+		Query query = JPA.em().createQuery(hql);
+		int startPos=curpage!=0?pageBean.getPerPage()*(curpage-1):0;
+		query.setFirstResult(startPos);
+		query.setMaxResults(pageBean.getPerPage());
+		List list =query.getResultList();
+		return list;
+	}
+	
+	/*
+	 * @description 获取指定文章个数
+	 */
+	public static int getTotal(String date,String newsTitle,String newClassType){
 		String hql="select a.newsTitle,a.newsCreateDate,b.newClassType "+
 		"from News a,NewsClass b where a.newsClassId = b.newClassId and a.newsTitle like '%"
 		+newsTitle+"%' and a.newsCreateDate like '"+date+"%' and b.newClassType like '%"+newClassType+"%' order by a.newsCreateDate desc";
 		Query query = JPA.em().createQuery(hql);
-		query.setFirstResult(pageBeanFactory.getStartPos());
-		query.setMaxResults(pageBeanFactory.getPerPage());
-		List list =query.getResultList();
-		pageBeanFactory.setTotal(list.size());
-		System.out.println();
-		System.out.println("--totalList:"+list.size());
-		System.out.println("--maxpage:"+pageBeanFactory.getMaxPage());
-		List resList=new ArrayList();
-		for(int i=0;i<list.size();i++)
-        {
-			NewsBean newsBean = new NewsBean();
-            Object[] o = (Object[])list.get(i);  //转型为数组
-            newsBean.setNewsTitle((String)o[0]);  //和select中顺序的类型相对应,可以是类
-            newsBean.setNewsCreateDate((String)o[1]);
-            newsBean.setNewClassType((String)o[2]);
-            resList.add(newsBean);
-        }
-		return resList;
+		List list = query.getResultList();
+		return list.size();
 	}
 	
-	
+	/*
+	 * 
+	 */
+	public static List getIndexNews(PageBean pageBean){
+		String fontPageHql = "select a.newsTitle,a.newsCreateDate,b.newClassType "+
+		"from News a,NewsClass b where a.newsClassId = b.newClassId order by a.newsCreateDate desc";
+		int curpage=pageBean.getCurPage();
+		Query query = JPA.em().createQuery(fontPageHql);
+		int startPos=curpage!=0?pageBean.getPerPage()*(curpage-1):0;
+		query.setFirstResult(startPos);
+		query.setMaxResults(pageBean.getPerPage());
+		List list =query.getResultList();
+		return list;
+		
+	}
+		
 }
 
 
