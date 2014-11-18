@@ -1,20 +1,14 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html>
+<!doctype html>
+<html lang="en">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>addHouse</title>
+	<meta charset="UTF-8">
+	<title>Document</title>
 </head>
 <body>
-<form action="@{Houses.saveHouse}" method="POST">
-		显示状态<input name="house.status" type="text">
-		审核状态<input name="house.audit" type="text">		
-		联系电话<input name="house.authorPhone" type="text">		
-		房子照片<input name="house.photoUrl" type="text">
-		房子地址<input name="house.address" type="text">
-		房子概况<textarea name="house.details"></textarea>
-		价格<input name="house.price" type="text">
-		房子详细信息<inpue name="house.message" type="testarea"></inpue>
-		<input type="submit">
-	</form>
+	<!--<h1>	${house.way}</h1>-->
+	<!-- #{list items:eqs ,as :'item'}
+	<h1>${item}</h1>
+	#{/list} -->
+	<h1>${house.photoUrl}</h1>
 </body>
 </html>
