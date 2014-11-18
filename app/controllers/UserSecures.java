@@ -43,16 +43,18 @@ public class UserSecures extends Controller {
 		if (StringUtils.isEmpty(code) || StringUtils.isEmpty(captchaCode)
 				|| !captchaCode.toLowerCase().equals(code)) {
 			// 验证码信息错误
+			flash.put("captchaCodeErrorMessage", "验证码不正确~");
 			flash.put("captchaCodeError", true);
 			flash.put("account", account);
-			redirect("/");
+			flash.put("password", password);
+			Users.login();
 			return;
 		}
 
 		User user = User.findByAccount(account);
 		if (user != null) {
-			String checkPwd = MD5Utils.getMD5Str(user.password);
-			if(checkPwd.equals(password)) {
+			//String checkPwd = MD5Utils.getMD5Str(user.password);
+			if(user.password.equals(password)) {
 				// 密码正确
 				UserInfo userInfo = UserInfo.getUserInfoByUserId(user.id);
 				userInfo.updateUserInfo(UserInfo.LOGIN);
@@ -62,20 +64,23 @@ public class UserSecures extends Controller {
 				session.put("userInfoId", userInfo.id);
 				session.put("userCategory", userInfo.userCategory);
 				session.put("userName", userInfo.name);
+				
+				Application.manager();
 			} else {
 				// 密码错误
 				session.clear();
-				flash.put("passwordError", true);
+				flash.put("passwordError", "密码不正确~");
 				flash.put("account", account);
 			}
 			
 		} else {
 			// 帐号错误
 			session.clear();
-			flash.put("accountError", true);
+			flash.put("accountError", "账号不存在~");
 			
 		}
-		Application.index();
+		Users.login();
+		
 
 	}
 

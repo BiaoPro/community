@@ -16,12 +16,14 @@ public class Application extends Controller {
         render();
     }
     
-    public static void test() {
-      
-      String str="hello";
-      render(str);
-  }
+    
+    public static void manager() {
+        SessionManager.setFooter(session);
 
+        Users.index();
+    }
+    
+   
 
 
 }

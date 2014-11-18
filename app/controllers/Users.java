@@ -2,6 +2,7 @@ package controllers;
 
 import play.*;
 
+import play.libs.Codec;
 import play.mvc.*;
 import utils.FileUtils;
 import utils.SessionManager;
@@ -32,7 +33,8 @@ public class Users extends Controller {
 	 * 跳转到登录页面
 	 */
 	public static void login() {
-		render();
+	    String randomId = Codec.UUID();// 登录时候附带的验证信息
+		render(randomId);
 	}
 	
 	/*
@@ -58,6 +60,8 @@ public class Users extends Controller {
 					account, password).first();
 			session.put("userId", user.id);
 			Application.index();
+		}else{
+		  register();
 		}
 	}
 	

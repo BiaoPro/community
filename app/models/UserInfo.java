@@ -57,7 +57,7 @@ public class UserInfo extends GenericModel {
 	public String email;// 邮箱
 
 	@Column(name = "user_category")
-	public int userCategory;// 用户类别0：普通用户，1：文章管理员，2：超级管理员
+	public int userCategory;// 用户类别1：普通用户，2：社工，3：管理员
 
 	@Column(name = "registration_time")
 	public long registrationTime;// 注册时间
@@ -83,6 +83,7 @@ public class UserInfo extends GenericModel {
 	@Column(name = "credit",columnDefinition="int default 0")
 	public int credit;
 
+	
 	public UserInfo(String userId, String number) {
 		// TODO 自动生成的构造函数存根
 		this.id = Codec.UUID();
@@ -92,7 +93,7 @@ public class UserInfo extends GenericModel {
 		this.userCategory = UserRoleEnum.TEACHER.getValue();
 		this.totalLoginTime = 0;
 		this.lastLoginTime = 0;
-		this.sex = Sex.MALE.getValue();
+		//this.sex = Sex.MALE.getValue();
 		this.credit = 0;
 	}
 
@@ -108,6 +109,18 @@ public class UserInfo extends GenericModel {
 		this.lastLoginTime = 0;
 		this.sex = Sex.MALE.getValue();
 	}
+	
+	   public UserInfo(String userId) {
+	        // TODO 自动生成的构造函数存根
+	        this.id = Codec.UUID();
+	        this.userId = userId;
+	        this.number = number;
+	        this.registrationTime = getSystemTime();
+	        this.userCategory = UserRoleEnum.TEACHER.getValue();
+	        this.totalLoginTime = 0;
+	        this.lastLoginTime = 0;
+	        this.sex = Sex.MALE.getValue();
+	    }
 
 	/**
 	 * 通过userId获得userInfo
@@ -116,8 +129,9 @@ public class UserInfo extends GenericModel {
 	 * @return
 	 */
 	public static UserInfo getUserInfoByUserId(String userId) {
-		return (UserInfo.find("userId=?", userId)).first();
-
+	    UserInfo vo = (UserInfo.find("userId=?", userId)).first();
+		if(vo==null) {vo = new UserInfo(userId);vo.save();}
+		return vo;
 	}
 
 	/**
@@ -130,7 +144,7 @@ public class UserInfo extends GenericModel {
 	}
 
 	/**
-	 * 判断用户是否为文章发布员
+	 * 判断用户是否为社工
 	 * 
 	 * @return
 	 */
