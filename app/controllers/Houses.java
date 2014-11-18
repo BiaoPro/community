@@ -19,52 +19,7 @@ public class Houses extends Controller {
     	render();
     }
     public static void showHousesInfo(){
-    	public static void saveResource(Resource resource, File file) {
-    		if(resource.outLink == 0){
-    			if (file != null) {
-    				if (!StringUtils.isEmpty(resource.url)) {
-    					FileUtils.deleteFile(resource.getFilepath());
-    					FileUtils.deleteFile(resource.getPDFTempFilePath());
-    					FileUtils.deleteDir(resource.getSWFTempFilePath());
-    				}
-    				String baseUrl = Config.DEFAULT_BASE_URL;
-    				String savePath = Config.CURRICULUM_RESOURCES_PATH;
-    				Uploader uploader = new Uploader(baseUrl, savePath);
-    				uploader.upload(file);
-
-    				if (uploader.getState() == FileUploadState.SUCCESS) {
-    					// 文件上传成功
-    					resource.url = uploader.getUrl();
-    					
-    					if(!FileUtils.isVedio(resource.url)) {
-    						DOC2SWFUtil dp = new DOC2SWFUtil(resource.getFilepath(),
-    								resource.getPDFTempFilePath(),
-    								resource.getSWFTempFilePath());
-    						dp.start();
-    					}
-
-    				} else {
-    					flash.error("上传失败");
-    					showCurriculumInfo(resource.curriculumId);
-    				}
-    			} else {
-    				flash.error("上传失败");
-    				showCurriculumInfo(resource.curriculumId);
-    			}
-    		}
-    		else {
-    			if (StringUtils.isEmpty(resource.name) ||StringUtils.isEmpty(resource.url) ||StringUtils.isEmpty(resource.type)) {
-    				flash.error("上传失败");
-    				showCurriculumInfo(resource.curriculumId);
-    				
-    			}
-    			if(StringUtils.isEmpty(resource.description)) {
-    				resource.description = null;
-    			}
-    		}
-    		resource.save();
-    		showCurriculumInfo(resource.curriculumId);
-    	}
+    	
     	render();
     }
     public static void houses(){
