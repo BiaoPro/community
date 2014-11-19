@@ -86,18 +86,20 @@
   <p class="bg-warning">如果您有账号，可点击<a>登录</a>再填写 ; 或者点击<a>注册</a></p>
 </div>
 <div class="main-content">
-	<form action="@{Houses.addHouse()}" method="post">
+
+	
+	<form action="@{Houses.addHouse()}" method="post" enctype="multipart/form-data">
 		<table class="table table-hover  table-condensed">
 			<tbody>
 				<tr>
 					<th><em>*</em><span>出租方式</span></th>
 					<td>
 						<label>
-						<input type="radio" name="way"  value="整租" checked >
+						<input type="radio" name="house.way"  value="整租" checked >
 						    整租
 						</label>
 						<label>
-						<input type="radio" name="way" id="" value="合租">
+						<input type="radio" name="house.way" id="" value="合租">
 						   合租
 						</label>
 						<span></span>
@@ -106,8 +108,8 @@
 				<tr>
 					<th><em>*</em><span>您的身份</span></th>
 					<td>
-						<input type="radio" name="indentity" value="个人" checked/>个人&nbsp&nbsp&nbsp
-						<input type="radio" name="indentity" value="经纪人" />经纪人
+						<input type="radio" name="house.indentity" value="个人" checked/>个人&nbsp&nbsp&nbsp
+						<input type="radio" name="house.indentity" value="经纪人" />经纪人
 						<span></span>
 					</td>
 				</tr>
@@ -115,20 +117,20 @@
 					<th><em>*</em><span>联系人</span></th>
 					<td>
 						<label class="sr-only" for="contact">联系人</label>
-	    				<input type="text" class="form-control" id="" name="contacts" value="庄祥鹏" />
+	    				<input type="text" class="form-control" id="" name="house.contacts" value="庄祥鹏" />
 					</td>
 				</tr>
 				<tr>
 					<th><em>*</em><span>联系电话</span></th>
 					<td>
 						<label class="sr-only" for="phone">联系电话</label>
-	    				<input type="text" class="form-control" name="phone" value="13560419054">
+	    				<input type="text" class="form-control" name="house.phone" value="13560419054">
 					</td>
 				</tr>
 				<tr>
 					<th><em>*</em><span>小区</span></th>
 					<td>
-	    				<input type="text" class="form-control" id="" name="community" value="华山小区">
+	    				<input type="text" class="form-control" id="" name="house.community" value="华山小区">
 	    				<span></span>
 					</td>
 				</tr>
@@ -136,26 +138,26 @@
 					<th><em>*</em><span>详细地址</span></th>
 					<td>
 						
-      						<input type="text" class="form-control" id="" name="address" value="22-305"/>
+      						<input type="text" class="form-control" id="" name="house.address" value="22-305"/>
 					</td>
 				</tr>
 				<tr>
 					<th><em>*</em><span>户型</span></th>
 					<td>
 		   				<label>
-		   					<input type="text" class="form-control" name="bedRoom" value="1"/>
+		   					<input type="text" class="form-control" name="house.bedRoom" value="1"/>
 		   				室
 		   				</label>		   				
 		   				<label>
-		   					<input type="text" class="form-control" name="livingRoom" value="1">
+		   					<input type="text" class="form-control" name="house.livingRoom" value="1">
 		   					厅
 		   				</label>						
 						<label>
-		   					<input type="text" class="form-control" name="bathRoom" value="1">
+		   					<input type="text" class="form-control" name="house.bathRoom" value="1">
 		   					卫	
 		   				</label>
 		   				<label>
-		   					<input type="text" class="form-control" name="square" value="30">
+		   					<input type="text" class="form-control" name="house.square" value="30">
 		   					平方	
 		   				</label>		   								
 	    				<span></span>
@@ -165,11 +167,11 @@
 					<th><em>*</em><span>楼层</span></th>
 					<td>
 		   				<label>
-		   					<input type="text" class="form-control" name="currentFloor" value="3"/>
+		   					<input type="text" class="form-control" name="house.currentFloor" value="3"/>
 		   				层/共
 		   				</label>		   				
 		   				<label>
-		   					<input type="text" class="form-control" name="countFloor" value="5">
+		   					<input type="text" class="form-control" name="house.countFloor" value="5">
 		   					层
 		   				</label>								   								
 	    				<span></span>
@@ -178,7 +180,7 @@
 				<tr>
 					<th><em>*</em><span>房屋情况</span></th>
 					<td>
-			   				<select name="decorationSituation" >
+			   				<select name="house.decorationSituation" >
 							<option value="豪华装修">豪华装修</option>
 							<option value="精装修">精装修</option>
 							<option value="中等">中等</option>
@@ -186,7 +188,7 @@
 							<option value="毛胚">毛胚</option>
 							</select>
 		   			
-		   					<select name="classSituation">
+		   					<select name="house.classSituation">
 		   					<option value="平房">平房</option>
 		   					<option value="普通住宅">普通住宅</option>
 		   					<option value="公寓">公寓</option>
@@ -219,7 +221,7 @@
 					<th><em>*</em><span>租金</span></th>
 					<td>
 						<label>
-		   					<input type="text" class="form-control" style="width:80px;" name="price" value="1000"/>
+		   					<input type="text" class="form-control" style="width:80px;" name="house.price" value="1000"/>
 		   				元/月
 		   				</label>
 						
@@ -231,19 +233,20 @@
 				<tr>
 					<th><em>*</em><span>描述</span></th>
 					<td>
-						<textarea class="form-control" rows="5" style="width:80%" name="details" >这是一间宿舍</textarea>
+						<textarea class="form-control" rows="5" style="width:80%" name="house.details" >这是一间宿舍</textarea>
 					</td>
 				</tr>
 				<tr>
 					<th><em>*</em><span>上传照片</span></th>
 					<td>
-						<span class="help-block"><input type="file" name="photoUrl"/>最多只能上传8张，最大10MB</span>
+						<span class="help-block">
+							<input class="btn btn-default" type="file" name="photoUrl" required="required" onChange="checkImgType(this)">
 					</td>
 				</tr>
 				
 			</tbody>
 		</table>
-		<input type="submit" class="btn btn-danger btn-lg pull-right" value="确认并发布" onclick="chkChxTest()">	
+		<input type="submit" class="btn btn-danger btn-lg pull-right" value="确认并发布" >	
 	</form>
 </div>
 #{set "moreSubpageScripts"}

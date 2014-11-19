@@ -1,14 +1,16 @@
 #{extends 'manager.html'/}
-<div class="container" >	
-	<ul class="nav nav-tabs">
+<div class="container" >
+	<ul class="nav nav-tabs" style="margin-left:5%;">
 		<li #{get 'showLinkCategories' /}>
 			<a href="@{Links.showLinkCategories}" >链接管理</a>
 		</li>
 		<li #{get 'showSystemSettings' /}>
 		<a href="@{SystemSettings.index}" >参数设置</a>
 	    </li>
+
 		 #{get 'showLinkCategoryInfo' /}
 		
 	</ul>
-	<div class="tab-content">#{doLayout /}</div>
+	
+	<div style="margin-left:5%;">#{doLayout /}</div>
 </div>
