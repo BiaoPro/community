@@ -1,14 +1,14 @@
 	#{extends 'back_common.html'/}
-	<form id="form" role="form" action="@{BackNews.addNews}" method="post">
+	<form id="form" role="form" action="@{BackNews.updateNews(news.newsId)}" method="post">
 			<div class="container">
 				<h3 class="text-info">新闻发布</h3>
 				<div class="form-group">
 					<label for="article.title">标题：</label>
-					<input type="text" style="width:25%" class="form-control" name="title" />
+					<input type="text" style="width:25%" class="form-control" name="title" value="${news.newsTitle}"/>
 				</div>
 				<div class="form-group">
 					<label for="content">内容：</label>
-					<textarea  id="editor" style="width:70%;height:100%;" class="form-control" name="content" value="无内容"></textarea>
+					<textarea  id="editor" style="width:70%;height:100%;" class="form-control" name="content" value="无内容">${news.newsContent}</textarea>
 				</div>
 				<div class="btn-group dropup">
 		        <button style="margin-bottom:10px;min-width:137px;"type="button" class="btn btn-primary">栏目 选择</button>
@@ -22,10 +22,10 @@
 		          <li><a class="newsClassSelect" data="${item.newClassId}" href="#">${item.newClassType}</a></li>
 		          #{/list}
 		        </ul>
-		        <input id="selectData" type="hidden" name="classId" value="${newsClasslist[0].newClassId}"/>
+		        <input id="selectData" type="hidden" name="classId" value="${news.newsClassId}"/>
 		       	<label id="selectShow" style="padding:6px 6px" >栏目：<strong class="text-info">${newsClasslist[0].newClassType}</strong></label>
       			</div>
-    		<input id="submitbutton" type="submit" class="btn btn-info btn-block form-control" style="width:12%" value="发布"/>
+    		<input id="submitbutton" type="submit" class="btn btn-info btn-block form-control" style="width:12%" value="修改"/>
     			
 			</div>
 		</form>
@@ -50,7 +50,7 @@
 					"bootstrap":"bootstrap/main.js"
 				}
 			});
-			seajs.use("../public/javascripts/static/back_news/src/send_main");
+			seajs.use("../public/javascripts/static/back_news/src/edit_main");
 		</script>
 		#{/set}
 		
