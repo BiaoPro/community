@@ -47,14 +47,14 @@ public class CourseCategory extends GenericModel{
     CourseCategory.delete("id", id);
 }
   
-  /**
-   * 根据课程类别id返回CourseCategory
-   * @param account
-   * @return
-   */
-  public static CourseCategory findById(String id) {
-    return CourseCategory.find("id = ?", i).first();
-  }
+//  /**
+//   * 根据课程类别id返回CourseCategory
+//   * @param account
+//   * @return
+//   */
+//  public static CourseCategory findById(String id) {
+//    return CourseCategory.find("id = ?", i).first();
+//  }
 
 /**
  * 是否显示
