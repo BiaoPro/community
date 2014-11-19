@@ -7,7 +7,7 @@ package utils.enumvalue;
  * 
  */
 public enum Sex {
-	FEMALE(2, "女"), MALE(1, "男");
+	 MALE(1, "男"),FEMALE(2, "女");
 
 	private int value;
 	private String sexName;

@@ -21,8 +21,6 @@ ol>li>a,td>a{
   	background:#efebea url(../images/bg-gallery.jpg) repeat-x 50% 100%;
 
   	line-height: 25px;
-
-  	padding-bottom: 20px;
 }
 
 /*.carousel {
@@ -31,7 +29,6 @@ ol>li>a,td>a{
 */
 /* Since positioning the image, we need to help out the caption */
 .carousel-caption {
-	top:8%;
 	width:35%;
 	min-height: 350px;
   	z-index: 1;
@@ -41,15 +38,16 @@ ol>li>a,td>a{
 /* Declare heights because of positioning of img element */
 .carousel .item {
   height: 400px;
+  padding: 20px 0px;
 }
 
 .carousel-inner>.item>img{
   position: absolute;
-  top: 10%;
   left: 10%;
   margin:auto;
-  width:35%;
-  min-height: 60%;
+  min-width:30%;
+  max-height:360px;
+  box-shadow: 2px 2px 3px rgba(0,0,0,0.5) ;
 }
 
 .carousel-inner{
@@ -65,10 +63,12 @@ ol>li>a,td>a{
 
 /*search-bar*/
 .search.hidden-xs {
-	position: relative;
+	position:absolute;
+	right: 17%;
 	margin-top:-75px;
 	z-index: 200;
-	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 .search.hidden-xs .btn{
@@ -80,6 +80,7 @@ ol>li>a,td>a{
 .search.hidden-xs .form-control{
 	width:300px;
 	height: 50px;
+	font-size: 30px;
 }
 
 

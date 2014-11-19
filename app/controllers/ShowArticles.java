@@ -14,4 +14,8 @@ public class ShowArticles extends Controller{
 	public static void showNewsInfo(){
 		render();
 	}
+	//得到新闻json数据
+	public static void NewsJson(){
+		
+	}
 }

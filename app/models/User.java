@@ -21,7 +21,7 @@ public class User extends GenericModel {
     @Id
     public String id;
    
-    @Column(name = "type")
+    @Column(name = "type",columnDefinition = "int default 1")
     public int type; //用户类型：3- 管理员、2-社工、1-普通用户
 
     @Column(name = "account")

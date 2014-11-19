@@ -1,0 +1,28 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	   <link rel="stylesheet" media="screen" href="@{'/public/stylesheets/bootstrap.min.css'}">
+	<title>back_manager</title>
+	#{get 'moreStyles' /}
+</head>
+<body>
+	<nav class="navbar navbar-inverse">
+        <div class="container">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="#">新市民后台管理</a>
+          </div>
+          <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              <li class="active"><a href="@{BackNews.newsSend}">新闻发布</a></li>
+              <li><a href="@{BackNewsClass.newsClassManager}">栏目管理</a></li>
+              <li><a href="@{BackNews.newsManager}">新闻管理</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+	  #{doLayout /}
+      
+</body>
+ #{get 'moreScripts' /}
+</html>
