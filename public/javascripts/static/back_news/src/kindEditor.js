@@ -60,6 +60,34 @@ define(function(require,exports,module){
 			}
 		});
 	}
+	//专门为修改文章设置的栏目设置
+	Editor.prototype._editNews=function(selectAll,classIdSelect,label){
+		var value = $(classIdSelect).val();
+		$(selectAll).each(function(){
+			var data = $(this).attr("data");
+			if(data.indexOf(value)!=-1){
+				$(label+" strong").text($(this).text());
+			}
+		});
+	}
+	
+	Editor.prototype._editStatus=function(node){
+		var value = $(node).val();
+		if(value!=null){
+			if(value.indexOf("success")!=-1){
+				$($("#myAlertHtml").html()).appendTo($("#myAlertContainer"));
+				$("#myAlert").text("恭喜！修改成功!");
+				
+			}
+			if(value.indexOf("failed")!=-1){
+				$($("#myAlertHtml").html()).appendTo($("#myAlertContainer"));
+				$("#myAlert").text("failed!");
+				
+			}
+		}
+	}
+	
+	
 	module.exports=Editor;
 
 })

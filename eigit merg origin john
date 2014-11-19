@@ -1,0 +1,212 @@
+[1mdiff --git a/app/controllers/Houses.java b/app/controllers/Houses.java[m
+[1mindex f91cc0d..d3cd151 100644[m
+[1m--- a/app/controllers/Houses.java[m
+[1m+++ b/app/controllers/Houses.java[m
+[36m@@ -20,57 +20,79 @@[m [mpublic class Houses extends Controller {[m
+ 	public static void index(){[m
+ 		render();[m
+ 	}[m
+[31m-    public static void rentHouses(){[m
+[31m-    	render();[m
+[31m-    }[m
+[31m-    public static void showHousesInfo(){[m
+[31m-    	[m
+[31m-    	render();[m
+[32m+[m	[32mpublic static void addHouse(){[m[41m[m
+[32m+[m		[32mrender();[m[41m[m
+[32m+[m	[32m}[m[41m[m
+[32m+[m[32m    /*[m[41m[m
+[32m+[m[32m     * 显示详细的租房信息[m[41m[m
+[32m+[m[32m     * @param house[m[41m[m
+[32m+[m[32m     */[m[41m[m
+[32m+[m[32m    public static void showHouseInfo(House house){[m[41m[m
+[32m+[m[41m    [m	[32mrender(house);[m[41m[m
+     }[m
+[31m-    public static void houses(){[m
+[32m+[m[32m    /*[m[41m[m
+[32m+[m[32m     * 显示租房信息列表[m[41m[m
+[32m+[m[32m     *[m[41m [m
+[32m+[m[32m     */[m[41m[m
+[32m+[m[32m    public static void showHouses(){[m[41m[m
+     	int curPage=Integer.parseInt(params.get("page"));[m
+     	PageBean pageBean=House.getPageBean("", curPage);[m
+     	List<House> houseList=House.findHouses("",curPage);[m
+     	render(houseList,pageBean);[m
+     }[m
+     /*[m
+[31m-     * 增加租房信息[m
+[32m+[m[32m     * 保存租房信息[m[41m[m
+      * @param house[m
+      * @param photeUrl[m
+      */[m
+[31m-    public static void addHouse(House house,File photoUrl){[m
+[32m+[m[32m    public static void saveHouse(House house,File[] photoUrl){[m[41m[m
+     	[m
+[31m-    	System.out.println(photoUrl.getAbsolutePath());[m
+         if (photoUrl != null) {[m
+[31m-        	[m
+[31m-          if (!StringUtils.isEmpty(house.photoUrl)) {[m
+[31m-              FileUtils.deleteFile(house.photoUrl);[m
+[31m-          }[m
+[31m-          [m
+[32m+[m[41m        [m	[32mif (!StringUtils.isEmpty(house.photoUrl)) {//删除原来的图片[m[41m[m
+[32m+[m[41m        [m		[32mString[] a = house.photoUrl.split(".$.");[m[41m[m
+[32m+[m[41m        [m		[32mfor(int i=0;i<a.length;i++)[m[41m[m
+[32m+[m[32m                FileUtils.deleteFile(a[i]);[m[41m[m
+[32m+[m[32m            }[m[41m[m
+[32m+[m[32m          String insertUrl="";[m[41m[m
+           String baseUrl = Config.DEFAULT_BASE_URL;[m
+           String savePath = Config.HOUSE_PHOTO_PATH;[m
+           Uploader uploader = new Uploader(baseUrl, savePath);[m
+[31m-          System.out.println("savePath:"+savePath);[m
+[31m-          uploader.upload(photoUrl);[m
+[31m-[m
+[31m-          if (uploader.getState() == FileUploadState.SUCCESS) {[m
+[31m-              // 文件上传成功[m
+[31m-            house.photoUrl = uploader.getUrl();[m
+[31m-[m
+[32m+[m[32m          for(int i=0;i<photoUrl.length;i++){//循环上传图片[m[41m[m
+[32m+[m[32m          uploader.upload(photoUrl[i]);[m[41m[m
+[32m+[m[32m          if (uploader.getState() == FileUploadState.SUCCESS) { // 文件上传成功[m[41m[m
+[32m+[m[32m            insertUrl+=uploader.getUrl()+".$.";//插入图片路径到house表中[m[41m         [m
+           } else {[m
+               flash.error("上传失败");[m
+[31m-              render();[m
+[32m+[m[32m              index();[m[41m[m
+           }[m
+         }[m
+[31m-      //多选家电配备[m
+[31m-    	String[] eqs = params.getAll("equipment");[m
+[32m+[m[32m          house.photoUrl = insertUrl;[m[41m[m
+[32m+[m[32m        }[m[41m[m
+[32m+[m[41m      [m
+[32m+[m[41m    [m	[32mString[] eqs = params.getAll("equipment");//多选家电配备[m[41m[m
+     	String equipment="";[m
+     	for(int i=0;i<eqs.length;i++){[m
+     		equipment+=eqs[i]+",";[m
+     	}[m
+     	house.equipment=equipment;[m
+           house.save();[m
+[31m-          render(house);[m
+[32m+[m[32m          flash.error("上传成功");[m[41m[m
+[32m+[m[32m          index();[m[41m[m
+[32m+[m[41m    [m	[32m}[m[41m[m
+[32m+[m[32m    /*[m[41m[m
+[32m+[m[32m     * 删除租房信息[m[41m[m
+[32m+[m[32m     * @param id[m[41m[m
+[32m+[m[32m     */[m[41m[m
+[32m+[m[32m    public static void deleteHouse(String id){[m[41m[m
+[32m+[m[41m    [m	[32mHouse.delete("id", id);[m[41m[m
+[32m+[m[41m    [m	[32mshowHouses();[m[41m[m
+     }[m
+[31m-[m
+[32m+[m[32m    /*[m[41m[m
+[32m+[m[32m     * 修改租房信息[m[41m[m
+[32m+[m[32m     * @param house[m[41m[m
+[32m+[m[32m     */[m[41m[m
+[32m+[m[32m    public static void editHouseInfo(House house) {[m[41m[m
+[32m+[m		[32mhouse.save();[m[41m[m
+[32m+[m		[32mshowHouseInfo(house);[m[41m[m
+[32m+[m	[32m}[m[41m[m
+ }[m
+[1mdiff --git a/app/controllers/Users.java b/app/controllers/Users.java[m
+[1mindex 7317ba5..64576f2 100644[m
+[1m--- a/app/controllers/Users.java[m
+[1m+++ b/app/controllers/Users.java[m
+[36m@@ -80,7 +80,6 @@[m [mpublic class Users extends Controller {[m
+      */[m
+     public static void saveUser(User user,File photo) {[m
+       [m
+[31m-      System.out.println(photo.getAbsolutePath());[m
+       if (photo != null) {[m
+         [m
+         if (!StringUtils.isEmpty(user.photo)) {[m
+[36m@@ -96,7 +95,6 @@[m [mpublic class Users extends Controller {[m
+         if (uploader.getState() == FileUploadState.SUCCESS) {[m
+             // 文件上传成功[m
+           user.photo = uploader.getUrl();[m
+[31m-[m
+         } else {[m
+             flash.error("上传失败");[m
+             index();[m
+[1mdiff --git a/app/views/Houses/Houses.html b/app/views/Houses/Houses.html[m
+[1mdeleted file mode 100644[m
+[1mindex 40ef097..0000000[m
+[1m--- a/app/views/Houses/Houses.html[m
+[1m+++ /dev/null[m
+[36m@@ -1,166 +0,0 @@[m
+[31m-#{extends 'ShowHouses/base.html' /}[m
+[31m-#{set title:'House' /}[m
+[31m-[m
+[31m-#{set 'moreSubpageStyles'}[m
+[31m-<style type="text/css">[m
+[31m-	.choose-fliter li{[m
+[31m-		display: inline-block;[m
+[31m-		padding: 5px 8px 0 8px;[m
+[31m-	}[m
+[31m-	dd label input{		[m
+[31m-		width: 40px;[m
+[31m-		padding-right: 5px;[m
+[31m-	}[m
+[31m-[m
+[31m-	.panel .btn{[m
+[31m-		margin-left: 10px;[m
+[31m-		position: relative;[m
+[31m-		top:-1px;[m
+[31m-	}[m
+[31m-[m
+[31m-[m
+[31m-	.choose-fliter a{[m
+[31m-		padding-left: .5em;[m
+[31m-		text-decoration: none;[m
+[31m-	}[m
+[31m-[m
+[31m-	.choose-fliter{[m
+[31m-		margin-bottom:0;[m
+[31m-	}[m
+[31m-	.panel-footer{[m
+[31m-		border-top: none;[m
+[31m-		padding-bottom: 0;[m
+[31m-	}[m
+[31m-	.panel-footer ul,.panel-footer dd{[m
+[31m-		margin-bottom: 0;[m
+[31m-	}[m
+[31m-	.house-info a{[m
+[31m-		font-size: 1.3em;[m
+[31m-	}[m
+[31m-	.house-info small{[m
+[31m-		color:#756059;[m
+[31m-		padding-right: 1em;[m
+[31m-	}[m
+[31m-	.price{[m
+[31m-		font-size: 1.5em;[m
+[31m-	}[m
+[31m-</style>[m
+[31m-#{/set}[m
+[31m-		<!-- 路径导航 -->[m
+[31m-		<ol class="breadcrumb">[m
+[31m-			<li><a href="#">首页</a></li>[m
+[31m-			<li class="active">社区租房</li>[m
+[31m-		</ol>[m
+[31m-		<div class="panel panel-default">[m
+[31m-		  <div class="panel-body">[m
+[31m-		   		<dl>[m
+[31m-		   			<dt>租金</dt>[m
+[31m-		   				<dd  id = "price" class="chose-type">[m
+[31m-		   					<a class="active">不限</a>[m
+[31m-		   					<a >800元以下</a>[m
+[31m-		   					<a >800-1500元</a>[m
+[31m-		   					<a >1500-2000元</a>[m
+[31m-		   					<a >2000-3000元</a>[m
+[31m-		   					<a >3000元-5000元</a>[m
+[31m-		   					<a >5000以上</a>[m
+[31m-		   					<span>[m
+[31m-		   						<label>[m
+[31m-		   							<input type="text" name="lowPrice"/>[m
+[31m-		   						</label>[m
+[31m-		   						-[m
+[31m-		   						<label>[m
+[31m-		   							<input type="text" name="higPrice">[m
+[31m-		   						</label>[m
+[31m-								元[m
+[31m-								<button cl
