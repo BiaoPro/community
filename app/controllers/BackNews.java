@@ -4,7 +4,6 @@ import java.io.File;
 import java.io.UnsupportedEncodingException;
 import java.util.Date;
 import java.util.List;
-
 import models.News;
 import models.NewsClass;
 import play.mvc.Controller;
@@ -200,14 +199,36 @@ public class BackNews extends Controller{
 				}
 				newsManager(1);
 			}else if(type==2){
-				
+				for(String id:ids){
+					News news = News.findById(id);
+					if(news.newsAudit==1){
+						news.newsAudit=0;
+					}
+					else{
+						news.newsAudit=1;
+					}
+					news._save();
+				}
+				newsManager(1);
 			}else {
 				
 			}
 			
 		}
-		System.out.println("=========="+choice+"==========");
-		System.out.println("=========="+ids.length+"==========");
+	}
+	/**
+	 * @description 审核处理逻辑
+	 */
+	public static void audit(String id){
+		News news = News.findById(id);
+		if(news.newsAudit==1){
+			news.newsAudit=0;
+		}
+		else{
+			news.newsAudit=1;
+		}
+		news._save();
+		newsManager(1);
 	}
 	
 	

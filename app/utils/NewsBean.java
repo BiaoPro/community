@@ -13,12 +13,14 @@ public class NewsBean {
 	private String newsId;
 	private String newsModifyDate;
 	private PageBean pageBean;
-	public NewsBean(String newsId,String newsTitle,String newsCreateDate,String newClassType,String newsModifyDate){
+	private int newsAudit;
+	public NewsBean(String newsId,String newsTitle,String newsCreateDate,String newClassType,String newsModifyDate,int newsAudit){
 		this.newsId=newsId;
 		this.newsTitle=newsTitle;
 		this.newsCreateDate=newsCreateDate;
 		this.newClassType=newClassType;
 		this.newsModifyDate=newsModifyDate;
+		this.newsAudit=newsAudit;
 	}
 	public String getNewsTitle() {
 		return newsTitle;
