@@ -5,7 +5,7 @@ import play.mvc.Controller;
 import play.mvc.With;
 import utils.SessionManager;
 
-
+@With(UserSecures.class)
 public class SystemSettings extends  Controller{
 
 	public static void index(){

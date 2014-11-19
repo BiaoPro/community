@@ -14,23 +14,15 @@
 
 		<div class="menu">
 			<ul>
-				#{if session.userCategory != "2"}
-				<!-- 系统设置，只有社区管理员以上有权限 -->
-				<li class="btn btn-default">
-					<a href="@{SystemSettings.index}">版权设置</a>
-				</li>
-				<li class="btn btn-default">
-					<a href="@{Users.register}">用户管理</a>
-				</li>
-				#{/if}
 				#{if session.userCategory != "0"}
 				<!-- 只有文章管理员和超级用户有权 -->
 				<li class="btn btn-default">
-					<a href="@{Backnews.newsmanager}">文章管理</a>
+					<a href="@{Users.showUserInfo}">用户管理</a>
 				</li>
 				<li class="btn btn-default">
-					<a href="@{Links.showLinkCategories}">链接管理</a>
+					<a href="@{Backnews.newsmanager}">文章管理</a>
 				</li>
+
 				<li class="btn btn-default">
 					<a href="@{Courses.showCourseCategories}">课堂管理</a>
 				</li>
@@ -39,6 +31,15 @@
 				</li>
 				<li class="btn btn-default">
 					<a href="#">招工管理</a>
+				</li>
+				#{/if}
+				#{if session.userCategory == "2"||session.userCategory == "3"}
+				<!-- 系统设置，只有社区管理员以上有权限 -->
+				<li class="btn btn-default">
+					<a href="@{SystemSettings.index}">版权设置</a>
+				</li>
+				<li class="btn btn-default">
+					<a href="@{Links.showLinkCategories}">链接管理</a>
 				</li>
 				<li class="btn btn-default">
 					<a href="#">信息反馈</a>
@@ -50,7 +51,7 @@
 
 #{doLayout /}
 
-<<script type="text/javascript" src="/public/javascripts/manage.js"></script>
+<script type="text/javascript" src="/public/javascripts/manage.js"></script>
 
 
 

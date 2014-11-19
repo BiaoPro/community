@@ -1,43 +1,43 @@
-#{extends 'manager.html' /}
+#{extends 'Users/base.html' /}
+#{set UserRegister : 'class=active' /}
 
 <div class="container">
 <div class="box-div" style="width:500px;">
-	<a href="@{Users.login}" class="pull-right" >GO to login</a>
 	<form class="form-horizontal" action="@{Users.saveUser}" method="post" role="form" enctype="multipart/form-data">
 		<legend>账号申请</legend>
 		<ol class="well">
 		        <input type="hidden" name="type" value="1">
 		        <input type="hidden" name="status" value="1">
 	            <li><strong>账号&nbsp&nbsp:</strong>
-	              <input class="btn btn-default" type="text" name="user.account"  maxLength="10" required="required">
+	              <input class="btn btn-default" type="text" name="user.account"  value="${user.account}" readonly="readonly">
 	            </li>
 	            <li><strong>密码:</strong>
-	              <input class="btn btn-default" type="password" name="user.password" required="required" maxLength="10">
+	              <input class="btn btn-default" type="password" value="${user.password}" maxLength="10">
 	            </li>
 	            <li><strong>重复密码:</strong>
-	              <input class="btn btn-default" type="password"  required="required" maxLength="10">
+	              <input class="btn btn-default" type="password"  value="${user.password}" required="required" maxLength="10">
 	            </li>
 	            <li><strong>真是姓名:</strong>
-	              <input class="btn btn-default" type="text" name="user.rname" required="required" maxLength="10">
+	              <input class="btn btn-default" type="text" name="user.rname"  value="${user.rname}" required="required" maxLength="10">
 	            </li>
 	            <li><strong>身份证号:</strong>
-	              <input class="btn btn-default" type="text" name="user.prc" required="required" maxLength="10">
+	              <input class="btn btn-default" type="text" name="user.prc" value="${user.prc}" required="required" maxLength="10">
 	            </li>
 	            <li><strong>性别:</strong>
 	              <select name="user.sex" class="btn btn-default">
-	                  <option value="1">男</option>
-	                  <option value="2">女</option>
+	                  <option value="1" ${user.sex==1?'checked':''}>男</option>
+	                  <option value="2" ${user.sex==2?'checked':''}>女</option>
 	              </select>
 	            </li>
 	            <li><strong>年龄:</strong>
-	              <input class="btn btn-default" type="text" name="user.age" required="required">
+	              <input class="btn btn-default" type="text" name="user.age" value="${user.age}" required="required">
 	            </li>
 	            <li><strong>个人头像:</strong>
-	              <input class="btn btn-default" type="file" name="photo" required="required" onChange="checkImgType(this)">
+	              <input class="btn btn-default" type="file" name="photo" value="${user.photo}" required="required" onChange="checkImgType(this)">
 	            </li>
 	            
 	             <li>
-	             <button type="submit" class="btn btn-success">注册</button>
+	             <button type="submit" class="btn btn-success">保存</button>
 	            </li>
 	      </ol>
 	</form>

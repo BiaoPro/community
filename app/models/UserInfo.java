@@ -90,7 +90,7 @@ public class UserInfo extends GenericModel {
 		this.userId = userId;
 		this.number = number;
 		this.registrationTime = getSystemTime();
-		this.userCategory = UserRoleEnum.TEACHER.getValue();
+		this.userCategory = UserRoleEnum.NOMALUSER.getValue();
 		this.totalLoginTime = 0;
 		this.lastLoginTime = 0;
 		//this.sex = Sex.MALE.getValue();
@@ -104,7 +104,7 @@ public class UserInfo extends GenericModel {
 		this.number = number;
 		this.name = userName;
 		this.registrationTime = getSystemTime();
-		this.userCategory = UserRoleEnum.TEACHER.getValue();
+		this.userCategory = UserRoleEnum.NOMALUSER.getValue();
 		this.totalLoginTime = 0;
 		this.lastLoginTime = 0;
 		this.sex = Sex.MALE.getValue();
@@ -116,7 +116,7 @@ public class UserInfo extends GenericModel {
 	        this.userId = userId;
 	        this.number = number;
 	        this.registrationTime = getSystemTime();
-	        this.userCategory = UserRoleEnum.TEACHER.getValue();
+	        this.userCategory = UserRoleEnum.NOMALUSER.getValue();
 	        this.totalLoginTime = 0;
 	        this.lastLoginTime = 0;
 	        this.sex = Sex.MALE.getValue();

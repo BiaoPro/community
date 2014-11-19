@@ -68,14 +68,32 @@ public boolean isShow() {
     return this.status == 1;
 }
 
+
+/**
+ * 是否在线课程
+ * 
+ * @return
+ */
+public boolean isOnlineCourse() {
+    return this.type == 1;
+}
+/**
+ * 是否社区课堂
+ * 
+ * @return
+ */
+public boolean isCommunityCourse() {
+    return this.type == 2;
+}
+
 /**
  * 获得前面的类目
  * 
  * @return
  */
-public CourseCategory getFrontCategory() {
-    return CourseCategory.find("sequence<? ORDER BY sequence DESC",
-            this.sequence).first();
+public CourseCategory getFrontCategory(int type) {
+    return CourseCategory.find("type=? and sequence<? ORDER BY sequence DESC",
+            type,this.sequence).first();
 }
 
 /**
@@ -83,9 +101,9 @@ public CourseCategory getFrontCategory() {
  * 
  * @return
  */
-public CourseCategory getBackCategory() {
+public CourseCategory getBackCategory(int type) {
     return CourseCategory
-            .find("sequence>? ORDER BY sequence ", this.sequence).first();
+            .find("type=? and sequence>? ORDER BY sequence ", type, this.sequence).first();
 }
 
 public List<Course> getCourses(boolean isVisable) {

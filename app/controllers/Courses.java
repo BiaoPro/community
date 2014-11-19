@@ -21,9 +21,10 @@ public class Courses extends Controller {
   /**
    * 显示所有课堂类别
    */
-  public static void showCourseCategories() {
-       List<CourseCategory> list = CourseCategory.find("ORDER BY sequence").fetch();
-       render(list);
+  public static void showCourseCategories(int type) {
+       if(type!=1&&type!=2) type=2;
+       List<CourseCategory> list = CourseCategory.find("type=? ORDER BY sequence",type).fetch();
+       render(list,type);
   }
 
       

@@ -1,13 +1,13 @@
-#{extends 'manager.html' /}
+#{extends 'main.html' /}
 
 <div class="container">
 <div class="box-div" style="width:500px;">
-	<a href="@{Users.login}" class="pull-right" >GO to login</a>
+	<a href="@{Application.login}" class="pull-right" >GO to login</a>
 	<form class="form-horizontal" action="@{Users.saveUser}" method="post" role="form" enctype="multipart/form-data">
 		<legend>账号申请</legend>
 		<ol class="well">
-		        <input type="hidden" name="type" value="1">
-		        <input type="hidden" name="status" value="1">
+		        <input type="hidden" name="user.type" value="1">
+		        <input type="hidden" name="user.status" value="1">
 	            <li><strong>账号&nbsp&nbsp:</strong>
 	              <input class="btn btn-default" type="text" name="user.account"  maxLength="10" required="required">
 	            </li>

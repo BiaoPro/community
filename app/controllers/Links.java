@@ -15,6 +15,7 @@ import java.util.List;
  * @author 吴泽标
  *
  */
+@With(UserSecures.class)
 public class Links extends Controller {
 	/**
 	 * 跳转基本页面

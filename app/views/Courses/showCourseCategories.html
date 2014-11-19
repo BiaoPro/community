@@ -1,5 +1,12 @@
 #{extends 'Courses/base.html' /}
-#{set showCourseCategories : 'class=active' /}
+#{if type==1}
+#{set OnlineCourse : 'class=active' /}
+#{/if}
+#{if type==2}
+#{set CommunityCourse : 'class=active' /}
+#{/if}
+
+
 
 #{set 'moreStyles'}
 <style type="text/css">
@@ -22,20 +29,20 @@
 				<tr>
 					<td>${courseCategory_index}</td>
 					<td>${courseCategory.name}</td>
-					<td><a href="@{CourseCategories.sequenceUp(courseCategory.id)}"
+					<td><a href="@{CourseCategories.sequenceUp(courseCategory.id,type)}"
 						style="color: #08c;">前移</a>/<a
-						href="@{CourseCategories.sequenceDown(courseCategory.id)}"
+						href="@{CourseCategories.sequenceDown(courseCategory.id,type)}"
 						style="color: #08c;">后移</a></td>
 					<td>#{if courseCategory.isShow()} <a
-						href="@{CourseCategories.changeStatus(courseCategory.id,0)}"
+						href="@{CourseCategories.changeStatus(courseCategory.id,0,type)}"
 						style="color: #08c;"> 已显示</a> #{/if} #{else} <a
-						href="@{CourseCategories.changeStatus(courseCategory.id,1)}"
+						href="@{CourseCategories.changeStatus(courseCategory.id,1,type)}"
 						style="color: #000;"> 未显示</a> #{/else} </select>
 					</td>
 					<td><a
 						href="@{CourseCategories.showCourseCategoryInfo(courseCategory.id)}"
 						style="color: #08c;">编辑</a>/<a
-						href="@{CourseCategories.delCourseCategory(courseCategory.id)}"
+						href="@{CourseCategories.delCourseCategory(courseCategory.id,type)}"
 						onclick="return confirm('删除类别：${courseCategory.name}?')"
 						style="color: #08c;">删除</a></td>
 				</tr>
@@ -49,6 +56,7 @@
 								<label class="sr-only" for="vo.name">类别名称：</label> <input
 									type="text" maxlength="30" name="vo.name"
 									class="form-control" placeholder="输入新类别名称：" required="required">
+									<input type="hidden" name="vo.type" value="${type}">
 							</div>
 						</td>
 						<td></td>

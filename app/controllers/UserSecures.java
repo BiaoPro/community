@@ -21,11 +21,12 @@ public class UserSecures extends Controller {
 	/**
 	 * 检测是否以登录，防止直接通过url在没有登录的情况下进入后台
 	 */
-	@Before(unless = { "verify", "logout", "getCaptcha" })
+	@Before(unless = { "login", "verify", "logout", "getCaptcha" })
 	public static void checkAccess() {
 		if (!SessionManager.isLogin(session)) {
-			// 在没有登录的情况下跳转到首页
-			redirect("/");
+//			// 在没有登录的情况下跳转到首页
+//			redirect("/");
+		   Application.login();
 		}
 	}
 
@@ -47,7 +48,7 @@ public class UserSecures extends Controller {
 			flash.put("captchaCodeError", true);
 			flash.put("account", account);
 			flash.put("password", password);
-			Users.login();
+			 Application.login();
 			return;
 		}
 
@@ -62,7 +63,7 @@ public class UserSecures extends Controller {
 				session.put("userId", user.id);
 				session.put("account", user.account);
 				session.put("userInfoId", userInfo.id);
-				session.put("userCategory", userInfo.userCategory);
+				session.put("userCategory", user.type);
 				session.put("userName", userInfo.name);
 				
 				Application.manager();
@@ -79,7 +80,7 @@ public class UserSecures extends Controller {
 			flash.put("accountError", "账号不存在~");
 			
 		}
-		Users.login();
+		 Application.login();
 		
 
 	}

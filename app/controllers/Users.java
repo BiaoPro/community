@@ -19,6 +19,7 @@ import models.*;
  * 用户处理
  * @author zhuangXiangPeng
  */
+@With(UserSecures.class)
 public class Users extends Controller {
   
   /**
@@ -28,49 +29,6 @@ public class Users extends Controller {
       render();
     }
 
-  
-	/*
-	 * 跳转到登录页面
-	 */
-	public static void login() {
-	    String randomId = Codec.UUID();// 登录时候附带的验证信息
-		render(randomId);
-	}
-	
-	/*
-	 * 注销
-	 */
-	public static void logout() {
-		session.clear();
-		session.put("logined", false);
-		Application.index();
-	}
-
-	/*
-	 * 验证登录信息
-	 * 
-	 * @param account
-	 * @param password
-	 * @param type
-	 */
-	public static void verificate(String account, String password) {
-		if (User.isExist(account, password)) {
-			// 用户
-			User user = User.find("account=? AND password=? ",
-					account, password).first();
-			session.put("userId", user.id);
-			Application.index();
-		}else{
-		  register();
-		}
-	}
-	
-	/*
-	 * 跳转到注册页面
-	 */
-	public static void register() {
-		render();
-	}
 
 	
 	/*
@@ -108,7 +66,7 @@ public class Users extends Controller {
       
         user.save();
         session.put("userId", user.id);
-        register();
+        Application.register();
     }
 	
 	/*
@@ -153,6 +111,12 @@ public class Users extends Controller {
 		User user = User.findById(userId);
 		render(user);
 	}
+	
+	
+	public static void showUserInfo() {
+      User user = SessionManager.getLoginedUser(session);
+      render(user);
+  }
 
 
 }

@@ -17,11 +17,12 @@ import java.util.List;
 public class CourseCategories extends Controller {
   
 	/**
-	 * 显示所有课堂类别
+	 * 显示type课堂下所有课堂类别
+	 * int type  1在线视频，2社区发布
 	 */
-	public static void showCourseCategories() {
+	public static void showCourseCategories(int type) {
 
-	  Courses.showCourseCategories();
+	  Courses.showCourseCategories(type);
 	}
 	
 	
@@ -30,9 +31,8 @@ public class CourseCategories extends Controller {
      * @param vo
      */
     public static void saveCourseCategory(CourseCategory vo) {
-      System.out.println(vo.id+":"+vo.name+":"+vo.status);
       vo.save();
-        showCourseCategories();
+      showCourseCategories(vo.type);
     }
     
     /**
@@ -49,9 +49,9 @@ public class CourseCategories extends Controller {
      * 
      * @param id
      */
-    public static void delCourseCategory(String id) {
+    public static void delCourseCategory(String id,int type) {
         CourseCategory.deleteById(id);
-        showCourseCategories();
+        showCourseCategories(type);
     }
 	
 	/**
@@ -70,11 +70,11 @@ public class CourseCategories extends Controller {
 	 * @param categoryId
 	 * @param status
 	 */
-	public static void changeStatus(String categoryId, int status) {
+	public static void changeStatus(String categoryId, int status,int type) {
 		CourseCategory category = CourseCategory.findById(categoryId);
 		category.status = status;
 		category.save();
-		showCourseCategories();
+		showCourseCategories(type);
 	}
 	
 	/**
@@ -82,9 +82,9 @@ public class CourseCategories extends Controller {
 	 * 
 	 * @param categoryId
 	 */
-	public static void sequenceUp(String categoryId) {
+	public static void sequenceUp(String categoryId,int type) {
 		CourseCategory category = CourseCategory.findById(categoryId);
-		CourseCategory frontCategory = category.getFrontCategory();
+		CourseCategory frontCategory = category.getFrontCategory(type);
 
 		if (frontCategory != null) {
 			long temp = category.sequence;
@@ -93,7 +93,7 @@ public class CourseCategories extends Controller {
 			frontCategory.sequence = temp;
 			frontCategory.save();
 		}
-		showCourseCategories();
+		showCourseCategories(type);
 	}
 	
 	/**
@@ -101,9 +101,9 @@ public class CourseCategories extends Controller {
 	 * 
 	 * @param categoryId
 	 */
-	public static void sequenceDown(String categoryId) {
+	public static void sequenceDown(String categoryId,int type) {
 		CourseCategory category = CourseCategory.findById(categoryId);
-		CourseCategory backCategory = category.getBackCategory();
+		CourseCategory backCategory = category.getBackCategory(type);
 
 		if (backCategory != null) {
 			long temp = category.sequence;
@@ -112,6 +112,6 @@ public class CourseCategories extends Controller {
 			backCategory.sequence = temp;
 			backCategory.save();
 		}
-		showCourseCategories();
+		showCourseCategories(type);
 	}
 }

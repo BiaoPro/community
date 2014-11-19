@@ -55,6 +55,14 @@ public class User extends GenericModel {
       this.id = Codec.UUID();
       this.status=1;
     }
+    public User(String account,String password,int type){
+      this.id = Codec.UUID();
+      this.account = account;
+      this.password=password;
+      this.type=type;
+      this.status=1;
+    }
+    
     /**
      * 用户是否存在
      * @param account
