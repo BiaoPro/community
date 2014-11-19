@@ -20,57 +20,79 @@ public class Houses extends Controller {
 	public static void index(){
 		render();
 	}
-    public static void rentHouses(){
-    	render();
+	public static void addHouse(){
+		render();
+	}
+    /*
+     * 显示详细的租房信息
+     * @param house
+     */
+    public static void showHouseInfo(House house){
+    	render(house);
     }
-    public static void showHousesInfo(){
-    	
-    	render();
-    }
-    public static void houses(){
+    /*
+     * 显示租房信息列表
+     * 
+     */
+    public static void showHouses(){
     	int curPage=Integer.parseInt(params.get("page"));
     	PageBean pageBean=House.getPageBean("", curPage);
     	List<House> houseList=House.findHouses("",curPage);
     	render(houseList,pageBean);
     }
     /*
-     * 增加租房信息
+     * 保存租房信息
      * @param house
      * @param photeUrl
      */
-    public static void addHouse(House house,File photoUrl){
+    public static void saveHouse(House house,File[] photoUrl){
     	
-    	System.out.println(photoUrl.getAbsolutePath());
         if (photoUrl != null) {
-        	
-          if (!StringUtils.isEmpty(house.photoUrl)) {
-              FileUtils.deleteFile(house.photoUrl);
-          }
-          
+        	if (!StringUtils.isEmpty(house.photoUrl)) {//删除原来的图片
+        		String[] a = house.photoUrl.split(".$.");
+        		for(int i=0;i<a.length;i++)
+                FileUtils.deleteFile(a[i]);
+            }
+          String insertUrl="";
           String baseUrl = Config.DEFAULT_BASE_URL;
           String savePath = Config.HOUSE_PHOTO_PATH;
           Uploader uploader = new Uploader(baseUrl, savePath);
-          System.out.println("savePath:"+savePath);
-          uploader.upload(photoUrl);
-
-          if (uploader.getState() == FileUploadState.SUCCESS) {
-              // 文件上传成功
-            house.photoUrl = uploader.getUrl();
-
+          for(int i=0;i<photoUrl.length;i++){//循环上传图片
+          uploader.upload(photoUrl[i]);
+          if (uploader.getState() == FileUploadState.SUCCESS) { // 文件上传成功
+            insertUrl+=uploader.getUrl()+".$.";//插入图片路径到house表中         
           } else {
               flash.error("上传失败");
-              render();
+              index();
           }
         }
-      //多选家电配备
-    	String[] eqs = params.getAll("equipment");
+          house.photoUrl = insertUrl;
+        }
+      
+    	String[] eqs = params.getAll("equipment");//多选家电配备
     	String equipment="";
     	for(int i=0;i<eqs.length;i++){
     		equipment+=eqs[i]+",";
     	}
     	house.equipment=equipment;
           house.save();
-          render(house);
+          flash.error("上传成功");
+          index();
+    	}
+    /*
+     * 删除租房信息
+     * @param id
+     */
+    public static void deleteHouse(String id){
+    	House.delete("id", id);
+    	showHouses();
     }
-
+    /*
+     * 修改租房信息
+     * @param house
+     */
+    public static void editHouseInfo(House house) {
+		house.save();
+		showHouseInfo(house);
+	}
 }
