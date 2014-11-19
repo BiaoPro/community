@@ -1,6 +1,5 @@
-package beans;
+package utils;
 
-import utils.PageBean;
 /**
  * @author kingda
  * 
@@ -9,7 +8,7 @@ public class PageBeanFactory {
 	
 	private int perpage;
 	private int curpage;
-	public static int total;
+	public static int total;//total由dao处理
 	public static int maxPage;
 	/**
 	 * 
