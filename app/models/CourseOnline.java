@@ -1,7 +1,9 @@
 package models;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 import play.db.jpa.GenericModel;
 import play.libs.Codec;
@@ -12,14 +14,15 @@ import play.libs.Codec;
  * @author 吴泽标
  *
  */
-
+@Entity
+@Table(name="course_online")
 public class CourseOnline  extends GenericModel{
   
   @Id
   public String id;
   
-  @Column(name="Category_id")
-  public String Category_id;//课程类别
+  @Column(name="category_id")
+  public String categoryId;//课程类别
   
   @Column(name="title")
   public String title;//课程名称

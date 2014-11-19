@@ -1,0 +1,11 @@
+#{extends 'manager.html'/}
+<div class="container" >
+	<ul class="nav nav-tabs" style="margin-left:5%;">
+		<li #{get 'showCourseCategories' /}>
+			<a href="@{Courses.showCourseCategories}" >课堂类目</a>
+		</li>
+		 #{get 'showCourseCategoryInfo' /}
+	</ul>
+	
+	<div style="margin-left:5%;">#{doLayout /}</div>
+</div>

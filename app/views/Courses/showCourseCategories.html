@@ -1,0 +1,65 @@
+#{extends 'Courses/base.html' /}
+#{set showCourseCategories : 'class=active' /}
+
+#{set 'moreStyles'}
+<style type="text/css">
+
+</style>
+#{/set}
+
+	<div class="box-div">
+		<h2>课程类目</h2>
+		<table class="table">
+			<thead>
+			    <th>序号</th>
+				<th>类别名称</th>
+				<th>类别顺序</th>
+				<th>状态</th>
+				<th>操作</th>
+			</thead>
+			<tbody>
+				#{list items:list,as:'courseCategory'}
+				<tr>
+					<td>${courseCategory_index}</td>
+					<td>${courseCategory.name}</td>
+					<td><a href="@{CourseCategories.sequenceUp(courseCategory.id)}"
+						style="color: #08c;">前移</a>/<a
+						href="@{CourseCategories.sequenceDown(courseCategory.id)}"
+						style="color: #08c;">后移</a></td>
+					<td>#{if courseCategory.isShow()} <a
+						href="@{CourseCategories.changeStatus(courseCategory.id,0)}"
+						style="color: #08c;"> 已显示</a> #{/if} #{else} <a
+						href="@{CourseCategories.changeStatus(courseCategory.id,1)}"
+						style="color: #000;"> 未显示</a> #{/else} </select>
+					</td>
+					<td><a
+						href="@{CourseCategories.showCourseCategoryInfo(courseCategory.id)}"
+						style="color: #08c;">编辑</a>/<a
+						href="@{CourseCategories.delCourseCategory(courseCategory.id)}"
+						onclick="return confirm('删除类别：${courseCategory.name}?')"
+						style="color: #08c;">删除</a></td>
+				</tr>
+				#{/list}
+
+				<form class="form-inline"  action="@{CourseCategories.saveCourseCategory}" method="post">
+					<tr>
+						<td>${(courseCategory_index==null?'':courseCategory_index)+1}</td>
+						<td colspan="2">
+							<div class="form-group">
+								<label class="sr-only" for="vo.name">类别名称：</label> <input
+									type="text" maxlength="30" name="vo.name"
+									class="form-control" placeholder="输入新类别名称：" required="required">
+							</div>
+						</td>
+						<td></td>
+						<td><button type="submit" class="btn btn-success" href="#">添加</button></td>
+					</tr>
+				</form>
+
+			</tbody>
+		</table>
+	
+	</div>
+
+
+

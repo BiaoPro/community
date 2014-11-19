@@ -5,6 +5,8 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -16,14 +18,14 @@ import play.libs.Codec;
  *
  */
 @Entity
-@Table(name="Course")
+@Table(name="course_category")
 public class CourseCategory extends GenericModel{
   
   @Id
   public String id;
   
-  @Column(name="name")
-  public String name;//课程类别
+  @Column(name="category_name")
+  public String name;//课程名称
   
   @Column(name = "sequence")
   public long sequence; //链接顺序
@@ -35,7 +37,7 @@ public class CourseCategory extends GenericModel{
   public int status;// 状态，0：不显示，1：显示
   
   
-  public void CourseCategory(){
+  public CourseCategory(){
     this.id = Codec.UUID();
     this.sequence = new Date().getTime();
     this.type = 2;
@@ -44,6 +46,7 @@ public class CourseCategory extends GenericModel{
   
   public static void deleteById(String id) {
     Course.delete("categoryId", id);
+    CourseOnline.delete("categoryId", id);
     CourseCategory.delete("id", id);
 }
   
@@ -70,8 +73,8 @@ public boolean isShow() {
  * 
  * @return
  */
-public LinkCategory getFrontCategory() {
-    return LinkCategory.find("sequence<? ORDER BY sequence DESC",
+public CourseCategory getFrontCategory() {
+    return CourseCategory.find("sequence<? ORDER BY sequence DESC",
             this.sequence).first();
 }
 
@@ -80,17 +83,17 @@ public LinkCategory getFrontCategory() {
  * 
  * @return
  */
-public LinkCategory getBackCategory() {
-    return LinkCategory
+public CourseCategory getBackCategory() {
+    return CourseCategory
             .find("sequence>? ORDER BY sequence ", this.sequence).first();
 }
 
-public List<Link> getLinks(boolean isVisable) {
+public List<Course> getCourses(boolean isVisable) {
     if (isVisable) {
-        return Link.find("status=1 AND categoryId=?",
+        return Course.find("status=1 AND categoryId=?",
                 this.id).fetch();
     } else {
-        return Link.find("categoryId=?", this.id).fetch();
+        return Course.find("categoryId=?", this.id).fetch();
     }
 }
   

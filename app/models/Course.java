@@ -28,7 +28,6 @@ public class Course extends GenericModel{
   @Column(name="body")
   public String body;//课程正文
   
-  
   @Column(name="phone_number")
   public String phoneNumber;//联系人电话
   
