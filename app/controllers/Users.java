@@ -80,7 +80,6 @@ public class Users extends Controller {
      */
     public static void saveUser(User user,File photo) {
       
-      System.out.println(photo.getAbsolutePath());
       if (photo != null) {
         
         if (!StringUtils.isEmpty(user.photo)) {
@@ -96,7 +95,6 @@ public class Users extends Controller {
         if (uploader.getState() == FileUploadState.SUCCESS) {
             // 文件上传成功
           user.photo = uploader.getUrl();
-
         } else {
             flash.error("上传失败");
             index();

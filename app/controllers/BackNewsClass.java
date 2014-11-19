@@ -1,6 +1,8 @@
 package controllers;
 
 import java.util.List;
+
+import models.News;
 import models.NewsClass;
 import play.mvc.Controller;
 /*
@@ -58,7 +60,11 @@ public class BackNewsClass extends Controller{
 	public static void delete(){
 		String id = params.get("deleteId");
 		NewsClass newsClass = NewsClass.findById(id);
-		newsClass._delete();
-		newsClassManager("delete");
+		if(News.checkIsExistNewsClass(id)){
+			newsClassManager("FailedDelete");
+		}else{
+			newsClass._delete();
+			newsClassManager("delete");
+		}
 	}
 }

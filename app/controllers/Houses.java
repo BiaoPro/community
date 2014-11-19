@@ -6,7 +6,10 @@ import utils.FileUtils;
 import utils.PageBean;
 import utils.StringUtils;
 import utils.Uploader;
+import utils.enumvalue.Config;
+import utils.enumvalue.FileUploadState;
 
+import java.io.File;
 import java.util.*;
 import models.*;
 /*
@@ -14,48 +17,82 @@ import models.*;
  * @author zhuangxiangpeng
  */
 public class Houses extends Controller {
-  
-    public static void rentHouses(){
-    	render();
+	public static void index(){
+		render();
+	}
+	public static void addHouse(){
+		render();
+	}
+    /*
+     * 显示详细的租房信息
+     * @param house
+     */
+    public static void showHouseInfo(House house){
+    	render(house);
     }
-    public static void showHousesInfo(){
-    	
-    	render();
-    }
-    public static void houses(){
+    /*
+     * 显示租房信息列表
+     * 
+     */
+    public static void showHouses(){
     	int curPage=Integer.parseInt(params.get("page"));
     	PageBean pageBean=House.getPageBean("", curPage);
     	List<House> houseList=House.findHouses("",curPage);
     	render(houseList,pageBean);
     }
-    public static void addHouse(){
-    	House house=new House();
-    	house.way = params.get("way");
-    	house.indentity=params.get("indentity");
-    	house.contacts=params.get("contacts");
-    	house.phone=params.get("phone");
-    	house.community=params.get("community");   	
-    	house.address=params.get("address");
-    	house.bedRoom=Integer.parseInt(params.get("bedRoom"));
-    	house.livingRoom=Integer.parseInt(params.get("livingRoom"));
-    	house.bathRoom=Integer.parseInt(params.get("bathRoom"));
-    	house.square=Double.parseDouble(params.get("square"));
-    	house.currentFloor=Integer.parseInt(params.get("currentFloor"));
-    	house.countFloor=Integer.parseInt(params.get("countFloor"));
-    	house.decorationSituation=params.get("decorationSituation");
-    	house.classSituation=params.get("classSituation");
-    	//多选家电配备
-    	String[] eqs = params.getAll("equipment");
+    /*
+     * 保存租房信息
+     * @param house
+     * @param photeUrl
+     */
+    public static void saveHouse(House house,File[] photoUrl){
+    	
+        if (photoUrl != null) {
+        	if (!StringUtils.isEmpty(house.photoUrl)) {//删除原来的图片
+        		String[] a = house.photoUrl.split(".$.");
+        		for(int i=0;i<a.length;i++)
+                FileUtils.deleteFile(a[i]);
+            }
+          String insertUrl="";
+          String baseUrl = Config.DEFAULT_BASE_URL;
+          String savePath = Config.HOUSE_PHOTO_PATH;
+          Uploader uploader = new Uploader(baseUrl, savePath);
+          for(int i=0;i<photoUrl.length;i++){//循环上传图片
+          uploader.upload(photoUrl[i]);
+          if (uploader.getState() == FileUploadState.SUCCESS) { // 文件上传成功
+            insertUrl+=uploader.getUrl()+".$.";//插入图片路径到house表中         
+          } else {
+              flash.error("上传失败");
+              index();
+          }
+        }
+          house.photoUrl = insertUrl;
+        }
+      
+    	String[] eqs = params.getAll("equipment");//多选家电配备
     	String equipment="";
     	for(int i=0;i<eqs.length;i++){
     		equipment+=eqs[i]+",";
     	}
     	house.equipment=equipment;
-    	house.price=Double.parseDouble(params.get("price"));
-    	house.details=params.get("details");
-    	house.photoUrl=params.get("photoUrl");
-    	house.save();
-    	render(house);
+          house.save();
+          flash.error("上传成功");
+          index();
+    	}
+    /*
+     * 删除租房信息
+     * @param id
+     */
+    public static void deleteHouse(String id){
+    	House.delete("id", id);
+    	showHouses();
     }
-
+    /*
+     * 修改租房信息
+     * @param house
+     */
+    public static void editHouseInfo(House house) {
+		house.save();
+		showHouseInfo(house);
+	}
 }

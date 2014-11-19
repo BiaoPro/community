@@ -27,16 +27,16 @@
 				      </div>
 <!-- add news_class -->
 				      <div role="tabpanel" class="tab-pane fade " id="add" aria-labelledby="add-tab">
-				      		<form action="./addNewsClass" method="get" style="margin-top:20px;max-width:960px" class="form-horizontal" role="form">
+				      		<form id="addClassForm" action="@{BackNewsClass.addNewsClass}" method="get" style="margin-top:20px;max-width:960px" class="form-horizontal" role="form">
 				      			<div class="form-group">
 				      				<label class="col-sm-2 control-label">栏目题目：</label>
 				      				<div class="col-sm-5">
-      									<input type="text" class="form-control" name="newClassType" placeholder="newsClassName" />
+      									<input id="classTitle" type="text" class="form-control" name="newClassType" placeholder="newsClassName" />
    									 </div>
 				      			</div>
 				      			 <div class="form-group">
     								<div class="col-sm-offset-2 col-sm-5">
-      								<button type="submit" class="btn btn-info">添加</button>
+      								<button id="addButton" type="button" class="btn btn-info">添加</button>
       								<button type="reset" class="btn btn-warn">重置</button>
     								</div>
   								</div>
