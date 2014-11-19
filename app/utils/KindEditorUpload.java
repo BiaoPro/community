@@ -5,6 +5,8 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
+import utils.enumvalue.Config;
+
 /*
  * @author kingda
  * @description:定义kindEditor的上传逻辑，依赖于uploader
@@ -31,7 +33,7 @@ public class KindEditorUpload {
 		if(!checkExt()){
 			return this.getError("上传文件扩展名是不允许的扩展名。\n只允许" + extMap.get(dirName) + "格式。");
 		}
-		Uploader uploader = new Uploader("../","public/images/upload/"+dirName+"/");
+		Uploader uploader = new Uploader("../",Config.KINDEDITOR_UPLOAD_PATH+dirName+"/");
 		uploader.upload(file);
 		Map<String,Object> obj = new HashMap<String,Object>();
 		obj.put("error", 0);
