@@ -83,7 +83,7 @@ public class News extends GenericModel{
 	 * 
 	 */
 	public static List getIndexNews(PageBeanFactory pageBean){
-		String hql = "select a.newsId,a.newsTitle,a.newsCreateDate,b.newClassType,a.newsModifyDate"+
+		String hql = "select a.newsId,a.newsTitle,a.newsCreateDate,b.newClassType,a.newsModifyDate,a.newsAudit"+
 		" from News a,NewsClass b where a.newsClassId = b.newClassId order by a.newsModifyDate desc";
 		return executeJPA(pageBean,hql);
 	}
@@ -92,7 +92,7 @@ public class News extends GenericModel{
 	 * @description 根据标题获取文章
 	 */
 	public static List getNewsByTitle(PageBeanFactory pageBean,String title){
-		String hql = "select a.newsId,a.newsTitle,a.newsCreateDate,b.newClassType,a.newsModifyDate "+
+		String hql = "select a.newsId,a.newsTitle,a.newsCreateDate,b.newClassType,a.newsModifyDate,a.newsAudit "+
 		" from News a,NewsClass b where a.newsClassId = b.newClassId and a.newsTitle like '%"+title+"%' order by a.newsModifyDate desc";
 		return executeJPA(pageBean,hql);
 	}
@@ -102,7 +102,7 @@ public class News extends GenericModel{
 	 */
 	public static List getNewsByDateAndClass(PageBeanFactory pageBean,String date,String className){
 		
-		String hql="select a.newsId,a.newsTitle,a.newsCreateDate,b.newClassType,a.newsModifyDate "+
+		String hql="select a.newsId,a.newsTitle,a.newsCreateDate,b.newClassType,a.newsModifyDate,a.newsAudit "+
 		" from News a,NewsClass b where a.newsClassId = b.newClassId"
 		+" and a.newsCreateDate like '"+date+"%' and b.newClassType like '%"+className+"%' order by a.newsModifyDate desc";
 		return executeJPA(pageBean,hql);
@@ -118,7 +118,7 @@ public class News extends GenericModel{
 		for(int i=0;i<list.size();i++)
         {
             Object[] o = (Object[])list.get(i);  //转型为数组
-            NewsBean tempNewsBean = new NewsBean((String)o[0],(String)o[1],(String)o[2],(String)o[3],(String)o[4]);
+            NewsBean tempNewsBean = new NewsBean((String)o[0],(String)o[1],(String)o[2],(String)o[3],(String)o[4],(Integer)o[5]);
             resList.add(tempNewsBean);
         }
 		return resList;

@@ -33,6 +33,24 @@ define(function(require,exports,module){
 			 }
 		 });
 		 
+		 //用于审核
+		 $(".audit").each(function(){
+			 if($(this).attr("data")==0){
+				 $(this).text("未审核");
+				 $(this).addClass("btn-danger");
+			 }
+			 else{
+				 $(this).text("已审核");
+				 $(this).addClass("btn-primary");
+				 $(this).mouseover(function(){
+					 $(this).text("取消通过");
+				 });
+				 $(this).mouseout(function(){
+					 $(this).text("已审核");
+				 })
+			 }
+		 })
+		 
 	 }
 	 //用于分页效果
 	 NewsManagerModel.prototype._page=function(pageContainer){

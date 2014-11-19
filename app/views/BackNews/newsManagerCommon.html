@@ -4,8 +4,7 @@
 			<select id="patchSelect" class="form-control">
 				<option value="">批量操作</option>
 				<option value="*">批量删除</option>
-				<option value="**">批量编辑</option>
-				<option value="***">批量查看</option>
+				<option value="**">批量审核</option>
 			</select>
 				<input  id="patchSubmit" type="button" class="btn btn-primary form-control bin-inline" value="应用"/>
 				
@@ -39,6 +38,7 @@
 			          <th>栏目</th>
 			          <th>新闻创建时间</th>
 			          <th>最近修改时间</th>
+			          <th>操作</th>
 			        </tr>
 			      </thead>
 			      
@@ -58,6 +58,7 @@
 			          <td>${item.newClassType}</td>
 			          <td>${item.newsCreateDate}</td>
 			          <td>${item.newsModifyDate}</td>
+			          <td><a class="audit btn" href="@{BackNews.audit(item.newsId)}" data="${item.newsAudit}" type="button">未审核</a></td>
 			        </tr>
 			       #{/list}
 			       
