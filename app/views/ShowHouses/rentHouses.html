@@ -30,7 +30,7 @@
 				</tr>
 				<tr>
 					<th><em>*</em><span>您的身份</span></th>
-					<td>
+					<td id="identity">
 						<a class="btn btn-default">个人</a>
 						<a class="btn btn-default">经纪人</a>
 					</td>
@@ -97,7 +97,7 @@
 				<tr>
 					<th><em>*</em><span>房屋情况</span></th>
 					<td>
-						<div class="moreitem-box ">
+						<div class="moreitem-box">
 			   				<div class="moreitem-btn"><a class="required">装修情况</a>
 			   				</div>
 			   				<ul class="moreitem" >
@@ -218,7 +218,7 @@
 					<th><span>标签</span></th>
 					<!-- 标签可能有多个 -->
 					<td>
-						<input class="btn btn-default" type="button" value="+" style="width:10%;" name="tag"/>
+						<input class="btn btn-default tag" type="button" value="+" style="width:10%;"/>
 						<span style="margin-left:10px;">推荐： <a>精装修</a><a>低价格</a><a>精装修</a><a>低价格</a></span>
 					</td>
 				</tr>
@@ -231,21 +231,24 @@
 				<tr>
 					<th><em>*</em><span>上传照片</span></th>
 					<td>
+					<label for="" class="fileContainer btn btn-default">
+					选择文件
 						<input type="file" name="pictures" multiple />
-						<span class="help-block">最多只能上传8张，最大10MB</span>
+					</label>
+						<span>最多只能上传8张，最大10MB</span>
 					</td>
 				</tr>
 				<tr>
 					<th><em>*</em><span>联系人</span></th>
 					<td>
 						<label class="sr-only" for="contact">联系人</label>
-	    				<input type="text" class="form-control  required" id="contact">
+	    				<input type="text" class="form-control  required" id="contract">
 					</td>
 				</tr>
 				<tr>
-					<th><em>*</em><span>联系电话</span></th>
+					<th><em>*</em><span>手机</span></th>
 					<td>
-						<label class="sr-only" for="phone">联系电话</label>
+						<label class="sr-only" for="phone">手机</label>
 	    				<input type="text" class="form-control  required" id="phone">
 					</td>
 				</tr>

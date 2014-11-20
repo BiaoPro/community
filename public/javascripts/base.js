@@ -1,44 +1,4 @@
 $(document).ready(function(){
-
-		// 	var checkItems = document.getElementById('checkItem').getElementsByTagName('input');
-		// var choseAll =document.getElementById('checkItem').getElementsByTagName('a')[0];
-		// var trs = document.getElementsByTagName('tr');
-		// var identity = trs[1].querySelectorAll('a');
-		// var i;
-		// // 判断是否选择身份
-		// 	for(i=0;i<identity.length;i++){
-		// 		identity[i] .onclick = function(){
-		// 			for(var n=0;n<identity.length;n++) removeClass(identity[n],'chosen');
-		// 			addClass(this,'chosen');
-		// 			this.parentNode.querySelector('span').className ="ok";
-		// 		}
-		// 	} 
-		// 	// 全选和全不选实现
-		// 	choseAll.onclick = function(){
-		// 		if(isCheckAll()){
-		// 			for(i=0;i<checkItems.length;i++){
-		// 				checkItems[i].checked = false ;
-		// 			}
-		// 			choseAll.innerHTML = "全选";
-		// 		}else{
-		// 			for(i=0;i<checkItems.length;i++){
-		// 				checkItems[i].checked = true;
-		// 			}
-		// 			choseAll.innerHTML = "全不选";
-		// 		}
-		// 	}
-		// 	// 判断是否选取全部
-		// 	function isCheckAll(){
-		// 		for(var  n=0,i=0;i<checkItems.length;i++){
-		// 			checkItems[i].checked&&n++;
-		// 		}
-		// 		if(n == checkItems.length){
-		// 			return true;
-		// 		}else{
-		// 			return false;
-		// 		}
-		// 	}
-
 	//以下为form事件
 
 	// 按钮选择，选中事件表示
@@ -87,9 +47,9 @@ $(document).ready(function(){
 	});
 	$("#room a").click(function(){
 		var str = parseInt(this.innerHTML) || "";
-			$(this)
-			.parents(".chose-type").find("input").eq(0).val(str);
-			return false;
+		$(this)
+		.parents(".chose-type").find("input").eq(0).val(str);
+		return false;
 	});
 	$('.choose-input').click(function(event) {
 		var chosenItem = $(this).parent('dd').prev("dt").data('name');		
@@ -143,16 +103,48 @@ $(document).ready(function(){
 		return false;
 	});
 
-	//checkbox实现全选与全不选
-	// $("#checkItem button").click(function(){
-		
-	// });
+// 身份填写
+$("#identity a").click(function(){
+	$(this).css({
+		"background" : "#ff9700",
+		"color" : "#fff"
+	})
+	.siblings('a').css({
+		"background" : "",
+		"color" : ""
+	});
+
+	if($(this).parent('td').find('span').length === 0){
+		$(this).parent('td').append("<span class='ok'></span>")
+	}
+
+	return false;
+})
+	// checkbox实现全选与全不选
+	$("#checkItem a").click(function(){
+		var $checkbox = $(this).parent().find('li input[type="checkbox"]');
+		var str = checkAll($checkbox) ? false : true;
+
+		$checkbox.each(function(index) {
+			this.checked = str;
+		});
+
+		this.innerHTML = checkAll($checkbox) ? "全不选" : "全选";
+
+		return false;
+	});
+
 
 	// 在填写类表单中对输入框进行必须填写设定
-	$(".form-fill .required").filter("input").blur(function(){
+	$(".form-fill").on('blur ', ':not(a)' ,function(){
 		var $parentTd = $(this).parents("td");
-		if(this.value === ""){
-			$parentTd.find("span").length != 0 ? $parentTd.find("span").html("必须填写完整")  : $parentTd.append('<span  class="alert alert-danger">必须填写</span>');
+		var str = this.value;
+		if(str === ""){
+			insertErrMessage($parentTd , "必须填写完整");
+		}else if( this.id == "contract" && !((/^([\u4e00-\u9fa5]){2,4}$/).test(str))){
+			insertErrMessage($parentTd, "必须输入中文姓名");
+		}else if( this.id == "phone" && !( /^0?(13[0-9]|15[012356789]|17[678]|18[0-9]|14[57])[0-9]{8}$/.test(str))){
+			insertErrMessage($parentTd, "必须输入有效的手机号码 !")
 		}else{
 			if($parentTd.find("input.required").val() !== ""){
 				$parentTd.find("span").remove();
@@ -160,19 +152,83 @@ $(document).ready(function(){
 		}
 	});
 
+//校验楼层数是否科学
+	$('.form-fill input[name="floors"]').blur(function(){
+		var $parent = $(this).parents("td");
+		var $floor = $parent.find('input[name="floor"]');
+		if($floor.length > 0 && parseInt($(this).val()) < parseInt($floor.val())){
+			insertErrMessage($parent, "总楼层不能比所在楼层少呀亲");
+		}
+	});
+
+// 确保上传文件是图片，且不超过8张，不超过10M
+$(".form-fill input[type='file']").change(function(){
+	var $parent = $(this).parents("td");
+	var files = this.files;
+	var flag = false;
+
+	if(files.length > 0){
+		$parent.find("span").not("alert").html("已上传" + this.files.length + "个文件 ");
+		// 错误识别
+		if(files.length < 8){
+			for(var i=0 ; i< files.length; i++){
+				if(files[i].size === 0){
+					insertErrMessage($parent, "上传图片不可为空");
+					flag = true;
+				}else if(!/\.(jpg)|(jpeg)|(png)|(gif)$/.test(files[i].name)){
+					insertErrMessage($parent, "上传的必须是图片");
+					flag = true;;
+				}else if(Math.floor((files[i].size / 1024)/1024 ) > 10){
+					insertErrMessage($parent, "不可以超过10M");
+					flag = true;
+				}else{
+					$parent.find("span.alert").remove();
+				}
+			}	
+		}else{
+			insertErrMessage($parent,"不可以超过8张");
+		}
+
+//清除文件缓存，防止用户不小心提交
+		if(flag){
+			files = [];
+			$parent.find("span").not("span.alert").empty();
+		}
+		console.log(files.length);
+	}
+});
+
+//点击标签按钮添加标签
+$(".form-fill .tag").click(function(event) {
+	var $parent = $(this).parents('td');
+	if($(this).siblings('input').length <= 5){
+		$('<input class="btn btn-default required" name="tag"  value="" />').insertBefore($(this));
+	}else{
+		insertErrMessage($parent, "不可以超过5个呦");
+	}
+});
+// 点击标签附近的链接，显示到input里面去
+$(".form-fill .tag+span a").click(function(){
+	var $parent = $(this).parents('td');
+	if($parent.find('input').length <= 6){
+		$('<input class="btn btn-default required" name="tag"  value="' + this.innerHTML + '" />').insertBefore($parent.find(".tag"));
+	}else{
+		insertErrMessage($parent,"不可以超过5个呦");
+	}
+})
 	// 防止用户在输入数字的input里输入非数字的东东
 	$("input.num-only").keyup(function(){
 		this.value = this.value.replace(/[^\d]/g,"");
 	});
+	
+	
 
 	// 确认无误后发送表单
-	$("#submit").click(function(event) {
+	// $("#submit").click(function(event) {
 		
-	});
+	// });
 
 
-	// // 图片查看
-	// $()
 	// 将已选选项显示到筛选列表中函数,可重载函数 
 	function showFilter(chosenItem, content){
 		var $showChoice = $(".choose-fliter");
@@ -180,10 +236,28 @@ $(document).ready(function(){
 		$showChoice.find(chosenItemName).parent("li").remove();
 
 		if( arguments.length >= 2){
-		var str = '<li class="alert alert-warning"><a name="'+ chosenItem +'"">'+ content +'</a><a class="close-icon">&times;</a></li>';
-		
-		$showChoice.find("ul button").parent("li").before(str);
+			var str = '<li class="alert alert-warning"><a name="'+ chosenItem +'"">'+ content +'</a><a class="close-icon">&times;</a></li>';
+
+			$showChoice.find("ul button").parent("li").before(str);
 		}
+	}
+
+	// checkbox检查是否全选
+	function checkAll(elem) {
+		var n = 0;
+		elem.each(function(index) {
+			this.checked && n++;
+		});
+		if(n == elem.length){
+			return true;
+		}else{
+			console.log("");
+			return false;
+		}
+	}	
+	// 插入错误信息函数
+	function insertErrMessage(elem, content) {
+		elem.find('span.alert').length != 0 ? elem.find("span.alert").html(content)  : elem.append('<span  class="alert alert-danger">'+content+'</span>');
 	}
 
 });

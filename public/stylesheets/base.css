@@ -185,6 +185,7 @@
 	}
 	.table > tbody > tr > td,.table>tbody>tr>td a{
 		color: #585858;
+		vertical-align: middle;
 	}
 	.table > tbody > tr  strong a{
 		font-size: 16px;
@@ -283,6 +284,7 @@ dd label input{
 			width: 20%;
 			text-align: right;
 			padding-right:5%;
+			vertical-align: middle;
 		}
 		.form-fill  label,.table td a{
 			margin-right:10px;
@@ -323,19 +325,45 @@ dd label input{
 			border: 2px solid green;
 		}
 		.form-fill span.ok{
-			background: url(../public/images/ok.png);
+			background: url(../images/ok.png);
 			width:16px;
 			height: 16px;
 			display: inline-block;
 		}
 
 		.form-fill .alert.alert-danger{
+			display:inline-block;
 			font-size: 12px;
 			padding:5px;
+			border-radius: 10px;
 		}
 		.thumbnail{
 			border:none;
 		}
+
+		.fileContainer{
+        overflow:hidden;
+        position:relative;
+    }
+    .fileContainer [type="file"]{
+        cursor:inherit;
+        display:block;
+        font-size: 999px;
+        filter: alpha(opacity=0);
+        min-height: 100%;
+        min-width: 100%;
+        opacity: 0;
+        position: absolute;
+        right: 0;
+        text-align: right;
+        top: 0;
+    }
+    .form-fill input[name="tag"]{
+    	width:80px;
+    	margin: 5px 5px;
+    	cursor: auto;
+    	background:#fff;
+    }
 	@media screen and (max-width : 480px){
 		.aside form>input{
 			width:100%;
