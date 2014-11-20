@@ -26,7 +26,7 @@ public class Users extends Controller {
    * 跳转基本页面，用于测试样例
    */
     public static void index(){
-      render();
+      showUserInfo();
     }
 
 
@@ -58,7 +58,7 @@ public class Users extends Controller {
             index();
         }
       } else{
-        if(user.photo==null||"".equals(user.photo))
+        if("".equals(user.photo))
           user.photo = "/public/images/no_pic.jpg";
         
       } 
@@ -75,9 +75,36 @@ public class Users extends Controller {
 	 * @param user
 	 * @param userInfo
 	 */
-	public static void editUserInfo(User user) {
-		user.save();
-		showUsers();
+	public static void editUser(User user,File photo) {
+	  
+      if (photo != null) {
+        
+        if (!StringUtils.isEmpty(user.photo)) {
+            FileUtils.deleteFile(user.getPhoto());
+        }
+        
+        String baseUrl = Config.DEFAULT_BASE_URL;
+        String savePath = Config.USER_PHOTO_PATH;
+        Uploader uploader = new Uploader(baseUrl, savePath);
+        //System.out.println("savePath:"+savePath);
+        uploader.upload(photo);
+
+        if (uploader.getState() == FileUploadState.SUCCESS) {
+            // 文件上传成功
+          user.photo = uploader.getUrl();
+        } else {
+            flash.error("上传失败");
+            index();
+        }
+      } else{
+        if(user.photo==null||"".equals(user.photo))
+          user.photo = "/public/images/no_pic.jpg";
+        
+      } 
+      
+      
+        user.save();
+        Users.showUserInfo();
 	}
 	
 	/*
