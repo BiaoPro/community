@@ -1,10 +1,11 @@
 #{extends 'manager.html'/}
-<div class="container" >
-	<ul class="nav nav-tabs" style="margin-left:5%;">
-		<li #{get 'showLinkCategories' /}>
+
+     
+      <ul class="nav nav-tabs">
+		<li #{get 'showLinkCategories' /} class="active">
 			<a href="@{Links.showLinkCategories}" >链接管理</a>
 		</li>
-		<li #{get 'showSystemSettings' /}>
+		<li #{get 'showSystemSettings' /} class="">
 		<a href="@{SystemSettings.index}" >参数设置</a>
 	    </li>
 
@@ -12,5 +13,8 @@
 		
 	</ul>
 	
-	<div style="margin-left:5%;">#{doLayout /}</div>
-</div>
+
+
+	#{doLayout /}
+
+<script type="text/javascript" src="/public/javascripts/manage.js"></script>

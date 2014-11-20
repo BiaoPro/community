@@ -78,6 +78,10 @@
                     <li><a href="#">信息咨询</a></li>
                     <li><a href="@{Links.showLinkCategories}">维权</a></li>
                   </ul>
+                  <ul class="nav navbar-nav navbar-right">
+                       <li><a href="#">用户</a></li>
+                       <li><a href="#">退出</a></li>
+                   </ul>
                 </div>
             </div>
           </div>
@@ -141,7 +145,8 @@
     <script type="text/javascript" src="@{'/public/javascripts/jquery-1.11.1.min.js'}" charset="${_response_encoding}"></script>
     <script type="text/javascript" src="@{'/public/javascripts/bootstrap.js'}" charset="${_response_encoding}"></script>
     <script type="text/javascript" src="@{'/public/javascripts/scripts.js'}" charset="${_response_encoding}"></script>
-
+    <script type="text/javascript" src="@{'/public/javascripts/bootstrapValidator.js'}"charset="${_response_encoding}"></script>
+    <script type="text/javascript" src="@{'/public/javascripts/form.js'}"charset="${_response_encoding}"></script>
     #{get 'moreScripts' /}
     </body>
 </html>

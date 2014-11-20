@@ -1,56 +1,55 @@
 #{extends 'main.html'/}
-
 <style>
 <!--
-.menu{
- display: inline-block;
- width:50px;
- position: fixed;
- z-index: 1000;
-
+.main{
+padding:40px 40px 0px 40px;
 }
 -->
 </style>
 
-		<div class="menu">
-			<ul>
+		<div class="main container-fluid" >
+	      <div class="row">
+		    <div class="col-xs-3">
 				#{if session.userCategory != "2"}
 				<!-- 系统设置，只有社区管理员以上有权限 -->
-				<li class="btn btn-default">
-					<a href="@{SystemSettings.index}">版权设置</a>
-				</li>
-				<li class="btn btn-default">
-					<a href="@{Users.register}">用户管理</a>
-				</li>
+				
+					<a href="@{SystemSettings.index}" class="list-group-item active">版权设置</a>
+				
+				
+					<a href="@{Users.register}" class="list-group-item">用户管理</a>
+				
 				#{/if}
 				#{if session.userCategory != "0"}
 				<!-- 只有文章管理员和超级用户有权 -->
-				<li class="btn btn-default">
-					<a href="#">文章管理</a>
-				</li>
-				<li class="btn btn-default">
-					<a href="@{Links.showLinkCategories}">链接管理</a>
-				</li>
-				<li class="btn btn-default">
-					<a href="#">课堂管理</a>
-				</li>
-				<li class="btn btn-default">
-					<a href="#">租房管理</a>
-				</li>
-				<li class="btn btn-default">
-					<a href="#">招工管理</a>
-				</li>
-				<li class="btn btn-default">
-					<a href="#">信息反馈</a>
-				</li>
-				#{/if}
 				
-			</ul>
+					<a href="#" class="list-group-item" class="list-group-item">文章管理</a>
+				
+			
+					<a href="@{Links.showLinkCategories}" class="list-group-item">链接管理</a>
+			
+			
+					<a href="#" class="list-group-item">课堂管理</a>
+				
+			
+					<a href="#" class="list-group-item">租房管理</a>
+				
+				
+					<a href="#" class="list-group-item">招工管理</a>
+				
+				
+					<a href="#" class="list-group-item">信息反馈</a>
+			
+				#{/if}
+				</div>
+				   <div class="col-xs-9">
+				     #{doLayout /}
+				     </div>
+			</div>
 		</div>
 
-#{doLayout /}
 
-<<script type="text/javascript" src="/public/javascripts/manage.js"></script>
+
+<script type="text/javascript" src="/public/javascripts/manage.js"></script>
 
 
 
