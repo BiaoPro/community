@@ -20,7 +20,7 @@ public class Bootstrap extends Job {
 		
 		User adminUser = User.findByAccount("admin");
 		if (adminUser == null) {
-			adminUser = new User("admin", "admin", 3);
+			adminUser = new User("admin", "sys", 3);
 			UserInfo adminUserInfo = new UserInfo(adminUser.id, "admin");
 			// 设置admin帐号为管理员帐号
 			adminUserInfo.userCategory = UserRoleEnum.ADMIN.getValue();
@@ -31,7 +31,7 @@ public class Bootstrap extends Job {
 		
 	        User backUser = User.findByAccount("back");
 	        if (adminUser == null) {
-	            adminUser = new User("back", "back", 2);
+	            adminUser = new User("back", "123", 2);
 	            UserInfo adminUserInfo = new UserInfo(adminUser.id, "back");
 	            adminUserInfo.userCategory = UserRoleEnum.PUBLISHER.getValue();
 	            adminUser.save();
@@ -41,7 +41,7 @@ public class Bootstrap extends Job {
 	        
 	           User nomalUser = User.findByAccount("user");
 	            if (adminUser == null) {
-	                adminUser = new User("user", "user", 1);
+	                adminUser = new User("user", "123", 1);
 	                UserInfo adminUserInfo = new UserInfo(adminUser.id, "back");
 	                adminUserInfo.userCategory = UserRoleEnum.NOMALUSER.getValue();
 	                adminUser.save();

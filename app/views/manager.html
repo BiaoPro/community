@@ -1,55 +1,37 @@
 #{extends 'main.html'/}
-
 <style>
 <!--
-.menu{
- display: inline-block;
- width:50px;
- position: fixed;
- z-index: 1000;
-
+.main{
+padding:40px 40px 0px 40px;
 }
 -->
 </style>
-
-		<div class="menu">
-			<ul>
-				#{if session.userCategory != "0"}
+		<div class="main container-fluid" >
+	      <div class="row">
+		    <div class="col-xs-2">
+		        #{if session.userCategory != "0"}
 				<!-- 只有文章管理员和超级用户有权 -->
-				<li class="btn btn-default">
-					<a href="@{Users.showUserInfo}">用户管理</a>
-				</li>
-				<li class="btn btn-default">
-					<a href="@{Backnews.newsmanager}">文章管理</a>
-				</li>
+					<a href="@{Users.showUserInfo}" class="list-group-item #{get 'UserManager' /}" >用户管理</a>
+					<a href="@{Backnews.newsmanager}" class="list-group-item #{get 'AritcleManager' /}" >文章管理</a>
 
-				<li class="btn btn-default">
-					<a href="@{Courses.showCourseCategories}">课堂管理</a>
-				</li>
-				<li class="btn btn-default">
-					<a href="#">租房管理</a>
-				</li>
-				<li class="btn btn-default">
-					<a href="#">招工管理</a>
-				</li>
+					<a href="@{Courses.showCourseCategories}" class="list-group-item #{get 'CourseManager' /}" >课堂管理</a>
+					<a href="#" class="list-group-item #{get 'HouseManager' /}" >租房管理</a>
+					<a href="#" class="list-group-item #{get 'WorkManager' /}" >招工管理</a>
 				#{/if}
 				#{if session.userCategory == "2"||session.userCategory == "3"}
 				<!-- 系统设置，只有社区管理员以上有权限 -->
-				<li class="btn btn-default">
-					<a href="@{SystemSettings.index}">版权设置</a>
-				</li>
-				<li class="btn btn-default">
-					<a href="@{Links.showLinkCategories}">链接管理</a>
-				</li>
-				<li class="btn btn-default">
-					<a href="#">信息反馈</a>
-				</li>
+					<a href="@{SystemSettings.index}" class="list-group-item #{get 'SettingManager' /}" >版权设置</a>
+					<a href="@{Links.showLinkCategories}" class="list-group-item #{get 'LinkManager' /}" >链接管理</a>
+					<a href="#" class="list-group-item" >信息反馈</a>
 				#{/if}
-				
-			</ul>
+			</div>
+			<div class="col-xs-10">
+				     #{doLayout /}
+			</div>
+
+			</div>
 		</div>
 
-#{doLayout /}
 
 <script type="text/javascript" src="/public/javascripts/manage.js"></script>
 
