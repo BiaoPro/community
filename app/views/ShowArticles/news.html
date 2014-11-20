@@ -12,7 +12,6 @@
 		-moz-box-shadow:0px 1px 4px 1.5px rgba(0, 0, 0, .35), 0px 10px 35px 4px rgba(0, 0, 0, 0.25);
 		-webkit-box-shadow:0px 1px 4px 1.5px rgba(0, 0, 0, .35), 0px 10px 35px 4px rgba(0, 0, 0, 0.25);
 	}
-
 	.intro{
 		display: block;
 		background: rgba(0,0,0,0.5);
@@ -25,58 +24,15 @@
 		top:-30px;
 		text-align: center;
 	}
-	.form-horizontal{
-		margin:10px auto;
-	}
-
-
-
-	.main-content .news{
-		padding-left: 15px;
-	}
-
-	.main-content .news>li{
-		line-height: 25px;
-		border-right: none;
-	}
-
-	.main-content .news>li:before{
-		display: inline;
-		content:">>";
-		margin-right:1em;
-	}
-	
-	.main-content .news>li>a {
-		display: inline;
-		color: #333;
-		word-wrap:break-word;
-	}
-	
-	.main-content .news>li>a:hover{
-		color: red;
-	}
-
-	.main-content .news>.br:before{
-		content: "";
-	}
-	.main-content .br{
-		height: 0.8em;
-	}
-
-	.main-content .news span.pull-right{
-		opacity:0.7;
-		filter:alpha(opacity=70);
-	}
-
  </style>
 
 #{/set}
 			  	<div>
-			  		<img class="img-responsive show-img"  src="../public/images/FactsFigures.jpg" alt=""/>
+			  		<img class="img-responsive show-img"  src="../public/images/grace.jpg" alt=""/>
 					<span class="intro">这里是展示介绍</span>
 				</div>
 				<form class="form-horizontal"  action="">
-					<div class="form-group col-sm-10"  >
+					<div class="form-group col-md-12 col-md-push-1"  >
 						<label class="col-sm-2 control-label">按板块</label>
 						<div class="col-sm-4">
 						<select class="form-control">
@@ -100,13 +56,13 @@
 						</div>
 				</form>
 				<div class="main-content">
-					<ul class="news">
+					<ul class="news news-ul">
 						<li>
 							<a href="@{SHowArticles.showNewsInfo}">便民利民的自助售药机</a>
 							<span class="pull-right text-center hidden-xs">2014-04-03</span>
 						</li>
 						<li>
-							<a href="">核心价值不能仅仅教给孩子</a>
+							<a>核心价值不能仅仅教给孩子</a>
 							<span class="pull-right hidden-xs">2014-04-03</span>
 						</li>
 						<li>

@@ -1,60 +1,23 @@
 #{extends 'ShowHouses/base.html' /}
 #{set title:'House' /}
-
-#{set 'moreSubpageStyles'}
+#{set "moreSubpageStyles"}
 <style type="text/css">
-	.choose-fliter li{
-		display: inline-block;
-		padding: 5px 8px 0 8px;
-	}
-	dd label input{		
-		width: 40px;
-		padding-right: 5px;
-	}
-
-	.panel .btn{
-		margin-left: 10px;
-		position: relative;
-		top:-1px;
-	}
-
-
-	.choose-fliter a{
-		padding-left: .5em;
-		text-decoration: none;
-	}
-
-	.choose-fliter{
-		margin-bottom:0;
-	}
-	.panel-footer{
-		border-top: none;
-		padding-bottom: 0;
-	}
-	.panel-footer ul,.panel-footer dd{
-		margin-bottom: 0;
-	}
-	.house-info a{
-		font-size: 1.3em;
-	}
-	.house-info small{
-		color:#756059;
-		padding-right: 1em;
-	}
-	.price{
-		font-size: 1.5em;
+	.img-responsive{
+		max-height : 200px;
+		height : 200px\9;
 	}
 </style>
 #{/set}
 		<!-- 路径导航 -->
+		<!-- 为方便，所有条件集中到筛选条件处再进行表单传送 -->
 		<ol class="breadcrumb">
 			<li><a href="#">首页</a></li>
 			<li class="active">社区租房</li>
 		</ol>
 		<div class="panel panel-default">
-		  <div class="panel-body">
+		  <div class="panel-body filter">
 		   		<dl>
-		   			<dt>租金</dt>
+		   			<dt  data-name="rent" data-title="租金">租金</dt>
 		   				<dd  id = "price" class="chose-type">
 		   					<a class="active">不限</a>
 		   					<a >800元以下</a>
@@ -65,42 +28,41 @@
 		   					<a >5000以上</a>
 		   					<span>
 		   						<label>
-		   							<input type="text"/>
+		   							<input class="num-only" type="text"/>
 		   						</label>
 		   						-
 		   						<label>
-		   							<input type="text">
+		   							<input class="num-only" type="text">
 		   						</label>
 								元
-								<button class="btn btn-default  btn-sm">筛选</button>
 		   					</span>
+		   					<button class="btn btn-default  btn-sm btn-find choose-input">筛选</button>
 		   				</dd>
-		   			<dt>房型</dt>
+		   			<dt  data-name="room" data-title="房型">房型</dt>
 		   				<dd id="room" class="chose-type">
 		   					<a href="" class="active">不限</a>
 		   					<a href="">1室</a>
 		   					<a href="">2室</a>
 		   					<a href="">3室</a>
 		   					<a href="">4室</a>
-		   					<a href="">5室</a>
 		   					<a href="">5室以上</a>
 		   					<span>
 		   						<label>
-		   							<input type="text"/>
+		   							<input class="num-only" type="text"/>
 		   						</label>
 		   						室
 		   						<label>
-		   							<input type="text">
+		   							<input class="num-only" type="text">
 		   						</label>
 								厅
 								<label>
-		   							<input type="text">
+		   							<input class="num-only" type="text">
 		   						</label>
 		   						卫
-		   						<button class="btn btn-default btn-sm">筛选</button>
 		   					</span>
+		   					<button class="btn btn-default  btn-sm btn-find choose-input">筛选</button>
 		   				</dd>
-		   			<dt>特色</dt>
+		   			<dt data-name="feature">特色</dt>
 		   				<dd>
 		   					<a  class="active">不限</a>
 		   					<a>精装修</a>
@@ -110,7 +72,7 @@
 		   					<a >临近地铁</a>
 		   					<a >市政供暖</a>
 		   				</dd>
-		   			<dt>方式</dt>
+		   			<dt data-name="way">方式</dt>
 		   				<dd>
 		   					<a href="" class="active">不限</a>
 		   					<a href="">整租</a>
@@ -119,7 +81,7 @@
 		   				</dd>
 		   			<dt>其他</dt>
 		   				<dd>
-		   					<div class="moreitem-box">
+		   					<div class="moreitem-box" data-name="floor">
 			   					<div class="moreitem-btn"><a >楼层</a>
 			   					</div>
 			   					<ul class="moreitem" >
@@ -133,10 +95,10 @@
 			   						<li><a >7楼以上</a></li>
 			   					</ul>
 		   					</div>
-		   					<div class="moreitem-box">
+		   					<div class="moreitem-box" data-name="orientation">
 			   					<div class="moreitem-btn"><a>朝向</a>
 			   					</div>
-			   					<ul class="moreitem" >
+			   					<ul class="moreitem">
 			   						<li><a href="">东</a></li>
 			   						<li><a href="">西</a></li>
 			   						<li><a href="">南</a></li>
@@ -148,23 +110,25 @@
 		   				</dd>
 		   		</dl>
 		  </div>
-		  <div class="panel-footer">
+		
 			  <dl class="choose-fliter">
 			  	<dt>筛选条件</dt>
 			  		<dd>
-			  			<ul>
-			  				<li class="alert alert-warning">1500-2000元<a>&times;</a></li>
-			  				<li class="alert alert-warning">1楼<a>&times;</a></li>
+			  		<form action="" class="form-filter">
+			  			<ul class="list-inline">
+			  				<li class="alert alert-warning"><a name='rent'>1500-2000元</a><a class="close-icon">&times;</a></li>
+			  				<li class="alert alert-warning"><a name='floor'>1楼</a><a class="close-icon">&times;</a></li>
+			  				<li><button class="btn btn-default  btn-sm btn-find" id="submit">确定</button></li>
 			  			</ul>
+			  			 </form>
 			  		</dd>
 			  	</dl>
-		  </div>
 		</div>
 
 		<div class="house-show main-content">
 			<table class="table table-hover">
 				<tr>
-					<td class="col-xs-4"><a href="#" class="thumbnail"><img src="../public/images/dama.jpg" data-src="holder.js/100%x180" alt="house"></a></td>
+					<td class="col-xs-4"><a href="#" class="thumbnail"><img src="../public/images/dama.jpg"   alt="house" class="img-responsive"></a></td>
 					<td class="house-info">
 						<a href="@{ShowHouses.showHousesInfo}">南洲花园两房 低楼层 有匙即看</a>
 						<p ><small>南洲花苑</small><small>2室1厅1卫</small></p>
@@ -177,7 +141,7 @@
 					<td><p><em class="price">3300</em>元</p></td>
 				</tr>
 				<tr>
-					<td class="col-xs-4"><a href="#" class="thumbnail"><img src="../public/images/dama.jpg" data-src="holder.js/100%x180" alt="house"></a></td>
+					<td class="col-xs-4"><a href="#" class="thumbnail"><img src="../public/images/dama.jpg"   alt="house" class="img-responsive"></a></td>
 					<td class="house-info">
 						<a>南洲花园两房 低楼层 有匙即看</a>
 						<p ><small>南洲花苑</small><small>2室1厅1卫</small></p>
@@ -190,7 +154,7 @@
 					<td><p><em class="price">3300</em>元</p></td>
 				</tr>
 				<tr>
-					<td class="col-xs-4"><a href="#" class="thumbnail"><img src="../public/images/dama.jpg" data-src="holder.js/100%x180" alt="house"></a></td>
+					<td class="col-xs-4"><a href="#" class="thumbnail"><img src="../public/images/dama.jpg"   alt="house" class="img-responsive"></a></td>
 					<td class="house-info">
 						<a>南洲花园两房 低楼层 有匙即看</a>
 						<p ><small>南洲花苑</small><small>2室1厅1卫</small></p>
@@ -203,7 +167,7 @@
 					<td><p><em class="price">3300</em>元</p></td>
 				</tr>
 				<tr>
-					<td class="col-xs-4"><a href="#" class="thumbnail"><img src="../public/images/dama.jpg" data-src="holder.js/100%x180" alt="house"></a></td>
+					<td class="col-xs-4"><a href="#" class="thumbnail"><img src="../public/images/dama.jpg"   alt="house" class="img-responsive"></a></td>
 					<td class="house-info">
 						<a>南洲花园两房 低楼层 有匙即看</a>
 						<p ><small>南洲花苑</small><small>2室1厅1卫</small></p>
@@ -216,7 +180,7 @@
 					<td><p><em class="price">3300</em>元</p></td>
 				</tr>
 				<tr>
-					<td class="col-xs-4"><a href="#" class="thumbnail"><img src="../public/images/dama.jpg" data-src="holder.js/100%x180" alt="house"></a></td>
+					<td class="col-xs-4"><a href="#" class="thumbnail"><img src="../public/images/dama.jpg"   alt="house" class="img-responsive"></a></td>
 					<td class="house-info">
 						<a>南洲花园两房 低楼层 有匙即看</a>
 						<p ><small>南洲花苑</small><small>2室1厅1卫</small></p>
@@ -229,7 +193,7 @@
 					<td><p><em class="price">3300</em>元</p></td>
 				</tr>
 				<tr>
-					<td class="col-xs-4"><a href="#" class="thumbnail"><img src="../public/images/dama.jpg" data-src="holder.js/100%x180" alt="house"></a></td>
+					<td class="col-xs-4"><a href="#" class="thumbnail"><img src="../public/images/dama.jpg"   alt="house" class="img-responsive"></a></td>
 					<td class="house-info">
 						<a>南洲花园两房 低楼层 有匙即看</a>
 						<p ><small>南洲花苑</small><small>2室1厅1卫</small></p>
@@ -242,7 +206,7 @@
 					<td><p><em class="price">3300</em>元</p></td>
 				</tr>
 				<tr>
-					<td class="col-xs-4"><a href="#" class="thumbnail"><img src="../public/images/dama.jpg" data-src="holder.js/100%x180" alt="house"></a></td>
+					<td class="col-xs-4"><a href="#" class="thumbnail"><img src="../public/images/dama.jpg"   alt="house" class="img-responsive"></a></td>
 					<td class="house-info">
 						<a>南洲花园两房 低楼层 有匙即看</a>
 						<p ><small>南洲花苑</small><small>2室1厅1卫</small></p>
@@ -255,7 +219,7 @@
 					<td><p><em class="price">3300</em>元</p></td>
 				</tr>
 				<tr>
-					<td class="col-xs-4"><a href="#" class="thumbnail"><img src="../public/images/dama.jpg" data-src="holder.js/100%x180" alt="house"></a></td>
+					<td class="col-xs-4"><a href="#" class="thumbnail"><img src="../public/images/dama.jpg"   alt="house" class="img-responsive"></a></td>
 					<td class="house-info">
 						<a>南洲花园两房 低楼层 有匙即看</a>
 						<p ><small>南洲花苑</small><small>2室1厅1卫</small></p>

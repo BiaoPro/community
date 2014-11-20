@@ -1,15 +1,23 @@
+.main-container section{
+	box-shadow:none;
+}
+.section-line {
+		border-top: 2px dashed #ddd;
+}
+.thumbnail{
+	border:none;
+	border-bottom: 1px solid #ddd;
+}
 ol>li>a,td>a{
-	color:#756059;
-	text-decoration:underline;
+	color:#333;
 }
 /*社区新闻的Tab修改*/
 .tab-pane td>a{
 	color: #5351D2;
-	text-decoration: none;
 } 
 
 .tab-pane td>a:hover,ol>li>a:hover,td>a:hover{
-	color:red;
+	color:#d99816;
 }
 .panel-body ol>li{
 	margin:10px;
@@ -31,31 +39,27 @@ ol>li>a,td>a{
 */
 /* Since positioning the image, we need to help out the caption */
 .carousel-caption {
-	top:8%;
-	width:35%;
-	min-height: 350px;
+		min-height: 350px;
   	z-index: 1;
   	font-family: "幼圆";
-  	left:55%;
+}
+.carousel-text {
+	min-height : 350px;
+}
+.carousel-inner-col{
+	top:15%;
+}
+.carousel-inner-col>img {
+	height: 20em;
 }
 /* Declare heights because of positioning of img element */
 .carousel .item {
   height: 400px;
 }
 
-.carousel-inner>.item>img{
-  position: absolute;
-  top: 10%;
-  left: 10%;
-  margin:auto;
-  width:35%;
-  min-height: 60%;
-}
-
 .carousel-inner{
 	width:90%;
 	margin: auto;
-/*	background: #000;*/
 	background: rgba(0,0,0,0.5);
 	background: transparent\9;
 	zoom:1\8; /* required for the filters */
@@ -81,8 +85,6 @@ ol>li>a,td>a{
 	width:300px;
 	height: 50px;
 }
-
-
 
 
 /*社区课堂*/
@@ -132,7 +134,7 @@ ol>li>a,td>a{
 	position:relative;
 	animation:up 0.5s;
 	-webkit-animation:up 0.5s; /*Safari and Chrome*/
-	color: red;
+	color: #ff5300;
 }
 
 	@keyframes up
@@ -171,9 +173,6 @@ ol>li>a,td>a{
 	width:70%;
 }
 
-.nav-tabs a{
-	color: #F24800;
-}
 
 /*信息咨询*/
 section.consult{
@@ -202,9 +201,26 @@ section.consult{
 	zoom:1;
 }
 
+.table>thead>tr>th, 
+.table>tbody>tr>th,
+.table>tfoot>tr>th, 
+.table>thead>tr>td, 
+.table>tbody>tr>td, 
+.table>tfoot>tr>td{
+	border-top:none;
+}
 
 
-@media screen and (max-width: 768px) { 
+/* Medium Devices, Desktops */
+@media only screen and (min-width : 992px) {
+	.main-container {
+		margin:6em 6em 2em 6em;
+		background: #fff;
+	}
+}
+
+
+@media only screen and (max-width: 768px) { 
   /*changes for carousel*/
    .carousel-caption{
    		top:70%;
@@ -237,7 +253,7 @@ section.consult{
 
 }
 
-	@media screen and (max-width: 640px){	
+@media only screen and (max-width: 640px){	
 		.carousel-inner{
 			width:100%;
 		}
@@ -284,7 +300,7 @@ section.consult{
 		}
 
 }
-	@media screen and (max-width: 480px) and (-webkit-min-device-pixel-ratio:0){
+@media only screen and (max-width: 480px) and (-webkit-min-device-pixel-ratio:0){
 		.title{
 			font-weight: normal;
 			background: #fff;

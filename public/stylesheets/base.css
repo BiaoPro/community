@@ -9,6 +9,9 @@
 		background: #EC9508;
 		color: #fff;
 	}
+	.img-responsive{
+		max-height:300px;
+	}
 	dt{
 		float: left;
 	}
@@ -20,35 +23,17 @@
 		margin-bottom: 10px;
 	}
 	.aside li>a{
-			display: inline;
-			color: #333;
 			word-wrap:break-word;
 	}
-	.aside li>a:hover{
-		color: red;
-	}
 	.aside li{
-		list-style: none;
 		line-height: 25px;
 		border-right: none;
 	}
-	.aside li:before{
-		display: inline;
-		content:">>";
-		margin-right:1em;
+	.aside .aside-styled-ul li{
+		padding:10px 0;
 	}
  	.aside li{
-		list-style: none;
 		line-height: 25px;
-		border-right: none;
-	}
-	.aside li>a:hover{
-		color: red;
-	}
-	.aside li:before{
-		display: inline;
-		content:">>";
-		margin-right:1em;
 	}
 
 	.aside{
@@ -106,16 +91,14 @@
 		padding: 10px;
 	}
 
+	.main-content .news.news-ul>li.br:before{
+	content : "";
+	}
 	.main-container .row>section>div{
 		margin-bottom: 30px;
 	}
 	.main-content{
 		border-bottom: 1px solid #ebe8e4;
-	}
-	.sub>small{
-		display: inline-block;
-		width:20%;
-		color:#756059;
 	}
 	.sub{
 		border-bottom: 1px solid #ebe8e4 ;
@@ -136,9 +119,6 @@
 		margin-right: 1.5em;
 		margin-right: 0;
 	}
-	.moreitem-btn a:hover{
-		text-decoration: none;
-	}
 	.moreitem-box{
 		position: relative;
 		margin-right: 10px;
@@ -156,9 +136,6 @@
 
 	.moreitem li{
 		padding-left: .5em;
-	}
-	.moreitem li a:hover{
-		text-decoration: none;
 	}
 	.moreitem li:hover{
 		background: #faebcc;
@@ -179,25 +156,186 @@
 		width: 100%;
 	}
 
-	.nav-side li:before{
-		content: "";
-	}
-
 	.nav-side li{
 		padding: 10px;
 		border-top: 1px solid #ebe8e4;
 		margin: 0;
 	}
+	.nav-side li:hover {
+				background : #ccc;
+				border-radius: 4px;
+	}
+	.nav-side li>a:hover{
+		color : #fff;
+	}
 	.nav-side li:first-child{
 		border-top: none;
 	}
 
+/*work-base的css*/
+	.aside:before{
+		border-top:4px solid #E56745;
+	}
 	.nav-side li>a{
-		font:300 16px/18px 'Avenir LT W01 45 Book', Arial, Helvetica, sans-serif;
+		color:#E56745;
+	}	
+
+	ul.sub li{
 		display: inline-block;
 	}
+	.table > tbody > tr > td,.table>tbody>tr>td a{
+		color: #585858;
+	}
+	.table > tbody > tr  strong a{
+		font-size: 16px;
+		color: #428bca;
+		font-weight: normal;
+	}
+	.table a:hover{
+		color: red;
+	}
+	/*work的css*/
+	dt{
+		padding-right: 20px;
+	}
+	.panel-body form{
+		display: inline-block;
+		margin-left:5px;		
+	}
+	.panel-body form input[name="keyword"]{
+		width:150px;
+	}
+	.form-control{
+		display: inline-block;
+		width:70%;
+	}
+	.moreitem-box{
+		margin:0px 0px 10px 10px;
+	}
 
+	/*news的css*/
+	.main-content .news{
+		padding-left: 15px;
+	}
 
+	.main-content .news.news-ul>li:before{
+		display: inline;
+		content:">>";
+		margin-right:1em;
+	}
+	
+	.main-content .news>li>a {
+		display: inline;
+		color: #333;
+		word-wrap:break-word;
+	}
+	
+	.main-content .news>li>a:hover{
+		color: red;
+	}
+
+	.main-content .news>.br:before{
+		content: "";
+	}
+	.main-content .br{
+		height: 0.8em;
+	}
+
+	.main-content .news span.pull-right{
+		opacity:0.7;
+		filter:alpha(opacity=70);
+	}
+/*house的css*/
+dd label input{		
+		width: 40px;
+		padding-right: 5px;
+	}
+.btn-find{
+		margin-left: 10px;
+	}
+.choose-fliter{
+		margin-bottom:0;
+		border-top:1px solid #ccc;
+	}
+.choose-fliter li{
+	margin-bottom: 0;
+}
+	.house-info a{
+		font-size: 1.3em;
+	}
+	.house-info small{
+		color:#756059;
+		padding-right: 1em;
+	}
+	.price{
+		font-size: 1.5em;
+		color:#f60;
+	}
+/*表单填写部分样式*/
+		.form-fill .table > tbody > tr > td,.table>tbody>tr>th{
+			border-top:none;
+			font-size: 1.1em;
+			color: #333;
+			vertical-align: top;
+			margin: 10px 0px 0px 10px;
+		}
+		.form-fill .table>tbody>tr>th{
+			width: 20%;
+			text-align: right;
+			padding-right:5%;
+		}
+		.form-fill  label,.table td a{
+			margin-right:10px;
+			font-weight: normal;
+		}
+		.form-fill .form-control{
+			display: inline-block;
+			width: 50%;
+		}
+		.form-fill .btn-lg{
+			margin:10px;
+		}
+		.form-fill .moreitem a{
+			display: inline-block;
+			padding: 8px 10px;
+		}
+		.form-fill td label input[type="text"]{		
+			width: 50px;
+			padding-right: 5px;
+		}
+		.form-fill ul.sub{
+			padding-left: 0;
+			border-bottom: none;
+		}
+		.form-fill ul.sub li{
+			margin:10px 0px 0px 10px;
+		}
+		.form-fill .chose-all{
+			margin-left: 10px;
+		}
+		.form-fill form:after{
+			content: '';
+			display: block;
+			height: 0;
+			clear: both;
+		}
+		.form-fill .btn.chosen{
+			border: 2px solid green;
+		}
+		.form-fill span.ok{
+			background: url(../public/images/ok.png);
+			width:16px;
+			height: 16px;
+			display: inline-block;
+		}
+
+		.form-fill .alert.alert-danger{
+			font-size: 12px;
+			padding:5px;
+		}
+		.thumbnail{
+			border:none;
+		}
 	@media screen and (max-width : 480px){
 		.aside form>input{
 			width:100%;
@@ -211,4 +349,13 @@
 			padding-left: 0;
 			padding-right: 0;
 		}
+			.table>tbody>tr>th,.table>tbody>tr>td{
+				border-top: 1px solid #ccc;
+			}
+			.table>tbody>tr>th{
+				width: 35%;
+			}
+			.moreitem-box{
+				margin-bottom: 10px;
+			}
 	}
