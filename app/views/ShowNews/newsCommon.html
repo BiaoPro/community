@@ -1,0 +1,39 @@
+#{extends 'ShowNews/base.html' /}
+#{set title:'News' /}
+			  	<div>
+			  		<img class="img-responsive show-img"  src="../public/images/FactsFigures.jpg" alt=""/>
+					<span class="intro">这里是展示介绍</span>
+				</div>
+				<form id="form" class="form-horizontal"  action="@{ShowNews.newsFilter}">
+					<div class="form-group col-sm-10"  >
+						<label class="col-sm-2 control-label">栏目</label>
+						<div class="col-sm-4">
+						<select id="class" name="newClassType" class="form-control">
+						<option selected="selected" value="">全部栏目</option>
+						#{list items:newsClassList,as:'item'}
+						  <option value="${item.newClassType}">${item.newClassType}</option>
+						#{/list}
+						</select>
+						</div>
+						<label class="col-sm-2 control-label">时间</label>
+						<div class="col-sm-4">
+						<select id="date" name="newsCreateDate" class="form-control">
+							<option selected="selected" value="">全部日期</option>
+						  #{list items:newsDateList,as:'item'}
+						  <option value="${item}">${item}</option>
+							#{/list}
+						</select>
+						</div>
+						</div>
+				</form>
+				<div class="main-content">
+					<ul class="news">
+					#{list items:currentList,as:'item'}
+						<li>
+							<a href="@{showNews.showNewsInfo(item.newsId)}">${item.newsTitle}</a>
+							<span class="pull-right text-center hidden-xs">${item.newsCreateDate}</span>
+						</li>
+					#{/list}
+					</ul>
+					#{doLayout /}
+				</div>
