@@ -1,8 +1,7 @@
 #{extends 'Users/base.html' /}
 #{set showUserInfo : 'class=active' /}
 
-<div class="container">
-<div class="box-div" style="width:500px;">
+<div class="nav-tabs box-div">
 	<form class="form-horizontal" action="@{Users.editUser}" method="post" role="form" enctype="multipart/form-data">
 		<legend>信息修改</legend>
 		<ol class="well">
@@ -46,5 +45,5 @@
 	      </ol>
 	</form>
 </div>
-</div>
+
 
