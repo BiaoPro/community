@@ -26,7 +26,7 @@ public class DateUtils {
 	 * @return
 	 */
 	public static String getDateTimeStr(long time) {
-		return new SimpleDateFormat("yyyy-MM-dd hh:mm").format(new Date(time));
+		return new SimpleDateFormat("yyyy-MM-dd HH:mm").format(new Date(time));
 	}
 	
 	/**

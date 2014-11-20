@@ -1,6 +1,7 @@
 package controllers;
 
 import play.*;
+import play.libs.Codec;
 import play.mvc.*;
 import utils.SessionManager;
 
@@ -16,12 +17,39 @@ public class Application extends Controller {
         render();
     }
     
-    public static void test() {
-      
-      String str="hello";
-      render(str);
-  }
+    
+    public static void manager() {
+        SessionManager.setFooter(session);
 
+        Users.index();
+    }
+    
+    
+
+    /*
+     * 跳转到登录页面
+     */
+    public static void login() {
+        String randomId = Codec.UUID();// 登录时候附带的验证信息
+        render(randomId);
+    }
+    
+    /*
+     * 注销
+     */
+    public static void logout() {
+        session.clear();
+        session.put("logined", false);
+        Application.index();
+    }
+    
+    /*
+     * 跳转到注册页面
+     */
+    public static void register() {
+        render();
+    }
+   
 
 
 }

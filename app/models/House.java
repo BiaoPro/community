@@ -22,7 +22,9 @@ import utils.StringUtils;
 public class House extends GenericModel{
 	@Id
 	public String id;
-	
+	//出租方
+		@ManyToOne
+		public User author;
 	//1为隐藏，2为显示
 	@Column(name="status",columnDefinition="int default 1")
 	public int status;
@@ -31,27 +33,50 @@ public class House extends GenericModel{
 	@Column(name="audit",columnDefinition="int default 1")
 	public int audit;
 	
-	@ManyToOne
-	public User author;
-	
-	@Column(name = "author_phone")
-	public String authorPhone;
-	
-	@Column(name = "photo_url")
-	public String photoUrl;
-	
+	//出租方式
+	@Column(name = "way")
+	public String way;
+	//您的身份
+	public String indentity;
+	//联系人
+	public String contacts;
+	//联系电话
+	public String phone;
+	//小区
+	@Column(name="community")
+	public String community;
+	//地址
 	@Column(name = "address")
 	public String address;
-	
+	//户型
+	@Column(name = "bed_room")
+	public int bedRoom;
+	@Column(name = "living_rom")
+	public int livingRoom;
+	@Column(name = "bath_room")
+	public int bathRoom;
+	public double square;
+	//楼层
+	@Column(name = "current_floor")
+	public int currentFloor;
+	@Column(name = "count_floor")
+	public int countFloor;
+	//房屋情况
+	@Column(name = "decoration_situation")
+	public String decorationSituation;
+	@Column(name = "class_situation")
+	public String classSituation;
+	//家电配备
+	public String equipment;
+	//租金
+	@Column(name = "price")
+	public double price;
+	//描述
 	@Column(name = "details")
 	public String details;
-	
-	@Column(name = "price")
-	public String price;
-	
-	@Lob
-	@Column(name = "message")
-	public String message;
+	//照片
+	@Column(name = "photo_url")
+	public String photoUrl;
 	
 	//初始化构造方法
 	public House(){

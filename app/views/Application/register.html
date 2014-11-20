@@ -1,0 +1,277 @@
+<<<<<<< HEAD:app/views/Users/register.html
+#{extends 'manager.html' /}
+<div class="nav-tabs">
+	<form class="form-horizontal" id="defaultForm"  action="@{Users.saveUser}" method="post" role="form" enctype="multipart/form-data">
+		<legend>账号申请</legend>	
+		已有账号？<a href="@{Users.login}"  >登陆</a>	
+<fieldset>      
+<div class="form-group">
+    <label class="col-sm-2 control-label" for="username">账号</label>
+    <div class="col-sm-5">
+        <input type="text" class="form-control" name="username"   required="required" value=""   placeholder="请输入账号" >          
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-sm-2 control-label" for="password">密码</label>
+    <div class="col-sm-5">
+        <input  class="form-control" type="password" name="password" required="required" value=""    placeholder="请输入密码" >          
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-sm-2 control-label" >确认密码</label>
+    <div class="col-sm-5">
+        <input  class="form-control" type="password" name="confirmPassword" required="required"  value=""    placeholder="请再次输入密码" >          
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-sm-2 control-label" for="rname">真实姓名</label>
+    <div class="col-sm-5">
+        <input type="text" class="form-control" name="rname" required="required"  placeholder="请输入真实姓名" >              
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-sm-2 control-label" for="ID" >身份证</label>
+    <div class="col-sm-5">
+        <input type="text" class="form-control" name="ID" required="required"  value=""    placeholder="请输入身份证" >              
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-sm-2 control-label" for="email" >邮箱</label>
+    <div class="col-sm-5">
+        <input type="text" class="form-control" name="email" required="required"  value=""    placeholder="请输入邮箱" >              
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-sm-2 control-label" for="gender">性别</label>
+    <div class="col-sm-5" >
+        <select name="gender"   >
+          
+            <option value="" seclect="selected">请选择你的性别</option>
+            <option value="男"  >男</option>
+            
+            <option value="女" >女</option>
+            
+        </select>
+        
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-sm-2 control-label" for="birthday">出生日期</label>
+    <div class="col-sm-5">
+        <input type="text" class="form-control" name="birthday" required="required" value=""    placeholder="请输入出生年月 如：1996/08/02" >          
+    </div>
+</div>
+
+<div class="form-group">
+    <label class="col-sm-2 control-label" for="user.age">个人头像</label>
+    <div class="col-sm-5">
+        <input  class="form-control" type="file" name="photo" required="required" onChange="checkImgType(this)">
+    </div>
+=======
+#{extends 'main.html' /}
+
+<div class="container">
+<div class="box-div" style="width:500px;">
+	<a href="@{Application.login}" class="pull-right" >GO to login</a>
+	<form class="form-horizontal" action="@{Users.saveUser}" method="post" role="form" enctype="multipart/form-data">
+		<legend>账号申请</legend>
+		<ol class="well">
+		        <input type="hidden" name="user.type" value="1">
+		        <input type="hidden" name="user.status" value="1">
+	            <li><strong>账号&nbsp&nbsp:</strong>
+	              <input class="btn btn-default" type="text" name="user.account"  maxLength="10" required="required">
+	            </li>
+	            <li><strong>密码:</strong>
+	              <input class="btn btn-default" type="password" name="user.password" required="required" maxLength="10">
+	            </li>
+	            <li><strong>重复密码:</strong>
+	              <input class="btn btn-default" type="password"  required="required" maxLength="10">
+	            </li>
+	            <li><strong>真是姓名:</strong>
+	              <input class="btn btn-default" type="text" name="user.rname" required="required" maxLength="10">
+	            </li>
+	            <li><strong>身份证号:</strong>
+	              <input class="btn btn-default" type="text" name="user.prc" required="required" maxLength="10">
+	            </li>
+	            <li><strong>性别:</strong>
+	              <select name="user.sex" class="btn btn-default">
+	                  <option value="1">男</option>
+	                  <option value="2">女</option>
+	              </select>
+	            </li>
+	            <li><strong>年龄:</strong>
+	              <input class="btn btn-default" type="text" name="user.age" required="required">
+	            </li>
+	            <li><strong>个人头像:</strong>
+	              <input class="btn btn-default" type="file" name="photo" required="required" onChange="checkImgType(this)">
+	            </li>
+	            
+	             <li>
+	             <button type="submit" class="btn btn-success">注册</button>
+	            </li>
+	      </ol>
+	</form>
+>>>>>>> origin:app/views/Application/register.html
+</div>
+<div class="form-group">
+            <div class="col-sm-4 control-label">
+                <button type="submit"  class="btn btn-primary">注册</button>
+                <button type="button" class="btn btn-large btn-danger" id="resetBtn">重置</button>
+            </div>
+</div>
+</fieldset>
+</form>	
+</div>
+
+
+<script type="text/javascript">
+$(document).ready(function() {
+    // Generate a simple captcha
+    function randomNumber(min, max) {
+        return Math.floor(Math.random() * (max - min + 1) + min);
+    };
+    $('#captchaOperation').html([randomNumber(1, 100), '+', randomNumber(1, 200), '='].join(' '));
+
+    $('#defaultForm').bootstrapValidator({
+//        live: 'disabled',
+        message: 'This value is not valid',
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+            firstName: {
+                validators: {
+                    notEmpty: {
+                        message: 'The first name is required and cannot be empty'
+                    }
+                }
+            },
+            lastName: {
+                validators: {
+                    notEmpty: {
+                        message: 'The last name is required and cannot be empty'
+                    }
+                }
+            },
+            username: {
+                message: 'The username is not valid',
+                validators: {
+                    notEmpty: {
+                        message: 'The username is required and cannot be empty'
+                    },
+                    stringLength: {
+                        min: 6,
+                        max: 30,
+                        message: 'The username must be more than 6 and less than 30 characters long'
+                    },
+                    regexp: {
+                        regexp: /^[a-zA-Z0-9_\.]+$/,
+                        message: 'The username can only consist of alphabetical, number, dot and underscore'
+                    },
+                    remote: {
+                        url: 'remote.php',
+                        message: 'The username is not available'
+                    },
+                    different: {
+                        field: 'password',
+                        message: 'The username and password cannot be the same as each other'
+                    }
+                }
+            },
+            email: {
+                validators: {
+                    emailAddress: {
+                        message: 'The input is not a valid email address'
+                    }
+                }
+            },
+           password: {
+                validators: {
+                    notEmpty: {
+                        message: 'The password is required and cannot be empty'
+                    },
+                    identical: {
+                        field: 'confirmPassword',
+                        message: 'The password and its confirm are not the same'
+                    },
+                    different: {
+                        field: 'username',
+                        message: 'The password cannot be the same as username'
+                    }
+                }
+            },
+            confirmPassword: {
+                validators: {
+                    notEmpty: {
+                        message: 'The confirm password is required and cannot be empty'
+                    },
+                    identical: {
+                        field: 'password',
+                        message: 'The password and its confirm are not the same'
+                    },
+                    different: {
+                        field: 'username',
+                        message: 'The password cannot be the same as username'
+                    }
+                }
+            },
+            birthday: {
+                validators: {
+                    date: {
+                        format: 'YYYY/MM/DD',
+                        message: 'The birthday is not valid'
+                    }
+                }
+            },
+            gender: {
+                validators: {
+                    notEmpty: {
+                        message: 'The gender is required'
+                    }
+                }
+            },
+            'languages[]': {
+                validators: {
+                    notEmpty: {
+                        message: 'Please specify at least one language you can speak'
+                    }
+                }
+            },
+            'programs[]': {
+                validators: {
+                    choice: {
+                        min: 2,
+                        max: 4,
+                        message: 'Please choose 2 - 4 programming languages you are good at'
+                    }
+                }
+            },
+            captcha: {
+                validators: {
+                    callback: {
+                        message: 'Wrong answer',
+                        callback: function(value, validator) {
+                            var items = $('#captchaOperation').html().split(' '), sum = parseInt(items[0]) + parseInt(items[2]);
+                            return value == sum;
+                        }
+                    }
+                }
+            }
+        }
+    });
+
+    // Validate the form manually
+    $('#validateBtn').click(function() {
+        $('#defaultForm').bootstrapValidator('validate');
+    });
+
+    $('#resetBtn').click(function() {
+        $('#defaultForm').data('bootstrapValidator').resetForm(true);
+    });
+});
+</script>
+
+
+

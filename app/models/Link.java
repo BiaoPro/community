@@ -8,7 +8,6 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-
 import play.db.jpa.GenericModel;
 import play.libs.Codec;
 import utils.PageBean;

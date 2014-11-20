@@ -1,11 +1,6 @@
-#{extends 'manager.html'/}
-
-     
+#{extends 'manager.html'/}   
       <ul class="nav nav-tabs">
-		<li #{get 'showLinkCategories' /} class="active">
-			<a href="@{Links.showLinkCategories}" >链接管理</a>
-		</li>
-		<li #{get 'showSystemSettings' /} class="">
+		<li #{get 'showSystemSettings' /} class="active">
 		<a href="@{SystemSettings.index}" >参数设置</a>
 	    </li>
 

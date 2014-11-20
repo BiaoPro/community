@@ -1,0 +1,88 @@
+	#{extends 'back_common.html'/}
+		<div class="container">
+		<form action="@{BackNews.filter}" class="form-inline">
+			<select id="patchSelect" class="form-control">
+				<option value="">批量操作</option>
+				<option value="*">批量删除</option>
+				<option value="**">批量审核</option>
+			</select>
+				<input  id="patchSubmit" type="button" class="btn btn-primary form-control bin-inline" value="应用"/>
+				
+			<select id="date" name="newsCreateDate" class="form-control">
+			<option selected="selected" value="">全部创建日期</option>
+				#{list items:newsDateList,as:'item'}
+				<option  value="${item}">${item}</option>
+				#{/list}
+			</select>
+			
+			<select id="class" name="newClassType" class="form-control">
+				<option selected="selected" value="">查看所有分类目录</option>
+				#{list items:newsClasslist,as:'item'}
+				<option  value="${item.newClassType}">${item.newClassType}</option>
+				#{/list}
+			</select>
+			
+			<input type="submit" class="btn btn-primary form-control bin-inline" value="筛选"/>
+			<input name="newsTitle" type="text" class="form-control" />
+			<input type="submit" class="btn btn-primary form-control bin-inline" value="搜索" />
+		</form>
+
+			<form id="patchForm" action="@{BackNews.patchDo}" >
+			<input id="patchFormInput" name="patchType" type="hidden" value="" />
+			<table class="container table table-striped">
+			      <thead>
+			        <tr>
+			          <th><input id="selectAll" style="margin:0px 0 4px 0" type="checkbox" /></th>
+			          <th>标题</th>
+			          <th>作者</th>
+			          <th>栏目</th>
+			          <th>新闻创建时间</th>
+			          <th>最近修改时间</th>
+			          <th>操作</th>
+			        </tr>
+			      </thead>
+			      
+			      <tbody>
+			      #{list items:currentList,as:'item'}
+			        <tr class="oneRow">
+			          <td><input name="checkBoxId" value="${item.newsId}" class="selectAll_res" type="checkbox" /></td>
+			          <td>
+			          <strong><a href>${item.newsTitle}</a></strong>
+			          <div style="visibility:hidden;" class="row-actions">
+			          <span class="edit"><a href="@{BackNews.newsEdit(item.newsId)}" title="编辑此项目">编辑</a> | </span>
+			          <span class="trash"><a class="submitdelete" title="移动此项目到回收站" href="@{BackNews.deleteNews(item.newsId)}">删除</a> | </span>
+			          <span class="view"><a href="" title="查看“share文件下载中心”" rel="permalink">查看</a></span>
+			          </div>
+			          </td>
+			          <td>admin</td>
+			          <td>${item.newClassType}</td>
+			          <td>${item.newsCreateDate}</td>
+			          <td>${item.newsModifyDate}</td>
+			          <td><a class="audit btn" href="@{BackNews.audit(item.newsId)}" data="${item.newsAudit}" type="button">未审核</a></td>
+			        </tr>
+			       #{/list}
+			       
+					     
+			      
+			       
+			      </tbody>
+			      
+			      
+    		</table>
+    	</form>
+    		#{doLayout /}
+    		
+		</div>
+	#{set 'moreScripts' }
+		<script charset="utf-8" src="@{'/public/javascripts/sea.js'}"></script>
+		<script>
+			seajs.config({
+				base:"../public/javascripts/module/",
+				alias:{
+					"jquery":"jquery/jquery-1.7.1.min.js",
+					"Util":"Util/main.js"
+				}
+			});
+			seajs.use("../public/javascripts/static/back_news/src/manager_main");
+		</script>
+	#{/set}

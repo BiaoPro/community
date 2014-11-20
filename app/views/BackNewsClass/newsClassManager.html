@@ -1,0 +1,84 @@
+		#{extends 'back_common.html'/}
+			<div style="max-width:960px" class="container">
+	    		<ul id="myTab" class="nav nav-tabs" role="tablist">
+			      <li role="presentation" class="active"><a href="#edit" i="edit-tab" role="tab" data-toggle="tab" aria-controls="edit" aria-expanded="true">修改</a></li>
+			      <li role="presentation" class=""><a href="#add" role="tab" id="add-tab" data-toggle="tab" aria-controls="add" aria-expanded="false">增加</a></li>
+			      <li role="presentation" class=""><a href="#delete" role="tab" id="delete-tab" data-toggle="tab" aria-controls="delete" aria-expanded="false">删除</a></li>
+			   </ul>
+			    <div id="myTabContent" class="tab-content">
+<!-- edit news_class -->
+				      <div role="tabpanel" class="tab-pane fade active in" id="edit" aria-labelledby="edit-tab">
+				      <form action="@{BackNewsClass.modify()}" method="post"  role="form">
+					        %{ number=0}%
+					      #{list items:newsClassList,as:'item'}
+					       %{ number++;}%
+					      	<div style="margin:10px auto;width:480px;"class="input-group">
+					      		 <span class="input-group-addon">${number}</span>
+					      		 <input type="hidden" name="id" value="${item.newClassId}" />
+					  			<input type="text" name="title" value="${item.newClassType}" class="form-control" placeholder="NewsClassTitle">
+					      	</div>
+					      #{/list}
+						      <div class="btn-group">
+						      	<input id="modifyButton" type="submit" class="btn btn-info" value="确定"/>
+						      	<input style="margin-left:4px" type="reset" class="btn btn-warn" value="重置"/>
+						      </div>
+				      </form>
+				    
+				      </div>
+<!-- add news_class -->
+				      <div role="tabpanel" class="tab-pane fade " id="add" aria-labelledby="add-tab">
+				      		<form id="addClassForm" action="@{BackNewsClass.addNewsClass}" method="get" style="margin-top:20px;max-width:960px" class="form-horizontal" role="form">
+				      			<div class="form-group">
+				      				<label class="col-sm-2 control-label">栏目题目：</label>
+				      				<div class="col-sm-5">
+      									<input id="classTitle" type="text" class="form-control" name="newClassType" placeholder="newsClassName" />
+   									 </div>
+				      			</div>
+				      			 <div class="form-group">
+    								<div class="col-sm-offset-2 col-sm-5">
+      								<button id="addButton" type="button" class="btn btn-info">添加</button>
+      								<button type="reset" class="btn btn-warn">重置</button>
+    								</div>
+  								</div>
+				      		</form>
+				      </div>
+<!-- delete news_class -->
+				      <div role="tabpanel" class="tab-pane fade" id="delete" aria-labelledby="delete-tab">
+				      	<form action="@{BackNewsClass.delete}" role="form">
+				      	 #{list items:newsClassList,as:'item'}
+				      		<div class="radio">
+							  <label>
+							    <input type="radio" name="deleteId" id="optionsRadios1" value="${item.newClassId}" checked>
+							    ${item.newClassType}
+							  </label>
+							</div>
+						#{/list}
+							<input type="submit" onclick="return confirm('确定删除？')" style="max-width:127px" class="btn btn-info form-control" value="确定" />
+				      	</form>
+				      </div>
+			    </div>
+			    
+			    	<div id="myAlertContainer" class="container">
+			    		<input id="status" type="hidden" value="${status}" />
+					</div>
+				<script id="myAlertHtml" type="text/html">
+		<div id="myAlert" style="margin-top:20px; width:70%" class="alert alert-danger alert-dismissible fade in" role="alert">
+  			<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+  		<strong>对不起！</strong>你输入的信息不能为空。</div>
+				</script>
+				
+  			</div>
+		#{set 'moreScripts'}
+		<script charset="utf-8" src="@{'/public/javascripts/sea.js'}"></script>
+		<script>
+			seajs.config({
+				base:"../public/javascripts/module/",
+				alias:{
+					"jquery":"jquery/jquery-1.7.1.min.js",
+					"kindeditor":"kindeditor/kindeditor-all-min.js",
+					"bootstrap":"bootstrap/main.js"
+				}
+			});
+			seajs.use("../public/javascripts/static/back_newsClass/src/main");
+		</script>
+		#{/set}

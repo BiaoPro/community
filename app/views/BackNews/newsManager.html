@@ -1,0 +1,11 @@
+	#{extends 'BackNews/newsManagerCommon.html'/}
+		
+    		 <div class="pageination container">
+			        	 <ul style="margin-top:0px" class="pagination">
+					        <li><a id="fontPage" href="@{BackNews.newsManager(fontPage)}">«</a></li>
+					       #{list items:maxPageArgs,as:'item'}
+					        <li><a href="@{BackNews.newsManager(item)}">${item}</a></li>
+					       #{/list}
+					        <li><a id="nextPage" href="@{BackNews.newsManager(nextPage)}">»</a></li>
+					     </ul>
+			</div>	

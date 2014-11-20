@@ -48,8 +48,8 @@ public class SystemSetting  extends GenericModel{
 		this.indexName="新广州人社区服务";
 		this.copyright="天河区新广州人社区服务中心";
 		this.address="华南农业大学 广州市天河区五山路483号 510642";
-		this.telephone="";
-		this.mailbox="";
+		this.telephone="686685";
+		this.mailbox="498651300@qq.com";
 
 				
 	}

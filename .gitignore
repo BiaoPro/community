@@ -14,12 +14,13 @@ hs_err_pid*
 ###############
 #    folder   #
 ###############
+/file-center/
 /eclipse/
 /tmp/
 /.settings/
-
 ##############
 #   file     #
 ##############
+/conf/application.conf
 /.classpath
 /.project

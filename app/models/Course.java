@@ -19,46 +19,46 @@ public class Course extends GenericModel{
   @Id
   public String id;
   
-  @Column(name="type_id")
-  public String typeId;//课程类别
+  @Column(name="category_id")
+  public String categoryId;//课程类别
   
-  @Column(name="name")
-  public String name;//课程名称
+  @Column(name="title")
+  public String title;//课程标题
+  
+  @Column(name="body")
+  public String body;//课程正文
+  
+  @Column(name="phone_number")
+  public String phoneNumber;//联系人电话
   
   @Column(name="start_time")
   public String startTime;//开始时间
   
-  @Column(name="total_time")
-  public int totalTime;//持续时间(分钟)
+  @Column(name="end_time")
+  public int endTime;//结束时间
   
-  @Column(name="course_Info")
-  public String courseInfo;//课程概述
   
   @Column(name="place")
   public String place;//开课地点
   
-  @Column(name="organizer")
-  public String organizer;//承办单位
+
+  @Column(name="author_id")
+  public String authorId;//发布用户id
   
-  @Column(name="teacher")
-  public String teacher;//授课老师
   
-  @Column(name="teacher_info")
-  public String teacherInfo;//授课老师信息
+  @Column(name="audit")
+  public String audit;//0代表待审核，-1为审核不通过，1为审核通过,2为后台插入
   
-  @Column(name="linkman")
-  public String linkman;//组织课程联系人
   
-  @Column(name="linkman_phone")
-  public String linkmanPhone;//联系人电话
-  
-  @Column(name="remark")
-  public String remark;//备注
+  @Column(name="status")
+  public String status;//0-不显示 1-显示
   
   
   public void Course(){
     this.id = Codec.UUID();
   }
+  
+  
   
   
   

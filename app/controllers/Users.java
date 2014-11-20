@@ -2,6 +2,7 @@ package controllers;
 
 import play.*;
 
+import play.libs.Codec;
 import play.mvc.*;
 import utils.FileUtils;
 import utils.SessionManager;
@@ -18,55 +19,16 @@ import models.*;
  * 用户处理
  * @author zhuangXiangPeng
  */
+@With(UserSecures.class)
 public class Users extends Controller {
   
   /**
    * 跳转基本页面，用于测试样例
    */
     public static void index(){
-      render();
+      showUserInfo();
     }
 
-  
-	/*
-	 * 跳转到登录页面
-	 */
-	public static void login() {
-		render();
-	}
-	
-	/*
-	 * 注销
-	 */
-	public static void logout() {
-		session.clear();
-		session.put("logined", false);
-		Application.index();
-	}
-
-	/*
-	 * 验证登录信息
-	 * 
-	 * @param account
-	 * @param password
-	 * @param type
-	 */
-	public static void verificate(String account, String password) {
-		if (User.isExist(account, password)) {
-			// 用户
-			User user = User.find("account=? AND password=? ",
-					account, password).first();
-			session.put("userId", user.id);
-			Application.index();
-		}
-	}
-	
-	/*
-	 * 跳转到注册页面
-	 */
-	public static void register() {
-		render();
-	}
 
 	
 	/*
@@ -76,7 +38,6 @@ public class Users extends Controller {
      */
     public static void saveUser(User user,File photo) {
       
-      System.out.println(photo.getAbsolutePath());
       if (photo != null) {
         
         if (!StringUtils.isEmpty(user.photo)) {
@@ -92,7 +53,45 @@ public class Users extends Controller {
         if (uploader.getState() == FileUploadState.SUCCESS) {
             // 文件上传成功
           user.photo = uploader.getUrl();
+        } else {
+            flash.error("上传失败");
+            index();
+        }
+      } else{
+        if("".equals(user.photo))
+          user.photo = "/public/images/no_pic.jpg";
+        
+      } 
+      
+      
+        user.save();
+        session.put("userId", user.id);
+        Application.register();
+    }
+	
+	/*
+	 * 修改用户信息
+	 * 
+	 * @param user
+	 * @param userInfo
+	 */
+	public static void editUser(User user,File photo) {
+	  
+      if (photo != null) {
+        
+        if (!StringUtils.isEmpty(user.photo)) {
+            FileUtils.deleteFile(user.getPhoto());
+        }
+        
+        String baseUrl = Config.DEFAULT_BASE_URL;
+        String savePath = Config.USER_PHOTO_PATH;
+        Uploader uploader = new Uploader(baseUrl, savePath);
+        //System.out.println("savePath:"+savePath);
+        uploader.upload(photo);
 
+        if (uploader.getState() == FileUploadState.SUCCESS) {
+            // 文件上传成功
+          user.photo = uploader.getUrl();
         } else {
             flash.error("上传失败");
             index();
@@ -105,19 +104,7 @@ public class Users extends Controller {
       
       
         user.save();
-        session.put("userId", user.id);
-        register();
-    }
-	
-	/*
-	 * 修改用户信息
-	 * 
-	 * @param user
-	 * @param userInfo
-	 */
-	public static void editUserInfo(User user) {
-		user.save();
-		showUsers();
+        Users.showUserInfo();
 	}
 	
 	/*
@@ -151,6 +138,12 @@ public class Users extends Controller {
 		User user = User.findById(userId);
 		render(user);
 	}
+	
+	
+	public static void showUserInfo() {
+      User user = SessionManager.getLoginedUser(session);
+      render(user);
+  }
 
 
 }

@@ -1,7 +1,9 @@
 package models;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 import play.db.jpa.GenericModel;
 import play.libs.Codec;
@@ -12,26 +14,35 @@ import play.libs.Codec;
  * @author 吴泽标
  *
  */
-
+@Entity
+@Table(name="course_online")
 public class CourseOnline  extends GenericModel{
   
   @Id
   public String id;
   
-  @Column(name="type_id")
-  public String typeId;//课程类别
+  @Column(name="category_id")
+  public String categoryId;//课程类别
   
-  @Column(name="name")
-  public String name;//课程名称
+  @Column(name="title")
+  public String title;//课程名称
   
-  @Column(name="course_Info")
-  public String courseInfo;//课程概述
+  @Column(name="info")
+  public String info;//课程概述
   
-  @Column(name="course_url")
-  public String courseUrl;//课程视频链接地址
+  @Column(name="url")
+  public String url;//课程视频链接地址
   
-  @Column(name="remark")
-  public String remark;//备注
+  @Column(name="author_id")
+  public String author_id;//发布用户id
+  
+  
+  @Column(name="audit")
+  public String audit;//0代表待审核，-1为审核不通过，1为审核通过,2为后台插入
+  
+  
+  @Column(name="status")
+  public String status;//0-不显示 1-显示
   
   
   public void CourseOnline(){

@@ -3,11 +3,11 @@ package utils.enumvalue;
 /**
  * 用户类型
  * 
- * @author leaf
+ * @author biao
  * 
  */
 public enum UserRoleEnum {
-	TEACHER(0, "教师用户"), PUBLISHER(1, "文章发布员"), ADMIN(2, "管理员");// 普通用户类型
+	NOMALUSER(1, "普通用户"), PUBLISHER(2, "社工"), ADMIN(3, "管理员");// 普通用户类型
 	private int value;
 	private String roleName;
 
@@ -43,7 +43,7 @@ public enum UserRoleEnum {
 	}
 	
 	/**
-	 * 判断类型（文章发布者）
+	 * 判断类型（社工）
 	 * @param value
 	 * @return
 	 */
@@ -55,12 +55,12 @@ public enum UserRoleEnum {
 	}
 	
 	/**
-	 * 判断类型（老师）
+	 * 判断类型（普通用户）
 	 * @param value
 	 * @return
 	 */
 	public static boolean isTeacher(int value) {
-		if(value == TEACHER.getValue()) {
+		if(value == NOMALUSER.getValue()) {
 			return true;
 		}
 		return false;

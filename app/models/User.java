@@ -21,7 +21,7 @@ public class User extends GenericModel {
     @Id
     public String id;
    
-    @Column(name = "type")
+    @Column(name = "type",columnDefinition = "int default 1")
     public int type; //用户类型：3- 管理员、2-社工、1-普通用户
 
     @Column(name = "account")
@@ -55,6 +55,14 @@ public class User extends GenericModel {
       this.id = Codec.UUID();
       this.status=1;
     }
+    public User(String account,String password,int type){
+      this.id = Codec.UUID();
+      this.account = account;
+      this.password=password;
+      this.type=type;
+      this.status=1;
+    }
+    
     /**
      * 用户是否存在
      * @param account
