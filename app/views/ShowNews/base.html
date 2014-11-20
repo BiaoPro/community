@@ -1,12 +1,8 @@
 #{extends 'main.html' /}
-#{get 'moreSubpageStyles' /}
 #{set 'moreStyles'}
 <link rel="stylesheet" type="text/css" href="../public/stylesheets/base.css">
+<link rel="stylesheet" type="text/css" href="../public/stylesheets/newsStyle.css">
  #{/set}
-
-
-
- 		
 <div class="main-container container-fluid">
 		<div class="row">
 		  <section class="col-md-10 col-md-offset-1 col-xs-12">
@@ -40,5 +36,17 @@
 		  	</div>
 		  </section>
 		</div>
-
 	</div>
+#{set 'moreScripts' }
+		<script charset="utf-8" src="@{'/public/javascripts/sea.js'}"></script>
+		<script>
+			seajs.config({
+				base:"../public/javascripts/module/",
+				alias:{
+					"jquery":"jquery/jquery-1.7.1.min.js",
+					"Util":"Util/main.js"
+				}
+			});
+			seajs.use("../public/javascripts/static/show_news/src/main");
+		</script>
+	#{/set}

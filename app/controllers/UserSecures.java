@@ -33,12 +33,12 @@ public class UserSecures extends Controller {
 	/**
 	 * 登录验证
 	 * 
-	 * @param account
-	 * @param password
+	 * @param username
+	 * @param pass
 	 * @param randomId
 	 *            验证码id，防止多次提交成错误
 	 */
-	public static void verify(String account, String password,
+	public static void verify(String username, String pass,
 			String captchaCode, String randomId) {
 		String code = String.valueOf(Cache.get(randomId)).toLowerCase();
 		if (StringUtils.isEmpty(code) || StringUtils.isEmpty(captchaCode)
@@ -46,16 +46,16 @@ public class UserSecures extends Controller {
 			// 验证码信息错误
 			flash.put("captchaCodeErrorMessage", "验证码不正确~");
 			flash.put("captchaCodeError", true);
-			flash.put("account", account);
-			flash.put("password", password);
+			flash.put("account", username);
+			flash.put("password", pass);
 			 Application.login();
 			return;
 		}
 
-		User user = User.findByAccount(account);
+		User user = User.findByAccount(username);
 		if (user != null) {
 			//String checkPwd = MD5Utils.getMD5Str(user.password);
-			if(user.password.equals(password)) {
+			if(user.password.equals(pass)) {
 				// 密码正确
 				UserInfo userInfo = UserInfo.getUserInfoByUserId(user.id);
 				userInfo.updateUserInfo(UserInfo.LOGIN);
@@ -71,7 +71,7 @@ public class UserSecures extends Controller {
 				// 密码错误
 				session.clear();
 				flash.put("passwordError", "密码不正确~");
-				flash.put("account", account);
+				flash.put("account", username);
 			}
 			
 		} else {
