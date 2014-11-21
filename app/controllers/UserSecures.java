@@ -71,7 +71,7 @@ public class UserSecures extends Controller {
 				session.put("userInfoId", userInfo.id);
 				session.put("userCategory", user.type);
 				session.put("userName", userInfo.name);
-				
+				System.out.println(session.get("userId"));
 				Application.manager();
 			} else {
 				// 密码错误
