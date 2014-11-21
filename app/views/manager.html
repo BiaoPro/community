@@ -4,6 +4,10 @@
 .main{
 padding:40px 40px 0px 40px;
 }
+
+.newsSend_menu{
+backgound:white;
+}
 -->
 </style>
 		<div class="main container-fluid" >
@@ -12,7 +16,7 @@ padding:40px 40px 0px 40px;
 		        #{if session.userCategory != "0"}
 				<!-- 只有文章管理员和超级用户有权 -->
 					<a href="@{Users.showUserInfo}" class="list-group-item #{get 'UserManager' /}" >用户管理</a>
-					<a href="@{Backnews.newsmanager}" class="list-group-item #{get 'AritcleManager' /}" >文章管理</a>
+					<a href="@{Backnews.newsmanager}" class="list-group-item #{get 'ArticleManager' /}" >文章管理</a>
 
 					<a href="@{Courses.showCourseCategories}" class="list-group-item #{get 'CourseManager' /}" >课堂管理</a>
 					<a href="#" class="list-group-item #{get 'HouseManager' /}" >租房管理</a>

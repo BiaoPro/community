@@ -68,10 +68,8 @@ public class UserSecures extends Controller {
 
 				session.put("userId", user.id);
 				session.put("account", user.account);
-				session.put("userInfoId", userInfo.id);
+				session.put("userName", user.rname);
 				session.put("userCategory", user.type);
-				session.put("userName", userInfo.name);
-				
 				Application.manager();
 			} else {
 				// 密码错误

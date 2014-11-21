@@ -13,7 +13,7 @@ import java.util.List;
  * @author 吴泽标
  *
  */
-
+@With(UserSecures.class)
 public class CourseCategories extends Controller {
   
 	/**
