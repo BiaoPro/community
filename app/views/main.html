@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
     <head>
@@ -156,3 +157,168 @@
     #{get 'moreScripts' /}
     </body>
 </html>
+=======
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>${session['indexName']}</title>
+        <meta charset="${_response_encoding}"> 
+        <meta name="renderer" content="webkit">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0 ,user-scalable=no">
+         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="description" content="community">
+        <meta name="author" content="">
+        <!--append ‘#!watch’ to the browser URL, then refresh the page. -->
+       <!--  <link href="http://cdn.bootcss.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet"> -->
+       <link href="@{'/public/stylesheets/bootstrap.min.css'}" rel="stylesheet">
+        <link rel="stylesheet" media="screen" href="@{'/public/stylesheets/main.css'}">
+        #{get 'moreStyles' /}
+        <link rel="shortcut icon" type="image/png" href="@{'/public/images/favicon.png'}">
+        <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+        <!--[if lt IE 9]>
+        <link rel="stylesheet" media="screen" href="@{'/public/stylesheets/bootstrap.min.css'}"/>
+        <link rel="stylesheet" media="screen" href="@{'/public/stylesheets/main.css'}">
+        #{get 'moreStyles' /}
+        <script type="text/javascript" src="//cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js" charset="${_response_encoding}"></script>
+        <script type="text/javascript" src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+      <!--[if IE 9]>
+        <link rel="stylesheet" media="screen" href="@{'/public/stylesheets/bootstrap.min.css'}"/>
+        <link rel="stylesheet" media="screen" href="@{'/public/stylesheets/main.css'}">
+        #{get 'moreStyles' /}
+        <script type="text/javascript" src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+      <![endif]-->
+    </head>
+    <body>
+
+     <!-- nav-set -->
+      <div class="nav-container container-fluid">
+          <!-- logo -->
+          <div class="row">
+            <a href="@{Application.index}"><h1 class="logo col-md-3 col-md-offset-2 ">logo</h1></a>
+            <div class="col-md-4 col-md-offset-2 contact">
+                <ul class="list-inline">
+                    <li><a>关于我们</a></li>
+                    <li><a>联系我们</a></li>
+                </ul>
+                <h3>新广州人热线：</h3> 
+                <div class="hot-line">
+                    <span>020-399-7093</span>           
+                    <span>020-398-3073</span>
+                </div>
+            </div>
+          </div>
+          <!-- 导航条 -->
+          <div class="navbar navbar-inverse ">
+              <div class="container">
+                <div class="navbar-header">
+                  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                  </button>
+                  <a class="navbar-brand hidden-xs" href="@{Application.index}">Brand</a>
+                </div>
+                <div class="collapse navbar-collapse">
+                  <ul class="nav navbar-nav">
+                    <li class="active"><a href="@{ShowArticles.News}">社区新闻</a></li>
+                    <li><a href="@{ShowCourses.Courses}">社区课堂</a></li>
+                    <li class="dropdown">
+                      <a href="@{ShowHouses.Houses}" class="dropdown-toggle" data-toggle="dropdown">社区租房</a>
+                      <ul class="dropdown-menu hidden-xs" role="menu">
+                        <li><a href="@{ShowHouses.Houses}">我要租房</a></li>
+                        <li><a href="@{ShowHouses.rentHouses}">我要出租</a></li>
+                      </ul>
+                    </li>
+                    <li class="dropdown">
+                      <a href="@{ShowWorks.Works}" class="dropdown-toggle" data-toggle="dropdown">招工信息</a>
+                      <ul class="dropdown-menu hidden-xs" role="menu">
+                        <li><a href="@{ShowWorks.Works}">我要找工</a></li>
+                        <li><a href="@{ShowWorks.recruit}">发布招聘</a></li>
+                      </ul>
+                    </li>
+                    <li><a href="#">信息咨询</a></li>
+                    <li><a href="@{Links.showLinkCategories}">维权</a></li>
+                  </ul>
+                </div>
+            </div>
+          </div>
+         </div>
+        <!--/.nav-collapse -->
+    
+
+        #{doLayout /}
+
+          <!-- footer  contain athor and company message-->
+  <footer>
+  <div class="row">
+    <aside class=" col-md-5 col-md-push-1">
+          <h4>友情链接</h4>
+          <hr>
+            <ul class="list-inline">
+              <li><a data-toggle="modal" data-target="#myModal">五套班子</a></li>
+              <li><a data-toggle="modal" data-target="#myModal">区委/区政府系统</a></li>
+              <li><a data-toggle="modal" data-target="#myModal">政法系统</a></li>
+              <li><a data-toggle="modal" data-target="#myModal">人民团体</a></li>
+              <li><a data-toggle="modal" data-target="#myModal">计划/经济/商业系统</a></li>
+              <li><a data-toggle="modal" data-target="#myModal">科教文体卫系统</a></li>
+              <li><a data-toggle="modal" data-target="#myModal">城建/城管系统</a></li>
+              <li><a data-toggle="modal" data-target="#myModal">街道办事处</a></li>
+            </ul> 
+          </aside>
+          <div class="col-md-4 col-md-push-2">
+            <div class="further-info  hidden-xs">
+                <h4>寻找帮助</h4>
+                <ul class="list-inline">
+                    <li><a>微博</a></li>
+                    <li><a>Twitter</a></li>
+                    <li><a>facebook</a></li>
+                </ul>
+            </div>
+            <div class="basic-info">
+              <ul class="list-inline">
+                <li>版权所有：${session.copyright} </li>
+                <li> 地址：${session.address} </li>
+                <li>电话：${ session.telephone }</li>
+                <li>邮箱：${ session.mailbox }</li>
+              </ul>
+            </div>				
+			   </div>
+		</div>
+  </div>
+
+  <!-- Button trigger modal -->             
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+              <h3 class="text-center"></h3>
+            </div>
+            <div class="modal-body">
+            </div>
+          </div>
+        </div>
+      </div> 
+  </footer>
+
+<!-- 返回顶部按钮 -->
+<a href="#"  class="scrollTop"><i class="glyphicon glyphicon-chevron-up"></i></a>
+
+  <!--<script type="text/javascript" src="//apps.bdimg.com/libs/jquery/1.11.1/jquery.min.js" charset="${_response_encoding}"></script> -->
+  <script type="text/javascript" src="@{'/public/javascripts/jquery-1.11.1.min.js'}" charset="${_response_encoding}"></script>
+  <script>
+    if (!window.jQuery) {
+    var script = document.createElement('script');
+    script.src = "@{'/public/javascripts/jquery-1.11.1.min.js'}";
+    document.body.appendChild(script);
+    }
+</script>
+    <!--<script src="http://cdn.bootcss.com/bootstrap/3.2.0/js/bootstrap.min.js"></script> -->
+   <script src="@{'/public/javascripts/bootstrap.min.js'}"></script> 
+  <script type="text/javascript" src="@{'/public/javascripts/scripts.js'}" charset="${_response_encoding}"></script>
+
+  #{get 'moreScripts' /}
+    </body>
+</html>
+>>>>>>> f311ca1c49fb8d2fb15bf72ad700748cbe7d0abf

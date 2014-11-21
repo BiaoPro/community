@@ -2,397 +2,368 @@
 #{set title:'Home' /}
 
 #{set 'moreStyles'}
- <link rel="stylesheet" media="screen" href="@{'/public/stylesheets/index.css'}">
+<link rel="stylesheet" media="screen" href="@{'/public/stylesheets/index.css'}">
 #{/set}
-        
 
-      <!-- carousel for important news -->
-      <!-- 轮播图-->
-      <div class="container-fluid">
-        <div id="myCarousel" class="carousel slide">
-          <div class="carousel-inner">
-            <div class="item active">
-              <img src="../public/images/dama.jpg" class="img-responsive">
-                <div class="carousel-caption">
-                  <h1>热烈欢迎广场舞大妈</h1>
-                  <p>新广州人网站旨在为新广州人提供便利的帮助。据悉于7月5号开展的为期10天的暑期第二课堂顺利结束，学员们表示收获颇丰</p>
-                  <p><a class="btn btn-large btn-success" href="http://getbootstrap.com">查看更多</a>
-                </p></pthis></div>
-            </div>
-            <div class="item">
-                <img src="../public/images/training.jpg" class="img-responsive">
-                <div class="carousel-caption">
-                  <h1>暑期第二课堂顺利结束</h1>
-                  <p>新广州人网站旨在为新广州人提供便利的帮助。据悉于7月5号开展的为期10天的暑期第二课堂顺利结束，学员们表示收获颇丰</p>
-                  <p><a class="btn btn-large btn-success" href="#">查看全文</a></p>
-                </div>
-            </div>
-            <div class="item">
-              <img src="../public/images/rent.jpg" class="img-responsive">
-                <div class="carousel-caption">
-                  <h1>华山区房屋出租</h1>
-                  <p>一房一厅一厕所一阳台，你值得拥有</p>
-                  <p><a class="btn btn-large btn-success" href="#">查看全文</a></p>
-              </div>
-            </div>
-          </div>
-          <!-- Controls -->
-          <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-            <span class="icon-prev"></span>
-          </a>
-          <a class="right carousel-control" href="#myCarousel" data-slide="next">
-            <span class="icon-next"></span>
-          </a>
-         <!-- search frame float , visible only above 768-->
-        <div class="container search hidden-xs text-right">
-            <form class="navbar-form " role="search">
-                <div class="form-group">
-                    <input type="text" placeholder="新闻、课程、租房" class="form-control" />
-                </div> 
-                    <button type="submit" class="btn btn-large btn-danger">搜索</button>
-            </form>
-        </div> 
-                   
+<!-- carousel for important news -->
+<!-- 轮播图-->
+<div class="container-fluid">
+  <div id="myCarousel" class="carousel slide">
+    <div class="carousel-inner">
+      <div class="item active carousel-inner-row">
+        <div class="col-md-4 col-md-push-1 carousel-inner-col">
+          <img src="../public/images/dama.jpg" class="img-responsive">
         </div>
-        
-        
-   </div>
-
-
-        <!-- /.carousel -->
-             
-<!-- main-container 8+4-->
-      <div class="main-container container-fluid">
-        <div class="row">
-     		<div class="col-md-8">
-     		<!-- 社区课堂 -->
-				<section  class="course">
-					<h2 class="title">社区课堂</h2>
-	     			<!-- Nav tabs -->
-					<ul class="nav nav-tabs col-md-3" role="tablist">
-					  <li><a href="#early" role="tab" data-toggle="tab">已结束</a></li>
-					  <li class="active"><a href="#now" role="tab" data-toggle="tab">正在进行</a></li>
-					  <li><a href="#future" role="tab" data-toggle="tab">即将开始</a></li>
-					</ul>
-
-					<!-- Tab panes -->
-					<div class="tab-content col-sm-8">
-					  <div class="tab-pane fade" id="early">
-						<!-- 在640以下的 用js判断 并获得其中三个就够了 -->
-						<div class="table-responsive">
-							<table class="table table-hover table-condensed">
-								<thread>
-									<tr style="border:0;">
-										<th>地点</th>
-										<th>内容</th>
-										<th>时间</th>
-									</tr>
-								</thread>
-								<tbody>
-<!-- 								<tr>
-										<td>华农</td>
-										<td><a>web讲座</a></td>
-										<td>14-5-07</td>
-									</tr>
-									<tr>
-										<td>深圳</td>
-										<td><a>社区手工培训</a></td>
-										<td>14-5-11</td>
-									</tr>
-									<tr>
-										<td>福建</td>
-										<td><a>花卉采集</a></td>
-										<td>14-5-24</td>
-									</tr>
-									<tr>
-										<td>厦门</td>
-										<td><a>呵呵2</a></td>
-										<td>14-2-11</td>
-									</tr>
-									<tr>
-										<td>昆明</td>
-										<td><a>呵呵</a></td>
-										<td>14-1-04</td>
-									</tr>
-									<tr>
-										<td>福建</td>
-										<td><a>花卉采集</a></td>
-										<td>14-5-24</td>
-									</tr>
-									<tr>
-										<td>厦门</td>
-										<td><a>呵呵2</a></td>
-										<td>14-2-11</td>
-									</tr>
-									<tr>
-										<td>昆明</td>
-										<td><a>呵呵</a></td>
-										<td>14-1-04</td>
-									</tr>  -->
-								</tbody>
-							</table>
-							<a class="btn btn-link pull-right more">更多 >></a>
-						</div>
-					  </div>
-					  <div class="tab-pane active fade in" id="now">
-						<!-- 在640以下的 用js判断 并获得其中三个就够了 -->
-						<div class="table-responsive">
-							<table class="table table-hover table-condensed">
-								<thread>
-									<tr style="border:0;">
-										<th>地点</th>
-										<th>内容</th>
-										<th>时间</th>
-									</tr>
-								</thread>
-								<tbody>
-									<tr>
-										<td>华农</td>
-										<td><a>web讲座</a></td>
-										<td>14-5-07</td>
-									</tr>
-									<tr>
-										<td>深圳</td>
-										<td><a>社区手工培训</a></td>
-										<td>14-5-11</td>
-									</tr>
-									<tr>
-										<td>福建</td>
-										<td><a>花卉采集</a></td>
-										<td>14-5-24</td>
-									</tr>
-									<tr>
-										<td>厦门</td>
-										<td><a>呵呵2</a></td>
-										<td>14-2-11</td>
-									</tr>
-									<tr>
-										<td>昆明</td>
-										<td><a>呵呵</a></td>
-										<td>14-1-04</td>
-									</tr>
-									<tr>
-										<td>福建</td>
-										<td><a>花卉采集</a></td>
-										<td>14-5-24</td>
-									</tr>
-									<tr>
-										<td>厦门</td>
-										<td><a>呵呵2</a></td>
-										<td>14-2-11</td>
-									</tr>
-									<tr>
-										<td>昆明</td>
-										<td><a>呵呵</a></td>
-										<td>14-1-04</td>
-									</tr>
-								</tbody>
-							</table>
-							<a class="btn btn-link pull-right more">更多 >></a>
-						</div>
-					  </div>
-					  <div class="tab-pane fade" id="future">
-						<div class="table-responsive">
-							<table class="table table-hover table-condensed">
-								<thread>
-									<tr>
-										<th>地点</th>
-										<th>内容</th>
-										<th>时间</th>
-									</tr>
-								</thread>
-								<tbody>
-									<tr>
-										<td>华农</td>
-										<td><a>web讲座</a></td>
-										<td>14-5-07</td>
-									</tr>
-									<tr>
-										<td>深圳</td>
-										<td><a>社区手工培训</a></td>
-										<td>14-5-11</td>
-									</tr>
-									<tr>
-										<td>福建</td>
-										<td><a>花卉采集</a></td>
-										<td>14-5-24</td>
-									</tr>
-									<tr>
-										<td>厦门</td>
-										<td><a>呵呵2</a></td>
-										<td>14-2-11</td>
-									</tr>
-									<tr>
-										<td>昆明</td>
-										<td><a>呵呵</a></td>
-										<td>14-1-04</td>
-									</tr>
-									<tr>
-										<td>福建</td>
-										<td><a>花卉采集</a></td>
-										<td>14-5-24</td>
-									</tr>
-									<tr>
-										<td>厦门</td>
-										<td><a>呵呵2</a></td>
-										<td>14-2-11</td>
-									</tr>
-									<tr>
-										<td>昆明</td>
-										<td><a>呵呵</a></td>
-										<td>14-1-04</td>
-									</tr>
-								</tbody>
-							</table>
-							<a class="btn btn-link pull-right more">更多 >></a>
-						</div>
-					  </div>
-					</div> 
-				</section>
-      		<!-- 社区租房 --> 
-      			<section class="rent">
-      				<div class="show-house col-md-5">
-						<img src="../public/images/house2.jpg" alt="">
-					</div>
-					<h2 class="title">社区租房</h2>
-					<div class="panel panel-default col-md-7">
-					  <div class="panel-body">
-						<ol>
-							<li><a>动物园地铁,公交动物园南门站,正规小区一室一厅转租(5800元/月)</a></li>
-							<li><a>绝世好房急转 仅1900可租到商住两用淘宝天堂（4800元/月）</a></li>
-							<li><a>棠下棠东丰乐路带空调 一房一厅6楼,单房出租（600元/月）</a></li>
-							<li><a>房东有近珠村公交总站全新空调一房一厅出租(200元/月)</a></li>
-							<li><a>杨箕中山一路水均大街 2室1厅50平米（700元/月）</a></li>
-							<li><a>动物园地铁,公交动物园南门站,正规小区一室一厅转租(3200元/月)</a></li>
-							<li><a>绝世好房急转 仅1900可租到商住两用淘宝天堂（5600元/月）</a></li>
-							<li><a>棠下棠东丰乐路带空调 一房一厅6楼,单房出租（2000元/月）</a></li>
-						</ol>				    
-					  </div>
-					  	<a class="btn btn-links more">我要出租</a>	
-					  	<span>|</span>
-						<a class="btn btn-links more">更多 >></a>	
-					</div>
-      			</section>   			
-     		</div>
-     		<!-- 社区新闻 -->
-     		<div class="col-md-4">
-     			<section class="news">
-     				<h3 class="title  text-right">社区新闻</h3>
-					    <div class="thumbnail">
-					      <img src="../public/images/grace.jpg" alt="...">
-					      <div class="caption">
-					      	<h4>社区头条</h4>
-					        <p>2014年我市积分入户于8月1日全面铺开，天河区进一步完善了来穗人员积分入户服务体系，选定了石牌、车陂和龙洞三条街道作为业务的受理点。据悉，今年是天河区首次将业务受理点下沉到街道组织，开展多个基层服务点...</p>
-					        <p><a href="#" class="btn btn-primary" role="button">获取更多</a></p>
-					      </div>
-					    </div>
-
-     				<div class="panel panel-default">
-					  <div class="panel-body">
-					  	<div class="table-responsive">
-							<table class="table table-hover">
-								<tbody>
-									<tr>
-										<td><a>【公共新闻】消防安全知识（一）</a></td>
-										<td>14-5-07</td>
-									</tr>
-									<tr>
-										<td><a>【公共新闻】北京市社区服务中心社会化项目委托协议正式签署</a></td>
-										<td>14-5-11</td>
-									</tr>
-									<tr>
-										<td><a>【公共新闻】共建公益事业 锦旗表感谢</a></td>
-										<td>14-5-24</td>
-									</tr>
-									<tr>
-										<td><a>【公共新闻】“空巢老人家居维护”专项行动启动</a></td>
-										<td>14-2-11</td>
-									</tr>
-									<tr>
-										<td><a>【公共新闻】员工制家政服务试点企业</a></td>
-										<td>14-1-04</td>
-									</tr>
-									<tr>
-										<td><a>【公共新闻】“空巢老人家居维护”专项行动启动</a></td>
-										<td>14-2-11</td>
-									</tr>
-									<tr>
-										<td><a>【公共新闻】员工制家政服务试点企业</a></td>
-										<td>14-1-04</td>
-									</tr>
-									<tr>
-										<td><a>【公共新闻】员工制家政服务试点企业</a></td>
-										<td>14-1-04</td>
-									</tr>
-								</tbody>
-							</table>
-							<a class="btn btn-link pull-right more">更多 >></a>
-						</div>
-					  </div>
-					</div>
-     			</section>
-     		</div>
-     		<!-- 信息咨询 -->
-     		<div class="col-md-12">
-     			<section class="consult">
-     			<form action="">
-     				<img src="../public/images/email.png" alt="" class="visible-lg-inline">
-     				<span>有任何问题都可以咨询哦</span>
-     				<label class="sr-only" for="">咨询信息</label>
-					<input type="text" >
-					<button class="btn btn-warning">我要咨询</button>
-				</form>
-     			</section>
-     		</div>
-     		<!-- 招工信息 -->
-     		<div class="col-md-8">
-     			<section class="job">
-     				<div class="panel panel-default col-md-7">
-					  <div class="panel-body">
-					  	<h2 class="title">招工信息</h2>
-					    <ol>
-							<li><a>广东矿工招聘(企业)</a></li>
-							<li><a>蓝思科技(包住)高薪诚聘男女普工</a></li>
-							<li><a>健兴梅家政长期诚聘保姆护工</a></li>
-							<li><a>深圳机械加工厂的铣床操作技工</a></li>
-							<li><a>深圳安心家政集团育婴师月嫂保姆</a></li>
-							<li><a>名硕电脑免费诚招普工可当天入住</a></li>
-							<li><a class="disabled">剧组拍戏需要招聘剧组服务人员</a><span style="color:red;">--已结束</span></li>
-							<li><a class="disabled">诚招全国校园寒暑假招聘代理员</a></li>
-						</ol>
-					  </div>
-					  <a class="btn btn-links more">我要出租</a>	
-					  <span>|</span>
-					  <a class="btn btn-links more">更多 >></a>	
-					</div>
-					<div class="show-house col-md-5">
-     					<img src="../public/images/job2.jpg" alt="">
-     				</div>
-     			</section>
-     		</div>
-     		<!-- 维权资讯 -->
-     		<div class="col-md-4">
-     			<section class="rights">
-     				<div class="panel panel-default">
-						 <div class="panel-body">
-     			    		<h3 class="title">维权资讯</h3>
-						    <ol>
-								<li><a>广东矿工招聘(企业)</a></li>
-								<li><a>蓝思科技(包住)高薪诚聘男女普工</a></li>
-								<li><a>健兴梅家政长期诚聘保姆护工</a></li>
-								<li><a>深圳机械加工厂的铣床操作技工</a></li>
-								<li><a>深圳安心家政集团育婴师月嫂保姆</a></li>
-								<li><a>名硕电脑免费诚招普工可当天入住</a></li>
-								<li><a class="disabled">剧组拍戏需要招聘剧组服务人员</a><span style="color:red;">--已结束</span></li>
-								<li><a class="disabled">诚招全国校园寒暑假招聘代理员</a></li>
-							</ol>
-							<a class="btn btn-links more pull-right">我要维权 >></a>	
-						 </div>
-					</div>
-     			</section>
-     		</div>
-     		<!-- 友情链接 -->
-			<div>
+        <div class="col-md-7 col-md-push-1 carousel-text">
+          <div class="carousel-caption carousel-inner-col">
+            <h1>热烈欢迎广场舞大妈</h1>
+            <p></p>
+            <a class="btn btn-large btn-success" href="">查看更多</a>
+          </div>
+        </div>
+      </div>
+      <div class="item carousel-inner-row">
+        <div class="col-md-4 col-md-push-1  carousel-inner-col">
+          <img src="../public/images/training.jpg" class="img-responsive">
+        </div>
+        <div class="col-md-7 col-md-push-1 carousel-text">
+          <div class="carousel-caption  carousel-inner-col">
+            <h1>暑期第二课堂顺利结束</h1>
+            <p>新广州人网站旨在为新广州人提供便利的帮助。据悉于7月5号开展的为期10天的暑期第二课堂顺利结束，学员们表示收获颇丰</p>
+            <p><a class="btn btn-large btn-success" href="#">查看全文</a></p>
+          </div>
+        </div>
+      </div>
+      <div class="item">
+       <div class="col-md-4 col-md-push-1 carousel-inner-col">
+        <img src="../public/images/rent.jpg" class="img-responsive">
+      </div>
+      <div class="col-md-7 carousel-text">
+        <div class="carousel-caption  carousel-inner-col">
+          <h1>华山区房屋出租</h1>
+          <p>一房一厅一厕所一阳台，你值得拥有</p>
+          <p><a class="btn btn-large btn-success" href="#">查看全文</a></p>
+        </div>
       </div>
     </div>
+  </div>
+  <!-- Controls -->
+  <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+    <span class="icon-prev"></span>
+  </a>
+  <a class="right carousel-control" href="#myCarousel" data-slide="next">
+    <span class="icon-next"></span>
+  </a>           
+</div>
+<!-- /.carousel -->
+<!-- search frame float , visible only above 768-->
+<div class="search hidden-xs">
+  <form class="navbar-form " role="search">
+    <div class="form-group">
+      <input type="text" class="form-control" />
+    </div> 
+    <button type="submit" class="btn btn-large btn-danger">搜索</button>
+  </form>
+</div>
+<div class="clearfix"></div> 
+</div>
+
+
+<!-- main-container 8+4-->
+<div class="main-container container-fluid">
+  <div class="row">
+   <div class="col-md-8" style="border-right:1px dashed #ddd">
+     <!-- 社区课堂 -->
+     <section  class="course">
+       <h2 class="title">社区课堂</h2>
+       <!-- Nav tabs -->
+       <ul class="nav nav-tabs col-md-3" role="tablist">
+         <li><a href="#early" role="tab" data-toggle="tab">已结束</a></li>
+         <li class="active"><a href="#now" role="tab" data-toggle="tab">正在进行</a></li>
+         <li><a href="#future" role="tab" data-toggle="tab">即将开始</a></li>
+       </ul>
+
+       <!-- Tab panes -->
+       <div class="tab-content col-sm-8">
+         <div class="tab-pane fade" id="early">
+          <!-- 在640以下的 用js判断 并获得其中三个就够了 -->
+          <div class="table-responsive">
+           <table class="table table-hover table-condensed">
+            <thread>
+             <tr style="border:0;">
+              <th>地点</th>
+              <th>内容</th>
+              <th>时间</th>
+            </tr>
+          </thread>
+          <tbody>
+          </tbody>
+        </table>
+        <a class="btn pull-right more">更多 >></a>
+      </div>
     </div>
+    <div class="tab-pane active fade in" id="now">
+      <!-- 在640以下的 用js判断 并获得其中三个就够了 -->
+      <div class="table-responsive">
+       <table class="table table-hover table-condensed">
+        <thread>
+         <tr style="border:0;">
+          <th>地点</th>
+          <th>内容</th>
+          <th>时间</th>
+        </tr>
+      </thread>
+      <tbody>
+       <tr>
+        <td>华农</td>
+        <td><a>web讲座</a></td>
+        <td>14-5-07</td>
+      </tr>
+      <tr>
+        <td>深圳</td>
+        <td><a>社区手工培训</a></td>
+        <td>14-5-11</td>
+      </tr>
+      <tr>
+        <td>福建</td>
+        <td><a>花卉采集</a></td>
+        <td>14-5-24</td>
+      </tr>
+      <tr>
+        <td>厦门</td>
+        <td><a>呵呵2</a></td>
+        <td>14-2-11</td>
+      </tr>
+      <tr>
+        <td>昆明</td>
+        <td><a>呵呵</a></td>
+        <td>14-1-04</td>
+      </tr>
+      <tr>
+        <td>福建</td>
+        <td><a>花卉采集</a></td>
+        <td>14-5-24</td>
+      </tr>
+      <tr>
+        <td>厦门</td>
+        <td><a>呵呵2</a></td>
+        <td>14-2-11</td>
+      </tr>
+      <tr>
+        <td>昆明</td>
+        <td><a>呵呵</a></td>
+        <td>14-1-04</td>
+      </tr>
+    </tbody>
+  </table>
+  <a class="btn pull-right more">更多 >></a>
+</div>
+</div>
+<div class="tab-pane fade" id="future">
+  <div class="table-responsive">
+   <table class="table table-hover table-condensed">
+    <thread>
+     <tr>
+      <th>地点</th>
+      <th>内容</th>
+      <th>时间</th>
+    </tr>
+  </thread>
+  <tbody>
+   <tr>
+    <td>华农</td>
+    <td><a>web讲座</a></td>
+    <td>14-5-07</td>
+  </tr>
+  <tr>
+    <td>深圳</td>
+    <td><a>社区手工培训</a></td>
+    <td>14-5-11</td>
+  </tr>
+  <tr>
+    <td>福建</td>
+    <td><a>花卉采集</a></td>
+    <td>14-5-24</td>
+  </tr>
+  <tr>
+    <td>厦门</td>
+    <td><a>呵呵2</a></td>
+    <td>14-2-11</td>
+  </tr>
+  <tr>
+    <td>昆明</td>
+    <td><a>呵呵</a></td>
+    <td>14-1-04</td>
+  </tr>
+  <tr>
+    <td>福建</td>
+    <td><a>花卉采集</a></td>
+    <td>14-5-24</td>
+  </tr>
+  <tr>
+    <td>厦门</td>
+    <td><a>呵呵2</a></td>
+    <td>14-2-11</td>
+  </tr>
+  <tr>
+    <td>昆明</td>
+    <td><a>呵呵</a></td>
+    <td>14-1-04</td>
+  </tr>
+</tbody>
+</table>
+<a class="btn more pull-right">更多 >></a>
+</div>
+</div>
+</div> 
+</section>
+<!-- 社区租房 --> 
+<section class="rent section-line">
+  <div class="show-house col-md-6 col-md-push-6">
+  <h2 class="title">社区租房</h2>
+  <!-- 为了提高页面的信息展示率，减少空白，此处分为两个列表，可用条件判断，举例 比如有10条信息，第一个列表展示1~6条，第二个列表展示7~10 ;次重要信息在移动端不展示 -->
+    <ol>
+     <li><a>动物园地铁,公交动物园南门站,正规小区一室一厅转租(5800元/月)</a></li>
+     <li><a>绝世好房急转 仅1900可租到商住两用淘宝天堂（4800元/月）</a></li>
+     <li><a>棠下棠东丰乐路带空调 一房一厅6楼,单房出租（600元/月）</a></li>
+     <li><a>房东有近珠村公交总站全新空调一房一厅出租(200元/月)</a></li>
+     <li><a>杨箕中山一路水均大街 2室1厅50平米（700元/月）</a></li>
+     <li><a>动物园地铁,公交动物园南门站,正规小区一室一厅转租(3200元/月)</a></li>
+   </ol>				    
+ </div>
+   <div class="show-house col-md-6 col-md-pull-6">
+    <img class="img-responsive"  src="../public/images/house2.jpg" alt="">
+    <ol class="hidden-xs">
+     <li><a>动物园地铁,公交动物园南门站,正规小区一室一厅转租(5800元/月)</a></li>
+     <li><a>绝世好房急转 仅1900可租到商住两用淘宝天堂（4800元/月）</a></li>
+     <li><a>棠下棠东丰乐路带空调 一房一厅6楼,单房出租（600元/月）</a></li>
+     <li><a>房东有近珠村公交总站全新空调一房一厅出租(200元/月)</a></li>
+   </ol>  
+  </div>
+  <div class="clearfix"></div>
+ <div class="pull-right">
+     <a class="btn more">我要出租</a>	
+     <span>|</span>
+     <a class="btn more">更多 >></a>	
+</div>
+</section>   			
+</div>
+<!-- 社区新闻 -->
+<div class="col-md-4">
+  <section class="news">
+   <h2 class="title  text-right">社区新闻</h2>
+   <div class="thumbnail">
+     <img src="../public/images/grace.jpg" alt="...">
+     <div class="caption">
+      <h4>社区头条</h4>
+      <p >2014年我市积分入户于8月1日全面铺开，天河区进一步完善了来穗人员积分入户服务体系，选定了石牌、车陂和龙洞三条街道作为业务的受理点。据悉，今年是天河区首次将业务受理点下沉到街道组织，开展多个基层服务点...</p>
+      <p><a href="#" class="btn btn-primary pull-right" role="button">获取更多</a></p>
+      <div class="clearfix"></div>
+    </div>
+  </div>
+
+    <div class="table-responsive">
+     <table class="table table-hover">
+      <tbody>
+       <tr>
+        <td><a>【公共新闻】消防安全知识（一）</a></td>
+        <td class="hidden-xs">14-5-07</td>
+      </tr>
+      <tr>
+        <td><a>【公共新闻】北京市社区服务中心社会化项目委托协议正式签署</a></td>
+        <td class="hidden-xs">14-5-11</td>
+      </tr>
+      <tr>
+        <td><a>【公共新闻】共建公益事业 锦旗表感谢</a></td>
+        <td class="hidden-xs">14-5-24</td>
+      </tr>
+      <tr>
+        <td><a>【公共新闻】“空巢老人家居维护”专项行动启动</a></td>
+        <td class="hidden-xs">14-2-11</td>
+      </tr>
+      <tr>
+        <td><a>【公共新闻】员工制家政服务试点企业</a></td>
+        <td class="hidden-xs">14-1-04</td>
+      </tr>
+      <tr>
+        <td><a>【公共新闻】“空巢老人家居维护”专项行动启动</a></td>
+        <td class="hidden-xs">14-2-11</td>
+      </tr>
+      <tr>
+        <td><a>【公共新闻】员工制家政服务试点企业</a></td>
+        <td class="hidden-xs">14-1-04</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<a class="btn more pull-right">更多 >></a>
+</section>
+</div>
+<!-- 信息咨询 -->
+<div class="col-md-12">
+  <section class="consult">
+    <form action="">
+     <img src="../public/images/email.png" alt="" class="visible-lg-inline">
+     <span>有任何问题都可以咨询哦</span>
+     <label class="sr-only" for="">咨询信息</label>
+     <input type="text" >
+     <button class="btn btn-warning">我要咨询</button>
+   </form>
+ </section>
+</div>
+<!-- 招工信息 -->
+<div class="col-md-8" style="border-right:1px dashed #ddd">
+  <section class="job section-line">
+  <div class="col-md-6">
+      <h2 class="title">招工信息</h2>
+        <!-- 为了提高页面的信息展示率，减少空白，此处分为两个列表，可用条件判断，举例 比如有10条信息，第一个列表展示1~6条，第二个列表展示7~10 -->
+      <ol>
+       <li><a>广东矿工招聘(企业)</a></li>
+       <li><a>蓝思科技(包住)高薪诚聘男女普工</a></li>
+       <li><a>健兴梅家政长期诚聘保姆护工</a></li>
+       <li><a>深圳机械加工厂的铣床操作技工</a></li>
+        <li><a>健兴梅家政长期诚聘保姆护工</a></li>
+       <li><a>深圳机械加工厂的铣床操作技工</a></li>
+       <li><a class="disabled">剧组拍戏需要招聘剧组服务人员</a><span style="color:red;">--已结束</span></li>
+       <li><a class="disabled">诚招全国校园寒暑假招聘代理员</a></li>
+     </ol>
+  </div>	
+ <div class="show-house col-md-6">
+  <img class="img-responsive" src="../public/images/job2.jpg" alt="">
+  <ol class="hidden-xs">
+       <li><a>广东矿工招聘(企业)</a></li>
+       <li><a>蓝思科技(包住)高薪诚聘男女普工</a></li>
+       <li><a>健兴梅家政长期诚聘保姆护工</a></li>
+       <li><a>深圳机械加工厂的铣床操作技工</a></li>
+   </ol>
+</div>
+<div class="clearfix"></div>
+ <div class="pull-right">
+  <a class="btn more">我要出租</a>  
+   <span>|</span>
+   <a class="btn more">更多 >></a>
+ </div>
+</section>
+</div>
+<!-- 维权资讯 -->
+<div class="col-md-4">
+  <section class="rights">
+      <h2 class="title">维权资讯</h2>
+      <ol>
+        <li><a>广东矿工招聘(企业)</a></li>
+        <li><a>蓝思科技(包住)高薪诚聘男女普工</a></li>
+        <li><a>健兴梅家政长期诚聘保姆护工</a></li>
+        <li><a>深圳机械加工厂的铣床操作技工</a></li>
+        <li><a>深圳安心家政集团育婴师月嫂保姆</a></li>
+        <li><a>名硕电脑免费诚招普工可当天入住</a></li>
+        <li><a class="disabled">剧组拍戏需要招聘剧组服务人员</a><span style="color:red;">--已结束</span></li>
+        <li><a class="disabled">诚招全国校园寒暑假招聘代理员</a></li>
+      </ol>
+      <a class="btn more pull-right">我要维权 >></a>	
+</section>
+</div>
+<!-- 友情链接 -->
+<div>
+</div>
+</div>
+</div>

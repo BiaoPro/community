@@ -5,45 +5,34 @@
 #{set 'moreStyles'}
 <link rel="stylesheet" type="text/css" href="../public/stylesheets/base.css">
 <style type="text/css">
-	.nav-side li>a{
-		color:#EC9508;
-	}	
 	.thumbnail{
 		padding: 0;
-		border: none;
 		margin: 0;
 	}
-	.price{
-		color:#f60;
-	}
-
-	ul.sub li{
-		display: inline-block;
-	}
 </style>
- #{/set}
+#{/set}
 
- 		
+
 <div class="main-container container-fluid">
-		<div class="row">
-		  <section class="col-md-10 col-md-offset-1 col-xs-12">
-		  	<div class="col-md-8">
+	<div class="row">
+		<section class="col-md-10 col-md-offset-1 col-xs-12">
+			<div class="col-md-8">
 
 				#{doLayout /}
 			</div>
-		  	<div class="col-md-4 col-xs-12">
-		  		<aside class="aside">
-		  			<ul class="nav-side">
-		  				<li><a href="@{ShowHouses.showHousesInfo}">我要租房</a></li>
-		  				<li><a href="@{ShowHouses.rentHouses}">我要出租</a></li>
-		  			</ul>
-		  			<form  role="form">
+			<div class="col-md-4 col-xs-12">
+				<aside class="aside">
+					<ul class="nav-side">
+						<li><a href="@{ShowHouses.showHousesInfo}">我要租房</a></li>
+						<li><a href="@{ShowHouses.rentHouses}">我要出租</a></li>
+					</ul>
+					<form  role="form">
 						<input type="text" class="form-control" >
 						<button type="submit" class="btn btn-default">搜索</button>
 					</form>
 					<div >
 						<h3>附近房源</h3>
-						<ul>
+						<ul class="aside-styled-ul">
 							<li>
 								<a href="">阜阳疫情迟公开暴露人祸大于灾难</a>
 							</li>
@@ -58,37 +47,12 @@
 							</li>
 						</ul>
 					</div>
-		  		</aside>
-		  	</div>
-		  </section>
-		</div>
+				</aside>
+			</div>
+		</section>
 	</div>
-		#{set "moreScripts"}
-			<script type="text/javascript" src="../public/javascripts/base.js">	</script>
-			<script type="text/javascript">
-				var oInput = document.querySelectorAll('.panel-body input');
-				var choice = document.querySelectorAll('.chose-type');
-				var price =  document.querySelectorAll('#price a');
-				var i ;
-				for(i=0;i<oInput.length;i++){
-					oInput[i].onkeyup = function(){
-						this.value = this.value.replace(/[^\d]/g,"");
-					}
-				}
-				for(i=1;i<price.length;i++){
-					price[i].index = i;
-					price[i].onclick = function(){
-						var link = this.innerHTML.split("-");
-							for(var n =0;n<2;n++){
-								oInput[n].value = "";
-								if(this.index ==1) oInput[1].value=parseInt(link[0]);
-								else{
-									if(link[n]) oInput[n].value = parseInt(link[n]);
-								}
-							}
-						}
-					}
-
-			</script>
-		#{/set}
-		#{get "moreSubpageScripts"/}
+</div>
+#{set "moreScripts"}
+<script type="text/javascript" src="../public/javascripts/base.js">	</script>
+#{/set}
+#{get "moreSubpageScripts"/}

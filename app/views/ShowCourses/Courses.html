@@ -1,1 +1,446 @@
-Courses.html
+#{extends 'ShowCourses/base.html' /}
+#{set title:'Courses' /}
+<ol class="breadcrumb">
+  <li><a href="@{Application.index}">首页</a></li>
+  <li class="active">社区课堂</li>
+</ol>
+<div class="col-md-12 course-intro">
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#newest" role="tab" data-toggle="tab">最新课程</a></li>
+    <li role="presentation"><a href="#class-1" role="tab" data-toggle="tab">课程分类一</a></li>
+    <li role="presentation"><a href="#class-2" role="tab" data-toggle="tab">课程分类二</a></li>
+    <li role="presentation"><a href="#class-3" role="tab" data-toggle="tab">课程分类三</a></li>
+    <a class="pull-right" href="@{ShowCourses.ShowCourses}">更多</a>
+  </ul>
+
+  <!-- Tab panes -->
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active fade in" id="newest">
+     <div class="col-sm-12 col-md-4 course-item">
+      <div class="thumbnail">
+        <img src="../public/images/dama.jpg" alt="...">
+        <div class="caption">
+          <h5>&nbsp;<a>大妈教你跳广场舞</a></h5>
+          <p><span class="glyphicon glyphicon-user"></span><span class="author">&nbsp;大妈</span>
+            <br/></span><span class="glyphicon glyphicon-time"> </span><span class="time">&nbsp;3:14-4-13</span> 
+            <div class="discription">
+             <p class="blog">会环境下有不同的制度、不同的文化、不同的习惯。ERP系统既是为了帮助企业更好的发展，那么必须考虑到企业外部环境</p>
+             <p class="text-center"><a href="" class="btn btn-default go">立即参加</a></p>
+           </div>
+         </div>
+       </div>
+     </div>
+     <div class="col-sm-12 col-md-4 course-item">
+      <div class="thumbnail">
+        <img src="../public/images/chaijing.jpg" alt="...">
+        <div class="caption">
+          <h5>&nbsp;<a>大妈教你跳广场舞</a></h5>
+          <p><span class="glyphicon glyphicon-user"></span><span class="author">&nbsp;大妈</span><br/><span class="glyphicon glyphicon-time"> </span><span class="time">&nbsp;3:14-4-13</span> </p>  
+          <div class="discription">
+           <p class="blog">超过50字的正文请进行判断，超过请省略,或者只截取一句话</p>
+           <p class="text-center"><a href="" class="btn btn-default go">立即参加</a></p>
+         </div>
+       </div>
+     </div>
+   </div>
+   <div class="col-sm-12 col-md-4 course-item">
+    <div class="thumbnail">
+      <img src="../public/images/apple.jpg" alt="...">
+      <div class="caption">
+        <h5>&nbsp;<a>大妈教你跳广场舞</a></h5>
+        <p><span class="glyphicon glyphicon-user"></span><span class="author">&nbsp;大妈</span><br/><span class="glyphicon glyphicon-time"> </span><span class="time">&nbsp;3:14-4-13</span> </p>
+        <div class="discription">
+         <p class="blog">超过50字的正文请进行判断，超过请省略</p>
+         <p class="text-center"><a href="" class="btn btn-default go">立即参加</a></p>
+       </div>
+     </div>
+   </div>
+ </div>
+ <div class="col-sm-12 col-md-4 course-item">
+  <div class="thumbnail">
+    <img src="../public/images/training.jpg" alt="...">
+    <div class="caption">
+      <h5>&nbsp;<a>大妈教你跳广场舞</a></h5>
+      <p><span class="glyphicon glyphicon-user"></span><span class="author">&nbsp;大妈</span>
+        <br/></span><span class="glyphicon glyphicon-time"> </span><span class="time">&nbsp;3:14-4-13</span> 
+        <div class="discription">
+         <p class="blog">会环境下有不同的制度、不同的文化、不同的习惯。ERP系统既是为了帮助企业更好的发展，那么必须考虑到企业外部环境</p>
+         <p class="text-center"><a href="" class="btn btn-default go">立即参加</a></p>
+       </div>
+     </div>
+   </div>
+ </div>
+ <div class="col-sm-12 col-md-4 course-item">
+  <div class="thumbnail">
+    <img src="../public/images/dama.jpg" alt="...">
+    <div class="caption">
+      <h5>&nbsp;<a>大妈教你跳广场舞</a></h5>
+      <p><span class="glyphicon glyphicon-user"></span><span class="author">&nbsp;大妈</span>
+        <br/></span><span class="glyphicon glyphicon-time"> </span><span class="time">&nbsp;3:14-4-13</span> 
+        <div class="discription">
+         <p class="blog">会环境下有不同的制度、不同的文化、不同的习惯。ERP系统既是为了帮助企业更好的发展，那么必须考虑到企业外部环境</p>
+         <p class="text-center"><a href="" class="btn btn-default go">立即参加</a></p>
+       </div>
+     </div>
+   </div>
+ </div>
+ <div class="col-sm-12 col-md-4 course-item">
+  <div class="thumbnail">
+    <img src="../public/images/teach.jpg" alt="...">
+    <div class="caption">
+      <h5>&nbsp;<a>大妈教你跳广场舞</a></h5>
+      <p><span class="glyphicon glyphicon-user"></span><span class="author">&nbsp;大妈</span><br/><span class="glyphicon glyphicon-time"> </span><span class="time">&nbsp;3:14-4-13</span> </p>  
+      <div class="discription">
+       <p class="blog">超过50字的正文请进行判断，超过请省略</p>
+       <p class="text-center"><a href="" class="btn btn-default go">立即参加</a></p>
+     </div>
+   </div>
+ </div>
+</div>
+<div class="col-sm-12 col-md-4 course-item">
+  <div class="thumbnail">
+    <img src="../public/images/chaijing.jpg" alt="...">
+    <div class="caption">
+      <h5>&nbsp;<a>大妈教你跳广场舞</a></h5>
+      <p><span class="glyphicon glyphicon-user"></span><span class="author">&nbsp;大妈</span><br/><span class="glyphicon glyphicon-time"> </span><span class="time">&nbsp;3:14-4-13</span> </p>  
+      <div class="discription">
+       <p class="blog">超过50字的正文请进行判断，超过请省略</p>
+       <p class="text-center"><a href="" class="btn btn-default go">立即参加</a></p>
+     </div>
+   </div>
+ </div>
+</div>
+<div class="col-sm-12 col-md-4 course-item">
+  <div class="thumbnail">
+    <img src="../public/images/apple.jpg" alt="...">
+    <div class="caption">
+      <h5>&nbsp;<a>大妈教你跳广场舞</a></h5>
+      <p><span class="glyphicon glyphicon-user"></span><span class="author">&nbsp;大妈</span><br/><span class="glyphicon glyphicon-time"> </span><span class="time">&nbsp;3:14-4-13</span> </p>  
+      <div class="discription">
+       <p class="blog">超过50字的正文请进行判断，超过请省略</p>
+       <p class="text-center"><a href="" class="btn btn-default go">立即参加</a></p>
+     </div>
+   </div>
+ </div>
+</div>
+</div>
+<div role="tabpanel" class="tab-pane fade" id="class-1">
+ <div class="col-sm-12 col-md-4 course-item">
+  <div class="thumbnail">
+    <img src="../public/images/dama.jpg" alt="...">
+    <div class="caption">
+      <h5>&nbsp;<a>大妈教你跳广场舞</a></h5>
+      <p><span class="glyphicon glyphicon-user"></span><span class="author">&nbsp;大妈</span><br/><span class="glyphicon glyphicon-time"> </span><span class="time">&nbsp;3:14-4-13</span> </p>  
+      <div class="discription">
+       <p class="blog">超过50字的正文请进行判断，超过请省略</p>
+       <p class="text-center"><a href="" class="btn btn-default go">立即参加</a></p>
+     </div>
+   </div>
+ </div>
+</div>
+<div class="col-sm-12 col-md-4 course-item">
+  <div class="thumbnail">
+    <img src="../public/images/dama.jpg" alt="...">
+    <div class="caption">
+      <h5>&nbsp;<a>大妈教你跳广场舞</a></h5>
+      <p><span class="glyphicon glyphicon-user"></span><span class="author">&nbsp;大妈</span>
+        <br/></span><span class="glyphicon glyphicon-time"> </span><span class="time">&nbsp;3:14-4-13</span> 
+        <div class="discription">
+         <p class="blog">会环境下有不同的制度、不同的文化、不同的习惯。ERP系统既是为了帮助企业更好的发展，那么必须考虑到企业外部环境</p>
+         <p class="text-center"><a href="" class="btn btn-default go">立即参加</a></p>
+       </div>
+     </div>
+   </div>
+ </div>
+ <div class="col-sm-12 col-md-4 course-item">
+  <div class="thumbnail">
+    <img src="../public/images/chaijing.jpg" alt="...">
+    <div class="caption">
+      <h5>&nbsp;<a>大妈教你跳广场舞</a></h5>
+      <p><span class="glyphicon glyphicon-user"></span><span class="author">&nbsp;大妈</span><br/><span class="glyphicon glyphicon-time"> </span><span class="time">&nbsp;3:14-4-13</span> </p>  
+      <div class="discription">
+       <p class="blog">超过50字的正文请进行判断，超过请省略</p>
+       <p class="text-center"><a href="" class="btn btn-default go">立即参加</a></p>
+     </div>
+   </div>
+ </div>
+</div>
+<div class="col-sm-12 col-md-4 course-item">
+  <div class="thumbnail">
+    <img src="../public/images/apple.jpg" alt="...">
+    <div class="caption">
+      <h5>&nbsp;<a>大妈教你跳广场舞</a></h5>
+      <p><span class="glyphicon glyphicon-user"></span><span class="author">&nbsp;大妈</span><br/><span class="glyphicon glyphicon-time"> </span><span class="time">&nbsp;3:14-4-13</span> </p>  <div class="discription">
+      <p class="blog">超过50字的正文请进行判断，超过请省略</p>
+      <p class="text-center"><a href="" class="btn btn-default go">立即参加</a></p>
+    </div>
+  </div>
+</div>
+</div>
+<div class="col-sm-12 col-md-4 course-item">
+  <div class="thumbnail">
+    <img src="../public/images/dama.jpg" alt="...">
+    <div class="caption">
+      <h5>&nbsp;<a>大妈教你跳广场舞</a></h5>
+      <p><span class="glyphicon glyphicon-user"></span><span class="author">&nbsp;大妈</span><br/><span class="glyphicon glyphicon-time"> </span><span class="time">&nbsp;3:14-4-13</span> </p>  <div class="discription">
+      <p class="blog">超过50字的正文请进行判断，超过请省略</p>
+      <p class="text-center"><a href="" class="btn btn-default go">立即参加</a></p>
+    </div>
+  </div>
+</div>
+</div>
+<div class="col-sm-12 col-md-4 course-item">
+  <div class="thumbnail">
+    <img src="../public/images/chaijing.jpg" alt="...">
+    <div class="caption">
+      <h5>&nbsp;<a>大妈教你跳广场舞</a></h5>
+      <p><span class="glyphicon glyphicon-user"></span><span class="author">&nbsp;大妈</span><br/><span class="glyphicon glyphicon-time"> </span><span class="time">&nbsp;3:14-4-13</span> </p>  <div class="discription">
+      <p class="blog">超过50字的正文请进行判断，超过请省略</p>
+      <p class="text-center"><a href="" class="btn btn-default go">立即参加</a></p>
+    </div>
+  </div>
+</div>
+</div>
+<div class="col-sm-12 col-md-4 course-item">
+  <div class="thumbnail">
+    <img src="../public/images/apple.jpg" alt="...">
+    <div class="caption">
+      <h5>&nbsp;<a>大妈教你跳广场舞</a></h5>
+      <p><span class="glyphicon glyphicon-user"></span><span class="author">&nbsp;大妈</span><br/><span class="glyphicon glyphicon-time"> </span><span class="time">&nbsp;3:14-4-13</span> </p>  <div class="discription">
+      <p class="blog">超过50字的正文请进行判断，超过请省略</p>
+      <p class="text-center"><a href="" class="btn btn-default go">立即参加</a></p>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+<div role="tabpanel" class="tab-pane fade" id="class-2">
+ <div class="col-sm-12 col-md-4 course-item">
+  <div class="thumbnail">
+    <img src="../public/images/dama.jpg" alt="...">
+    <div class="caption">
+      <h5>&nbsp;<a>大妈教你跳广场舞</a></h5>
+      <p><span class="glyphicon glyphicon-user"></span><span class="author">&nbsp;大妈</span><br/><span class="glyphicon glyphicon-time"> </span><span class="time">&nbsp;3:14-4-13</span> </p>  <div class="discription">
+      <p class="blog">超过50字的正文请进行判断，超过请省略</p>
+      <p class="text-center"><a href="" class="btn btn-default go">立即参加</a></p>
+    </div>
+  </div>
+</div>
+</div>
+<div class="col-sm-12 col-md-4 course-item">
+  <div class="thumbnail">
+    <img src="../public/images/chaijing.jpg" alt="...">
+    <div class="caption">
+      <h5>&nbsp;<a>大妈教你跳广场舞</a></h5>
+      <p><span class="glyphicon glyphicon-user"></span><span class="author">&nbsp;大妈</span><br/><span class="glyphicon glyphicon-time"> </span><span class="time">&nbsp;3:14-4-13</span> </p>  <div class="discription">
+      <p class="blog">超过50字的正文请进行判断，超过请省略</p>
+      <p class="text-center"><a href="" class="btn btn-default go">立即参加</a></p>
+    </div>
+  </div>
+</div>
+</div>
+<div class="col-sm-12 col-md-4 course-item">
+  <div class="thumbnail">
+    <img src="../public/images/apple.jpg" alt="...">
+    <div class="caption">
+      <h5>&nbsp;<a>大妈教你跳广场舞</a></h5>
+      <p><span class="glyphicon glyphicon-user"></span><span class="author">&nbsp;大妈</span><br/><span class="glyphicon glyphicon-time"> </span><span class="time">&nbsp;3:14-4-13</span> </p>  <div class="discription">
+      <p class="blog">超过50字的正文请进行判断，超过请省略</p>
+      <p class="text-center"><a href="" class="btn btn-default go">立即参加</a></p>
+    </div>
+  </div>
+</div>
+</div>
+<div class="col-sm-12 col-md-4 course-item">
+  <div class="thumbnail">
+    <img src="../public/images/dama.jpg" alt="...">
+    <div class="caption">
+      <h5>&nbsp;<a>大妈教你跳广场舞</a></h5>
+      <p><span class="glyphicon glyphicon-user"></span><span class="author">&nbsp;大妈</span><br/><span class="glyphicon glyphicon-time"> </span><span class="time">&nbsp;3:14-4-13</span> </p>  <div class="discription">
+      <p class="blog">超过50字的正文请进行判断，超过请省略</p>
+      <p class="text-center"><a href="" class="btn btn-default go">立即参加</a></p>
+    </div>
+  </div>
+</div>
+</div>
+<div class="col-sm-12 col-md-4 course-item">
+  <div class="thumbnail">
+    <img src="../public/images/chaijing.jpg" alt="...">
+    <div class="caption">
+      <h5>&nbsp;<a>大妈教你跳广场舞</a></h5>
+      <p><span class="glyphicon glyphicon-user"></span><span class="author">&nbsp;大妈</span><br/><span class="glyphicon glyphicon-time"> </span><span class="time">&nbsp;3:14-4-13</span> </p>  <div class="discription">
+      <p class="blog">超过50字的正文请进行判断，超过请省略</p>
+      <p class="text-center"><a href="" class="btn btn-default go">立即参加</a></p>
+    </div>
+  </div>
+</div>
+</div>
+<div class="col-sm-12 col-md-4 course-item">
+  <div class="thumbnail">
+    <img src="../public/images/apple.jpg" alt="...">
+    <div class="caption">
+      <h5>&nbsp;<a>大妈教你跳广场舞</a></h5>
+      <p><span class="glyphicon glyphicon-user"></span><span class="author">&nbsp;大妈</span><br/><span class="glyphicon glyphicon-time"> </span><span class="time">&nbsp;3:14-4-13</span> </p>  <div class="discription">
+      <p class="blog">超过50字的正文请进行判断，超过请省略</p>
+      <p class="text-center"><a href="" class="btn btn-default go">立即参加</a></p>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+<div role="tabpanel" class="tab-pane fade" id="class-3">
+ <div class="col-sm-12 col-md-4 course-item">
+  <div class="thumbnail">
+    <img src="../public/images/dama.jpg" alt="...">
+    <div class="caption">
+      <h5>&nbsp;<a>大妈教你跳广场舞</a></h5>
+      <p><span class="glyphicon glyphicon-user"></span><span class="author">&nbsp;大妈</span><br/><span class="glyphicon glyphicon-time"> </span><span class="time">&nbsp;3:14-4-13</span> </p>  <div class="discription">
+      <p class="blog">超过50字的正文请进行判断，超过请省略</p>
+      <p class="text-center"><a href="" class="btn btn-default go">立即参加</a></p>
+    </div>
+  </div>
+</div>
+</div>
+<div class="col-sm-12 col-md-4 course-item">
+  <div class="thumbnail">
+    <img src="../public/images/chaijing.jpg" alt="...">
+    <div class="caption">
+      <h5>&nbsp;<a>大妈教你跳广场舞</a></h5>
+      <p><span class="glyphicon glyphicon-user"></span><span class="author">&nbsp;大妈</span><br/><span class="glyphicon glyphicon-time"> </span><span class="time">&nbsp;3:14-4-13</span> </p>  <div class="discription">
+      <p class="blog">超过50字的正文请进行判断，超过请省略</p>
+      <p class="text-center"><a href="" class="btn btn-default go">立即参加</a></p>
+    </div>
+  </div>
+</div>
+</div>
+<div class="col-sm-12 col-md-4 course-item">
+  <div class="thumbnail">
+    <img src="../public/images/apple.jpg" alt="...">
+    <div class="caption">
+      <h5>&nbsp;<a>大妈教你跳广场舞</a></h5>
+      <p><span class="glyphicon glyphicon-user"></span><span class="author">&nbsp;大妈</span><br/><span class="glyphicon glyphicon-time"> </span><span class="time">&nbsp;3:14-4-13</span> </p>  <div class="discription">
+      <p class="blog">超过50字的正文请进行判断，超过请省略</p>
+      <p class="text-center"><a href="" class="btn btn-default go">立即参加</a></p>
+    </div>
+  </div>
+</div>
+</div>
+<div class="col-sm-12 col-md-4 course-item">
+  <div class="thumbnail">
+    <img src="../public/images/dama.jpg" alt="...">
+    <div class="caption">
+      <h5>&nbsp;<a>大妈教你跳广场舞</a></h5>
+      <p><span class="glyphicon glyphicon-user"></span><span class="author">&nbsp;大妈</span><br/><span class="glyphicon glyphicon-time"> </span><span class="time">&nbsp;3:14-4-13</span> </p>  <div class="discription">
+      <p class="blog">超过50字的正文请进行判断，超过请省略</p>
+      <p class="text-center"><a href="" class="btn btn-default go">立即参加</a></p>
+    </div>
+  </div>
+</div>
+</div>
+<div class="col-sm-12 col-md-4 course-item">
+  <div class="thumbnail">
+    <img src="../public/images/chaijing.jpg" alt="...">
+    <div class="caption">
+      <h5>&nbsp;<a>大妈教你跳广场舞</a></h5>
+      <p><span class="glyphicon glyphicon-user"></span><span class="author">&nbsp;大妈</span><br/><span class="glyphicon glyphicon-time"> </span><span class="time">&nbsp;3:14-4-13</span> </p>  <div class="discription">
+      <p class="blog">超过50字的正文请进行判断，超过请省略</p>
+      <p class="text-center"><a href="" class="btn btn-default go">立即参加</a></p>
+    </div>
+  </div>
+</div>
+</div>
+<div class="col-sm-12 col-md-4 course-item">
+  <div class="thumbnail">
+    <img src="../public/images/apple.jpg" alt="...">
+    <div class="caption">
+      <h5>&nbsp;<a>大妈教你跳广场舞</a></h5>
+      <p><span class="glyphicon glyphicon-user"></span><span class="author">&nbsp;大妈</span><br/><span class="glyphicon glyphicon-time"> </span><span class="time">&nbsp;3:14-4-13</span> </p>  <div class="discription">
+      <p class="blog">超过50字的正文请进行判断，超过请省略</p>
+      <p class="text-center"><a href="" class="btn btn-default go">立即参加</a></p>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="col-md-12 course-intro">
+  <hr>
+  <div class="col-md-2 course-head course-coming-head">
+    <h3>即将开始</h3>
+  </div>
+  <div class="col-md-10 course-coming">
+    <div class="course-coming-item">
+      <div class="col-md-5">
+        <img src="../public/images/teach.jpg" alt="" class="img-responsive">
+      </div>
+      <div class="col-md-7">
+        <h5 class="lead"><a>做个彬彬有“礼”的绅士</a></h5>
+        <p>礼仪不仅仅是有礼貌懂谦让，是你只知其一不知其精髓！本期，小编送上礼仪小贴士，慢慢学起来吧。</p>
+      </div>
+      <div class="clearfix"></div>
+    </div>
+    <div class="course-coming-item">
+      <div class="col-md-5">
+        <img src="../public/images/drink.jpg" alt="" class="img-responsive">
+      </div>
+      <div class="col-md-7">
+        <h5 class="lead"><a>做个彬彬有“礼”的绅士</a></h5>
+        <p>礼仪不仅仅是有礼貌懂谦让，是你只知其一不知其精髓！本期，小编送上礼仪小贴士，慢慢学起来吧。</p>
+      </div>
+      <div class="clearfix"></div>
+    </div>
+    <div class="course-coming-item">
+      <div class="col-md-5">
+        <img src="../public/images/training.jpg" alt="" class="img-responsive">
+      </div>
+      <div class="col-md-7">
+        <h5 class="lead"><a>做个彬彬有“礼”的绅士</a></h5>
+        <p>礼仪不仅仅是有礼貌懂谦让，是你只知其一不知其精髓！本期，小编送上礼仪小贴士，慢慢学起来吧。</p>
+      </div>
+      <div class="clearfix"></div>
+    </div>
+  </div>
+  <a class="pull-right">更多&nbsp;&gt;&gt;</a>
+</div>
+<div class="col-md-12 course-intro">
+
+  <div class="col-md-2 course-head course-end-head">
+    <h3>已经结束</h3>
+  </div>
+   <div class="col-md-10 course-end">
+    <div class="course-end-item">
+      <div class="col-md-5">
+        <img src="../public/images/teach.jpg" alt="" class="img-responsive">
+      </div>
+      <div class="col-md-7">
+        <h5 class="lead"><a>做个彬彬有“礼”的绅士</a></h5>
+        <p>礼仪不仅仅是有礼貌懂谦让，是你只知其一不知其精髓！本期，小编送上礼仪小贴士，慢慢学起来吧。</p>
+      </div>
+      <div class="clearfix"></div>
+    </div>
+    <div class="course-end-item">
+      <div class="col-md-5">
+        <img src="../public/images/drink.jpg" alt="" class="img-responsive">
+      </div>
+      <div class="col-md-7">
+        <h5 class="lead"><a>做个彬彬有“礼”的绅士</a></h5>
+        <p>礼仪不仅仅是有礼貌懂谦让，是你只知其一不知其精髓！本期，小编送上礼仪小贴士，慢慢学起来吧。</p>
+      </div>
+      <div class="clearfix"></div>
+    </div>
+    <div class="course-end-item">
+      <div class="col-md-5">
+        <img src="../public/images/training.jpg" alt="" class="img-responsive">
+      </div>
+      <div class="col-md-7">
+        <h5 class="lead"><a>做个彬彬有“礼”的绅士</a></h5>
+        <p>礼仪不仅仅是有礼貌懂谦让，是你只知其一不知其精髓！本期，小编送上礼仪小贴士，慢慢学起来吧。</p>
+      </div>
+      <div class="clearfix"></div>
+    </div>
+  </div>
+  <a class="pull-right">更多&nbsp;&gt;&gt;</a>
+  </div>
+</div>
