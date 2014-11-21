@@ -7,10 +7,9 @@
 	  <li class="active">新闻</li>
 	</ol>
 	<div class="main-content">
-		<img class="img-responsive show-img"  src="../public/images/FactsFigures.jpg" alt="">
 			<h2>
 				${news.newsTitle}
 			</h2>
-			<p class="sub"><small>作者:</small><small>审稿人：</small><small >${news.newsCreateDate}</small></p>
+			<p class="sub"><small>作者:${authorName}</small><small>审稿人：${auditName}</small><small >${news.newsCreateDate}</small></p>
 			${news.newsContent.raw()}
 	</div>

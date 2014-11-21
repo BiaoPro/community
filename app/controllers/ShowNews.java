@@ -70,7 +70,11 @@ public class ShowNews extends Controller{
 	// 展示单个新闻
 	public static void showNewsInfo(String id){
 		News news = News.findById(id); 
-		render(news);
+		User audit = User.findById(news.newsAuditId);
+		String auditName = audit.rname;
+		User user= User.findById(news.newsAuthorId);
+		String authorName = user.rname;
+		render(news,auditName,authorName);
 	}
 	
 }
