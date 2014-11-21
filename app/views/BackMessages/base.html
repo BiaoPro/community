@@ -1,0 +1,10 @@
+#{extends 'manager.html'/}
+#{set MessageManager : 'active' /}
+
+	<ul class="nav nav-tabs">
+		<li #{get 'showMessages' /}>
+			<a href="@{BackMessages.showMessages }" >反馈信息</a>
+		</li>
+	</ul>
+	
+	#{doLayout /}

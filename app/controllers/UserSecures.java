@@ -65,13 +65,11 @@ public class UserSecures extends Controller {
 				// 密码正确
 				UserInfo userInfo = UserInfo.getUserInfoByUserId(user.id);
 				userInfo.updateUserInfo(UserInfo.LOGIN);
-
+				session.clear();
 				session.put("userId", user.id);
 				session.put("account", user.account);
 				session.put("userName", user.rname);
-				session.put("type", user.type);
-
-				
+				session.put("userCategory", user.type);
 				Application.manager();
 			} else {
 				// 密码错误
