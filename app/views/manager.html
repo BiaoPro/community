@@ -13,7 +13,7 @@ backgound:white;
  <link rel="stylesheet" media="screen" href="@{'/public/stylesheets/back.css'}">
 		<div class="main container-fluid" >
 	      <div class="row">
-		    <div class="col-sm-2">
+		    <div class="col-sm-2 ">
 		        #{if session.userCategory != "0"}
 				<!-- 只有文章管理员和超级用户有权 -->
 					<a href="@{Users.showUserInfo}" class="list-group-item #{get 'UserManager' /}" >用户管理</a>
