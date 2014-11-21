@@ -49,6 +49,7 @@ public class BackNews extends Controller{
 			news._save();
 			newsSend("success");
 		}catch(Exception e){
+		  e.printStackTrace();    
 			newsSend("failed");
 		}
 		

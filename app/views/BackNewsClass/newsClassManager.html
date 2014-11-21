@@ -1,5 +1,6 @@
-		#{extends 'back_common.html'/}
-			<div style="max-width:960px" class="container">
+		#{extends 'BackNewsClass/base.html'/}
+		#{set newsClassManager : 'class=active' /}
+			<div class="nav-tabs">
 	    		<ul id="myTab" class="nav nav-tabs" role="tablist">
 			      <li role="presentation" class="active"><a href="#edit" i="edit-tab" role="tab" data-toggle="tab" aria-controls="edit" aria-expanded="true">修改</a></li>
 			      <li role="presentation" class=""><a href="#add" role="tab" id="add-tab" data-toggle="tab" aria-controls="add" aria-expanded="false">增加</a></li>

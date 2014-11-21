@@ -1,4 +1,6 @@
-	#{extends 'back_common.html'/}
+	#{extends 'BackNewsClass/base.html'/}
+	#{set newsSend : 'class=active' /}
+	<div class="nav-tabs">
 	<form id="form" role="form" action="@{BackNews.addNews}" method="post">
 			<div class="container">
 				<h3 class="text-info">新闻发布</h3>
@@ -29,15 +31,17 @@
     			
 			</div>
 		</form>
+		
 		<div id="myAlertContainer" class="container">
 			<input id="status" type="hidden" value="${status}" />
+		</div>
 		</div>
 		<script id="myAlertHtml" type="text/html">
 		
 		<div id="myAlert" style="margin-top:20px; width:70%" class="alert alert-danger alert-dismissible fade in" role="alert">
   			<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
   		<strong>对不起！</strong>你输入的信息不能为空。</div>
-
+        
 		</script>
 		#{set 'moreScripts' }
 		<script charset="utf-8" src="@{'/public/javascripts/sea.js'}"></script>
