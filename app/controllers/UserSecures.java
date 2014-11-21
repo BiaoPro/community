@@ -1,14 +1,20 @@
 package controllers;
 
+import java.io.File;
+
 import models.User;
 import models.UserInfo;
 import play.cache.Cache;
 import play.libs.Images;
 import play.mvc.Before;
 import play.mvc.Controller;
+import utils.FileUtils;
 import utils.MD5Utils;
 import utils.SessionManager;
 import utils.StringUtils;
+import utils.Uploader;
+import utils.enumvalue.Config;
+import utils.enumvalue.FileUploadState;
 
 /**
  * 用户验证
@@ -21,7 +27,7 @@ public class UserSecures extends Controller {
 	/**
 	 * 检测是否以登录，防止直接通过url在没有登录的情况下进入后台
 	 */
-	@Before(unless = { "login", "verify", "logout", "getCaptcha" })
+	@Before(unless = { "login", "saveUser", "verify", "logout", "getCaptcha" })
 	public static void checkAccess() {
 		if (!SessionManager.isLogin(session)) {
 //			// 在没有登录的情况下跳转到首页
@@ -29,7 +35,7 @@ public class UserSecures extends Controller {
 		   Application.login();
 		}
 	}
-
+    
 	/**
 	 * 登录验证
 	 * 
@@ -84,7 +90,68 @@ public class UserSecures extends Controller {
 		
 
 	}
+    
+	/**
+    * 保存注册的用户
+    * 
+    * @param user
+    */
+   public static void saveUser(User user,File photo) {
+     try{
+       if(User.findByAccount(user.account)!=null){
+         flash.put("backMessage", "账号:"+user.account+"已被注册~");
+         flash.put("account", user.account);
+         flash.put("rname", user.rname); 
+         flash.put("prc", user.prc); 
+         flash.put("email", user.email); 
+         flash.put("birthday", user.birthday);
+         if (!StringUtils.isEmpty(user.photo)) {
+           FileUtils.deleteFile(user.getPhoto());
+         }
+       }else{
+         
 
+       if (photo != null) {
+         
+         String baseUrl = Config.DEFAULT_BASE_URL;
+         String savePath = Config.USER_PHOTO_PATH;
+         Uploader uploader = new Uploader(baseUrl, savePath);
+         //System.out.println("savePath:"+savePath);
+         uploader.upload(photo);
+  
+         if (uploader.getState() == FileUploadState.SUCCESS) {
+             // 文件上传成功
+           user.photo = uploader.getUrl();
+         } else {
+             flash.put("backMessage", "图片上传失败~");
+         }
+       } else{
+         if("".equals(user.photo))
+           user.photo = "/public/images/no_pic.jpg";
+         
+       } 
+       
+       
+         user.save();
+         new UserInfo(user.id,user.account).save();
+         
+         flash.put("backMessage", "注册成功~");
+       }
+         
+         
+     }catch(Exception e){
+       flash.put("user", user);
+       flash.put("backMessage", "注册失败~");
+       if (!StringUtils.isEmpty(user.photo)) {
+         FileUtils.deleteFile(user.getPhoto());
+       }
+     }
+         
+         Application.register();
+   }
+	
+   
+   
 	/**
 	 * 注销
 	 */

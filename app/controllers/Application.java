@@ -13,8 +13,9 @@ public class Application extends Controller {
 
     public static void index() {
       SessionManager.setFooter(session);
+      User user = SessionManager.getLoginedUser(session);
 
-        render();
+        render(user);
     }
     
     
