@@ -1,6 +1,6 @@
 #{extends 'manager.html'/}
-<div class="container" >
-	<ul class="nav nav-tabs" style="margin-left:5%;">
+#{set UserManager : 'active' /}
+	<ul class="nav nav-tabs">
 		<li #{get 'showUserInfo' /}>
 			<a href="@{Users.showUserInfo}" >个人信息</a>
 		</li>
@@ -8,5 +8,4 @@
 		
 	</ul>
 	
-	<div style="margin-left:5%;">#{doLayout /}</div>
-</div>
+	#{doLayout /}
