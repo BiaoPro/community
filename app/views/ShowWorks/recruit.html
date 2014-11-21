@@ -39,7 +39,7 @@
 					<th><em>*</em><span>学历</span></th>
 					<td>
 						<div class="moreitem-box">
-			   			<div class="moreitem-btn"><a >不限</a>
+			   			<div class="moreitem-btn"><a class="required" name="education">不限</a>
 			   				</div>
 				   			<ul class="moreitem" >
 				   				<li><a>高中以下</a></li>
@@ -57,16 +57,12 @@
 					<th><em>*</em><span>工作年限</span></th>
 					<td>
 		   				<div class="moreitem-box">
-			   			<div class="moreitem-btn"><a >不限</a>
+			   			<div class="moreitem-btn"><a name="duration">工作时长</a>
 			   				</div>
 				   			<ul class="moreitem" >
-				   				<li><a>高中以下</a></li>
-				   				<li><a>高中</a></li>
-				   				<li><a>技校</a></li>
-				   				<li><a>中专</a></li>
-				   				<li><a>大专</a></li>
-				   				<li><a>本科</a></li>
-				   				<li><a >本科以上</a></li>
+				   				<li><a>不限</a></li>
+				   				<li><a>短期</a></li>
+				   				<li><a>长期</a></li>
 				   			</ul>
 			   			</div>		   								
 					</td>
@@ -75,7 +71,7 @@
 					<th><em>*</em><span>性别</span></th>
 					<td>
 		   				<div class="moreitem-box">
-			   			<div class="moreitem-btn"><a >不限</a>
+			   			<div class="moreitem-btn"><a name="gender">不限</a>
 			   				</div>
 				   			<ul class="moreitem">
 				   				<li><a>男</a></li>
@@ -86,11 +82,11 @@
 				</tr>
 				<tr>
 					<th><em>*</em><span>年龄</span></th>
-					<td>
+					<td class="beLegal">
 						<label class="sr-only" for="min-age">最小年龄</label>
 	    				<input type="text" class="form-control num-only required" name="min-age" style="width:30%;">
 		   				<label>到</label>
-		   				<label class="sr-only" for="max-age">最大年龄</label>
+		   				<label class="sr-only " for="max-age">最大年龄</label>
 	    				<input type="text" class="form-control num-only" name="max-age" style="width:30%;">
 					</td>
 				</tr>
@@ -98,16 +94,18 @@
 					<th><em>*</em><span>月薪</span></th>
 					<td>
 						<div class="moreitem-box ">
-			   				<div class="moreitem-btn "><a class="required">请选择</a>			   				
+			   				<div class="moreitem-btn "><a name="salary" class="required">请选择</a>			   				
 			   				</div>
 			   				<ul class="moreitem" >
-			   					<li><a>出租主卧</a></li>
-			   					<li><a>出租侧卧</a></li>
-			   					<li><a >出租隔断间</a></li>
-			   					<li><a>出租床位</a></li>
+			   					<li><a>不限</a></li>
+				   				<li><a>1000-2000元</a></li>
+				   				<li><a>2000-3000元</a></li>
+				   				<li><a>3000-5000元</a></li>
+				   				<li><a>5000-8000元</a></li>
+				   				<li><a>8000元以上</a></li>
 			   				</ul>
 		   				</div>
-		   				<input type="checkbox"/>
+		   				<input name="period" type="checkbox"/>
 			   			<label>有试用期</label>
 					</td>
 				</tr>
@@ -128,7 +126,7 @@
 					<th><em>*</em><span>是否收费</span></th>
 					<td>
 						<label>
-						<input type="radio" name="optionsRadios" value="option1" checked >
+						<input type="radio" name="optionsRadios" value="option1" checked>
 						    收费
 						</label>
 						<label>
@@ -153,6 +151,6 @@
 				</tr>
 			</tbody>
 		</table>
-		<input type="submit" class="btn btn-danger btn-lg pull-right" id="submit" value="确认并发布">	
+		<a class="btn btn-danger btn-lg pull-right" id="submit">确认并发布</a>	
 		</form>
 		</div>

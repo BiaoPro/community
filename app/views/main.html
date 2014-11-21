@@ -145,7 +145,8 @@
 <!-- 返回顶部按钮 -->
 <a href="#"  class="scrollTop"><i class="glyphicon glyphicon-chevron-up"></i></a>
 
-  <script type="text/javascript" src="//apps.bdimg.com/libs/jquery/1.11.1/jquery.min.js" charset="${_response_encoding}"></script> 
+  <!--<script type="text/javascript" src="//apps.bdimg.com/libs/jquery/1.11.1/jquery.min.js" charset="${_response_encoding}"></script> -->
+  <script type="text/javascript" src="@{'/public/javascripts/jquery-1.11.1.min.js'}" charset="${_response_encoding}"></script>
   <script>
     if (!window.jQuery) {
     var script = document.createElement('script');
@@ -153,7 +154,7 @@
     document.body.appendChild(script);
     }
 </script>
-  <!--  <script src="http://cdn.bootcss.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>-->
+    <!--<script src="http://cdn.bootcss.com/bootstrap/3.2.0/js/bootstrap.min.js"></script> -->
    <script src="@{'/public/javascripts/bootstrap.min.js'}"></script> 
   <script type="text/javascript" src="@{'/public/javascripts/scripts.js'}" charset="${_response_encoding}"></script>
 

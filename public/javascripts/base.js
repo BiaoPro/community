@@ -152,12 +152,13 @@ $("#identity a").click(function(){
 		}
 	});
 
-//校验楼层数是否科学
-	$('.form-fill input[name="floors"]').blur(function(){
+//校验填入数据是否科学
+	$('.form-fill .beLegal input').blur(function(){
 		var $parent = $(this).parents("td");
-		var $floor = $parent.find('input[name="floor"]');
-		if($floor.length > 0 && parseInt($(this).val()) < parseInt($floor.val())){
-			insertErrMessage($parent, "总楼层不能比所在楼层少呀亲");
+		var $smaller = $parent.find("input").eq(0);
+		var $upper = $parent.find("input").eq(1);
+		if($smaller.length > 0 && parseInt($upper.val()) < parseInt($smaller.val())){
+			insertErrMessage($parent, "不科学了");
 		}
 	});
 
@@ -223,10 +224,25 @@ $(".form-fill .tag+span a").click(function(){
 	
 	
 
-	// 确认无误后发送表单
-	// $("#submit").click(function(event) {
-		
-	// });
+	//确认无误后发送表单
+	$("#submit").click(function(event) {
+		var $required = $(".form-fill .required");
+		$required.each(function(index, el) {
+			var value = this.value || this.innerHTML || "";
+			if($("#identity").length >0 && $("#identity").find("span").length === 0 ){
+				alert("请选择身份");
+				return false
+			}else if(value === "" || value === "请选择" || value === "街道" || value === "装修情况") {
+				var errMes = $(this).parents('tr').find("th span").html();
+				alert("请完善 " + errMes + " 信息");
+				return false;
+			}else if($(".form-fill").find("span.alert-danger").length > 0){
+				alert("请检查信息合法性");
+				return false;
+			}
+		});
+		return false;
+	});
 
 
 	// 将已选选项显示到筛选列表中函数,可重载函数 
