@@ -1,4 +1,5 @@
-	#{extends 'back_common.html'/}
+		#{extends 'BackNewsClass/base.html'/}
+	#{set newsSend : 'class=active' /}
 	<form id="form" role="form" action="@{BackNews.updateNews(news.newsId)}" method="post">
 			<div class="container">
 				<h3 class="text-info">新闻发布</h3>
