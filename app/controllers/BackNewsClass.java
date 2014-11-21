@@ -5,10 +5,12 @@ import java.util.List;
 import models.News;
 import models.NewsClass;
 import play.mvc.Controller;
+import play.mvc.With;
 /*
  * @author kingda
  * @description 后台栏目管理控制类
  */
+@With(UserSecures.class)
 public class BackNewsClass extends Controller{
 	
 	/*

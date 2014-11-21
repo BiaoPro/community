@@ -68,9 +68,9 @@ public class UserSecures extends Controller {
 
 				session.put("userId", user.id);
 				session.put("account", user.account);
-				session.put("userInfoId", userInfo.id);
-				session.put("userCategory", user.type);
-				session.put("userName", userInfo.name);
+				session.put("userName", user.rname);
+				session.put("type", user.type);
+
 				
 				Application.manager();
 			} else {

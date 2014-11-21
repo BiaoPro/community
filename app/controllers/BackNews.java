@@ -7,16 +7,19 @@ import java.util.List;
 import models.News;
 import models.NewsClass;
 import play.mvc.Controller;
+import play.mvc.With;
 import utils.DateUtils;
 import utils.Debug;
 import utils.KindEditorUpload;
 import utils.NewsBean;
 import utils.PageBean;
 import utils.PageBeanFactory;
+import utils.SessionManager;
 /*
  * @author YourKingda
  * @description:新闻控制器
  */
+@With(UserSecures.class)
 public class BackNews extends Controller{
 	
 	/*
@@ -36,6 +39,7 @@ public class BackNews extends Controller{
 	 * @description 增加一篇新闻
 	 */
 	public static void addNews(){
+	  
 		//预留栏目
 		News news = new News(); 
 		news.newsContent=params.get("content");
