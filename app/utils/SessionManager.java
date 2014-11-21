@@ -22,7 +22,6 @@ public class SessionManager {
 	 */
 	public static String getLoginedId(Session session) {
 		return session.get("userId");
-	
 	}
 	
 	

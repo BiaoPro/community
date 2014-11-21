@@ -2,12 +2,8 @@ package controllers;
 
 import play.*;
 import play.mvc.*;
-import utils.FileUtils;
-import utils.PageBean;
-import utils.StringUtils;
-import utils.Uploader;
-import utils.enumvalue.Config;
-import utils.enumvalue.FileUploadState;
+import utils.*;
+import utils.enumvalue.*;
 
 import java.io.File;
 import java.util.*;
@@ -26,10 +22,12 @@ public class Houses extends Controller {
 	}
     /*
      * 显示详细的租房信息
-     * @param house
+     * @param id
      */
-    public static void showHouseInfo(House house){
-    	render(house);
+    public static void showHouseInfo(String id){
+    	House house=House.findById(id);
+    	String[] photo = house.photoUrl.toString().split("\\.\\$\\.");
+    	render(house,photo);
     }
     /*
      * 显示租房信息列表
@@ -50,7 +48,7 @@ public class Houses extends Controller {
     	
         if (photoUrl != null) {
         	if (!StringUtils.isEmpty(house.photoUrl)) {//删除原来的图片
-        		String[] a = house.photoUrl.split(".$.");
+        		String[] a = house.photoUrl.split("\\.\\$\\.");
         		for(int i=0;i<a.length;i++)
                 FileUtils.deleteFile(a[i]);
             }
@@ -69,7 +67,7 @@ public class Houses extends Controller {
         }
           house.photoUrl = insertUrl;
         }
-      
+        house.author=SessionManager.getLoginedUser(session);
     	String[] eqs = params.getAll("equipment");//多选家电配备
     	String equipment="";
     	for(int i=0;i<eqs.length;i++){
@@ -88,12 +86,4 @@ public class Houses extends Controller {
     	House.delete("id", id);
     	showHouses();
     }
-    /*
-     * 修改租房信息
-     * @param house
-     */
-    public static void editHouseInfo(House house) {
-		house.save();
-		showHouseInfo(house);
-	}
 }
