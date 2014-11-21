@@ -126,7 +126,7 @@ public class News extends GenericModel{
 		else{
 			hql="select a.newsId,a.newsTitle,a.newsCreateDate,b.newClassType,a.newsModifyDate,a.newsAudit "+
 			" from News a,NewsClass b where a.newsClassId = b.newClassId"
-			+" and a.newsCreateDate like '"+date+"%' and b.newClassType like '%"+className+"%' a.newsAudit =1 order by a.newsModifyDate desc";
+			+" and a.newsCreateDate like '"+date+"%' and b.newClassType like '%"+className+"%' and a.newsAudit =1 order by a.newsModifyDate desc";
 		}
 		return executeJPA(pageBean,hql);
 		
