@@ -1,0 +1,202 @@
+#{extends 'Works/base.html' /}
+#{set title:'recruit' /}
+#{set "moreSubpageStyles"}
+	<style type="text/css">
+		.table > tbody > tr > td,.table>tbody>tr>th{
+			border-top:none;
+			font-size: 1.1em;
+			color: #333;
+			vertical-align: top;
+			margin: 10px 0px 0px 10px;
+		}
+		.table>tbody>tr>th{
+			width: 20%;
+			text-align: right;
+			padding-right:5%;
+		}
+		.main-content label,.table td a{
+			margin-right:10px;
+			font-weight: normal;
+		}
+		.form-control{
+			display: inline-block;
+			width: 50%;
+		}
+		.table th em{
+			color:red;
+			margin-right: 5px;
+		}
+		.moreitem a{
+			display: inline-block;
+			padding: 8px 10px;
+		}
+		td label input[type="text"]{		
+			width: 50px;
+			padding-right: 5px;
+		}
+		ul.sub{
+			padding-left: 0;
+			border-bottom: none;
+		}
+		ul.sub li{
+			margin:10px 0px 0px 10px;
+		}
+		.chose-all{
+			margin-left: 10px;
+		}
+		form:after{
+			content: '';
+			display: block;
+			height: 0;
+			clear: both;
+		}
+		.btn.chosen{
+			border: 2px solid green;
+		}
+		.btn-lg{
+			margin:10px;
+		}
+		span.ok{
+			background: url(../public/images/ok.png);
+			width:16px;
+			height: 16px;
+			display: inline-block;
+		}
+		@media screen and (max-width: 480px){
+			.table>tbody>tr>th,.table>tbody>tr>td{
+				border-top: 1px solid #ccc;
+			}
+			.table>tbody>tr>th{
+				width: 35%;
+			}
+			.moreitem-box{
+				margin-bottom: 10px;
+			}
+		}
+	</style>
+#{/set}
+		
+<div class="alert alert-warning alert-dismissible" role="alert">
+  <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+  <p class="bg-warning">如果您有账号，可点击<a>登录</a>再填写 ; 或者点击<a>注册</a></p>
+</div>
+<div class="main-content">
+	<form action="@{Works.saveWork}" method="post">
+		<table class="table table-hover  table-condensed">
+			<tbody>
+				<tr>
+					<th><em>*</em><span>标题</span></th>
+					<td>
+						<label class="sr-only" for="title">标题</label>
+	    				<input type="text" class="form-control" id="title" name="work.title">
+						<span></span>
+					</td>
+				</tr>
+				<tr>
+					<tr>
+					<th><em>*</em><span>公司</span></th>
+					<td>
+						<label class="sr-only" for="title">公司</label>
+	    				<input type="text" class="form-control"  name="work.unit">
+						<span></span>
+					</td>
+				</tr>
+				<tr>
+					<th><em>*</em><span>职位类别</span></th>
+					<td>
+						<label class="sr-only" for="category">小区地址</label>
+	    				<input type="text" class="form-control"  name="work.position">
+	    				<span></span>
+					</td>
+				</tr>
+				<tr>
+					<th><em>*</em><span>招聘人数</span></th>
+					<td>
+						<label class="sr-only" for="recruitNumber">招聘人数</label>
+	    				<input type="number" class="form-control"  name="work.number">
+	    				<span></span>
+					</td>
+				</tr>
+				<tr>
+					<th><em>*</em><span>学历</span></th>
+					<td>
+						<select class="form-control" name="work.degree">
+				   			<option value="无要求" selected>无要求</option>
+				   			<option value="小学">小学</option>
+				   			<option value="初中">初中</option>
+				   			<option value="高中">高中</option>
+				   			<option value="中专">中专</option>
+				   			<option value="大专">大专</option>
+				   			<option value="本科">本科</option>
+				   			<option value="本科以上">本科以上</option>
+				   		</select>
+					</td>
+				</tr>
+				<tr>
+					<th><em>*</em><span>工作年限</span></th>
+					<td>
+						<select class="form-control" name="work.year">
+							<option value="无要求" selected>无要求</option>
+							<option value="一年以上" >一年以上</option>
+							<option value="一至两年" >一至两年</option>
+							<option value="两至三年" >两至三年</option>
+							<option value="三至五年" >三至五年</option>
+							<option value="五至十年" >五至十年</option>
+							<option value="十年以上" >十年以上</option>
+						</select>
+		   				
+					</td>
+				</tr>
+				<tr>
+					<th><em>*</em><span>性别</span></th>
+					<td>
+						<input type="radio" name="work.sex" value="男女均可" selected>男女均可&nbsp&nbsp
+						<input type="radio" name="work.sex" value="男" >男&nbsp&nbsp
+						<input type="radio" name="work.sex" value="女" >女
+					</td>
+				</tr>
+				<tr>
+					<th><em>*</em><span>年龄</span></th>
+					<td>
+						<label class="sr-only" for="min-age">最小年龄</label>
+	    				<input type="text" class="form-control" name="work.minage" style="width:10%;">
+		   				<label>到</label>
+		   				<label class="sr-only" for="max-age">最大年龄</label>
+	    				<input type="text" class="form-control" name="work.maxage" style="width:10%;">
+      					<label>岁</label>
+					</td>
+				</tr>
+				<tr>
+					<th><em>*</em><span>月薪</span></th>
+					<td>
+						<input type="text" class="form-control" name="work.minsalary" style="width:10%;">
+						<label>到</label>
+						<input type="text" class="form-control" name="work.maxsalary" style="width:10%;">
+						<label>元</label>
+					</td>
+				</tr>
+				<tr>
+					<th><em>*</em><span> 职位描述</span></th>
+					<td>
+						<textarea class="form-control" rows="5" style="width:80%" name="work.details"></textarea>
+					</td>
+				</tr>		
+				<tr>
+					<th><em>*</em><span>联系人</span></th>
+					<td>
+						<label class="sr-only" for="contact">联系人</label>
+	    				<input type="text" class="form-control" name="work.linkman">
+					</td>
+				</tr>
+				<tr>
+					<th><em>*</em><span>联系电话</span></th>
+					<td>
+						<label class="sr-only" for="phone">联系电话</label>
+	    				<input type="text" class="form-control" name="work.phone">
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<input type="submit" class="btn btn-danger btn-lg pull-right" value="确认并发布">	
+		</form>
+		</div>

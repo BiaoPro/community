@@ -38,89 +38,65 @@
 	}
 </style>
 #{/set}
-		<!-- 路径导航 -->
-		<ol class="breadcrumb">
-			<li><a href="#">首页</a></li>
-			<li ><a href="">社区租房</a></li>
-			<li class="active">租房详细</li>
-		</ol>
+		
 		<div class="main-content row">
-			<h2>创飞凡地产急聘房产经纪人</h2>
+			<h2>${work.title}</h2>
 			<strong><a class="pull-right" style="color:#F6790E;">下一条 ></a></strong>
-			<p class="sub">
-				<small>时间： 今天</small><small>28人浏览过</small>
-				<small><a>举报</a></small>
-				<small><a>管理信息</a></small>
-			</p>
+			
+				<small>发布时间：${work.date}</small>
+			
 				<table class="table table-hover show-job-info">
 					<tbody>
 						<tr>
 							<td>
 								<strong>公司</strong>
-								<span><a>长沙创飞凡信息咨询有限公司(长沙创飞凡地产)</a></span>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<strong>职位</strong>
-								<span>房产经纪人</span>
+								<span>${work.unit}</span>
 							</td>
 							<td>
-								<strong>月薪</strong>
-								<span>2000元以上</span>
+								<strong>招聘职位</strong>
+								<span>${work.position}</span>
 							</td>
-						</tr>
-						<tr>
 							<td>
 								<strong>招聘人数</strong>
-								<span>10人</span>
+								<span>${work.number}</span>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<strong>性别</strong>
+								<span>${work.sex}</span>
 							</td>
 							<td>
-								<strong>最低学历</strong>
-								<span>初中</span>
+								<strong>学历要求</strong>
+								<span>${work.degree}</span>
+							</td>
+							<td>
+								<strong>年龄</strong>
+								<span>${work.minage}至${work.maxage}周岁</span>
 							</td>
 						</tr>
 						<tr>
 							<td>
 								<strong>工作经验</strong>
-								<span>不限</span>
+								<span>${work.year}</span>
 							</td>
 							<td>
-								<strong>最低年龄</strong>
-								<span>20岁</span>
+								<strong>月薪</strong>
+								<span>${work.minsalary}至${work.maxsalary}元</span>
 							</td>
+							
+							
 						</tr>
 						<tr>
-							<td  colspan="2">
-								<strong>工作地点</strong>
-								<span>长沙雨花区公安分局对面融科东南海 ( 长沙 - 雨花 - 树木岭 ) </span>
-							</td>
-						</tr>
-						<tr>
+							
 							<td>
-								<strong>面试时间</strong>
-								<span>2014-08-19</span>
+								<strong>联系人</strong>
+								<span>${work.linkman}</span>
 							</td>
-						</tr>
-						<tr>
-							<td colspan="2">
-								<strong>面试地点</strong>
-								<span>长沙雨花区公安分局对面融科东南海 ( 长沙 - 雨花 - 树木岭 ) </span>
-							</td>
-						</tr>
-						<tr>
 							<td>
-								<strong>福利待遇</strong>
-								<span>没有</span>
+								<strong>联系电话</strong>
+								<span>${work.phone}</span>
 							</td>
-						</tr>
-						<tr>
-							<td>
-								<strong>联系</strong>
-								<img src="../public/images/showphone.gif"/>
-								<a class="btn btn-default">查看完整号码</a>
-							</td>
-						</tr>
 					</tbody>
 				</table>
 						  			<!-- Nav tabs -->
@@ -135,11 +111,7 @@
 			<div class="tab-content row">
 			  <div class="tab-pane active" id="describe">
 			  	<ol>
-			  		<li>新店开业，现诚招热爱销售的精英人才，如特别优秀者，请直接进店面试，待遇可面谈！</li>
-			  		<li>薪资待遇： 底薪（1600-3600/月）+高额销售提成（15%-40%,业内最高）+各项激励奖金+带薪培训+社保+商业保险+法定节假日+户外拓展+国际旅游。</li>
-			  		<li>岗位职责： 负责为客户提供中高端住宅、写字楼、公寓等二手房买卖、租赁、贷款、过户等相关业务的全程代理服务。工作内容包括客户开发、电话预约、实地看房、谈判签约等。</li>
-			  		<li>岗位要求： 1、勤奋敬业，吃苦耐劳、乐观向上，愿意接受工作挑战： 2、具有良好的沟通技巧、团队精神和客户服务意识，渴望挑战高新： 3、有无经验均可，公司提供完善的培训课程，有销售、房地产或保险公司从业经验者优先，欢迎应届毕业生加入！ </li>
-			  		<li>工作时间：8:30-12:00 14:00-18:00 </li>
+			  		<li>${work.details}</li>
 			  	</ol>
 			  </div>
 			  <div class="tab-pane row" id="profile">
