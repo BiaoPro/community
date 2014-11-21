@@ -76,12 +76,18 @@
                       </ul>
                     </li>
                     <li><a href="#">信息咨询</a></li>
-                    <li><a href="@{Application.login}">登陆</a></li>
                   </ul>
+                  #{if session.userId}
                   <ul class="nav navbar-nav navbar-right">
-                       <li><a href="#">用户</a></li>
-                       <li><a href="#">退出</a></li>
+                       <li><a href="@{Users.showUserInfo}">个人中心</a></li>
+                       <li><a href="@{UserSecures.logout}">退出</a></li>
                    </ul>
+                   #{/if}
+                   #{else}
+                   <ul class="nav navbar-nav navbar-right">
+                       <li><a href="@{Application.login}">登陆</a></li>
+                   </ul>
+                   #{/else}
                 </div>
             </div>
           </div>
@@ -146,7 +152,6 @@
     <script type="text/javascript" src="@{'/public/javascripts/bootstrap.js'}" charset="${_response_encoding}"></script>
     <script type="text/javascript" src="@{'/public/javascripts/scripts.js'}" charset="${_response_encoding}"></script>
     <script type="text/javascript" src="@{'/public/javascripts/bootstrapValidator.js'}"charset="${_response_encoding}"></script>
-    <script type="text/javascript" src="@{'/public/javascripts/form.js'}"charset="${_response_encoding}"></script>
     #{get 'moreScripts' /}
     </body>
 </html>

@@ -7,6 +7,7 @@
     		<legend>登陆
     		<div class="pull-right"> 
                    <h6>没有账号？马上<a href="@{Application.register}">注册</a> </h6>
+                   		${flash.error}
              </div>
     		</legend>
     		
@@ -44,10 +45,15 @@
         </form>
    </div>
 </div>
+#{set 'moreScripts'}
+<script type="text/javascript" src="@{'/public/javascripts/form.js'}"charset="${_response_encoding}"></script>
+#{/set}
 
 <script type="text/javascript">
 function setCaptcha() {
 	$("#verificationImg").attr("src","/usersecures/getcaptcha?randomId=4b380ff9-072b-4681-8f85-156cc13ef52a&time="+new Date().getTime());
 }
 </script>
+
+
 
