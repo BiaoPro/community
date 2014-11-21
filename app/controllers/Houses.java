@@ -16,7 +16,7 @@ import models.*;
  * 出租房信息
  * @author zhuangxiangpeng
  */
-@With(UserSecures.class)
+
 public class Houses extends Controller {
 	public static void index(){
 		render();
