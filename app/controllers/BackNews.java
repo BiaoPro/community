@@ -228,6 +228,7 @@ public class BackNews extends Controller{
 		}
 		else{
 			news.newsAudit=1;
+			news.newsAuditId=SessionManager.getLoginedId(session);
 		}
 		news._save();
 		newsManager(1);

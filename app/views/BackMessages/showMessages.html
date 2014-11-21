@@ -1,0 +1,24 @@
+#{extends 'BackMessages/base.html' /}
+#{set showMessages : 'class=active' /}
+
+#{set 'moreStyles'}
+<style type="text/css">
+
+</style>
+#{/set}
+    <hr>
+    <div class="pagination row" style="margin-top:30px;">
+			#{page pageBean:pageBean,params:params/}
+	</div>
+	<hr>
+	<div class=" nav-tabs box-div">
+		<div>
+				#{list items:list,as:'back'}
+					<p>${back_index+(curPage-1)*pageBean.perPage}:</p>
+					<p>${back.message }</p>
+					<p>${back.showPubTime() }</p>
+					<hr>	
+				#{/list}
+		</div>
+		
+	</div>

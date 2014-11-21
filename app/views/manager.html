@@ -1,4 +1,7 @@
 #{extends 'main.html'/}
+#{set 'moreStyles'}
+<link rel="stylesheet" media="screen" href="@{'/public/stylesheets/back.css'}">
+#{/set}
 <style>
 <!--
 .main{
@@ -12,24 +15,24 @@ backgound:white;
 </style>
 		<div class="main container-fluid" >
 	      <div class="row">
-		    <div class="col-xs-2">
+		    <div class="col-sm-2">
 		        #{if session.userCategory != "0"}
 				<!-- 只有文章管理员和超级用户有权 -->
 					<a href="@{Users.showUserInfo}" class="list-group-item #{get 'UserManager' /}" >用户管理</a>
 					<a href="@{Backnews.newsmanager}" class="list-group-item #{get 'ArticleManager' /}" >文章管理</a>
 
 					<a href="@{Courses.showCourseCategories}" class="list-group-item #{get 'CourseManager' /}" >课堂管理</a>
-					<a href="#" class="list-group-item #{get 'HouseManager' /}" >租房管理</a>
+					<a href="@{Houses.showHouses}" class="list-group-item #{get 'HouseManager' /}" >租房管理</a>
 					<a href="#" class="list-group-item #{get 'WorkManager' /}" >招工管理</a>
 				#{/if}
 				#{if session.userCategory == "2"||session.userCategory == "3"}
 				<!-- 系统设置，只有社区管理员以上有权限 -->
 					<a href="@{SystemSettings.index}" class="list-group-item #{get 'SettingManager' /}" >版权设置</a>
 					<a href="@{Links.showLinkCategories}" class="list-group-item #{get 'LinkManager' /}" >链接管理</a>
-					<a href="#" class="list-group-item" >信息反馈</a>
+					<a href="@{BackMessages.showMessages }" class="list-group-item #{get 'MessageManager' /}" >信息反馈</a>
 				#{/if}
 			</div>
-			<div class="col-xs-10">
+			<div class="col-sm-10">
 				     #{doLayout /}
 			</div>
 

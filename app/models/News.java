@@ -50,6 +50,8 @@ public class News extends GenericModel{
 	@Column(name="news_audit")
 	public int newsAudit;
 	
+	@Column(name="news_audit_author")
+	public String newsAuditId;
 	
 	public News(){
 		this.newsId=Codec.UUID();

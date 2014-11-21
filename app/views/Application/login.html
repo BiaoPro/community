@@ -31,7 +31,7 @@
 			          <p class="verification-img-box">
 						 <img id="verificationImg" src="@{UserSecures.getCaptcha(randomId)}" onClick="javascript:setCaptcha();" class="verification-img">
 					  </p>
-					  <input class="form-control" type="text" name="captchaCode" placeholder="请输入验证码" required="required">
+					  <input class="form-control" type="text" name="captchaCode" placeholder="${flash.captchaCodeError?flash.captchaCodeErrorMessage:'请输入验证码'}" required="required">
 					  <a href="javascript:setCaptcha();">看不清楚？换一张</a>
 			        </div>
 			     </div>

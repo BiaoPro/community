@@ -27,7 +27,7 @@ public class Application extends Controller {
     
     
 
-    /*
+    /**
      * 跳转到登录页面
      */
     public static void login() {
@@ -35,7 +35,7 @@ public class Application extends Controller {
         render(randomId);
     }
     
-    /*
+    /**
      * 注销
      */
     public static void logout() {
@@ -44,12 +44,31 @@ public class Application extends Controller {
         Application.index();
     }
     
-    /*
+    /**
      * 跳转到注册页面
      */
     public static void register() {
         render();
     }
+    
+    /**
+     * 跳转到信息反馈页面
+     */
+    public static void back() {
+        render();
+    }
+    
+    /**
+     * 保存信息反馈内容
+     */
+    public static void saveBackMessage(String message) {
+      BackMessage bm = new BackMessage();
+      bm.message = message;
+      bm.save();
+      flash.put("backMessage","信息已收到，感谢您的建议~");
+      flash.put("isAlert",true);
+      back();
+  }
    
 
 
