@@ -1,5 +1,6 @@
 package models;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -77,10 +78,12 @@ public class House extends GenericModel{
 	//照片
 	@Column(name = "photo_url")
 	public String photoUrl;
-	
+	//发布时间
+	public Date date;
 	//初始化构造方法
 	public House(){
 		this.id = Codec.UUID();
+		this.date=new Date();
 		this.status=1;
 		this.audit=1;
 	}

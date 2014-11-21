@@ -1,7 +1,7 @@
 		#{extends 'BackNewsClass/base.html'/}
 		#{set newsClassManager : 'class=active' /}
-			<div class="nav-tabs">
-	    		<ul id="myTab" class="nav nav-tabs" role="tablist">
+			<div style="margin-top:20px;" class="nav-tabs">
+	    		<ul style="margin-top:20px;" id="myTab" class="nav nav-tabs" role="tablist">
 			      <li role="presentation" class="active"><a href="#edit" i="edit-tab" role="tab" data-toggle="tab" aria-controls="edit" aria-expanded="true">修改</a></li>
 			      <li role="presentation" class=""><a href="#add" role="tab" id="add-tab" data-toggle="tab" aria-controls="add" aria-expanded="false">增加</a></li>
 			      <li role="presentation" class=""><a href="#delete" role="tab" id="delete-tab" data-toggle="tab" aria-controls="delete" aria-expanded="false">删除</a></li>
@@ -19,7 +19,7 @@
 					  			<input type="text" name="title" value="${item.newClassType}" class="form-control" placeholder="NewsClassTitle">
 					      	</div>
 					      #{/list}
-						      <div class="btn-group">
+						      <div style="margin-top:20px;" class="btn-group">
 						      	<input id="modifyButton" type="submit" class="btn btn-info" value="确定"/>
 						      	<input style="margin-left:4px" type="reset" class="btn btn-warn" value="重置"/>
 						      </div>

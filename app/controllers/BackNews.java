@@ -1,25 +1,22 @@
+
 package controllers;
 
 import java.io.File;
-import java.io.UnsupportedEncodingException;
 import java.util.Date;
 import java.util.List;
+
 import models.News;
 import models.NewsClass;
 import play.mvc.Controller;
-import play.mvc.With;
+import play.mvc.Scope.Session;
 import utils.DateUtils;
-import utils.Debug;
 import utils.KindEditorUpload;
-import utils.NewsBean;
-import utils.PageBean;
 import utils.PageBeanFactory;
 import utils.SessionManager;
 /*
  * @author YourKingda
  * @description:新闻控制器
  */
-@With(UserSecures.class)
 public class BackNews extends Controller{
 	
 	/*
@@ -39,12 +36,12 @@ public class BackNews extends Controller{
 	 * @description 增加一篇新闻
 	 */
 	public static void addNews(){
-	  
 		//预留栏目
 		News news = new News(); 
 		news.newsContent=params.get("content");
 		news.newsTitle=params.get("title");
 		news.newsClassId=params.get("classId");
+		news.newsAuthorId=SessionManager.getLoginedId(session);
 		Long time = DateUtils.getTimeByDate(new Date());
 		String timeStr = DateUtils.getDateTimeStr(time);
 		news.newsCreateDate=timeStr;
@@ -236,7 +233,92 @@ public class BackNews extends Controller{
 		newsManager(1);
 	}
 	
+	/**
+	 * @description 用户文章管理
+	 */
+	public static void userNewsManager(int curpage){
+		if(curpage==0){
+			curpage=1;
+		}
+		//获取文章存在的栏目
+		List newsClassIdsList = News.getNewsClassIdsExist(SessionManager.getLoginedId(session));
+		List newsClasslist = NewsClass.getNewsClassByIds(newsClassIdsList);
+		
+		//获取文章存在的日期
+		List newsDateList = News.getNewsDateExist(SessionManager.getLoginedId(session));
+		
+		//获取首页文章
+		PageBeanFactory pageBean= new PageBeanFactory(curpage,7);
+		List currentList = News.getIndexNews(pageBean,SessionManager.getLoginedId(session));
+		int maxPage=pageBean.getMaxPage();
+		int[] maxPageArgs = new int[maxPage];
+		for(int i=0;i<maxPageArgs.length;i++){
+			maxPageArgs[i]=i+1;
+		}
+		int fontPage=curpage-1;
+		if(fontPage==0){
+			fontPage=1;
+		}
+		int nextPage=curpage+1;
+		if(nextPage>maxPage){
+			nextPage=maxPage;
+		}
+		//渲染界面
+		render(newsClasslist,newsDateList,currentList,maxPageArgs,fontPage,nextPage);
+	}
 	
+	/**
+	 * @description 用户filter
+	 */
+	public static void userFilter(int curpage,String newsTitle,String newsCreateDate,String newClassType){
+		String user_id = SessionManager.getLoginedId(session);
+		//获取文章存在的栏目
+		List newsClassIdsList = News.getNewsClassIdsExist(user_id);
+		List newsClasslist = NewsClass.getNewsClassByIds(newsClassIdsList);
+		//获取文章存在的日期
+		List newsDateList = News.getNewsDateExist(user_id);
+		if(newsTitle.length()==0){
+			PageBeanFactory pageBean = new PageBeanFactory(curpage,7);
+			List currentList = News.getNewsByDateAndClass(pageBean, newsCreateDate, newClassType,user_id);
+			int maxPage=pageBean.getMaxPage();
+			int[] maxPageArgs = new int[maxPage];
+			for(int i=0;i<maxPageArgs.length;i++){
+				maxPageArgs[i]=i+1;
+			}
+			int fontPage=curpage-1;
+			if(fontPage==0){
+				fontPage=1;
+			}
+			int nextPage=curpage+1;
+			if(nextPage>maxPage){
+				nextPage=maxPage;
+			}
+			render(newsClasslist,newsDateList,currentList,fontPage,nextPage,maxPageArgs,newsTitle,newsCreateDate,newClassType);
+		}
+		else{
+			PageBeanFactory pageBean = new PageBeanFactory(curpage,7);
+			List currentList = News.getNewsByTitle(pageBean, newsTitle,user_id);
+			int maxPage=pageBean.getMaxPage();
+			int[] maxPageArgs = new int[maxPage];
+			for(int i=0;i<maxPageArgs.length;i++){
+				maxPageArgs[i]=i+1;
+			}
+			int fontPage=curpage-1;
+			if(fontPage==0){
+				fontPage=1;
+			}
+			int nextPage=curpage+1;
+			if(nextPage>maxPage){
+				nextPage=maxPage;
+			}
+			newsCreateDate="";
+			newClassType="";
+			render(newsClasslist,newsDateList,currentList,fontPage,nextPage,maxPageArgs,newsTitle,newsCreateDate,newClassType);
+			
+		}
+	}
 	
 	
 }
+
+

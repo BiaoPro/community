@@ -55,24 +55,25 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                   </button>
-                  <a class="navbar-brand hidden-xs" href="#">Brand</a>
                 </div>
                 <div class="collapse navbar-collapse">
                   <ul class="nav navbar-nav">
-                    <li class="active"><a href="@{ShowNews.News}">社区新闻</a></li>
+                  
+                    <li><a href="@{Application.index}">Home</a></li>
+                    <li><a href="@{ShowNews.News}">社区新闻</a></li>
                     <li><a href="#">社区课堂</a></li>
                     <li class="dropdown">
-                      <a href="@{ShowHouses.Houses}" class="dropdown-toggle" data-toggle="dropdown">社区租房</a>
+                      <a href="@{Houses.showHouses}" class="dropdown-toggle" data-toggle="dropdown">社区租房</a>
                       <ul class="dropdown-menu hidden-xs" role="menu">
-                        <li><a href="@{ShowHouses.Houses}">我要租房</a></li>
-                        <li><a href="@{ShowHouses.rentHouses}">我要出租</a></li>
+                        <li><a href="@{Houses.showHouses}">我要租房</a></li>
+                        <li><a href="@{Houses.addHouse}">我要出租</a></li>
                       </ul>
                     </li>
                     <li class="dropdown">
                       <a href="http://www.baidu.com" class="dropdown-toggle" data-toggle="dropdown">招工信息</a>
                       <ul class="dropdown-menu hidden-xs" role="menu">
-                        <li><a href="#">我要找工</a></li>
-                        <li><a href="#">我要招工</a></li>
+                        <li><a href="@{Works.showWorks}">我要找工</a></li>
+                        <li><a href="@{Works.addWork}">我要招工</a></li>
                       </ul>
                     </li>
                     <li><a href="@{Application.back}">信息反馈</a></li>
