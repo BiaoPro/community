@@ -31,18 +31,19 @@
 	}
 	.preview-img ul{
 		position: absolute;
-		padding-left: 0;
+		padding-left: 0px;
 		top:0;
 		left:0;
 		height: 41px;
 		white-space:nowrap;
 	}
 	.show-box li{
+		display: inline-block;
 		margin-right:-4px;	
 		width:58px;
+		cursor: pointer;
 	}
 	.show-box li img{
-		width: 50px;
 		height: 50px;
 		overflow: hidden;
 	}
@@ -86,7 +87,7 @@
 			<small class="col-md-3"><a>举报</a></small>
 			<small class="col-md-3"><a>管理信息</a></small>
 		</p>
-		<div class="show-box col-md-5">
+		<div class="show-box col-md-5 col-sm-12">
 			<div class="show-img">
 				<a href="#" class="thumbnail"><img src="../public/images/roominside.jpg"   alt="house"></a>
 			</div>
@@ -94,7 +95,7 @@
 				<a id="prev"></a>
 				<a id="next"></a>
 				<div class="img-small">
-					<ul class="list-inline">
+					<ul>
 						<li><img src="../public/images/house1.jpg"   alt="house"></li>
 						<li><img src="../public/images/house2.jpg"   alt="house"></li>
 						<li ><img src="../public/images/house3.jpg"   alt="house"></li>
@@ -113,7 +114,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="show-detail col-md-7">
+		<div class="show-detail col-md-7 col-sm-12">
 			<table class="table table-hover table-condensed">
 				<tr>
 					<td class="detail-item col-md-3"><p>价格</p></td>

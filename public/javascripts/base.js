@@ -244,6 +244,62 @@ $(".form-fill .tag+span a").click(function(){
 		return false;
 	});
 
+// 图片展示
+if($(".img-small").length > 0){
+// 自执行函数，防止污染变量域
+	(function(){
+		var page = 1;
+		var $smUl = $('.img-small ul');
+		var width = $(".img-small").width();
+		var $smLi = $(".img-small li");
+		var $smImg = $(".img-small img");
+		var $bgImg = $(".show-img img");
+		var len = Math.ceil($smUl.width() / width);
+		
+		$smLi.width(Math.floor($(".img-small").width()/4));
+		$smImg.width(Math.floor($(".img-small").width()/4) - 4);
+
+		$smImg.click(function(event) {
+			$bgImg.get(0).src = this.src;
+		});
+
+		$("a#next").click(function(){	
+			if(!$(this).is(":animated")){
+				if(page === len){
+					$smUl.animate({
+						"left" : 0
+					}, "slow");
+		
+					page = 1;
+				}else{
+					$smUl.animate({
+						"left" : "-=" + width
+					}, "slow");
+		
+					page++;
+				}
+			}	
+		});
+		
+			$("a#prev").click(function(){
+				if(!$(this).is(":animated")){
+					if(page == 1){
+						$smUl.animate({
+							"left" : '-=' + width * ( len - 1 )
+						}, "slow");
+						page = len;
+					}else{
+						$smUl.animate({
+							"left" : "+=" + width
+						}, "slow");
+						page -- ;
+					}
+				}
+		});
+	})();
+}
+
+
 
 	// 将已选选项显示到筛选列表中函数,可重载函数 
 	function showFilter(chosenItem, content){
