@@ -10,12 +10,13 @@ import models.CourseCategory;
 import models.Link;
 import models.LinkCategory;
 import play.mvc.Controller;
+import play.mvc.With;
 
 /**
  * @author biao
  *
  */
-
+@With(UserSecures.class)
 public class Courses extends Controller {
 
   /**

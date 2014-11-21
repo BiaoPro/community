@@ -30,7 +30,7 @@ public class Bootstrap extends Job {
 		}
 		
 	        User backUser = User.findByAccount("back");
-	        if (adminUser == null) {
+	        if (backUser == null) {
 	            adminUser = new User("back", "123", 2);
 	            UserInfo adminUserInfo = new UserInfo(adminUser.id, "back");
 	            adminUserInfo.userCategory = UserRoleEnum.PUBLISHER.getValue();
@@ -39,9 +39,9 @@ public class Bootstrap extends Job {
 	            
 	        }
 	        
-	           User nomalUser = User.findByAccount("user");
-	            if (adminUser == null) {
-	                adminUser = new User("user", "123", 1);
+	           User nomalUser = User.findByAccount("test");
+	            if (nomalUser == null) {
+	                adminUser = new User("test", "123", 1);
 	                UserInfo adminUserInfo = new UserInfo(adminUser.id, "back");
 	                adminUserInfo.userCategory = UserRoleEnum.NOMALUSER.getValue();
 	                adminUser.save();
