@@ -18,9 +18,10 @@ ol>li>a,td>a{
 /* Carousel base class */
 /*set bg of the carousel*/
 #myCarousel {
-  	background:#efebea url(../images/bg-gallery.jpg) repeat-x 50% 100%;
-
+  	background:#efebea url(../images/bg-gallery.jpg) repeat-x center center;
   	line-height: 25px;
+  	max-width:1500px;
+  	margin:0 auto;
 }
 
 /*.carousel {
@@ -63,8 +64,10 @@ ol>li>a,td>a{
 
 /*search-bar*/
 .search.hidden-xs {
-	position:relative;
-	margin-top:-75px;
+	position:absolute;
+	right:13%;
+	bottom:0px;
+	margin-top:0px;
 	z-index: 200;
 	margin-left: auto;
 	margin-right: auto;
@@ -155,16 +158,25 @@ ol>li>a,td>a{
 	.panel{
 		border: none;
 	}
+	.rent,.job {
+	position:relative;
+	}
+	.rent .show-house,.job .show-house{
+	position:absolute;
+	right:20px;
+	top:20%;
+	}
 	
 	.rent img,.job img{
 		position: relative;
-		top:-20px;
 		width: 100%;
 		box-shadow: 0px 1px 4px 1.5px rgba(0, 0, 0, .35), 0px 10px 35px 4px rgba(0, 0, 0, 0.25);
 		-moz-box-shadow:0px 1px 4px 1.5px rgba(0, 0, 0, .35), 0px 10px 35px 4px rgba(0, 0, 0, 0.25);
 		-webkit-box-shadow:0px 1px 4px 1.5px rgba(0, 0, 0, .35), 0px 10px 35px 4px rgba(0, 0, 0, 0.25);
 	}
-
+	.rent .panel-body ol,.job .panel-body ol{
+	padding-left:0px;
+	}
 
 /*社区新闻*/
 .news .table td{
