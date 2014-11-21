@@ -117,7 +117,7 @@ public class BackNews extends Controller{
 		
 		//获取首页文章
 		PageBeanFactory pageBean= new PageBeanFactory(curpage,7);
-		List currentList = News.getIndexNews(pageBean);
+		List currentList = News.getIndexNews(pageBean,1);
 		int maxPage=pageBean.getMaxPage();
 		int[] maxPageArgs = new int[maxPage];
 		for(int i=0;i<maxPageArgs.length;i++){
@@ -146,7 +146,7 @@ public class BackNews extends Controller{
 		List newsDateList = News.getNewsDateExist();
 		if(newsTitle.length()==0){
 			PageBeanFactory pageBean = new PageBeanFactory(curpage,7);
-			List currentList = News.getNewsByDateAndClass(pageBean, newsCreateDate, newClassType);
+			List currentList = News.getNewsByDateAndClass(pageBean, newsCreateDate, newClassType,1);
 			int maxPage=pageBean.getMaxPage();
 			int[] maxPageArgs = new int[maxPage];
 			for(int i=0;i<maxPageArgs.length;i++){
@@ -164,7 +164,7 @@ public class BackNews extends Controller{
 		}
 		else{
 			PageBeanFactory pageBean = new PageBeanFactory(curpage,7);
-			List currentList = News.getNewsByTitle(pageBean, newsTitle);
+			List currentList = News.getNewsByTitle(pageBean, newsTitle,1);
 			int maxPage=pageBean.getMaxPage();
 			int[] maxPageArgs = new int[maxPage];
 			for(int i=0;i<maxPageArgs.length;i++){

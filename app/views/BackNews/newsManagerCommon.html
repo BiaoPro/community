@@ -47,11 +47,11 @@
 			        <tr class="oneRow">
 			          <td><input name="checkBoxId" value="${item.newsId}" class="selectAll_res" type="checkbox" /></td>
 			          <td>
-			          <strong><a href>${item.newsTitle}</a></strong>
+			          <strong><a target="_bank" href="@{ShowNews.showNewsInfo(item.newsId)}">${item.newsTitle}</a></strong>
 			          <div style="visibility:hidden;" class="row-actions">
 			          <span class="edit"><a href="@{BackNews.newsEdit(item.newsId)}" title="编辑此项目">编辑</a> | </span>
 			          <span class="trash"><a class="submitdelete" title="移动此项目到回收站" href="@{BackNews.deleteNews(item.newsId)}">删除</a> | </span>
-			          <span class="view"><a href="" title="查看“share文件下载中心”" rel="permalink">查看</a></span>
+			          <span class="view"><a target="_bank" href="@{ShowNews.showNewsInfo(item.newsId)}" title="查看“share文件下载中心”" rel="permalink">查看</a></span>
 			          </div>
 			          </td>
 			          <td>admin</td>

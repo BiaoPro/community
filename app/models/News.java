@@ -82,29 +82,52 @@ public class News extends GenericModel{
 	 * @description 获取所有文章
 	 * 
 	 */
-	public static List getIndexNews(PageBeanFactory pageBean){
-		String hql = "select a.newsId,a.newsTitle,a.newsCreateDate,b.newClassType,a.newsModifyDate,a.newsAudit"+
-		" from News a,NewsClass b where a.newsClassId = b.newClassId order by a.newsModifyDate desc";
+	public static List getIndexNews(PageBeanFactory pageBean,int isAll){
+		String hql="";
+		if(isAll==1){
+			
+			hql = "select a.newsId,a.newsTitle,a.newsCreateDate,b.newClassType,a.newsModifyDate,a.newsAudit"+
+			" from News a,NewsClass b where a.newsClassId = b.newClassId order by a.newsModifyDate desc";
+		}
+		else{
+			 hql = "select a.newsId,a.newsTitle,a.newsCreateDate,b.newClassType,a.newsModifyDate,a.newsAudit"+
+			" from News a,NewsClass b where a.newsClassId = b.newClassId and a.newsAudit =1 order by a.newsModifyDate desc";
+		}
 		return executeJPA(pageBean,hql);
 	}
 	
 	/**
 	 * @description 根据标题获取文章
 	 */
-	public static List getNewsByTitle(PageBeanFactory pageBean,String title){
-		String hql = "select a.newsId,a.newsTitle,a.newsCreateDate,b.newClassType,a.newsModifyDate,a.newsAudit "+
-		" from News a,NewsClass b where a.newsClassId = b.newClassId and a.newsTitle like '%"+title+"%' order by a.newsModifyDate desc";
+	public static List getNewsByTitle(PageBeanFactory pageBean,String title,int isAll){
+		String hql="";
+		if(isAll==1){
+			hql = "select a.newsId,a.newsTitle,a.newsCreateDate,b.newClassType,a.newsModifyDate,a.newsAudit "+
+			" from News a,NewsClass b where a.newsClassId = b.newClassId and a.newsTitle like '%"+title+"%' order by a.newsModifyDate desc";
+		}
+		else{
+			hql = "select a.newsId,a.newsTitle,a.newsCreateDate,b.newClassType,a.newsModifyDate,a.newsAudit "+
+			" from News a,NewsClass b where a.newsClassId = b.newClassId and a.newsTitle like '%"+title+"%' and a.newsAudit =1 order by a.newsModifyDate desc";
+			
+		}
 		return executeJPA(pageBean,hql);
 	}
 	
 	/**
 	 * @description 根据栏目或者时间获取文章
 	 */
-	public static List getNewsByDateAndClass(PageBeanFactory pageBean,String date,String className){
-		
-		String hql="select a.newsId,a.newsTitle,a.newsCreateDate,b.newClassType,a.newsModifyDate,a.newsAudit "+
-		" from News a,NewsClass b where a.newsClassId = b.newClassId"
-		+" and a.newsCreateDate like '"+date+"%' and b.newClassType like '%"+className+"%' order by a.newsModifyDate desc";
+	public static List getNewsByDateAndClass(PageBeanFactory pageBean,String date,String className,int isAll){
+		String hql;
+		if(isAll==1){
+			hql="select a.newsId,a.newsTitle,a.newsCreateDate,b.newClassType,a.newsModifyDate,a.newsAudit "+
+			" from News a,NewsClass b where a.newsClassId = b.newClassId"
+			+" and a.newsCreateDate like '"+date+"%' and b.newClassType like '%"+className+"%' order by a.newsModifyDate desc";
+		}
+		else{
+			hql="select a.newsId,a.newsTitle,a.newsCreateDate,b.newClassType,a.newsModifyDate,a.newsAudit "+
+			" from News a,NewsClass b where a.newsClassId = b.newClassId"
+			+" and a.newsCreateDate like '"+date+"%' and b.newClassType like '%"+className+"%' a.newsAudit =1 order by a.newsModifyDate desc";
+		}
 		return executeJPA(pageBean,hql);
 		
 	}

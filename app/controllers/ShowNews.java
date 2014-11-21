@@ -20,7 +20,7 @@ public class ShowNews extends Controller{
 		
 		//获取首页文章
 		PageBeanFactory pageBean= new PageBeanFactory(curpage,7);
-		List currentList = News.getIndexNews(pageBean);
+		List currentList = News.getIndexNews(pageBean,0);
 		int maxPage=pageBean.getMaxPage();
 		int[] maxPageArgs = new int[maxPage];
 		for(int i=0;i<maxPageArgs.length;i++){
@@ -49,7 +49,7 @@ public class ShowNews extends Controller{
 		List newsDateList = News.getNewsDateExist();
 		
 			PageBeanFactory pageBean = new PageBeanFactory(curpage,7);
-			List currentList = News.getNewsByDateAndClass(pageBean, newsCreateDate, newClassType);
+			List currentList = News.getNewsByDateAndClass(pageBean, newsCreateDate, newClassType,0);
 			int maxPage=pageBean.getMaxPage();
 			int[] maxPageArgs = new int[maxPage];
 			for(int i=0;i<maxPageArgs.length;i++){
@@ -69,7 +69,8 @@ public class ShowNews extends Controller{
 	}
 	// 展示单个新闻
 	public static void showNewsInfo(String id){
-		render();
+		News news = News.findById(id); 
+		render(news);
 	}
 	
 }

@@ -6,15 +6,22 @@ define(function(require,exports,module){
 	manager._select("#date","#class");
 	manager._deleteClick(".submitdelete");
 	manager._patchDo();
-	//新添加的行为
-	var types = document.getElementById("class");
-	var dates = document.getElementById("date");
-	var form = document.getElementById("form");
-	types.onchange=function(){
-		form.submit();
+	function newWay(){
+		
+		//新添加的行为
+		var types = document.getElementById("class");
+		if(types==null)return false;
+		var dates = document.getElementById("date");
+		if(dates==null)return false;
+		var form = document.getElementById("form");
+		if(form==null)return false;
+		types.onchange=function(){
+			form.submit();
+		}
+		dates.onchange=function(){
+			form.submit();
+		}
 	}
-	dates.onchange=function(){
-		form.submit();
-	}
+	newWay();
 	
 });
