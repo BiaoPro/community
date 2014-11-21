@@ -53,7 +53,6 @@ public class UserSecures extends Controller {
 			flash.put("captchaCodeErrorMessage", "验证码不正确~");
 			flash.put("captchaCodeError", true);
 			flash.put("account", username);
-			flash.put("password", pass);
 			 Application.login();
 			return;
 		}
