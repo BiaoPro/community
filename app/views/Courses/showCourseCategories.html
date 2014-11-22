@@ -39,12 +39,9 @@
 						href="@{CourseCategories.changeStatus(courseCategory.id,1,type)}"
 						style="color: #000;"> 未显示</a> #{/else} </select>
 					</td>
-					<td><a
-						href="@{CourseCategories.showCourseCategoryInfo(courseCategory.id)}"
-						style="color: #08c;">编辑</a>/<a
-						href="@{CourseCategories.delCourseCategory(courseCategory.id,type)}"
-						onclick="return confirm('删除类别：${courseCategory.name}?')"
-						style="color: #08c;">删除</a></td>
+					<td><a href="@{CourseCategories.showCourseCategoryInfo(courseCategory.id)}" style="color: #08c;">编辑</a>
+					    /<a href="@{CourseCategories.delCourseCategory(courseCategory.id,type)}" onclick="return confirm('删除类别：${courseCategory.name}?')"style="color: #08c;">删除</a>
+					</td>
 				</tr>
 				#{/list}
 

@@ -3,6 +3,7 @@ import models.CourseCategory;
 import models.LinkCategory;
 import play.*;
 import play.mvc.*;
+import utils.enumvalue.ConfigValue;
 
 import java.util.List;
 
@@ -41,7 +42,7 @@ public class CourseCategories extends Controller {
      */
     public static void editCourseCategory(CourseCategory vo) {
         vo.save();
-        showCourseCategoryInfo(vo.id);
+        showCourseCategoryInfo(vo.id, "" ,ConfigValue.SEARCH_CUR_PAGE, ConfigValue.SEARCH_PER_PAGE);
     }
     
     /**
@@ -58,8 +59,10 @@ public class CourseCategories extends Controller {
 	 * 跳转到显示信息页面
 	 * @param categoryId
 	 */
-	public static void showCourseCategoryInfo(String categoryId) {
-		Courses.showCourseCategoryInfo(categoryId);
+	public static void showCourseCategoryInfo(String categoryId, 
+                                                String searchKey, Integer curPage, Integer perPage) {
+	  
+		  Courses.showCourseCategoryInfo(categoryId, searchKey, curPage, perPage);
 	}
 	
 	

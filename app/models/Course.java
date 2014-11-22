@@ -1,5 +1,7 @@
 package models;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -7,6 +9,8 @@ import javax.persistence.Table;
 
 import play.db.jpa.GenericModel;
 import play.libs.Codec;
+import utils.PageBean;
+import utils.StringUtils;
 /**
  * 课程信息表
  * @author 吴泽标
@@ -47,18 +51,73 @@ public class Course extends GenericModel{
   
   
   @Column(name="audit")
-  public String audit;//0代表待审核，-1为审核不通过，1为审核通过,2为后台插入
+  public int audit;//0代表待审核，-1为审核不通过，1为审核通过,2为后台插入
   
   
   @Column(name="status")
-  public String status;//0-不显示 1-显示
+  public int status;//0-不显示 1-显示
   
   
   public void Course(){
     this.id = Codec.UUID();
   }
   
+  /**
+   * 获取链接类别
+   * @return
+   */
+  public CourseCategory getCourseCategory() {
+      return CourseCategory.find("id", this.categoryId).first();
+  }
   
+  public static void deleteById(String id){
+     Course.delete("id", id);
+    
+  }
+  
+  /**
+   * 获取链接列表，默认每一页5条信息
+   * 
+   * @param searchKey
+   *            搜索关键字
+   * @param curPage
+   *            当前页
+   * @return
+   */
+  public static List<Course> findCourses(String searchKey, int curPage) {
+      if (StringUtils.isEmpty(searchKey)) {
+          return Course.all().fetch(curPage, 5);
+      } else {
+          return Course.find("link_name like ?", "%" + searchKey + "%").fetch(
+                  curPage, 5);
+      }
+  }
+
+  /**
+   * 获取pageBean
+   * 
+   * @param searchKey
+   * @param curPage
+   * @return
+   */
+  public static PageBean getPageBean(String searchKey, int curPage) {
+      long total = 0;
+      if (StringUtils.isEmpty(searchKey))
+          total = Course.count();
+      else
+          total = Course.find("link_name like ?", "%" + searchKey + "%").fetch()
+                  .size();
+      return PageBean.getInstance(curPage, total, 5);
+  }
+  
+  /**
+   * 是否显示
+   * 
+   * @return
+   */
+  public boolean isShow() {
+    return this.status == 1;
+  }
   
   
   
