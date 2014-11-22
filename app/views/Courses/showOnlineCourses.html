@@ -1,69 +1,63 @@
-#{extends 'SystemSettings/base.html' /}
-#{set 'showLinkCategoryInfo'}
+#{extends 'Courses/base.html' /}
+#{set 'showOnlineCourseInfo'}
 <li class='active'>
-	<a href="#" >信息页</a>
+	<a href="#" >信息页（online）</a>
 </li>
 #{/set}
 		
 	<div class=" nav-tabs box-div">
 	    <h2>类别名称：</h2>
 	    <hr>
-		<form class="form-inline"  action="@{CourseCategories.editCourseCategory}">
-            <input type='hidden' name='category.id' value='${category.id}'>
+		<form class="form-inline"  action="@{CourseCategories.changeCategoryName }">
+            <input type='hidden' name='id' value='${category.id}'>
             <div class="form-group">
-	    				<label for="linkCategory.name"></label>
-	    				<input type="text" name="linkCategory.name" value='${linkCategory.name}' class="form-control" placeholder="输入新类别名称：" required="required">
+	    				<label for="name"></label>
+	    				<input type="text" name="name" value='${category.name}' class="form-control" placeholder="输入新类别名称：" required="required">
 	  		</div>
-            <input type='hidden' name='linkCategory.status' value='${linkCategory.status}'>
-            <input type='hidden' name='linkCategory.sequence' value='${linkCategory.sequence}'> 
             <div class="form-group">
 		   				<button class='btn btn-success' type='submit' >保存</button>
-		   				<a class='btn btn-primary' type='submit' href='@{CourseCategories.showLinkCategories}' >返回</a>
+		   				<a class='btn btn-primary'  href='@{CourseCategories.showCourseCategories(1) }' >返回</a>
+		   				<a class='btn btn-primary'  href='@{Courses.addOnlineCourse(category.id) }' >发布在线课程</a>
 		   </div>
 		</form>
 	    <hr>
-		<h2>新增链接</h2>
-		<table class="table">
-			<thead>
-			    <th>序号</th>
-				<th>名称</th>
-				<th>地址</th>
-				<th>类别</th>
-				<th>操作</th>
-			</thead>
-			<tbody>
-			#{list items:linkList,as:'link'}
-				<tr>
-				    <td>${link_index}</td>
-					<td>${link.name}</td>
-					<td><a href='${link.url}' target='_blank'>${link.url}</a></td>
-					<td>${link.getCourseCategory()?.name}</td>
-					<td><a href="@{Courses.delCourse(link.id,linkCategory.id)}" onclick="return confirm('删除链接：${link.name}?')" style="color:#08c;">删除</a></td>
-				</tr>
-			#{/list}
+		<h2>在线课程</h2>
+		<div class=" nav-tabs">
+	 	<hr>
+	   <form class="navbar-search" action="@{Courses.showOnlineCourses}" method="get">
+	     <div class="form-group">
+		 	<input type="hidden" name="categoryId" value="${category.id}" />
+		 	<input type="text" name="searchKey" id="keyword" class="search-query" value="${searchKey}"  placeholder="请输入关键字" />
+		 	<input type="submit" class="btn btn-default" value="搜索" />
+		  </div>	
+		  #{page pageBean:pageBean,params:params/}
+	   </form>
+	  	<hr>
+				
+				#{list items:list,as:'course'}
+				<div>
+					
+					<p>序号：${course_index+(curPage-1)*pageBean.perPage}:</p>
+					<p>课程名称：${course.title}</p>
+					<p>课程图片：<img alt="" src="${course.photo}" width="200px" height="150px"></p>
+					<p>课程概述：${course.info}</p>
+					<p>课程链接：<a href='${course.url}' target='_blank'>${course.url}</a></p>
+					<p>课程类目：${course.getCourseCategory()?.name}</p>
+					<p>发布者：${course.getAuthorName()}</p>
+					<p>发布者：${course.showPubTime()}</p>
+					<p>操作：
+						<a href="@{Courses.delOnlineCourse(course.id,category.id)}" onclick="return confirm('删除视频链接：${course.title}?')" class="btn btn-success">审核</a>
+					    <a href="@{Courses.delOnlineCourse(course.id,category.id)}" onclick="return confirm('删除视频链接：${course.title}?')" class="btn btn-danger">删除</a>
+					</p>
+				</div>	
+				<hr>
+				#{/list}
+				
+				#{page pageBean:pageBean,params:params/}
 
-                <form class="form-inline"  action="@{Courses.saveCourse}">
-					<tr>
-						<td>${(link_index==null?'':link_index)+1}</td>
-					<td>
-						<div class="form-group">
-	    				<label class="sr-only" for="link.name">名称：</label>
-	    				<input type="text" maxlength="30" name="link.name" class="form-control" placeholder="输入链接名称：" required="required">
-	  				    </div>
-  				    </td>
-  				    <td>
-						<div class="form-group">
-	    				<label class="sr-only" for="link.url">地址：</label>
-	    				<input type="text" name="link.url" onblur="checkUrl(this)" class="form-control" placeholder="输入链接地址：">
-	  				    </div>
-  				    </td>
- 					<td><button type="submit" class="btn btn-success" href="#">添加</button></td>
- 					<td><input type="hidden" name="link.categoryId" value='${linkCategory.id}'></td>
-					</tr>
-				</form>
+                
 
-			</tbody>
-		</table>
+		
 	
 	</div>
 

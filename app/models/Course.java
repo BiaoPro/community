@@ -63,7 +63,7 @@ public class Course extends GenericModel{
   }
   
   /**
-   * 获取链接类别
+   * 获取课堂类别
    * @return
    */
   public CourseCategory getCourseCategory() {
