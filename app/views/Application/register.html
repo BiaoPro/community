@@ -59,7 +59,7 @@
 		<div class="form-group">
 		    <label class="col-sm-2 control-label" for="user.birthday">出生日期</label>
 		    <div class="col-sm-5">
-		        <input type="text" class="form-control" name="user.birthday" required="required" value="${flash.birthday }"    placeholder="请输入出生年月 如：1996/08/02" >          
+		        <input type="date" class="form-control" name="user.birthday" required="required" value="${flash.birthday }"    placeholder="请输入出生年月 如：1996/08/02" >          
 		    </div>
 		</div>
 		<div class="form-group">
@@ -231,7 +231,7 @@ $(document).ready(function() {
                          message: '出生日期不能为空',
                      },
                     date: {
-                        format: 'YYYY/MM/DD',
+                        format: 'YYYY-MM-DD',
                         message: '无效的出生日期'
                     }
                 }

@@ -66,6 +66,14 @@ public class Courses extends Controller {
     }
 
 
+    public static void addOnlineCourse(String categoryId){ 
+      render(categoryId);
+    }
+    
+    public static void addCommunityCourse(String categoryId){ 
+      render(categoryId);
+    }
+    
      
     public static void showOnlineCourses(String categoryId,
         String searchKey, Integer curPage, Integer perPage) {
@@ -94,14 +102,11 @@ public class Courses extends Controller {
         
         CourseCategory category = CourseCategory.findById(categoryId);
         
-        render(category, list, curPage, perPage, pageBean);
+        render(category, list, searchKey, curPage, perPage, pageBean);
       
       
     }
     
-    public static void addOnlineCourse(String categoryId){ 
-      render(categoryId);
-    }
     
     public static void showCommunityCourses(String categoryId,
                                               String searchKey, Integer curPage, Integer perPage) {
@@ -112,14 +117,14 @@ public class Courses extends Controller {
       
       if (StringUtils.isEmpty(searchKey)) {
         // 非搜索模式
-        total = CourseOnline.count("category_id = ?",categoryId);
-        list = CourseOnline.find("category_id = ? ",categoryId).fetch(curPage, perPage);
+        total = Course.count("category_id = ? ORDER BY END_TIME DESC",categoryId);
+        list = Course.find("category_id = ? ORDER BY END_TIME DESC",categoryId).fetch(curPage, perPage);
     } else {
         // 搜索模式
             total = Course
-                    .count("select count(*) from Course where category_id = ? and title like ?",categoryId,"%" + searchKey + "%");
+                    .count("select count(*) from Course where category_id = ? and title like ? ORDER BY END_TIME DESC",categoryId,"%" + searchKey + "%");
             list = Course
-                    .find("from Course where category_id = ? and title like ?",categoryId,"%" + searchKey + "%")
+                    .find("from Course where category_id = ? and title like ? ORDER BY END_TIME DESC",categoryId,"%" + searchKey + "%")
                     .fetch(curPage,perPage);
     
     }
@@ -128,7 +133,7 @@ public class Courses extends Controller {
     
     CourseCategory category = CourseCategory.findById(categoryId);
     
-    render(category, list, curPage, perPage, pageBean);
+    render(category, list, searchKey, curPage, perPage, pageBean);
       
       
     }
@@ -207,7 +212,29 @@ public class Courses extends Controller {
     * 
     * @param link
     */
-   public static void saveCommunityCourse(Course course) {
+   public static void saveCommunityCourse(Course course, File photo) {
+     
+     if (photo != null) {
+       if (!StringUtils.isEmpty(course.photo)) {
+           FileUtils.deleteFile(course.getPhoto());
+       }
+       
+       String baseUrl = Config.DEFAULT_BASE_URL;
+       String savePath = Config.COURSE_ONLINE_PHOTO_PATH;
+       Uploader uploader = new Uploader(baseUrl, savePath);
+       //System.out.println("savePath:"+savePath);
+       uploader.upload(photo);
+
+       if (uploader.getState() == FileUploadState.SUCCESS) {
+           // 文件上传成功
+         course.photo = uploader.getUrl();
+       } else {
+           flash.error("上传失败");
+       }
+     } else{
+       if(course.photo==null||"".equals(course.photo))
+         course.photo = "/public/images/no_pic.jpg";
+     }
         course.save();
         showCommunityCourses(course.categoryId,"",1,5);
    }
