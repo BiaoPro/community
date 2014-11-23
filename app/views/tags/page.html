@@ -131,8 +131,7 @@
 	});
 </script>
 #{if showPage && _pageBean.total > 0}
-	<div class="pagination">
-	    <ul>
+	    <ul class="pagination">
 	    	#{if _pageBean.curPage > 1}
 	            <li><a href="${url}&curPage=${_pageBean.curPage-1}">上一页</a></li>
 	        #{/if}
@@ -179,5 +178,4 @@
           	</li>
           	#{/if}
 	    </ul>
-	</div>
 #{/if}

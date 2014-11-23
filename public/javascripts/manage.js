@@ -15,3 +15,16 @@ function checkImgType(ths){
 
 	return true;
 }
+/*
+ * 判断链接是否完整
+ * 
+ * @param ths 
+ * 			type="file"的javascript对象
+ * @return true-符合要求,false-不符合
+ */
+function checkUrl(obj){
+   var pattern=/http(s)?:////([/w-]+/.)+[/w-]+(//[/w- .//?%&=]*)?/;
+   var str = obj.value;
+   if(str.match(pattern)==null) obj.value="http://"+obj.value;
+}
+

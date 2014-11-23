@@ -76,9 +76,9 @@
 	</style>
 #{/set}
 		
-<div class="alert alert-warning alert-dismissible" role="alert">
+<div class="alert alert-info alert-dismissible" role="alert">
   <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-  <p class="bg-warning">如果您有账号，可点击<a>登录</a>再填写 ; 或者点击<a>注册</a></p>
+  <p class="bg-info">如果您有账号，可点击<a>登录</a>再填写 ; 或者点击<a>注册</a></p>
 </div>
 <div class="main-content">
 	<form action="@{Works.saveWork}" method="post">
@@ -144,7 +144,6 @@
 							<option value="五至十年" >五至十年</option>
 							<option value="十年以上" >十年以上</option>
 						</select>
-		   				
 					</td>
 				</tr>
 				<tr>
@@ -157,7 +156,7 @@
 				</tr>
 				<tr>
 					<th><em>*</em><span>年龄</span></th>
-					<td>
+					<td class="beLegal">
 						<label class="sr-only" for="min-age">最小年龄</label>
 	    				<input type="text" class="form-control" name="work.minage" style="width:10%;">
 		   				<label>到</label>
@@ -197,6 +196,6 @@
 				</tr>
 			</tbody>
 		</table>
-		<input type="submit" class="btn btn-danger btn-lg pull-right" value="确认并发布">	
+		<a class="btn btn-danger btn-lg pull-right" id="submit">确认并发布</a>	
 		</form>
 		</div>

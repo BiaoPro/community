@@ -3,49 +3,16 @@
 
 #{set "moreSubpageStyles"}
 <style type="text/css">
-	h2{
-		font-size: 1.8em;
-	}
 	.show-detail{
-		font-size: 18px;
-	}
-	.show-detail .sub{
-		border-bottom: none;
-		display: inline-block;
-		position: relative;
-	}
-
-	.table td small{
-		width: auto;
-		padding-right: 1em;
-		color: #666;
+		font-size: 16px;
 	}
 	.table .price+small{
 		padding-left: 1em;
 		padding-right: 0;
 	}
 
-	.show-detail div>span{
-		color: #9a9a9a;
-	}
-	.show-detail{
-		display: inline-block;
-	}
 	.table > tbody > tr > td{
 		border-top: none;
-	}
-	.detail-item{
-		color: #999;
-	}
-
-	ul.sub li{
-		margin-left:20px; 
-	}
-	#describe .sub{
-		border:1px solid #faebcc;
-	}
-	#describe ol{
-		clear: both;
 	}
 	#describe img,#profile img{
 		margin:10px auto; 
@@ -64,35 +31,27 @@
 	}
 	.preview-img ul{
 		position: absolute;
-		padding-left: 0;
+		padding-left: 0px;
 		top:0;
 		left:0;
 		height: 41px;
 		white-space:nowrap;
 	}
-	.preview-img .thumbnail{
-		border-radius: 0;
-		width: 58px;
-	}
-	.show-box{
-		text-align: center;
-	}
 	.show-box li{
 		display: inline-block;
 		margin-right:-4px;	
 		width:58px;
+		cursor: pointer;
 	}
 	.show-box li img{
-		width: 50px;
 		height: 50px;
 		overflow: hidden;
-/*		margin: 4px;*/
 	}
 	#next,#prev{
 		display: inline-block;
+		position: absolute;
 		width:10px;
 		height: 16px;
-		position: absolute;
 		top:10px;
 	}
 	#prev{
@@ -114,9 +73,14 @@
 </style>
 #{/set}
 		<div class="main-content row">
+			<div class="col-md-12">
+		<h2>南洲花园两房 低楼层 有匙即看</h2>
+		<p class="sub col-md-12">
 				<small>发布时间：${house.date}</small>
+		 </p> 
 			<h2>${house.community}${house.decorationSituation}${house.classSituation}&nbsp&nbsp&nbsp有匙即看</h2>
-			<div class="show-box col-md-5">
+		
+			<div class="show-box col-md-5 col-sm-12">
 			<div class="show-img">
 				<a href="#" class="thumbnail"><img src="${photo[0]}"   alt="房子内部图"></a>
 			</div>
@@ -124,17 +88,20 @@
 				<a id="prev"></a>
 				<a id="next"></a>
 				<div class="img-small">
+
 					<ul class="list-inline">
 						#{list items:photo,as:'photo1'}
 						<li><img src="${photo1}"  alt="房子内部图"></li>
 						
 						#{/list}
 
+
 					</ul>
 				</div>
 			</div>
 		</div>
-			<div class="show-detail col-md-7">
+
+			<div class="show-detail col-md-7 col-sm-12">
 				<table class="table table-hover table-condensed">
 					<tr>
 						<td class="detail-item col-md-3"><p>价格</p></td>
@@ -191,16 +158,19 @@
 				</table>
 				
 			</div>
-			<!-- Nav tabs -->
-			<div class="row">
+		</div>
+		<!-- Nav tabs -->
+		<div class="col-md-12">
 			<ul class="nav nav-tabs col-md-12" role="tablist">
-			  <li class="active"><a href="#describe" role="tab" data-toggle="tab">房源描述</a></li>
-			  <li><a href="#profile" role="tab" data-toggle="tab">小区介绍</a></li>
-			  <li><a href="#resource" role="tab" data-toggle="tab">附近房源</a></li>
+				<li class="active"><a href="#describe" role="tab" data-toggle="tab">房源描述</a></li>
+				<li><a href="#profile" role="tab" data-toggle="tab">小区介绍</a></li>
+				<li><a href="#resource" role="tab" data-toggle="tab">附近房源</a></li>
 			</ul>
 			<div class="alert alert-success col-md-12" role="alert">如果发现房屋有任何虚假地方，欢迎<a>举报</a></div>
-			</div>
-			
+		</div>
+		
+		<!-- Tab panes -->
+		<div class="tab-content col-md-11">
 			<!-- Tab panes -->
 			<div class="tab-content row">
 			  <div class="tab-pane active" id="describe">
@@ -217,95 +187,53 @@
 			  		#{/list}
 			  	</ul>
 			  </div>
-			  <div class="tab-pane row" id="profile">
+			  <div class="tab-pane  col-md-12" id="profile">
 				  <div class="col-md-5">
 				  	<a class="thumbnail"><img src="../public/images/community.jpg" data-src="holder.js/100%x180" alt="community"></a>
 				  </div>
 				  <div class="col-md-6" style="margin-top:10%;">
 				  	<p>小区名称：保利林语山庄</p>
+
 					<p>小区地址：开创大道北与广汕路交汇处</p>
-					</div>
-			  </div>
-			  <div class="tab-pane row" id="resource">
-				  <div class="col-sm-6 col-sm-3">
-				    <div class="thumbnail">
-				      <img data-src="holder.js/300x300" alt="house" src="../public/images/house5.jpg">
-				      <div class="caption">
-				        <a>开创大道北保利林语山庄 3室2厅109平米 押二付一</a>
-				        <p><em class="price">3200</em>元</p>				  
-				      </div>
-				    </div>
-				  </div>
-				  <div class="col-sm-6 col-sm-3">
-				    <div class="thumbnail">
-				      <img data-src="holder.js/300x300" alt="house" src="../public/images/house5.jpg">
-				      <div class="caption">
-				        <a>开创大道北保利林语山庄 3室2厅109平米 押二付一</a>
-				        <p><em class="price">3200</em>元</p>				  
-				      </div>
-				    </div>
-				  </div>
-				  <div class="col-sm-6 col-sm-3">
-				    <div class="thumbnail">
-				      <img data-src="holder.js/300x300" alt="house" src="../public/images/house5.jpg">
-				      <div class="caption">
-				        <a>开创大道北保利林语山庄 3室2厅109平米 押二付一</a>
-				        <p><em class="price">3200</em>元</p>				  
-				      </div>
-				    </div>
-				  </div>
-				  <div class="col-sm-6 col-sm-3">
-				    <div class="thumbnail">
-				      <img data-src="holder.js/300x300" alt="house" src="../public/images/house5.jpg">
-				      <div class="caption">
-				        <a>开创大道北保利林语山庄 3室2厅109平米 押二付一</a>
-				        <p><em class="price">3200</em>元</p>				  
-				      </div>
-				    </div>
-				  </div>
 				</div>
-			  </div>
+			</div>
+			<div class="tab-pane col-md-12" id="resource">
+				<div class="col-sm-6 col-sm-3">
+					<div class="thumbnail">
+						<img data-src="holder.js/300x300" alt="house" src="../public/images/house5.jpg">
+						<div class="caption">
+							<a>开创大道北保利林语山庄 3室2厅109平米 押二付一</a>
+							<p><em class="price">3200</em>元</p>				  
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6 col-sm-3">
+					<div class="thumbnail">
+						<img data-src="holder.js/300x300" alt="house" src="../public/images/house5.jpg">
+						<div class="caption">
+							<a>开创大道北保利林语山庄 3室2厅109平米 押二付一</a>
+							<p><em class="price">3200</em>元</p>				  
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6 col-sm-3">
+					<div class="thumbnail">
+						<img data-src="holder.js/300x300" alt="house" src="../public/images/house5.jpg">
+						<div class="caption">
+							<a>开创大道北保利林语山庄 3室2厅109平米 押二付一</a>
+							<p><em class="price">3200</em>元</p>				  
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6 col-sm-3">
+					<div class="thumbnail">
+						<img data-src="holder.js/300x300" alt="house" src="../public/images/house5.jpg">
+						<div class="caption">
+							<a>开创大道北保利林语山庄 3室2厅109平米 押二付一</a>
+							<p><em class="price">3200</em>元</p>				  
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
-#{set "moreSubpageScripts"}
-      <script type="text/javascript">
-    var prevBox = document.querySelector('.preview-img');
-    var prevDiv = prevBox.querySelector('.img-small');
-    var prevUl = prevDiv.getElementsByTagName('ul')[0];
-    var prevLi= prevDiv.getElementsByTagName('li');
-    var show = document.querySelector('.show-img img');
-    var oPrev= document.getElementById('prev');
-    var oNext = document.getElementById('next');
-
-    var left = prevUl.offsetLeft;
-    var len = prevLi[0].offsetWidth*4;
-    var i;
-
-    prevUl.style.width = len;
-    for(i=0;i<prevLi.length;i++){
-      prevLi[i].onmouseover = function(){
-        show.src = this.getElementsByTagName('img')[0].src ;
-      }
-    }
-    oPrev.onclick = function(){
-      if(parseInt(prevUl.style.left)<=0-len){
-        Animation(prevUl,"left");
-        left = parseInt(prevUl.style.left) ;
-      }
-    }
-    oNext.onclick = function(){
-      if(left<=0&&(prevLi.length*(len/4)+left) > len){
-        Animation(prevUl,"right");
-        left = parseInt(prevUl.style.left) ;
-      }
-    }
-
-    function Animation(elem,dire){
-      if(dire == "left"){
-        prevUl.style.left = parseInt(prevUl.style.left) +len+"px";  
-
-      }else{
-        prevUl.style.left= left -len+"px";    
-      }
-    }
-  </script> 
-#{/set}
+	</div></div>

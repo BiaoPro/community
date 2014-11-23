@@ -93,7 +93,7 @@ public class House extends GenericModel{
 		if (StringUtils.isEmpty(searchKey)) {
 			return House.all().fetch(curPage, 5);
 		} else {
-			return House.find(key+" like ?", "%" + searchKey + "%").fetch(
+			return House.find(key+" like ?",searchKey).fetch(
 					curPage, 5);
 		}
 	}
@@ -103,7 +103,7 @@ public class House extends GenericModel{
 		if (StringUtils.isEmpty(searchKey))
 			total = House.count();
 		else
-			total = House.find(key+" like ?", "%" + searchKey + "%").fetch()
+			total = House.find(key+" like ?",searchKey).fetch()
 					.size();
 		return PageBean.getInstance(curPage, total, 5);
 	}

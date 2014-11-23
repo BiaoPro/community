@@ -8,7 +8,6 @@
 				<option value="**">批量审核</option>
 			</select>
 				<input  id="patchSubmit" type="button" class="btn btn-primary form-control bin-inline" value="应用"/>
-				
 			<select id="date" name="newsCreateDate" class="form-control">
 			<option selected="selected" value="">全部创建日期</option>
 				#{list items:newsDateList,as:'item'}
@@ -62,9 +61,6 @@
 			          <td><a class="audit btn" href="@{BackNews.audit(item.newsId)}" data="${item.newsAudit}" type="button">未审核</a></td>
 			        </tr>
 			       #{/list}
-			       
-					     
-			      
 			       
 			      </tbody>
 			      

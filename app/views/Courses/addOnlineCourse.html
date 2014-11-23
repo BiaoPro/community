@@ -1,0 +1,25 @@
+#{extends 'Courses/base.html' /}
+#{set 'showCommunityCourseInfo'}
+<li>
+	<a href="/Courses/showCommunityCourses?categoryId=${categoryId}" >信息页（community）</a>
+</li>
+#{/set}
+#{set 'addCommunityCourse'}
+<li class='active'>
+	<a href="#" >发布页（community）</a>
+</li>
+#{/set}
+		
+	<div class=" nav-tabs box-div">
+	    
+				<form class="form-inline"  action="@{Courses.saveOnlineCourse }" method="post" role="form" enctype="multipart/form-data">
+					<input type="hidden" name="course.categoryId" value='${categoryId}'>
+					<input type="hidden" name="course.authorId" value='${session.userId }'>
+					<p>课程名称：<input class="form-group" type="text" name="course.title" required="required"></p>
+					<p>课程图片：<input type="file" name="photo" onchange="checkImgType(this)" required="required"></p>
+					<p>课程概述：<textarea name="course.info" required="required"></textarea></p>
+					<p>课程链接：<input type="text" name="course.url" onchange="checkUrl(this)" required="required"></p>
+ 					<p><button type="submit" class="btn btn-success" href="#">添加</button></p>
+				</form>
+	</div>
+

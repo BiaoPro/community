@@ -2,9 +2,6 @@
 #{set title:'Show works info' /}
 #{set "moreSubpageStyles"}
 <style type="text/css">
-	h2{
-		font-size: 1.8em;
-	}
 	.table{
 		padding-right: 20px;
 	}
@@ -16,26 +13,13 @@
 		margin-right: 10px;
 		font-weight: normal;
 		font-size: 16px;
-		color: #999;
 	}
 	#describe ol{
 		clear: both;
 	}
-	#describe .sub{
-		border:1px solid #faebcc;
-	}
-	#describe ol{
-		clear: both;
-	}
-	#profile img{
-		margin:10px auto; 
-	}
-	#profile .thumbnail{
+/*	#profile .thumbnail{
 		border: none;
-	}
-	.show-job-info span,.show-job-info>tbody>tr>td a{
-		font-size: 14px;
-	}
+	}*/
 </style>
 #{/set}
 		
@@ -43,8 +27,7 @@
 			<h2>${work.title}</h2>
 			<strong><a class="pull-right" style="color:#F6790E;">下一条 ></a></strong>
 			
-				<small>发布时间：${work.date}</small>
-			
+				<small>发布时间：${work.date}</small>		
 				<table class="table table-hover show-job-info">
 					<tbody>
 						<tr>
@@ -99,8 +82,9 @@
 							</td>
 					</tbody>
 				</table>
+				</div>
 						  			<!-- Nav tabs -->
-			<div class="row">
+			<div class="col-md-12">
 			<ul class="nav nav-tabs col-md-12" role="tablist">
 			  <li class="active"><a href="#describe" role="tab" data-toggle="tab">职位描述</a></li>
 			  <li><a href="#profile" role="tab" data-toggle="tab">公司介绍</a></li>
@@ -108,7 +92,7 @@
 			</ul>
 			<div class="alert alert-success col-md-12" role="alert">如果发现招聘有任何虚假地方，欢迎<a>举报</a></div>
 			</div>
-			<div class="tab-content row">
+			<div class="tab-content row col-md-11 col-md-push-1">
 			  <div class="tab-pane active" id="describe">
 			  	<ol>
 			  		<li>${work.details}</li>
@@ -116,14 +100,13 @@
 			  </div>
 			  <div class="tab-pane row" id="profile">
 				  <div class="col-md-5">
-				  	<a class="thumbnail"><img src="../public/images/community.jpg" data-src="holder.js/100%x180" alt="community"></a>
+				  	<img src="../public/images/community.jpg" class="img-responsive" data-src="holder.js/100%x180" alt="community">
 				  </div>
 				  <div class="col-md-6">
 				  	<p>长沙创飞凡房地产投资咨询有限公司（简称“创飞凡地产”）成立于2012年11月。主要从事房地产咨询、营销策划、销售代理、银行按揭等业务，是一家专业提供房地产投资咨询机构。在激烈的市场竞争中，创飞凡地产不断提高自己，完善自己，依靠强有力的领导班子，高素质的员工队伍以及团结求实的精神，逐步建立起完善的服务体系。我公司秉承着“创高品质，飞跃全球，凡人不凡”的服务理念，竭诚为每一位客户提供安全、专业、高效、优质的服务，通过规范化、专业化、现代化、透明化的全新管理模式，打造全新的服务品牌。</p>
 					</div>
 			  </div>
-			  <div class="tab-pane row" id="resource">
-				  <div>
+			  <div class="tab-pane col-md-12" id="resource">
 			<table class="table table-hover table-condensed">
 				<thead>
 					<th>职位</th>
@@ -194,7 +177,6 @@
 					</tr>
 				</tbody>
 			</table>	
-				</div>
 			  </div>
 			  </div>
 		</div>
