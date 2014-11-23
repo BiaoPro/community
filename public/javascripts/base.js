@@ -52,12 +52,13 @@ $(document).ready(function(){
 		return false;
 	});
 	$('.choose-input').click(function(event) {
-		var chosenItem = $(this).parent('dd').prev("dt").data('name');		
+		var chosenItem = $(this).parents('dd').prev("dt").data('name');		
 		var $inputItem = $(this).siblings('span').find('input');
-		var str = $(this).parent('dd').prev("dt").data('title') + " ";
+		var str = $(this).parents('dd').prev("dt").data('title') + "-";
 
+		console.log($inputItem.eq(0).val());
 		$inputItem.each(function(index) {
-			str += $(this).parent("label").nextAll("label").length == 0 ? this.value : this.value + "-"; 
+			str += $(this).parents("label").nextAll("label").length == 0 ? $(this).val() : $(this).val() + "-"; 			
 		});
 
 		// 显示到筛选条件那里去
@@ -94,8 +95,7 @@ $(document).ready(function(){
 
 	// 取消条件
 	$(".form-filter").on('click','.close-icon',function(){
-		var chosenItem = $(this).prev("a").attr("name");
-		console.log(chosenItem);
+		var chosenItem = $(this).prev("input").attr("name");
 
 		// 移除选项
 		showFilter(chosenItem);
@@ -163,20 +163,21 @@ $("#identity a").click(function(){
 	});
 
 // 确保上传文件是图片，且不超过8张，不超过10M
-$(".form-fill input[type='file']").change(function(){
+$(".form-fill input[type='file']").on("change",function(){
 	var $parent = $(this).parents("td");
 	var files = this.files;
 	var flag = false;
 
 	if(files.length > 0){
-		$parent.find("span").not("alert").html("已上传" + this.files.length + "个文件 ");
+		var str = "已上传" + this.files.length + "个文件 ";
+		$parent.find('span').length > 0 ? $parent.find("span").not("alert").html() : $parent.append('<span>'+str + '</span>');
 		// 错误识别
 		if(files.length < 8){
 			for(var i=0 ; i< files.length; i++){
 				if(files[i].size === 0){
 					insertErrMessage($parent, "上传图片不可为空");
 					flag = true;
-				}else if(!/\.(jpg)|(jpeg)|(png)|(gif)$/.test(files[i].name)){
+				}else if(!/\.(jpg)|(jpeg)|(png)|(gif)$/i.test(files[i].name)){
 					insertErrMessage($parent, "上传的必须是图片");
 					flag = true;;
 				}else if(Math.floor((files[i].size / 1024)/1024 ) > 10){
@@ -195,7 +196,6 @@ $(".form-fill input[type='file']").change(function(){
 			files = [];
 			$parent.find("span").not("span.alert").empty();
 		}
-		console.log(files.length);
 	}
 });
 
@@ -227,21 +227,23 @@ $(".form-fill .tag+span a").click(function(){
 	//确认无误后发送表单
 	$("#submit").click(function(event) {
 		var $required = $(".form-fill .required");
+		var flag = true;
 		$required.each(function(index, el) {
 			var value = this.value || this.innerHTML || "";
-			if($("#identity").length >0 && $("#identity").find("span").length === 0 ){
-				alert("请选择身份");
-				return false
-			}else if(value === "" || value === "请选择" || value === "街道" || value === "装修情况") {
+			if(value === "") {
 				var errMes = $(this).parents('tr').find("th span").html();
 				alert("请完善 " + errMes + " 信息");
+				flag = false;
 				return false;
 			}else if($(".form-fill").find("span.alert-danger").length > 0){
 				alert("请检查信息合法性");
+				flag = false;
 				return false;
 			}
 		});
-		return false;
+		if(flag){
+			$(this).parents(".form-fill").submit();
+		}
 	});
 
 // 图片展示
@@ -304,11 +306,11 @@ if($(".img-small").length > 0){
 	// 将已选选项显示到筛选列表中函数,可重载函数 
 	function showFilter(chosenItem, content){
 		var $showChoice = $(".choose-fliter");
-		var chosenItemName ="a[name='" + chosenItem +  "']";
+		var chosenItemName ="input[name='" + chosenItem +  "']";
 		$showChoice.find(chosenItemName).parent("li").remove();
 
 		if( arguments.length >= 2){
-			var str = '<li class="alert alert-warning"><a name="'+ chosenItem +'"">'+ content +'</a><a class="close-icon">&times;</a></li>';
+			var str = '<li class="alert alert-warning"><input name="' + chosenItem + '" value= "'+content+'" readonly/><a class="close-icon">&times;</a></li>';
 
 			$showChoice.find("ul button").parent("li").before(str);
 		}
