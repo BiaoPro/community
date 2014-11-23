@@ -77,7 +77,15 @@
 #{/set}
 <div class="alert alert-warning alert-dismissible" role="alert">
   <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-  <p class="bg-warning">如果您有账号，可点击<a>登录</a>再填写 ; 或者点击<a>注册</a></p>
+  <p class="bg-warning">
+		若您有登录账号请点击<a href="@{Application.login}">登录</a>后发布信息，没有账号可点击<a href="@{Application.register}">注册</a>
+</p>
+	<p>
+  	#{if flash.uploadError}
+		${flash.uploadError}
+ 	#{/if}
+  </p>
+ 
 </div>
 <div class="main-content">
 

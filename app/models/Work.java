@@ -1,6 +1,7 @@
 package models;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,6 +12,8 @@ import javax.persistence.Table;
 
 import play.db.jpa.GenericModel;
 import play.libs.Codec;
+import utils.PageBean;
+import utils.StringUtils;
 /*
  * 招工信息表
  * @author zhangxiangpeng
@@ -49,4 +52,27 @@ public class Work extends GenericModel {
 		this.status=1;
 		this.audit=1;
 	}
+	/*
+	 * 查询招工信息
+	 * @param 关键词
+	 * @param 当前页
+	 */
+		public static List<Work> findWorks(String searchKey, int curPage) {
+			if (StringUtils.isEmpty(searchKey)) {
+				return Work.all().fetch(curPage, 5);
+			} else {
+				return Work.find("title like ?", "%" + searchKey + "%").fetch(
+						curPage, 5);
+			}
+		}
+		//pagebean
+		public static PageBean getPageBean(String searchKey, int curPage) {
+			long total = 0;
+			if (StringUtils.isEmpty(searchKey))
+				total = Work.count();
+			else
+				total = Work.find("title like ?", "%" + searchKey + "%").fetch()
+						.size();
+			return PageBean.getInstance(curPage, total, 5);
+		}
 }

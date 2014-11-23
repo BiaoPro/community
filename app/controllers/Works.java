@@ -21,14 +21,18 @@ public class Works extends Controller {
 	  render(work);
   }
   public static void showWorks(){
-	  render();
+	  String srarchKey="";
+	  if(params.get("srarchKey")!=null)
+		  srarchKey=params.get("srarchKey");
+	  List<Work> WorksList=Work.findWorks("searchKey", 1);
+	  render(WorksList);
   }
   /*
    * 保存新增work信息
    * @param work
    */
   public static void saveWork(Work work){
-	  work.save();
+	  work.save(); 
 	  render(work);
   }
 }

@@ -1,0 +1,12 @@
+#{extends 'manager.html'/}
+#{set HouseManager : 'active' /}
+	<ul class="nav nav-tabs">
+              <li #{get 'housesHistory' /}><a href="@{BackHouses.housesHistory}">历史发布信息</a></li>
+              <li #{get 'housesVerif' /}><a href="@{BackHouses.housesVerify}">租房信息审核</a></li>
+              <li #{get 'housesManager' /}><a href="@{BackHouses.housesManager}">租房信息管理</a></li>
+    </ul>
+	
+	#{doLayout /}
+
+
+	

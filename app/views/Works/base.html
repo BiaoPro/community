@@ -38,11 +38,11 @@
 		  	<div class="col-md-4 col-xs-12">
 		  		<aside class="aside">
 		  			<ul class="nav-side">
-		  				<li><a href="@{ShowWorks.Works}">我要找工</a></li>
-		  				<li><a href="@{ShowWorks.recruit}">发布招聘</a></li>
+		  				<li><a href="@{Works.showWorks}">我要找工</a></li>
+		  				<li><a href="@{Works.addWork}">发布招聘</a></li>
 		  			</ul>
-		  			<form  role="form">
-						<input type="text" class="form-control" >
+		  			<form  action="@{Works.showWorks}" method="post" role="form">
+						<input type="text" name="searchKey" class="form-control" >
 						<button type="submit" class="btn btn-default">搜索</button>
 					</form>
 				</aside>

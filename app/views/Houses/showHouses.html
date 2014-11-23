@@ -109,27 +109,18 @@
 		   				</dd>
 		   		</dl>
 		  </div>
-		  <div class="panel-footer">
-			  <dl class="choose-fliter">
-			  	<dt>筛选条件</dt>
-			  		<dd>
-			  			<ul>
-			  				<li class="alert alert-warning">1500-2000元<a>&times;</a></li>
-			  				<li class="alert alert-warning">1楼<a>&times;</a></li>
-			  			</ul>
-			  		</dd>
-			  	</dl>
-		  </div>
 		</div>
 <!--****************************显示信息*****************************************-->
 <h4>当前页为第${pageBean.curPage}页，总计${pageBean.total}条结果</h4>	
-#{list items:houseList ,as :'house'}
-	<!-- <h1>${house.phone}</h1> -->
-	
 		<div class="house-show main-content">
 			<table class="table table-hover">
+%{index=0;}%
+#{list items:houseList,as :'house'}
+
 				<tr>
-					<td class="col-xs-4"><a href="#" class="thumbnail"><img src="../public/images/grace.jpg" data-src="holder.js/100%x180" alt="house"></a></td>
+					<td class="col-xs-4"><a href="#" class="thumbnail"><img src="${firstPhotoUrl[index]}" data-src="holder.js/100%x180" alt="house"></a></td>
+
+
 					<td class="house-info">
 						<a href="@{Houses.showHouseInfo(house.id)}">${house.community} 
 							${house.address}</a>
@@ -145,8 +136,7 @@
 						<p>
 					</td>
 					<td><p><em class="price">${house.price}</em>元</p></td>
-				</tr>
-				
+%{index++;}%			</tr>			
 #{/list}				
 				
 			</table>
@@ -154,7 +144,7 @@
 				<ul class="pagination pull-right">
 					<li><a href="#">&laquo;</a></li>
 					%{ for(int i=1;i<=(pageBean.total+4)/pageBean.perPage;i++) {  }%
-    				 <li><a href="/Houses/houses?page=${i}">${i}</a></li>
+    				 <li><a href="/Houses/showHouses?page=${i}">${i}</a></li>
 					%{ } }%
 					<li><a href="#">&raquo;</a></li>
 				</ul>

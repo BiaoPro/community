@@ -18,7 +18,8 @@ public class Houses extends Controller {
 		render();
 	}
 	public static void addHouse(){
-		render();
+		List<House> baseHouseList=House.findHouses("",1);
+		render(baseHouseList);
 	}
     /*
      * 显示详细的租房信息
@@ -27,7 +28,8 @@ public class Houses extends Controller {
     public static void showHouseInfo(String id){
     	House house=House.findById(id);
     	String[] photo = house.photoUrl.toString().split("\\.\\$\\.");
-    	render(house,photo);
+    	List<House> baseHouseList=House.findHouses("",1);
+    	render(house,photo,baseHouseList);
     }
     /*
      * 显示租房信息列表
@@ -35,9 +37,16 @@ public class Houses extends Controller {
      */
     public static void showHouses(){
     	int curPage=Integer.parseInt(params.get("page")==null?"1":params.get("page"));
-    	PageBean pageBean=House.getPageBean("", curPage);
-    	List<House> houseList=House.findHouses("",curPage);
-    	render(houseList,pageBean);
+    	String searchKey=params.get("searchKey")==null?"":params.get("searchKey");
+    	PageBean pageBean=House.getPageBean(searchKey, curPage);
+    	List<House> houseList=House.findHouses(searchKey,curPage);
+    	String[] firstPhotoUrl=new String[6];
+    	 for(int i=0;i<houseList.size();i++){   
+    	       String[] a=houseList.get(i).photoUrl.split("\\.\\$\\.");
+    	       firstPhotoUrl[i]=a[0];
+    	   }
+    	List<House> baseHouseList=House.findHouses("",1);
+    	render(houseList,pageBean,firstPhotoUrl,baseHouseList);
     }
     /*
      * 保存租房信息
@@ -61,8 +70,8 @@ public class Houses extends Controller {
           if (uploader.getState() == FileUploadState.SUCCESS) { // 文件上传成功
             insertUrl+=uploader.getUrl()+".$.";//插入图片路径到house表中         
           } else {
-              flash.error("上传失败");
-              index();
+              flash.put("uploadError", "上传失败");
+              addHouse();
           }
         }
           house.photoUrl = insertUrl;
@@ -75,8 +84,8 @@ public class Houses extends Controller {
     	}
     	house.equipment=equipment;
           house.save();
-          flash.error("上传成功");
-          index();
+          flash.put("uploadError", "上传成功");
+          addHouse();
     	}
     /*
      * 删除租房信息
