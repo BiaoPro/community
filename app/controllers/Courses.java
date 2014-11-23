@@ -6,6 +6,8 @@ package controllers;
 import java.io.File;
 import java.util.List;
 
+import play.libs.Codec;
+
 import models.BackMessage;
 import models.Course;
 import models.CourseCategory;
@@ -114,6 +116,8 @@ public class Courses extends Controller {
       PageBean pageBean = null;
       List<CourseOnline> list = null;   
       long total = 0;
+      if(curPage == null) curPage = 1;
+      if(perPage == null) perPage = 5;
       
       if (StringUtils.isEmpty(searchKey)) {
         // 非搜索模式
@@ -210,9 +214,27 @@ public class Courses extends Controller {
      CourseOnline.deleteById(id);
      showOnlineCourses(categoryId,"",1,5);
    }
-   public static void delCommunityCourse(String id,String categoryId){
+   public static void delCommunityCourse(String id,String categoryId,int audit){
      Course.deleteById(id);
      showCommunityCourses(categoryId,"",1,5);
    }
 
+   public static void changeOnlineAudit(String id,String categoryId,int audit){
+     CourseOnline.deleteById(id);
+     CourseOnline course = CourseOnline.findById(id);
+     course.audit = audit;
+     course.save();
+     showOnlineCourses(categoryId,"",1,5);
+     
+   }
+   
+   public static void changeCommunityAudit(String id,String categoryId,int audit){
+     CourseOnline.deleteById(id);
+     
+     Course course = Course.findById(id);
+     course.audit = audit;
+     course.save();
+     showCommunityCourses(categoryId,"",1,5);
+     
+   }
 }

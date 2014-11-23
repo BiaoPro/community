@@ -61,7 +61,13 @@
                   
                     <li><a href="@{Application.index}">Home</a></li>
                     <li><a href="@{ShowNews.News}">社区新闻</a></li>
-                    <li><a href="@{ShowCourses.Courses}">社区课堂</a></li>
+                    <li class="dropdown">
+                      <a href="@{ShowCourses.showOnlineCourses }" class="dropdown-toggle" data-toggle="dropdown">免费课堂</a>
+                      <ul class="dropdown-menu hidden-xs" role="menu">
+                      	<li><a href="@{ShowCourses.showCommunityCourses}">社区课堂</a></li>
+                        <li><a href="@{ShowCourses.showOnlineCourses}">在线课堂</a></li>
+                      </ul>
+                    </li>
                     <li class="dropdown">
                       <a href="@{Houses.showHouses}" class="dropdown-toggle" data-toggle="dropdown">社区租房</a>
                       <ul class="dropdown-menu hidden-xs" role="menu">
