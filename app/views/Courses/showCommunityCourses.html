@@ -46,12 +46,14 @@
 					<p>发布开始：${course.showStartTime()}</p>
 					<p>发布结束：${course.showEndTime()}</p>
 					<p>操作：
+						<!-- 
 						<a href="@{Courses.delCommunityCourse(course.id,category.id)}" onclick="return confirm('删除视频链接：${course.title}?')" class="btn btn-success">审核</a>
+					     -->
 					    <a href="@{Courses.delCommunityCourse(course.id,category.id)}" onclick="return confirm('删除视频链接：${course.title}?')" class="btn btn-danger">删除</a>
 					</p>
 				</div>	
 				<hr>
 				#{/list}
 				
-				#{page pageBean:pageBean,params:params/}
+				#{page pageBean:pageBean,params:params/} 
 	</div>

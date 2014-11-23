@@ -44,10 +44,10 @@ public class Course extends GenericModel{
   public String phoneNumber;//联系人电话
   
   @Column(name="start_time")
-  public String startTime;//开始时间
+  private String startTime;//开始时间
   
   @Column(name="end_time")
-  public String endTime;//结束时间
+  private String endTime;//结束时间
   
   @Column(name="pub_time")
   public long pubTime;//结束时间
@@ -160,7 +160,7 @@ public class Course extends GenericModel{
   
   
   /**
-   * 获取系统时间
+   * 获取系统时间错误、、‘’、、‘’c
    * 
    * @return long
    */
@@ -178,10 +178,26 @@ public class Course extends GenericModel{
       return DateUtils.getDateTimeStr(pubTime);
   }
   private String showStartTime() {
-      return startTime;
+      return getStartTime();
   }
   private String showEndTime() {
+    return getEndTime();
+  }
+
+  public String getStartTime() {
+    return startTime;
+  }
+
+  public void setStartTime(String startTime) {
+    this.startTime = startTime.replace("T", " ");
+  }
+
+  public String getEndTime() {
     return endTime;
+  }
+
+  public void setEndTime(String endTime) {
+    this.endTime = endTime.replace("T", " ");
   }
   
   

@@ -3,54 +3,20 @@
 
 #{set 'moreSubpageStyles'}
 <style type="text/css">
-	.choose-fliter li{
-		display: inline-block;
-		padding: 5px 8px 0 8px;
-	}
-	dd label input{		
-		width: 40px;
-		padding-right: 5px;
-	}
-
-	.panel .btn{
-		margin-left: 10px;
-		position: relative;
-		top:-1px;
-	}
-
-
-	.choose-fliter a{
-		padding-left: .5em;
-		text-decoration: none;
-	}
-
-	.choose-fliter{
-		margin-bottom:0;
-	}
-	.panel-footer{
-		border-top: none;
-		padding-bottom: 0;
-	}
-	.panel-footer ul,.panel-footer dd{
-		margin-bottom: 0;
-	}
-	.house-info a{
-		font-size: 1.3em;
-	}
-	.house-info small{
-		color:#756059;
-		padding-right: 1em;
-	}
-	.price{
-		font-size: 1.5em;
+	.img-responsive{
+		max-height : 200px;
+		height : 200px\9;
 	}
 </style>
 #{/set}
-		
+		<ol class="breadcrumb">
+			<li><a href="#">首页</a></li>
+			<li class="active">社区租房</li>
+		</ol>
 		<div class="panel panel-default">
-		  <div class="panel-body">
+		  <div class="panel-body filter">
 		   		<dl>
-		   			<dt>租金</dt>
+		   			<dt data-name="rent" data-title="租金">租金</dt>
 		   				<dd  id = "price" class="chose-type">
 		   					<a class="active">不限</a>
 		   					<a >800元以下</a>
@@ -61,54 +27,88 @@
 		   					<a >5000以上</a>
 		   					<span>
 		   						<label>
-		   							<input type="text" name="lowPrice"/>
+		   							<input class="num-only" type="text" name="lowPrice"/>
 		   						</label>
 		   						-
 		   						<label>
-		   							<input type="text" name="higPrice">
+		   							<input type="text" class="num-only" name="higPrice">
 		   						</label>
 								元
-								<button class="btn btn-default  btn-sm">筛选</button>
 		   					</span>
+		   					<button class="btn btn-default  btn-sm btn-find choose-input" >筛选</button>
 		   				</dd>
-		   			<dt>房型</dt>
+			   			<dt  data-name="room" data-title="房型">房型</dt>
 		   				<dd id="room" class="chose-type">
 		   					<a href="" class="active">不限</a>
-		   					
+		   					<a href="">1室</a>
+		   					<a href="">2室</a>
+		   					<a href="">3室</a>
+		   					<a href="">4室</a>
+		   					<a href="">5室以上</a>
 		   					<span>
 		   						<label>
-		   							<input type="text"/>
+		   							<input class="num-only" type="text"/>
 		   						</label>
 		   						室
 		   						<label>
-		   							<input type="text">
+		   							<input class="num-only" type="text">
 		   						</label>
 								厅
 								<label>
-		   							<input type="text">
+		   							<input class="num-only" type="text">
 		   						</label>
 		   						卫
-		   						<button class="btn btn-default btn-sm">筛选</button>
 		   					</span>
+		   					<button class="btn btn-default  btn-sm btn-find choose-input">筛选</button>
 		   				</dd>
-		   			
-		   			
+		   			<dt data-name="feature">特色</dt>
+		   				<dd>
+		   					<a  class="active">不限</a>
+		   					<a>精装修</a>
+		   					<a>中等</a>
+		   					<a>简单</a>
+		   					<a >毛胚</a>
+		   				</dd>
+		   			<dt data-name="type">房屋类型</dt>
+		   				<dd>
+		   					<a href="" class="active">平房</a>
+		   					<a href="">普通住宅</a>
+		   					<a href="">商住两用</a>
+		   					<a href="">别墅</a>
+		   					<a href="">其他</a>
+		   				</dd>
 		   			<dt>楼层</dt>
 		   			<dd id="room" class="chose-type">
-		   				<a href="" class="active">不限</a>
-			   			<select name="currentFloor">
-			   				<option value="1楼" >1楼</option>
-			   				<option value="2楼" >2楼</option>
-			   				<option value="3楼" >3楼</option>
-			   				<option value="4楼" >4楼</option>
-			   				<option value="5楼" >5楼</option>
-			   				<option value="6楼" >6楼</option>
-			   				<option value="7楼以上" >7楼以上</option>
-			   			</select>
-			   					
+		   				<div class="moreitem-box" data-name="floor">
+			   					<div class="moreitem-btn"><a >楼层</a>
+			   					</div>
+			   					<ul class="moreitem" >
+			   						<li><a>1楼</a></li>
+			   						<li><a>2楼</a></li>
+			   						<li><a>3楼</a></li>
+			   						<li><a>4楼</a></li>
+			   						<li><a>5楼</a></li>
+			   						<li><a>6楼</a></li>
+			   						<li><a>7楼</a></li>
+			   						<li><a >7楼以上</a></li>
+			   					</ul>
+		   					</div>			   					
 		   				</dd>
 		   		</dl>
 		  </div>
+		  <dl class="choose-fliter">
+			  	<dt>筛选条件</dt>
+			  		<dd>
+			  		<form action="" class="form-filter">
+			  			<ul class="list-inline">
+			  				<li class="alert alert-warning"><input name='rent' value="1500-2000元" readonly/>
+			  				<a class="close-icon">&times;</a></li>
+			  				<li class="alert alert-warning"><input name='floor'value="1楼" readonly/><a class="close-icon">&times;</a></li>
+			  				<li><button class="btn btn-default  btn-sm btn-find" id="submit">确定</button></li>
+			  			</ul>
+			  			 </form>
+			  		</dd>
+			  	</dl>
 		</div>
 <!--****************************显示信息*****************************************-->
 <h4>当前页为第${pageBean.curPage}页，总计${pageBean.total}条结果</h4>	
