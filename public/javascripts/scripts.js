@@ -5,13 +5,15 @@ $(document).ready(function(){
 	hoverOpen();
 	// 回到顶部
 	$(window).scroll(function(event) {
-		var showHight = $(".main-container").offset().top;
+		if($(".main-container").offset() != null){
+			var showHight = $(".main-container").offset().top;
 
-		var scrollTop = $(window).scrollTop(); 
-		if(scrollTop > showHight) {
-			$(".scrollTop").fadeIn(200);
-		}else {
-			$(".scrollTop").fadeOut(200);
+			var scrollTop = $(window).scrollTop(); 
+			if(scrollTop > showHight) {
+				$(".scrollTop").fadeIn(200);
+			}else {
+				$(".scrollTop").fadeOut(200);
+			}
 		}
 	});
 

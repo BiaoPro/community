@@ -22,7 +22,7 @@ backgound:white;
 
 					<a href="@{Courses.showCourseCategories}" class="list-group-item #{get 'CourseManager' /}" >课堂管理</a>
 					<a href="@{BackHouses.housesHistory}" class="list-group-item #{get 'HouseManager' /}" >租房管理</a>
-					<a href="#" class="list-group-item #{get 'WorkManager' /}" >招工管理</a>
+					<a href="@{BackWorks.WorksHistory}" class="list-group-item #{get 'WorkManager' /}" >招工管理</a>
 				#{/if}
 				#{if session.userCategory == "2"||session.userCategory == "3"}
 				<!-- 系统设置，只有社区管理员以上有权限 -->

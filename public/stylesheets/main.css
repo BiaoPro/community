@@ -33,6 +33,9 @@ ul>li a{
 }
 
 
+.container-fluid, .row, .col-md-12{
+	max-width: 1366px;
+}
 /* nav-set */
 .logo {
 	background: url(../images/logo.png) no-repeat;
@@ -238,8 +241,14 @@ footer .list-inline {
 }
 /* Medium Devices, Desktops */
 @media only screen and (min-width : 992px) {
+	.container-fluid, .row, .col-md-12{
+		margin:0 auto;
+		max-width: 1260px;
+	}
 	.main-container {
-		margin:4em 2em;
+		margin-top:3em;
+		margin-bottom:2em;
+		background : #fff;
 	}
 }
 

@@ -26,7 +26,7 @@ public class Work extends GenericModel {
 	//1代表待审核，2为审核不通过，3为审核通过，管理员添加的默认为3
 	@Column(name="audit",columnDefinition="int default 1")
 	public int audit;
-	//1为隐藏，2为显示
+	//0为隐藏，1为显示
 	@Column(name="status",columnDefinition="int default 1")
 	public int status;
 	@ManyToOne

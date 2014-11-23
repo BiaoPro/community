@@ -1,0 +1,59 @@
+	#{extends 'BackWorks/base.html'/}
+#{set 'showWorkInfo'}
+<li class='active'>
+	<a href="" >信息页面</a>
+</li>
+#{/set}
+		<div class="main-content row">
+		
+			<h2>${work.title}</h2>
+				 <p class="sub col-md-12">
+					<small>发布时间：${work.date}</small>
+			    </p> 
+			<div class="show-detail col-md-7 col-sm-12">
+				<table class="table table-hover table-condensed">
+					<tr>
+						<td class="detail-item col-md-3"><p>基本情况</p></td>
+						<td>
+							<small>公司：${work.unit}</small>
+							<small>职位：${work.position}</small>
+							<small>招聘人数：${work.number}</small>
+						</td>
+					</tr>
+					<tr>
+						<td class="detail-item col-md-3"><p>招聘要求</p></td>
+						<td>
+							<p>
+								<small>学历：${work.degree}  工作年限${work.year}  性别${work.sex}</small>
+								<small>${work.minage}至${work.maxage}周岁</small>
+							</p>
+						</td>
+					</tr>
+					<tr>
+						<td class="detail-item col-md-3"><p>月薪</p></td>
+						<td>
+							<p>
+								<small>${work.minsalary}至${work.maxsalary}元</small>
+							</p>
+						</td>
+					</tr>
+					<tr>
+						<td class="detail-item col-md-3"><p>职位描述</p></td>
+						<td>
+							<p>
+								<small>${work.details}</small>
+							</p>
+						</td>
+					</tr>
+					<tr>
+						<td class="detail-item col-md-3"><p>联系方式</p></td>
+						<td>
+							<p>
+								<small>联系人：${work.linkman}</small>
+								<small>电话：${work.phone}</small>
+							</p>
+						</td>
+					</tr>
+				</table>
+			</div>
+		</div>
