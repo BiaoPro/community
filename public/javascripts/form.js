@@ -23,8 +23,30 @@ $(document).ready(function() {
                     },
                     stringLength: {
                         min: 4,
-                        max: 30,
-                        message: '用户名长度需为4到30个字符',
+                        max: 12,
+                        message: '用户名长度需为4到12个字符',
+                    },
+                    regexp: {
+                        regexp: /^[a-zA-Z0-9_\.]+$/,
+                        message: '用户名只能是数字和字母'
+                    },
+                   
+                    different: {
+                        field: 'password',
+                        message: '用户名和密码不能相同'
+                    }
+                }
+            },
+            account: {
+                message: '无效的用户名',
+                validators: {
+                    notEmpty: {
+                        message: '用户名不能为空',
+                    },
+                    stringLength: {
+                        min: 4,
+                        max: 12,
+                        message: '用户名长度需为4到12个字符',
                     },
                     regexp: {
                         regexp: /^[a-zA-Z0-9_\.]+$/,

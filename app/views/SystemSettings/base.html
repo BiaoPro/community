@@ -1,15 +1,11 @@
-#{extends 'manager.html'/}   
+#{extends 'manager.html'/}
+#{set SettingManager : 'active' /}
+     
       <ul class="nav nav-tabs">
-		<li #{get 'showSystemSettings' /} class="active">
-		<a href="@{SystemSettings.index}" >参数设置</a>
+		<li #{get 'showSystemSettings' /} >
+			<a href="@{SystemSettings.index}" >参数设置</a>
 	    </li>
-
-		 #{get 'showLinkCategoryInfo' /}
-		
 	</ul>
-	
-
-
 	#{doLayout /}
 
 <script type="text/javascript" src="/public/javascripts/manage.js"></script>

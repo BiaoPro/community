@@ -1,9 +1,6 @@
 package utils;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import models.News;
+import models.User;
 
 public class NewsBean {
 
@@ -13,15 +10,33 @@ public class NewsBean {
 	private String newsId;
 	private String newsModifyDate;
 	private PageBean pageBean;
+	private String newsAuthorId;
+	private String newsAuthorName;
 	private int newsAudit;
-	public NewsBean(String newsId,String newsTitle,String newsCreateDate,String newClassType,String newsModifyDate,int newsAudit){
+	public NewsBean(String newsId,String newsTitle,String newsCreateDate,String newClassType,String newsModifyDate,int newsAudit,String newsAuthorId){
 		this.newsId=newsId;
 		this.newsTitle=newsTitle;
 		this.newsCreateDate=newsCreateDate;
 		this.newClassType=newClassType;
 		this.newsModifyDate=newsModifyDate;
 		this.newsAudit=newsAudit;
+		this.newsAuthorId=newsAuthorId;
 	}
+	
+	public String getNewsAuthorName() {
+		User user = User.findById(this.newsAuthorId);
+		this.newsAuthorName=user.rname;
+		return newsAuthorName;
+	}
+
+	public String getNewsAuthorId() {
+		return newsAuthorId;
+	}
+	
+	public void setNewsAuthorId(String newsAuthorId) {
+		this.newsAuthorId = newsAuthorId;
+	}
+
 	public String getNewsTitle() {
 		return newsTitle;
 	}

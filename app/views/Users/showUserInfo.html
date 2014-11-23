@@ -1,8 +1,7 @@
 #{extends 'Users/base.html' /}
 #{set showUserInfo : 'class=active' /}
 
-<div class="container">
-<div class="box-div" style="width:500px;">
+<div class="nav-tabs box-div">
 	<form class="form-horizontal" action="@{Users.editUser}" method="post" role="form" enctype="multipart/form-data">
 		<legend>信息修改</legend>
 		<ol class="well">
@@ -31,11 +30,14 @@
 	                  <option value="2" ${user.sex==2?'checked':''}>女</option>
 	              </select>
 	            </li>
-	            <li><strong>年龄:</strong>
-	              <input class="btn btn-default" type="text" name="user.age" value="${user.age }" required="required">
+	            <li><strong>邮箱:</strong>
+	              <input class="btn btn-default" type="text" name="user.email" value="${user.email }" required="required">
+	            </li>
+	            <li><strong>生日:</strong>
+	              <input class="btn btn-default" type="text" name="user.birthday" value="${user.birthday }" required="required">
 	            </li>
 	            <li><strong>个人头像:</strong>
-	              <img alt="photo" src="${user.photo }" >
+	              <img alt="photo" src="${user.photo }" width="200px" height="200px" >
 	              <input type="hidden" name="user.photo" value="${user.photo }">
 	              <input class="btn btn-default" type="file" name="photo" onChange="checkImgType(this)">
 	            </li>
@@ -46,5 +48,5 @@
 	      </ol>
 	</form>
 </div>
-</div>
+
 

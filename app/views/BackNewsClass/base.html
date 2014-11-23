@@ -1,0 +1,10 @@
+#{extends 'manager.html'/}
+#{set ArticleManager : 'active' /}
+	<ul class="nav nav-tabs">
+              <li #{get 'newsSend' /}><a href="@{BackNews.newsSend }">新闻发布</a></li>
+              <li #{get 'newsClassManager' /}><a href="@{BackNewsClass.newsClassManager }">栏目管理</a></li>
+              <li #{get 'newsManager' /}><a href="@{BackNews.newsManager }">新闻管理</a></li>
+              <li #{get 'userNewsManager' /}><a href="@{BackNews.userNewsManager }">我的发布</a></li>
+    </ul>
+	
+	#{doLayout /}

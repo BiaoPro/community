@@ -2,9 +2,6 @@
 #{set title:'Show works info' /}
 #{set "moreSubpageStyles"}
 <style type="text/css">
-	h2{
-		font-size: 1.8em;
-	}
 	.table{
 		padding-right: 20px;
 	}
@@ -16,115 +13,90 @@
 		margin-right: 10px;
 		font-weight: normal;
 		font-size: 16px;
-		color: #999;
 	}
 	#describe ol{
 		clear: both;
 	}
-	#describe .sub{
-		border:1px solid #faebcc;
-	}
-	#describe ol{
-		clear: both;
-	}
-	#profile img{
-		margin:10px auto; 
-	}
-	#profile .thumbnail{
+/*	#profile .thumbnail{
 		border: none;
-	}
-	.show-job-info span,.show-job-info>tbody>tr>td a{
-		font-size: 14px;
-	}
+	}*/
 </style>
 #{/set}
-		<!-- 路径导航 -->
-		<ol class="breadcrumb">
-			<li><a href="#">首页</a></li>
-			<li ><a href="">社区租房</a></li>
-			<li class="active">租房详细</li>
-		</ol>
+		
 		<div class="main-content row">
-			<h2>创飞凡地产急聘房产经纪人</h2>
+<<<<<<< HEAD:app/views/Works/showWorkInfo.html
+			<h2>${work.title}</h2>
 			<strong><a class="pull-right" style="color:#F6790E;">下一条 ></a></strong>
-			<p class="sub">
-				<small>时间： 今天</small><small>28人浏览过</small>
-				<small><a>举报</a></small>
-				<small><a>管理信息</a></small>
+			
+				<small>发布时间：${work.date}</small>
+			
+=======
+		<div class="col-md-12">
+			<h3>创飞凡地产急聘房产经纪人</h3>
+			<p class="sub col-md-12">
+				<small class="col-md-3">时间： 今天</small><small class="col-md-3">28人浏览过</small>
+				<small class="col-md-2"><a>举报</a></small>
+				<small class="col-md-2"><a>管理信息</a></small>
+				<strong><a class="col-md-2 pull-right" style="color:#F6790E;">下一条 ></a></strong>
 			</p>
+>>>>>>> f311ca1c49fb8d2fb15bf72ad700748cbe7d0abf:app/views/ShowWorks/showWorksInfo.html
 				<table class="table table-hover show-job-info">
 					<tbody>
 						<tr>
 							<td>
 								<strong>公司</strong>
-								<span><a>长沙创飞凡信息咨询有限公司(长沙创飞凡地产)</a></span>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<strong>职位</strong>
-								<span>房产经纪人</span>
+								<span>${work.unit}</span>
 							</td>
 							<td>
-								<strong>月薪</strong>
-								<span>2000元以上</span>
+								<strong>招聘职位</strong>
+								<span>${work.position}</span>
 							</td>
-						</tr>
-						<tr>
 							<td>
 								<strong>招聘人数</strong>
-								<span>10人</span>
+								<span>${work.number}</span>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<strong>性别</strong>
+								<span>${work.sex}</span>
 							</td>
 							<td>
-								<strong>最低学历</strong>
-								<span>初中</span>
+								<strong>学历要求</strong>
+								<span>${work.degree}</span>
+							</td>
+							<td>
+								<strong>年龄</strong>
+								<span>${work.minage}至${work.maxage}周岁</span>
 							</td>
 						</tr>
 						<tr>
 							<td>
 								<strong>工作经验</strong>
-								<span>不限</span>
+								<span>${work.year}</span>
 							</td>
 							<td>
-								<strong>最低年龄</strong>
-								<span>20岁</span>
+								<strong>月薪</strong>
+								<span>${work.minsalary}至${work.maxsalary}元</span>
 							</td>
+							
+							
 						</tr>
 						<tr>
-							<td  colspan="2">
-								<strong>工作地点</strong>
-								<span>长沙雨花区公安分局对面融科东南海 ( 长沙 - 雨花 - 树木岭 ) </span>
-							</td>
-						</tr>
-						<tr>
+							
 							<td>
-								<strong>面试时间</strong>
-								<span>2014-08-19</span>
+								<strong>联系人</strong>
+								<span>${work.linkman}</span>
 							</td>
-						</tr>
-						<tr>
-							<td colspan="2">
-								<strong>面试地点</strong>
-								<span>长沙雨花区公安分局对面融科东南海 ( 长沙 - 雨花 - 树木岭 ) </span>
-							</td>
-						</tr>
-						<tr>
 							<td>
-								<strong>福利待遇</strong>
-								<span>没有</span>
+								<strong>联系电话</strong>
+								<span>${work.phone}</span>
 							</td>
-						</tr>
-						<tr>
-							<td>
-								<strong>联系</strong>
-								<img src="../public/images/showphone.gif"/>
-								<a class="btn btn-default">查看完整号码</a>
-							</td>
-						</tr>
 					</tbody>
 				</table>
+				</div>
 						  			<!-- Nav tabs -->
-			<div class="row">
+			<div class="col-md-12">
 			<ul class="nav nav-tabs col-md-12" role="tablist">
 			  <li class="active"><a href="#describe" role="tab" data-toggle="tab">职位描述</a></li>
 			  <li><a href="#profile" role="tab" data-toggle="tab">公司介绍</a></li>
@@ -132,26 +104,21 @@
 			</ul>
 			<div class="alert alert-success col-md-12" role="alert">如果发现招聘有任何虚假地方，欢迎<a>举报</a></div>
 			</div>
-			<div class="tab-content row">
+			<div class="tab-content row col-md-11 col-md-push-1">
 			  <div class="tab-pane active" id="describe">
 			  	<ol>
-			  		<li>新店开业，现诚招热爱销售的精英人才，如特别优秀者，请直接进店面试，待遇可面谈！</li>
-			  		<li>薪资待遇： 底薪（1600-3600/月）+高额销售提成（15%-40%,业内最高）+各项激励奖金+带薪培训+社保+商业保险+法定节假日+户外拓展+国际旅游。</li>
-			  		<li>岗位职责： 负责为客户提供中高端住宅、写字楼、公寓等二手房买卖、租赁、贷款、过户等相关业务的全程代理服务。工作内容包括客户开发、电话预约、实地看房、谈判签约等。</li>
-			  		<li>岗位要求： 1、勤奋敬业，吃苦耐劳、乐观向上，愿意接受工作挑战： 2、具有良好的沟通技巧、团队精神和客户服务意识，渴望挑战高新： 3、有无经验均可，公司提供完善的培训课程，有销售、房地产或保险公司从业经验者优先，欢迎应届毕业生加入！ </li>
-			  		<li>工作时间：8:30-12:00 14:00-18:00 </li>
+			  		<li>${work.details}</li>
 			  	</ol>
 			  </div>
 			  <div class="tab-pane row" id="profile">
 				  <div class="col-md-5">
-				  	<a class="thumbnail"><img src="../public/images/community.jpg" data-src="holder.js/100%x180" alt="community"></a>
+				  	<img src="../public/images/community.jpg" class="img-responsive" data-src="holder.js/100%x180" alt="community">
 				  </div>
 				  <div class="col-md-6">
 				  	<p>长沙创飞凡房地产投资咨询有限公司（简称“创飞凡地产”）成立于2012年11月。主要从事房地产咨询、营销策划、销售代理、银行按揭等业务，是一家专业提供房地产投资咨询机构。在激烈的市场竞争中，创飞凡地产不断提高自己，完善自己，依靠强有力的领导班子，高素质的员工队伍以及团结求实的精神，逐步建立起完善的服务体系。我公司秉承着“创高品质，飞跃全球，凡人不凡”的服务理念，竭诚为每一位客户提供安全、专业、高效、优质的服务，通过规范化、专业化、现代化、透明化的全新管理模式，打造全新的服务品牌。</p>
 					</div>
 			  </div>
-			  <div class="tab-pane row" id="resource">
-				  <div>
+			  <div class="tab-pane col-md-12" id="resource">
 			<table class="table table-hover table-condensed">
 				<thead>
 					<th>职位</th>
@@ -222,7 +189,6 @@
 					</tr>
 				</tbody>
 			</table>	
-				</div>
 			  </div>
 			  </div>
 		</div>

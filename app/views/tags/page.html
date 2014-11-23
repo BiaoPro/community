@@ -1,0 +1,181 @@
+*{
+	* 分页组件
+     * 
+     * 使用说明：
+     *    后台:
+     *          入口方法必须要有一个curPage的参数，类型为Integer,例如：public static void test(Integer curPage, ...){...}
+     *    页面:
+     *    		页面添加  #{page pageBean: pageBean, params : params/}
+     * 
+     * 标签参数说明： 
+     * firstPageShow--如果只有一页，是否显示分页组建，false | true
+     * 
+     * 
+     * 
+     * 解释说明:
+     *  1,#{page pageBean : pageBean, params : params} --- pageBean:后台传过来的，params：play的params
+     *  2,#{pagepageBean : pageBean, params : params}param1=1&param2=2#{/page} --- 标签里面可以再追加参数，
+     *         如果标签里面的参数跟params里面的一样，会覆盖params里面的值
+     * 
+     * @param args
+     * @param body
+     * @param out
+     * @param template
+     * @param fromLine 
+ 	*	#{page pageBean: pageBean, params : params, firstPageShow : true/}
+}*
+
+%{
+	firstPageShow = _firstPageShow == null ? false : true;
+    showPage = true;
+    if(_pageBean.getMaxPage() == 1 && !firstPageShow){
+        showPage = false;
+    }
+    
+    paramObj = _params;
+    //原params所带的参数
+    Map<String, String> paramMap = paramObj.allSimple();
+    String actionUrl = null;
+    String url = null;
+    hiddenInputAttrs = [:]
+    if(paramMap.size() > 1){
+	    //url真正所带的参数,包括body里面的
+	    Iterator iterator = paramMap.keySet().iterator();
+	    Map<String, String> params = new HashMap<String, String>();
+	
+	    //清除非参数的数据
+	    paramMap.remove("body");
+	    String action = paramMap.get("action");
+	    String controller = paramMap.get("controller");
+	    //
+	    if(action != null){
+	    	if(paramMap.size() > 0){
+				paramMap.remove("action");
+		    	paramMap.remove("controller");
+		    }
+		
+		    Iterator paramsIterator = paramMap.keySet().iterator();
+		    while(paramsIterator.hasNext()){
+		        String key = (String) paramsIterator.next();
+		        params.put(key, URLEncoder.encode(paramMap.get(key),"UTF-8"));
+		        hiddenInputAttrs.put(key, paramMap.get(key));
+		    }
+                    
+		    //标签里面的参数列表,格式 "param1=1&param2=2"
+		    body = _body;
+		    if(body != null){
+		        String bodyParams = JavaExtensions.toString(body);
+		        String[] bodyParamArray = bodyParams.split("&");
+		        if(bodyParamArray != null && bodyParamArray.length > 1){
+		            for(String el : bodyParamArray){
+		                String key = el.substring(0, el.indexOf("="));
+		                String value = el.substring(el.indexOf("=") + 1, el.length());
+		                params.put(key, URLEncoder.encode(value,"UTF-8"));
+					    hiddenInputAttrs.put(key, value);
+		            }
+		        }
+		    }
+		
+		    params.remove("curPage");
+			hiddenInputAttrs.remove("curPage");
+		    StringBuffer urlBuf = new StringBuffer(action).append("?");
+		    actionUrl = action;
+		    Iterator paramsKey = params.keySet().iterator();
+		    boolean isFirstParam = true;
+		    while(paramsKey.hasNext()){
+		        String key = (String) paramsKey.next();
+		        String value = params.get(key);
+		        //a标签的分页
+		        if(isFirstParam){
+		            urlBuf.append(key).append("=").append(value);
+		            isFirstParam = false;
+		        }else{
+		            urlBuf.append("&").append(key).append("=").append(value);    
+		        }
+		        //form里面的隐藏input
+		        String inputStr = "<input type='hidden' name='@inputName' value='@inputValue'/>";
+		        inputStr = inputStr.replace("@inputName", key).replace("@inputValue", value);
+		    }
+		    url = urlBuf.toString();
+		    if(params.isEmpty()){
+		        url = urlBuf.append("1=1").toString();
+		    }else{
+		        url = urlBuf.toString();
+		    }
+	    }else{
+	    	//play里面的规则，如果url跟默认配的route一样，url会编程“/”，针对此作特定的处理
+	    	url = "/";
+	    }
+    }else{
+    	url = "/";
+    }
+    
+}%
+<script>
+	function checkPageNum(maxPage){
+		var num = $("#page-input").val();
+		var patrn=/^\d{1,3}$/;
+		if (!patrn.test(num)) {
+			MessageAlert.showError("页数必须为数字");
+			return false;
+		}
+		if (parseInt(maxPage) < parseInt(num)) {
+			MessageAlert.showError("不能大于最大页");
+			return false;
+		}
+		return true;
+	}
+	
+	$(function(){
+		$("#page-input").attr("maxlength", "3");
+	});
+</script>
+#{if showPage && _pageBean.total > 0}
+	    <ul class="pagination">
+	    	#{if _pageBean.curPage > 1}
+	            <li><a href="${url}&curPage=${_pageBean.curPage-1}">上一页</a></li>
+	        #{/if}
+	        #{if _pageBean.needMinPage}
+	            <li><a href="${url}&curPage=1">1</a></li>
+	        #{/if}
+	        #{if _pageBean.needMinPageRoad}
+	            <li class="disabled"><a href="javascript: void(0);">...</a></li>
+	        #{/if}
+	        #{if _pageBean.curPage <= _pageBean.maxPage && _pageBean.curPage >= 1}
+	            #{list _pageBean.nearby, as : 'page'}
+	                #{if page != 0}
+	                    #{if page != _pageBean.curPage}
+	                        <li><a href="${url}&curPage=${page}">${page}</a></li>
+	                    #{/if}
+	                    #{else}
+	                        <li class="active"><a href="javascript:;">${_pageBean.curPage}</a></li>
+	                    #{/else}
+	                #{/if}
+	            #{/list}
+	        #{/if}
+	        #{if _pageBean.needMaxPageRoad}
+	            <li class="disabled"><a href="javascript: void(0);">...</a></li>
+	        #{/if}
+	        #{if _pageBean.needMaxPage && _pageBean.maxPage != 0}
+	            <li><a href="${url}&curPage=${_pageBean.maxPage}">${_pageBean.maxPage}</a></li>
+	        #{/if}
+	        #{if _pageBean.curPage < _pageBean.maxPage}
+	        	<li><a href="${url}&curPage=${_pageBean.curPage+1}">下一页</a></li>
+	        #{/if}
+	         #{if _pageBean.needMaxPageRoad || _pageBean.needMinPageRoad}
+	        <li>
+	        	<span style='height: 40px;border: none;'>
+					<form action="${actionUrl}" method="get" onsubmit="return checkPageNum('${_pageBean.maxPage}')">
+						第<input id='page-input' style='width: 20px; height: 25px; line-height: 25px; padding: 1px 10px 0px 5px; margin-top: -3px; margin-left: 5px; margin-right: 5px;' maxlength='3' name='curPage' type='text'/>页
+						#{list hiddenInputAttrs, as : 'attr'}
+							<input type="hidden" name="${attr.key}" value="${attr.value}"/>
+					#{/list}
+				            *{下面一行是分页组建是否要按钮
+				            	&nbsp;&nbsp;<button style='none; height: 33px;' type='submit'>确定</button>
+				            }*
+	           		</form>
+          		</span>
+          	</li>
+          	#{/if}
+	    </ul>
+#{/if}

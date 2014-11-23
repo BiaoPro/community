@@ -1,10 +1,8 @@
 package controllers;
 import models.CourseCategory;
-import models.LinkCategory;
-import play.*;
-import play.mvc.*;
-
-import java.util.List;
+import play.mvc.Controller;
+import play.mvc.With;
+import utils.enumvalue.ConfigValue;
 
 
 
@@ -13,7 +11,7 @@ import java.util.List;
  * @author 吴泽标
  *
  */
-
+@With(UserSecures.class)
 public class CourseCategories extends Controller {
   
 	/**
@@ -36,12 +34,24 @@ public class CourseCategories extends Controller {
     }
     
     /**
+     * 保存新增课程类别名称
+     * @param vo
+     */
+    public static void changeCategoryName(String id,String name) {
+      CourseCategory vo =  CourseCategory.findById(id);
+      vo.name = name;
+      vo.save();
+      showCourseCategoryInfo(id,"",1,5);
+    }
+    
+    /**
      * 编辑课程类别
      * @param vo
      */
     public static void editCourseCategory(CourseCategory vo) {
+        
         vo.save();
-        showCourseCategoryInfo(vo.id);
+        showCourseCategoryInfo(vo.id, "" ,ConfigValue.SEARCH_CUR_PAGE, ConfigValue.SEARCH_PER_PAGE);
     }
     
     /**
@@ -58,8 +68,10 @@ public class CourseCategories extends Controller {
 	 * 跳转到显示信息页面
 	 * @param categoryId
 	 */
-	public static void showCourseCategoryInfo(String categoryId) {
-		Courses.showCourseCategoryInfo(categoryId);
+	public static void showCourseCategoryInfo(String categoryId, 
+                                                String searchKey, Integer curPage, Integer perPage) {
+	  
+		  Courses.showCourseCategoryInfo(categoryId, searchKey, curPage, perPage);
 	}
 	
 	

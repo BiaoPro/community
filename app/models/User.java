@@ -34,13 +34,12 @@ public class User extends GenericModel {
     //用户状态，1为正常，2为冻结
     public int status;
     
-    
     public String rname;// 真实姓名
     public String prc;// 身份证号
     @Column(name = "sex",columnDefinition="int default 1")
 	public int sex;//性别 1-男 2-女
-	public int age;//年龄
-	public String introduce;//简介
+	public String birthday;//年龄
+	public String email;
 	public String photo;//照片路径
     
     

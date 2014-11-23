@@ -1,0 +1,25 @@
+#{extends 'BackMessages/base.html' /}
+#{set showMessages : 'class=active' /}
+
+
+	<div class=" nav-tabs box-div ">
+	 	<hr>
+	   <form class="navbar-search" action="@{BackMessages.showMessages}" method="get">
+	     <div class="form-group">
+		 	<input type="text" name="searchKey" id="keyword" class="search-query" value="${searchKey}"  placeholder="请输入关键字" />
+		 	<input type="submit" class="btn btn-default" value="搜索" />
+		  </div>	
+		  #{page pageBean:pageBean,params:params/}
+	   </form>
+	  	<hr>
+				
+				#{list items:list,as:'back'}
+				<div>
+					<p>${back_index+(curPage-1)*pageBean.perPage}:</p>
+					<p>${back.message }</p>
+					<p>${back.showPubTime() }</p>
+				</div>	
+				<hr>
+				#{/list}
+				#{page pageBean:pageBean,params:params/}
+	</div>

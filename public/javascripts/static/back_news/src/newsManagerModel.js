@@ -51,6 +51,18 @@ define(function(require,exports,module){
 			 }
 		 })
 		 
+		 $(".userAudit").each(function(){
+			 if($(this).attr("data")==0){
+				 $(this).text("未通过");
+				 $(this).addClass("btn-danger");
+			 }
+			 else{
+				 $(this).text("已通过");
+				 $(this).addClass("btn-primary");
+				 
+			 }
+		 })
+		 
 	 }
 	 //用于分页效果
 	 NewsManagerModel.prototype._page=function(pageContainer){

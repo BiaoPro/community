@@ -1,0 +1,13 @@
+#{extends 'ShowNews/newsCommon.html' /}
+#{set title:'News' /}
+			  	
+					 <div class="pageination container">
+			        	 <ul style="margin-top:0px" class="pagination">
+					        <li><a id="fontPage" href="@{ShowNews.newsFilter(fontPage,newsCreateDate,newClassType)}">«</a></li>
+					       #{list items:maxPageArgs,as:'item'}
+					        <li><a href="@{ShowNews.newsFilter(item,newsCreateDate,newClassType)}">${item}</a></li>
+					       #{/list}
+					        <li><a id="nextPage" href="@{ShowNews.newsFilter(nextPage,newsCreateDate,newClassType)}">»</a></li>
+					     </ul>
+					</div>
+

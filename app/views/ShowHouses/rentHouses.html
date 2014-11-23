@@ -1,80 +1,5 @@
 #{extends 'ShowHouses/base.html' /}
 #{set title:'rent-Houses' /}
-#{set "moreSubpageStyles"}
-	<style type="text/css">
-		.table > tbody > tr > td,.table>tbody>tr>th{
-			border-top:none;
-			font-size: 1.1em;
-			color: #333;
-			vertical-align: top;
-			margin: 10px 0px 0px 10px;
-		}
-		.table>tbody>tr>th{
-			width: 20%;
-			text-align: right;
-			padding-right:5%;
-		}
-		.main-content label,.table td a{
-			margin-right:10px;
-			font-weight: normal;
-		}
-		.form-control{
-			display: inline-block;
-			width: 50%;
-		}
-		.table th em{
-			color:red;
-			margin-right: 5px;
-		}
-		.moreitem a{
-			display: inline-block;
-			padding: 8px 10px;
-		}
-		td label input[type="text"]{		
-			width: 50px;
-			padding-right: 5px;
-		}
-		ul.sub{
-			padding-left: 0;
-			border-bottom: none;
-		}
-		ul.sub li{
-			margin:10px 0px 0px 10px;
-		}
-		.chose-all{
-			margin-left: 10px;
-		}
-		form:after{
-			content: '';
-			display: block;
-			height: 0;
-			clear: both;
-		}
-		.btn.chosen{
-			border: 2px solid green;
-		}
-		.btn-lg{
-			margin:10px;
-		}
-		span.ok{
-			background: url(../public/images/ok.png);
-			width:16px;
-			height: 16px;
-			display: inline-block;
-		}
-		@media screen and (max-width: 480px){
-			.table>tbody>tr>th,.table>tbody>tr>td{
-				border-top: 1px solid #ccc;
-			}
-			.table>tbody>tr>th{
-				width: 35%;
-			}
-			.moreitem-box{
-				margin-bottom: 10px;
-			}
-		}
-	</style>
-#{/set}
 		<!-- 路径导航 -->
 		<ol class="breadcrumb">
 			<li><a href="#">首页</a></li>
@@ -86,7 +11,7 @@
   <p class="bg-warning">如果您有账号，可点击<a>登录</a>再填写 ; 或者点击<a>注册</a></p>
 </div>
 <div class="main-content">
-	<form>
+	<form class="form-fill">
 		<table class="table table-hover  table-condensed">
 			<tbody>
 				<tr>
@@ -105,25 +30,23 @@
 				</tr>
 				<tr>
 					<th><em>*</em><span>您的身份</span></th>
-					<td>
+					<td id="identity">
 						<a class="btn btn-default">个人</a>
 						<a class="btn btn-default">经纪人</a>
-						<span></span>
 					</td>
 				</tr>
 				<tr>
 					<th><em>*</em><span>小区</span></th>
 					<td>
 						<label class="sr-only" for="community">小区地址</label>
-	    				<input type="text" class="form-control" id="community" name="community">
-	    				<span></span>
+	    				<input type="text" class="form-control required" name="community">
 					</td>
 				</tr>
 				<tr>
 					<th><em>*</em><span>地址</span></th>
 					<td>
-						<div class="moreitem-box ">
-			   				<div class="moreitem-btn"><a >街道</a>
+						<div class="moreitem-box">
+			   				<div class="moreitem-btn"><a class="required" name="street">街道</a>
 			   				</div>
 			   				<ul class="moreitem" >
 			   					<li><a>街道1</a></li>
@@ -133,52 +56,49 @@
 		   				</div>
 		   				<div style="display:inline-block;">
 							<label for="address" class="control-label">详细地址</label>
-      						<input type="text" class="form-control" id="address" name="address"/>
+      						<input type="text" class="form-control required" name="address"/>
       					</div>
-      					<span></span>
 					</td>
 				</tr>
 				<tr>
 					<th><em>*</em><span>户型</span></th>
 					<td>
 		   				<label>
-		   					<input type="text" class="form-control" name="room"/>
+		   					<input type="text" class="form-control num-only required" name="room"/>
 		   				室
 		   				</label>		   				
 		   				<label>
-		   					<input type="text" class="form-control" name="hall">
+		   					<input type="text" class="form-control num-only required" name="hall">
 		   					厅
 		   				</label>						
 						<label>
-		   					<input type="text" class="form-control" name="ash-bin">
+		   					<input type="text" class="form-control num-only required" name="ash-bin">
 		   					卫	
 		   				</label>
 		   				<label>
-		   					<input type="text" class="form-control" name="area">
+		   					<input type="text" class="form-control num-only required"  name="area">
 		   					平方	
 		   				</label>		   								
-	    				<span></span>
 					</td>
 				</tr>
 				<tr>
 					<th><em>*</em><span>楼层</span></th>
-					<td>
+					<td class="beLegal">
 		   				<label>
-		   					<input type="text" class="form-control" name="floor"/>
+		   					<input type="text"  class="form-control num-only required" name="floor"/>
 		   				层/共
 		   				</label>		   				
 		   				<label>
-		   					<input type="text" class="form-control" name="floors">
+		   					<input type="text" class="form-control num-only required" name="floors">
 		   					层
 		   				</label>								   								
-	    				<span></span>
 					</td>
 				</tr>
 				<tr>
 					<th><em>*</em><span>房屋情况</span></th>
 					<td>
-						<div class="moreitem-box ">
-			   				<div class="moreitem-btn"><a >装修情况</a>
+						<div class="moreitem-box">
+			   				<div class="moreitem-btn"><a class="required" name="decoration">装修情况</a>
 			   				</div>
 			   				<ul class="moreitem" >
 			   					<li><a>豪华装修</a></li>
@@ -189,7 +109,7 @@
 			   				</ul>
 		   				</div>
 		   				<div class="moreitem-box ">
-			   				<div class="moreitem-btn"><a >普通住宅</a>
+			   				<div class="moreitem-btn"><a name="scale">普通住宅</a>
 			   				</div>
 			   				<ul class="moreitem" >
 			   					<li><a >平房</a></li>
@@ -200,14 +120,13 @@
 			   					<li><a>其他</a></li>
 			   				</ul>
 		   				</div>
-      					<span></span>
 					</td>
 				</tr>
 				<tr>
 					<th><em>*</em><span>出租间介绍</span></th>
 					<td>
 						<div class="moreitem-box ">
-			   				<div class="moreitem-btn"><a >请选择</a>
+			   				<div class="moreitem-btn"><a class=" required" name="rent-place">请选择</a>
 			   				</div>
 			   				<ul class="moreitem" >
 			   					<li><a>出租主卧</a></li>
@@ -217,7 +136,7 @@
 			   				</ul>
 		   				</div>
 		   				<div class="moreitem-box ">
-			   				<div class="moreitem-btn"><a >朝向</a>
+			   				<div class="moreitem-btn"><a class="required" name="orientation">朝向</a>
 			   				</div>
 			   				<ul class="moreitem" >
 			   					<li><a>东</a></li>
@@ -229,7 +148,7 @@
 			   				</ul>
 		   				</div>
 		   				<div class="moreitem-box ">
-			   				<div class="moreitem-btn"><a >男女不限</a>
+			   				<div class="moreitem-btn"><a name="people-type">男女不限</a>
 			   				</div>
 			   				<ul class="moreitem" >
 			   					<li><a >男女不限</a></li>
@@ -239,10 +158,9 @@
 			   				</ul>
 		   				</div>
 		   				<label>
-		   					<input type="text" class="form-control" name="area">
+		   					<input type="text" class="form-control num-only  required" name="area">
 		   					平方
 		   				</label>
-      					<span></span>
 					</td>
 				</tr>
 				<tr>
@@ -261,18 +179,17 @@
 				  			<li><input type="checkbox"/>电视</li>
 				  			<a class="chose-all btn btn-default">全选</a>
 				  		</ul>							   								
-	    				<span></span>
 					</td>
 				</tr>
 				<tr>
 					<th><em>*</em><span>租金</span></th>
 					<td>
 						<label>
-		   					<input type="text" class="form-control" style="width:80px;" name="rental"/>
+		   					<input type="text" class="form-control num-only required" style="width:80px;" name="rental"/>
 		   				元/月
 		   				</label>
 						<div class="moreitem-box ">
-			   				<div class="moreitem-btn"><a >押一付三</a>
+			   				<div class="moreitem-btn"><a name="rent-pay">押一付三</a>
 			   				</div>
 			   				<ul class="moreitem" style="width:115px;">
 			   					<li><a>押一付一</a></li>
@@ -289,94 +206,54 @@
 			   					<li><a >其它</a></li>
 			   				</ul>
 		   				</div>
-      					<span></span>
 					</td>
 				</tr>
 				<tr>
 					<th><em>*</em><span>标题</span></th>
 					<td>
-						<input type="text" class="form-control" style="width:70%;" name="title" />
-						<span></span>
+						<input type="text" class="form-control  required" style="width:70%;" name="title" />
 					</td>
 				</tr>
 				<tr>
 					<th><span>标签</span></th>
+					<!-- 标签可能有多个 -->
 					<td>
-						<input class="btn btn-default " type="button" value="+" style="width:10%;" name="tag"/>
+						<input class="btn btn-default tag" type="button" value="+" style="width:10%;"/>
 						<span style="margin-left:10px;">推荐： <a>精装修</a><a>低价格</a><a>精装修</a><a>低价格</a></span>
-						<span></span>
 					</td>
 				</tr>
 				<tr>
 					<th><em>*</em><span>描述</span></th>
 					<td>
-						<textarea class="form-control" rows="5" style="width:80%" name="description"></textarea>
+						<textarea class="form-control  required" rows="5" style="width:80%" name="description"></textarea>
 					</td>
 				</tr>
 				<tr>
 					<th><em>*</em><span>上传照片</span></th>
 					<td>
-						<span class="help-block">最多只能上传8张，最大10MB</span>
+					<label for="" class="fileContainer btn btn-default">
+					选择文件
+						<input type="file" name="pictures" multiple />
+					</label>
+						<span>最多只能上传8张，最大10MB</span>
 					</td>
 				</tr>
 				<tr>
 					<th><em>*</em><span>联系人</span></th>
 					<td>
-						<label class="sr-only" for="contact">联系人</label>
-	    				<input type="text" class="form-control" id="contact">
+						<label class="sr-only" for="contract">联系人</label>
+	    				<input type="text" class="form-control  required" id="contract">
 					</td>
 				</tr>
 				<tr>
-					<th><em>*</em><span>联系电话</span></th>
+					<th><em>*</em><span>手机</span></th>
 					<td>
-						<label class="sr-only" for="phone">联系电话</label>
-	    				<input type="text" class="form-control" id="phone">
+						<label class="sr-only" for="phone">手机</label>
+	    				<input type="text" class="form-control  required" id="phone">
 					</td>
 				</tr>
 			</tbody>
 		</table>
-		<input type="submit" class="btn btn-danger btn-lg pull-right" value="确认并发布">	
+			<a class="btn btn-danger btn-lg pull-right" id="submit">确认并发布</a>
 	</form>
 </div>
-#{set "moreSubpageScripts"}
-	<script type="text/javascript">
-		var checkItems = document.getElementById('checkItem').getElementsByTagName('input');
-		var choseAll =document.getElementById('checkItem').getElementsByTagName('a')[0];
-		var trs = document.getElementsByTagName('tr');
-		var identity = trs[1].querySelectorAll('a');
-		var i;
-		// 判断是否选择身份
-			for(i=0;i<identity.length;i++){
-				identity[i] .onclick = function(){
-					for(var n=0;n<identity.length;n++) removeClass(identity[n],'chosen');
-					addClass(this,'chosen');
-					this.parentNode.querySelector('span').className ="ok";
-				}
-			} 
-			// 全选和全不选实现
-			choseAll.onclick = function(){
-				if(isCheckAll()){
-					for(i=0;i<checkItems.length;i++){
-						checkItems[i].checked = false ;
-					}
-					choseAll.innerHTML = "全选";
-				}else{
-					for(i=0;i<checkItems.length;i++){
-						checkItems[i].checked = true;
-					}
-					choseAll.innerHTML = "全不选";
-				}
-			}
-			// 判断是否选取全部
-			function isCheckAll(){
-				for(var  n=0,i=0;i<checkItems.length;i++){
-					checkItems[i].checked&&n++;
-				}
-				if(n == checkItems.length){
-					return true;
-				}else{
-					return false;
-				}
-			}
-	</script>
-#{/set}

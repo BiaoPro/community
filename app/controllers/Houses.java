@@ -16,6 +16,7 @@ import models.*;
  * 出租房信息
  * @author zhuangxiangpeng
  */
+
 public class Houses extends Controller {
 	public static void index(){
 		render();
@@ -35,7 +36,7 @@ public class Houses extends Controller {
      * 
      */
     public static void showHouses(){
-    	int curPage=Integer.parseInt(params.get("page"));
+    	int curPage=Integer.parseInt(params.get("page")==null?"1":params.get("page"));
     	PageBean pageBean=House.getPageBean("", curPage);
     	List<House> houseList=House.findHouses("",curPage);
     	render(houseList,pageBean);

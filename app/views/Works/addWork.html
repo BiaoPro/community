@@ -1,0 +1,323 @@
+#{extends 'Works/base.html' /}
+#{set title:'recruit' /}
+<<<<<<< HEAD:app/views/Works/addWork.html
+#{set "moreSubpageStyles"}
+	<style type="text/css">
+		.table > tbody > tr > td,.table>tbody>tr>th{
+			border-top:none;
+			font-size: 1.1em;
+			color: #333;
+			vertical-align: top;
+			margin: 10px 0px 0px 10px;
+		}
+		.table>tbody>tr>th{
+			width: 20%;
+			text-align: right;
+			padding-right:5%;
+		}
+		.main-content label,.table td a{
+			margin-right:10px;
+			font-weight: normal;
+		}
+		.form-control{
+			display: inline-block;
+			width: 50%;
+		}
+		.table th em{
+			color:red;
+			margin-right: 5px;
+		}
+		.moreitem a{
+			display: inline-block;
+			padding: 8px 10px;
+		}
+		td label input[type="text"]{		
+			width: 50px;
+			padding-right: 5px;
+		}
+		ul.sub{
+			padding-left: 0;
+			border-bottom: none;
+		}
+		ul.sub li{
+			margin:10px 0px 0px 10px;
+		}
+		.chose-all{
+			margin-left: 10px;
+		}
+		form:after{
+			content: '';
+			display: block;
+			height: 0;
+			clear: both;
+		}
+		.btn.chosen{
+			border: 2px solid green;
+		}
+		.btn-lg{
+			margin:10px;
+		}
+		span.ok{
+			background: url(../public/images/ok.png);
+			width:16px;
+			height: 16px;
+			display: inline-block;
+		}
+		@media screen and (max-width: 480px){
+			.table>tbody>tr>th,.table>tbody>tr>td{
+				border-top: 1px solid #ccc;
+			}
+			.table>tbody>tr>th{
+				width: 35%;
+			}
+			.moreitem-box{
+				margin-bottom: 10px;
+			}
+		}
+	</style>
+#{/set}
+		
+<div class="alert alert-warning alert-dismissible" role="alert">
+=======
+		<!-- 路径导航 -->
+		<ol class="breadcrumb">
+			<li><a href="#">首页</a></li>
+			<li ><a href="">社区招聘</a></li>
+			<li class="active">招聘信息填写</li>
+		</ol>
+<div class="alert alert-info alert-dismissible" role="alert">
+>>>>>>> f311ca1c49fb8d2fb15bf72ad700748cbe7d0abf:app/views/ShowWorks/recruit.html
+  <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+  <p class="bg-info">如果您有账号，可点击<a>登录</a>再填写 ; 或者点击<a>注册</a></p>
+</div>
+<div class="main-content">
+<<<<<<< HEAD:app/views/Works/addWork.html
+	<form action="@{Works.saveWork}" method="post">
+=======
+	<form class="form-fill">
+>>>>>>> f311ca1c49fb8d2fb15bf72ad700748cbe7d0abf:app/views/ShowWorks/recruit.html
+		<table class="table table-hover  table-condensed">
+			<tbody>
+				<tr>
+					<th><em>*</em><span>标题</span></th>
+					<td>
+						<label class="sr-only" for="title">标题</label>
+<<<<<<< HEAD:app/views/Works/addWork.html
+	    				<input type="text" class="form-control" id="title" name="work.title">
+						<span></span>
+					</td>
+				</tr>
+				<tr>
+					<tr>
+					<th><em>*</em><span>公司</span></th>
+					<td>
+						<label class="sr-only" for="title">公司</label>
+	    				<input type="text" class="form-control"  name="work.unit">
+						<span></span>
+=======
+	    				<input type="text" class="form-control required" id="title" name="title">
+>>>>>>> f311ca1c49fb8d2fb15bf72ad700748cbe7d0abf:app/views/ShowWorks/recruit.html
+					</td>
+				</tr>
+				<tr>
+					<th><em>*</em><span>职位类别</span></th>
+					<td>
+						<label class="sr-only" for="category">小区地址</label>
+<<<<<<< HEAD:app/views/Works/addWork.html
+	    				<input type="text" class="form-control"  name="work.position">
+	    				<span></span>
+=======
+	    				<input type="text" class="form-control required" name="category">
+>>>>>>> f311ca1c49fb8d2fb15bf72ad700748cbe7d0abf:app/views/ShowWorks/recruit.html
+					</td>
+				</tr>
+				<tr>
+					<th><em>*</em><span>招聘人数</span></th>
+					<td>
+						<label class="sr-only" for="recruitNumber">招聘人数</label>
+<<<<<<< HEAD:app/views/Works/addWork.html
+	    				<input type="number" class="form-control"  name="work.number">
+	    				<span></span>
+=======
+	    				<input type="number" class="form-control num-only required" name="recruitNumber">
+>>>>>>> f311ca1c49fb8d2fb15bf72ad700748cbe7d0abf:app/views/ShowWorks/recruit.html
+					</td>
+				</tr>
+				<tr>
+					<th><em>*</em><span>学历</span></th>
+					<td>
+<<<<<<< HEAD:app/views/Works/addWork.html
+						<select class="form-control" name="work.degree">
+				   			<option value="无要求" selected>无要求</option>
+				   			<option value="小学">小学</option>
+				   			<option value="初中">初中</option>
+				   			<option value="高中">高中</option>
+				   			<option value="中专">中专</option>
+				   			<option value="大专">大专</option>
+				   			<option value="本科">本科</option>
+				   			<option value="本科以上">本科以上</option>
+				   		</select>
+=======
+						<div class="moreitem-box">
+			   			<div class="moreitem-btn"><a class="required" name="education">不限</a>
+			   				</div>
+				   			<ul class="moreitem" >
+				   				<li><a>高中以下</a></li>
+				   				<li><a>高中</a></li>
+				   				<li><a>技校</a></li>
+				   				<li><a>中专</a></li>
+				   				<li><a>大专</a></li>
+				   				<li><a>本科</a></li>
+				   				<li><a >本科以上</a></li>
+				   			</ul>
+			   			</div>
+>>>>>>> f311ca1c49fb8d2fb15bf72ad700748cbe7d0abf:app/views/ShowWorks/recruit.html
+					</td>
+				</tr>
+				<tr>
+					<th><em>*</em><span>工作年限</span></th>
+					<td>
+<<<<<<< HEAD:app/views/Works/addWork.html
+						<select class="form-control" name="work.year">
+							<option value="无要求" selected>无要求</option>
+							<option value="一年以上" >一年以上</option>
+							<option value="一至两年" >一至两年</option>
+							<option value="两至三年" >两至三年</option>
+							<option value="三至五年" >三至五年</option>
+							<option value="五至十年" >五至十年</option>
+							<option value="十年以上" >十年以上</option>
+						</select>
+		   				
+=======
+		   				<div class="moreitem-box">
+			   			<div class="moreitem-btn"><a name="duration">工作时长</a>
+			   				</div>
+				   			<ul class="moreitem" >
+				   				<li><a>不限</a></li>
+				   				<li><a>短期</a></li>
+				   				<li><a>长期</a></li>
+				   			</ul>
+			   			</div>		   								
+>>>>>>> f311ca1c49fb8d2fb15bf72ad700748cbe7d0abf:app/views/ShowWorks/recruit.html
+					</td>
+				</tr>
+				<tr>
+					<th><em>*</em><span>性别</span></th>
+					<td>
+<<<<<<< HEAD:app/views/Works/addWork.html
+						<input type="radio" name="work.sex" value="男女均可" selected>男女均可&nbsp&nbsp
+						<input type="radio" name="work.sex" value="男" >男&nbsp&nbsp
+						<input type="radio" name="work.sex" value="女" >女
+=======
+		   				<div class="moreitem-box">
+			   			<div class="moreitem-btn"><a name="gender">不限</a>
+			   				</div>
+				   			<ul class="moreitem">
+				   				<li><a>男</a></li>
+				   				<li><a>女</a></li>
+				   			</ul>
+			   			</div>									   								
+>>>>>>> f311ca1c49fb8d2fb15bf72ad700748cbe7d0abf:app/views/ShowWorks/recruit.html
+					</td>
+				</tr>
+				<tr>
+					<th><em>*</em><span>年龄</span></th>
+					<td class="beLegal">
+						<label class="sr-only" for="min-age">最小年龄</label>
+<<<<<<< HEAD:app/views/Works/addWork.html
+	    				<input type="text" class="form-control" name="work.minage" style="width:10%;">
+		   				<label>到</label>
+		   				<label class="sr-only" for="max-age">最大年龄</label>
+	    				<input type="text" class="form-control" name="work.maxage" style="width:10%;">
+      					<label>岁</label>
+=======
+	    				<input type="text" class="form-control num-only required" name="min-age" style="width:30%;">
+		   				<label>到</label>
+		   				<label class="sr-only " for="max-age">最大年龄</label>
+	    				<input type="text" class="form-control num-only" name="max-age" style="width:30%;">
+>>>>>>> f311ca1c49fb8d2fb15bf72ad700748cbe7d0abf:app/views/ShowWorks/recruit.html
+					</td>
+				</tr>
+				<tr>
+					<th><em>*</em><span>月薪</span></th>
+					<td>
+<<<<<<< HEAD:app/views/Works/addWork.html
+						<input type="text" class="form-control" name="work.minsalary" style="width:10%;">
+						<label>到</label>
+						<input type="text" class="form-control" name="work.maxsalary" style="width:10%;">
+						<label>元</label>
+=======
+						<div class="moreitem-box ">
+			   				<div class="moreitem-btn "><a name="salary" class="required">请选择</a>			   				
+			   				</div>
+			   				<ul class="moreitem" >
+			   					<li><a>不限</a></li>
+				   				<li><a>1000-2000元</a></li>
+				   				<li><a>2000-3000元</a></li>
+				   				<li><a>3000-5000元</a></li>
+				   				<li><a>5000-8000元</a></li>
+				   				<li><a>8000元以上</a></li>
+			   				</ul>
+		   				</div>
+		   				<input name="period" type="checkbox"/>
+			   			<label>有试用期</label>
+					</td>
+				</tr>
+				<tr>
+					<th><span>社会福利</span></th>
+					<td>
+						<input class="btn btn-default tag" type="button" value="+" style="width:10%;"/>
+						<span style="margin-left:10px;">推荐： <a>没有</a><a>没有</a><a>反正就是没有</a></span>
+>>>>>>> f311ca1c49fb8d2fb15bf72ad700748cbe7d0abf:app/views/ShowWorks/recruit.html
+					</td>
+				</tr>
+				<tr>
+					<th><em>*</em><span> 职位描述</span></th>
+					<td>
+<<<<<<< HEAD:app/views/Works/addWork.html
+						<textarea class="form-control" rows="5" style="width:80%" name="work.details"></textarea>
+=======
+						<textarea class="form-control required" rows="5" style="width:80%" name="description"></textarea>
+					</td>
+				</tr>
+				<tr>
+					<th><em>*</em><span>是否收费</span></th>
+					<td>
+						<label>
+						<input type="radio" name="optionsRadios" value="option1" checked>
+						    收费
+						</label>
+						<label>
+						<input type="radio" name="optionsRadios"  value="option2">
+						   不收费
+						</label>
+>>>>>>> f311ca1c49fb8d2fb15bf72ad700748cbe7d0abf:app/views/ShowWorks/recruit.html
+					</td>
+				</tr>		
+				<tr>
+					<th><em>*</em><span>联系人</span></th>
+					<td>
+						<label class="sr-only" for="contact">联系人</label>
+<<<<<<< HEAD:app/views/Works/addWork.html
+	    				<input type="text" class="form-control" name="work.linkman">
+=======
+	    				<input type="text" class="form-control required" id="contract">
+>>>>>>> f311ca1c49fb8d2fb15bf72ad700748cbe7d0abf:app/views/ShowWorks/recruit.html
+					</td>
+				</tr>
+				<tr>
+					<th><em>*</em><span>联系电话</span></th>
+					<td>
+						<label class="sr-only" for="phone">联系电话</label>
+<<<<<<< HEAD:app/views/Works/addWork.html
+	    				<input type="text" class="form-control" name="work.phone">
+=======
+	    				<input type="text" class="form-control num-only required" id="phone">
+>>>>>>> f311ca1c49fb8d2fb15bf72ad700748cbe7d0abf:app/views/ShowWorks/recruit.html
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<a class="btn btn-danger btn-lg pull-right" id="submit">确认并发布</a>	
+		</form>
+		</div>

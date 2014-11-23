@@ -1,0 +1,52 @@
+#{extends 'Courses/base.html' /}
+#{set 'showOnlineCourseInfo'}
+<li>
+	<a href="/Courses/showCommunityCourses?categoryId=${categoryId}" >信息页（community）</a>
+</li>
+#{/set}
+#{set 'addOnlineCourse'}
+<li class='active'>
+	<a href="#" >发布页（community）</a>
+</li>
+#{/set}
+		
+	<div class=" nav-tabs box-div">
+	    
+				<form id="form" action="@{Courses.saveCommunityCourse }" method="post" role="form" enctype="multipart/form-data">
+					<input type="hidden" name="course.categoryId" value='${categoryId}'>
+					<input type="hidden" name="course.authorId" value='${session.userId }'>
+					<p class="form-group">
+						<label for="course.title">课程名称：</label>
+						<input class="form-group" type="text" name="course.title" required="required"></p>
+					<p class="form-group">课程图片：<input type="file" name="photo" onchange="checkImgType(this)" required="required"></p>
+					<p class="form-group">
+						<label for="course.body">内容：</label>
+						<textarea  style="width:70%;height:100%;" class="form-control" name="course.body" required="required"></textarea>
+					</p>
+					<p class="form-group"><label for="course.phoneNumber">课程联系人电话：</label></label><input type="text" name="course.phoneNumber"  required="required"></p>
+					<p class="form-group"><label for="course.startTime">开始时间：</label><input type="datetime-local" name="course.startTime"  required="required"></p>
+					<p class="form-group"><label for="course.endTime">结束时间：</label><input type="datetime-local" name="course.endTime"  required="required"></p>
+					<p class="form-group"><label for="course.place">开课地址：</label><input type="text" name="course.place"  required="required"></p>
+ 					<p><button id="submitbutton" type="submit" class="btn btn-success" >添加</button></p>
+				</form>
+				
+	
+			</div>
+		
+	</div>
+
+#{set 'moreScripts' }
+		<script charset="utf-8" src="@{'/public/javascripts/sea.js'}"></script>
+		<script>
+			seajs.config({
+				base:"../public/javascripts/module/",
+				alias:{
+					"jquery":"jquery/jquery-1.7.1.min.js",
+					"kindeditor":"kindeditor/kindeditor-all-min.js",
+					"bootstrap":"bootstrap/main.js"
+				}
+			});
+			seajs.use("../public/javascripts/static/back_news/src/send_main");
+		</script>
+		#{/set}
+

@@ -1,5 +1,6 @@
-﻿#{extends 'ShowWorks/base.html' /}
+﻿#{extends 'Works/base.html' /}
 #{set title:'Works' /}
+<<<<<<< HEAD:app/views/Works/showWorks.html
 #{set "moreSubpageStyles"}
 <style type="text/css">
 	dt{
@@ -22,20 +23,27 @@
 	}
 </style>
 #{/set}
-
+=======
 		<!-- 路径导航 -->
 	<ol class="breadcrumb">
 		<li><a href="#">首页</a></li>
 		<li class="active">社区招工</li>
 	</ol>
 
+>>>>>>> f311ca1c49fb8d2fb15bf72ad700748cbe7d0abf:app/views/ShowWorks/Works.html
 		<div class="panel panel-default">
 		  <div class="panel-body">
 		   		<dl>
-		   			<dt>筛选条件</dt>
+		   		<!-- 	<dt>筛选条件</dt> -->
 		   			<dd>
+<<<<<<< HEAD:app/views/Works/showWorks.html
+			   			<form  role="form">
+							<input type="text" class="form-control" >
+							<button type="submit" class="btn btn-default">搜索</button>
+=======
+		   			<form action="">
 		   			<div class="moreitem-box">
-			   				<div class="moreitem-btn"><a >长/短期</a>
+			   				<div class="moreitem-btn"><a name="duration">不限</a>
 			   				</div>
 				   			<ul class="moreitem" >
 				   				<li><a>不限</a></li>
@@ -44,7 +52,7 @@
 				   			</ul>
 			   			</div>
 						<div class="moreitem-box">
-			   				<div class="moreitem-btn"><a >薪资</a>
+			   				<div class="moreitem-btn"><a name="salary">薪资</a>
 			   				</div>
 				   			<ul class="moreitem" style="width:120px;">
 				   				<li><a>不限</a></li>
@@ -56,7 +64,7 @@
 				   			</ul>
 			   			</div>
 			   			<div class="moreitem-box">
-			   			<div class="moreitem-btn"><a >学历</a>
+			   			<div class="moreitem-btn"><a name="education">学历</a>
 			   				</div>
 				   			<ul class="moreitem" >
 				   				<li><a>不限</a></li>
@@ -70,7 +78,7 @@
 				   			</ul>
 			   			</div>
 			   			<div class="moreitem-box" >
-			   			<div class="moreitem-btn"><a >发布时间</a>
+			   			<div class="moreitem-btn"><a name="time">发布时间</a>
 			   				</div>
 				   			<ul class="moreitem" >
 				   				<li><a>不限</a></li>
@@ -82,9 +90,9 @@
 				   				<li><a>一个月以内</a></li>
 				   			</ul>
 			   			</div>
-			   			<form  role="form">
-							<input type="text" class="form-control" >
-							<button type="submit" class="btn btn-default">搜索</button>
+							<input type="text" class="form-control" name="keyword">
+							<button type="submit" class="btn btn-default" id="submit">搜索</button>
+>>>>>>> f311ca1c49fb8d2fb15bf72ad700748cbe7d0abf:app/views/ShowWorks/Works.html
 					</form>
 			   		</dd>
 			   	</dl>

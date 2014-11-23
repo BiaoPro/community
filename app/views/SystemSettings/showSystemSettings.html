@@ -1,11 +1,7 @@
 #{extends 'SystemSettings/base.html' /}
 #{set showSystemSettings : 'class=active' /}
-<hr>
-
-<div class=" nav-tabs">
-
+<div class=" nav-tabs box-div">
    <h4>版权设置</h4>
-
 	    <form class="form-horizontal" role="form" name="indexForm" action="@{SystemSettings.changeIndex}" method="post">
 	    <fieldset>
 				<div class="form-group">
@@ -43,10 +39,8 @@
                 <button type="submit"  class="btn btn-primary">保存</button>
             </div>
         </div>
-			  	</fieldset>
-		</form>
-	</div>
-	<div class='col-sm-2'></div>
+		</fieldset>
+	</form>
 </div>
 	
 

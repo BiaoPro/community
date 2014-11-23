@@ -1,14 +1,16 @@
 #{extends 'manager.html'/}
-<div class="container" >
-	<ul class="nav nav-tabs" style="margin-left:5%;">
+#{set CourseManager : 'active' /}
+	<ul class="nav nav-tabs">
 		<li #{get 'CommunityCourse' /}>
 			<a href="@{Courses.showCourseCategories(2)}" >社区课堂</a>
 		</li>
 		<li #{get 'OnlineCourse' /}>
 			<a href="@{Courses.showCourseCategories(1)}" >网络课堂</a>
 		</li>
-		 #{get 'showCourseCategoryInfo' /}
+		 #{get 'showOnlineCourseInfo' /}
+		 #{get 'addOnlineCourse' /}
+		 #{get 'showCommunityCourseInfo' /}
+		 #{get 'addCommunityCourse' /}
 	</ul>
 	
-	<div style="margin-left:5%;">#{doLayout /}</div>
-</div>
+	#{doLayout /}

@@ -14,6 +14,8 @@ public class Config {
 	public static final String TEMP_FILE_PATH = "file-center/temp-file/";// 临时文件存放位置
 	
 	public static final String USER_PHOTO_PATH ="file-center/user-photo/";// 用户图片存放地址
+	public static final String COURSE_ONLINE_PHOTO_PATH ="file-center/course-online/";// 在线课程图片存放地址
+	public static final String COURSE_COMMUMITY_PHOTO_PATH ="file-center/course-community/";// 社区课程图片存放地址
 	public static final String HOUSE_PHOTO_PATH="file-center/house-photo/";//租房信息存放地址
 	public static final String KINDEDITOR_UPLOAD_PATH="file-center/kindeditor-upload/";//租房信息存放地址
 	

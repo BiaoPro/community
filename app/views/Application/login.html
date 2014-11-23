@@ -1,47 +1,59 @@
 #{extends 'main.html' /}
 
-#{set 'moStyles'}
-<script></script>
-<style>
-.input-error {
-color: rgb(255, 69, 68);
-background: rgb(255, 235, 236);
-border: 1px solid rgb(255, 189, 191);
-border-radius: 3px;
-}
-</style>
-#{/set}
-
-  <div class="container" style="width:500px;margin-top:20px;">
-  	<div class="box-div text-center">
-    <form action="@{UserSecures.verify }" method="post">
-    		<h3>login page</h3>
-          <ol class="well">
-            <input name="randomId" value="${randomId}" type="hidden">
-            <li><strong>账号:</strong>
-              <input class="btn btn-default input-error" type="text" name="account"  maxLength="12" placeholder="${flash.accountError}" value="${flash.account}" required="required">
-            </li>
-            <li><strong>密码:</strong>
-              <input class="btn btn-default" type="password" name="password"  maxLength="12" placeholder="${flash.passwordError}" value="${flash.password}" required="required">
-            </li>
-            <li><strong>验证:</strong>
-              <img id="verificationImg" onClick="javascript:setCaptcha();" src="@{UserSecures.getCaptcha(randomId)}" class="verification-img">
-            </li>
-            <li><input class="btn btn-default verification" type="text" name="captchaCode" placeholder="${flash.captchaCodeError?flash.captchaCodeErrorMessage:'请输入验证码'}" required="required"></li>
-             <li>
-             <a href="@{Application.register}" class="btn btn-primary">注册</a>
-             <button class="btn btn-primary" type="submit">登陆</button>
-            </li>
-          </ol>
+  <div class="nav-tabs">
+  <div class="box-div" style="width:350px;margin-top:30px;">
+        <form class="form-horizontal" action="@{UserSecures.verify }" method="post" id="defaultForm" role="form" >
+        
+    		<legend>登陆
+    		<div class="pull-right"> 
+                   <h6>没有账号？马上<a href="@{Application.register}">注册</a> </h6>
+                   		${flash.error}
+             </div>
+    		</legend>
+    		
+		     <fieldset> 
+		         <input type="hidden" name="randomId" value="${randomId }">    
+			     <div class="form-group">
+			       			<label class="col-sm-4 control-label" for="username">账号</label>
+			         		<div class="col-sm-6">
+			          		 <input type="text" class="form-control" name="username"   required="required" maxLength="12" placeholder="${flash.accountError}" value="${flash.account}" >          
+			       			 </div>
+			    </div>
+			    <div class="form-group">
+			      <label class="col-sm-4 control-label" for="pass">密码</label>
+			        <div class="col-sm-6">
+			         <input  class="form-control" type="password" name="pass" required="required" maxLength="12" placeholder="${flash.passwordError}" value="${flash.password}" >          
+			       </div>
+			    </div>
+			    <div class="form-group">
+			      <label class="col-sm-4 control-label" for="password">验证</label>
+			       <div class="col-sm-6">
+			          <p class="verification-img-box">
+						 <img id="verificationImg" src="@{UserSecures.getCaptcha(randomId)}" onClick="javascript:setCaptcha();" class="verification-img">
+					  </p>
+					  <input class="form-control" type="text" name="captchaCode" placeholder="${flash.captchaCodeError?flash.captchaCodeErrorMessage:'请输入验证码'}" required="required">
+					  <a href="javascript:setCaptcha();">看不清楚？换一张</a>
+			        </div>
+			     </div>
+			     <div class="form-group">
+			         <div class="col-sm-7 control-label" >
+			          <button type="submit"  class="btn btn-primary">登陆 </button> 
+			         </div>
+			      </div>
+		    </fieldset> 
+		    
         </form>
    </div>
 </div>
+#{set 'moreScripts'}
+<script type="text/javascript" src="@{'/public/javascripts/form.js'}"charset="${_response_encoding}"></script>
+#{/set}
 
 <script type="text/javascript">
 function setCaptcha() {
 	$("#verificationImg").attr("src","/usersecures/getcaptcha?randomId=4b380ff9-072b-4681-8f85-156cc13ef52a&time="+new Date().getTime());
 }
-
-
 </script>
+
+
 

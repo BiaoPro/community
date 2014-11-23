@@ -1,0 +1,11 @@
+#{extends 'BackNews/userNewsManagerCommon.html'/}
+    		 <div class="pageination container">
+			        	 <ul style="margin-top:0px" class="pagination">
+					        <li><a id="fontPage" href="@{BackNews.userFilter(fontPage,newsTitle,newsCreateDate,newClassType)}">«</a></li>
+					       #{list items:maxPageArgs,as:'item'}
+					        <li><a href="@{BackNews.userFilter(item,newsTitle,newsCreateDate,newClassType)}">${item}</a></li>
+					       #{/list}
+					        <li><a id="nextPage" href="@{BackNews.userFilter(nextPage,newsTitle,newsCreateDate,newClassType)}">»</a></li>
+					     </ul>
+			</div>
+		
