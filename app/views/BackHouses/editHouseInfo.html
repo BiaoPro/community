@@ -1,0 +1,162 @@
+#{extends 'BackHouses/base.html'/}
+#{set 'editHouseInfo'}
+<li class='active'>
+	<a href="" >修改房子信息</a>
+</li>
+#{/set}
+<div class="main-content">
+
+	
+	<form action="" method="post" enctype="multipart/form-data">
+		<table class="table table-hover  table-condensed">
+			<tbody>
+				<tr>
+					<th><em>*</em><span>出租方式</span></th>
+					<td>
+						<label>
+						<input type="radio" name="house.way"  value="整租" ${house.way=="整租"?'checked':''} >
+						    整租
+						</label>
+						<label>
+						<input type="radio" name="house.way"  value="合租"${house.way=="合租"?'checked':''}>
+						   合租
+						</label>
+					</td>
+				</tr>
+				<tr>
+					<th><em>*</em><span>您的身份</span></th>
+					<td>
+						<input type="radio" name="house.indentity" value="个人" ${house.indentity=="个人"?'checked':''}>个人&nbsp;&nbsp;&nbsp;
+						<input type="radio" name="house.indentity" value="经纪人" ${house.indentity=="经纪人"?'checked':''}>经纪人
+					</td>
+				</tr>
+				<tr>
+					<th><em>*</em><span>联系人</span></th>
+					<td>
+	    				<input type="text" class="form-control" name="house.contacts" value=${house.contacts} >
+					</td>
+				</tr>
+				<tr>
+					<th><em>*</em><span>联系电话</span></th>
+					<td>
+						<label class="sr-only" for="phone">联系电话</label>
+	    				<input type="text" class="form-control" name="house.phone" value=${house.phone}>
+					</td>
+				</tr>
+				<tr>
+					<th><em>*</em><span>小区</span></th>
+					<td>
+	    				<input type="text" class="form-control" id="" name="house.community" value=${house.community}>
+					</td>
+				</tr>
+				<tr>
+					<th><em>*</em><span>详细地址</span></th>
+					<td>
+						
+      						<input type="text" class="form-control" id="" name="house.address" value=${house.address}>
+					</td>
+				</tr>
+				<tr>
+					<th><em>*</em><span>户型</span></th>
+					<td>
+		   				<label>
+		   					<input type="text" class="form-control" name="house.bedRoom" value=${house.bedRoom}>
+		   				室
+		   				</label>		   				
+		   				<label>
+		   					<input type="text" class="form-control" name="house.livingRoom" value=${house.livingRoom}>
+		   					厅
+		   				</label>						
+						<label>
+		   					<input type="text" class="form-control" name="house.bathRoom" value=${house.bathRoom}>
+		   					卫	
+		   				</label>
+		   				<label>
+		   					<input type="text" class="form-control" name="house.square" value=${house.square}>
+		   					平方	
+		   				</label>		   								
+	    				<span></span>
+					</td>
+				</tr>
+				<tr>
+					<th><em>*</em><span>楼层</span></th>
+					<td>
+		   				<label>
+		   					<input type="text" class="form-control" name="house.currentFloor" value=${house.currentFloor}>
+		   				层/共
+		   				</label>		   				
+		   				<label>
+		   					<input type="text" class="form-control" name="house.countFloor" value=${house.countFloor}>
+		   					层
+		   				</label>								   								
+	    				<span></span>
+					</td>
+				</tr>
+				<tr>
+					<th><em>*</em><span>房屋情况</span></th>
+					<td>
+			   				<select name="house.decorationSituation" >
+							<option value="豪华装修" ${house.decorationSituation=="豪华装修"?'selected':''}>豪华装修</option>
+							<option value="精装修" ${house.decorationSituation=="精装修"?'selected':''}>精装修</option>
+							<option value="中等" ${house.decorationSituation=="中等"?'selected':''}>中等</option>
+							<option value="简单" ${house.decorationSituation=="简单"?'selected':''}>简单</option>
+							<option value="毛胚" ${house.decorationSituation=="毛胚"?'selected':''}>毛胚</option>
+							</select>
+		   			
+		   					<select name="house.classSituation">
+		   					<option value="平房" ${house.classSituation=="平房"?'selected':''}>平房</option>
+		   					<option value="普通住宅" ${house.classSituation=="普通住宅"?'selected':''}>普通住宅</option>
+		   					<option value="公寓" ${house.classSituation=="公寓"?'selected':''}>公寓</option>
+		   					<option value="商住两用" ${house.classSituation=="商住两用"?'selected':''}>商住两用</option>
+		   					<option value="别墅" ${house.classSituation=="别墅"?'selected':''}>别墅</option>
+		   					<option value="其他" ${house.classSituation=="其他"?'selected':''}>其他</option>
+		   					</select>
+					</td>
+				</tr>
+				<tr>
+					<th><em>*</em><span>家电配备</span></th>
+					<td>
+			   				<input type="checkbox" name="equipment" value="床" ${house.equipment=="床"?'checked':''}>床&nbsp;
+				  			<input type="checkbox" name="equipment" value="衣柜" ${house.equipment=="衣柜"?'checked':''}>衣柜&nbsp;
+				  			<input type="checkbox" name="equipment"  value="沙发" checked ${house.equipment=="沙发"?'checked':''}>沙发&nbsp;
+				  			<input type="checkbox" name="equipment" value="冰箱" ${house.equipment=="冰箱"?'checked':''}>冰箱&nbsp;
+				  			<input type="checkbox" name="equipment" value="洗衣机" ${house.equipment=="洗衣机"?'checked':''}>洗衣机&nbsp;
+				  			<input type="checkbox" name="equipment" value="空调" ${house.equipment=="空调"?'checked':''}>空调&nbsp;
+				  			<input type="checkbox" name="equipment" value="热水器" ${house.equipment=="热水器"?'checked':''}>热水器&nbsp;
+				  			<input type="checkbox" name="equipment" value="宽带" ${house.equipment=="宽带"?'checked':''}>宽带&nbsp;
+				  			<input type="checkbox" name="equipment" value="暖气" ${house.equipment=="暖气"?'checked':''}>暖气&nbsp;
+				  			<input type="checkbox" name="equipment" value="电视" ${house.equipment=="电视"?'checked':''}>电视&nbsp;
+					</td>
+				</tr>
+				<tr>
+					<th><em>*</em><span>租金</span></th>
+					<td>
+						<label>
+		   					<input type="text" class="form-control" style="width:80px;" name="house.price" value=${house.price}>
+		   				元/月
+		   				</label>
+						
+					</td>
+				</tr>
+				<tr>
+					
+				</tr>
+				<tr>
+					<th><em>*</em><span>描述</span></th>
+					<td>
+						<textarea class="form-control" rows="5" style="width:80%" name="house.details" >${house.details}</textarea>
+					</td>
+				</tr>
+				<tr>
+					<th><em>*</em><span>上传照片</span></th>
+					<td>
+						<span class="help-block">
+							<input class="btn btn-default" type="file" name="photoUrl" onChange="checkImgType(this)" multiple>
+					</td>
+				</tr>
+				
+			</tbody>
+		</table>
+		<input type="submit" class="btn btn-danger btn-lg pull-right" value="确认并发布" >	
+	</form>
+</div>

@@ -1,0 +1,85 @@
+	#{extends 'BackHouses/base.html'/}
+#{set 'showHouseInfo'}
+<li class='active'>
+	<a href="" >信息页面</a>
+</li>
+#{/set}
+		<div class="main-content row">
+		
+			<h2>${house.community}${house.decorationSituation}${house.classSituation}&nbsp&nbsp&nbsp
+			</h2>
+<p class="sub col-md-12">
+				<small>发布时间：${house.date}</small>
+		 </p> 
+			<div class="show-detail col-md-7 col-sm-12">
+				<table class="table table-hover table-condensed">
+					<tr>
+						<td class="detail-item col-md-3"><p>价格</p></td>
+						<td>
+							<p><span class="price">${house.price}</span>元
+							<small>${house.way}</small></p>
+						</td>
+					</tr>
+					<tr>
+						<td class="detail-item col-md-3"><p>概况</p></td>
+						<td>
+							<p>
+								<small>${house.bedRoom}室${house.livingRoom}厅${house.bathRoom}卫</small>
+								<small>${house.square}㎡</small>
+								<small>${house.classSituation}</small>
+								<small>${house.decorationSituation}</small>&nbsp&nbsp&nbsp
+								<small>家电配备：${house.equipment}</small>
+							</p>
+						</td>
+					</tr>
+					<tr>
+						<td class="detail-item col-md-3"><p>楼层</p></td>
+						<td>
+							<p>
+								<small>${house.currentFloor}/${house.countFloor}层</small>
+							</p>
+						</td>
+					</tr>
+					<tr>
+						<td class="detail-item col-md-3"><p>区域</p></td>
+						<td>
+							<p>
+								<small>${house.community}</small>
+							</p>
+						</td>
+					</tr>
+					<tr>
+						<td class="detail-item col-md-3"><p>地址</p></td>
+						<td>
+							<p>
+								<small>${house.address}</small>
+							</p>
+						</td>
+					</tr>
+					<tr>
+						<td class="detail-item col-md-3"><p>联系人</p></td>
+						<td>
+							<p>
+								<small>${house.contacts}（${house.indentity}）</small>
+								<small>${house.phone}</small>
+							</p>
+						</td>
+					</tr>
+					<tr>
+						<td class="detail-item col-md-3"><p>概况</p></td>
+						<td>
+							<p>
+								<small>${house.details}</small>
+							</p>
+						</td>
+					</tr>
+				</table>
+				
+			</div>
+		</div>
+  	
+			  	<ul class="col-md-9">
+			  		#{list items:photo,as:'photo2'}
+			  		<li class="thumbnail"><img src="${photo2}" alt="房子内部图" class="img-responsive"  data-src="holder.js/100%x180"></li>
+			  		#{/list}
+			  	</ul>

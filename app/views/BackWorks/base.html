@@ -1,0 +1,14 @@
+#{extends 'manager.html'/}
+#{set WorkManager : 'active' /}
+	<ul class="nav nav-tabs">
+	#{if session.userCategory != "1"}
+              <li #{get 'worksHistory' /}><a href="@{BackWorks.worksHistory}">历史招工信息</a></li>
+    #{/if}
+    #{if session.userCategory == "2"||session.userCategory == "3"}
+              <li #{get 'worksVerify' /}><a href="@{BackWorks.worksVerify}">招工信息审核</a></li>
+              <li #{get 'worksManager' /}><a href="@{BackWorks.worksManager}">招工信息管理</a></li>
+              #{get 'showWorkInfo' /}
+              #{get 'editWorkInfo' /}
+     #{/if}
+    </ul>
+	#{doLayout /}

@@ -1,5 +1,5 @@
-	#{extends 'BackHouses/base.html'/}
-	#{set housesVerify : 'class=active' /}
+	#{extends 'BackWorks/base.html'/}
+	#{set worksVerify : 'class=active' /}
 	<table class="table table-condensed">
    <thead>
       <tr>
@@ -10,16 +10,16 @@
       </tr>
    </thead>
    <tbody>
-      #{list items:houseList,as : 'house'}
+      #{list items:workList,as : 'work'}
       <tr>
-         <td>${house.contacts}(${house.indentity})</td>
-         <td><a href="@{BackHouses.showHouseInfo(house.id)}">
-            ${house.community}${house.address}
+         <td>${work.contacts}(${work.indentity})</td>
+         <td><a href="@{BackWorks.showWorkInfo(work.id)}">
+            ${work.community}${work.address}
          </a></td>
          <td>
-            #{if house.audit==1} 
+            #{if work.audit==1} 
             未审核
-            #{/if} #{elseif house.audit==2}
+            #{/if} #{elseif work.audit==2}
             审核不通过
             #{/elseif}
             #{else}
@@ -27,8 +27,8 @@
             #{/else}
          </td>
          <td>
-            <a href="@{BackHouses.housesVerifySuccess(house.id)}">通过</a>/
-            <a href="@{BackHouses.housesVerifyFailure(house.id)}">不通过</a>
+            <a href="@{BackWorks.worksVerifySuccess(work.id)}">通过</a>/
+            <a href="@{BackWorks.worksVerifyFailure(work.id)}">不通过</a>
          </td>
       </tr>
       #{/list}
