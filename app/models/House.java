@@ -89,21 +89,21 @@ public class House extends GenericModel{
 	}
 	//查询房子信息
 	//关键字 	当前页
-	public static List<House> findHouses(String searchKey, int curPage) {
+	public static List<House> findHouses(String key,String searchKey, int curPage) {
 		if (StringUtils.isEmpty(searchKey)) {
 			return House.all().fetch(curPage, 5);
 		} else {
-			return House.find("address like ?", "%" + searchKey + "%").fetch(
+			return House.find(key+" like ?", "%" + searchKey + "%").fetch(
 					curPage, 5);
 		}
 	}
 	//pagebean
-	public static PageBean getPageBean(String searchKey, int curPage) {
+	public static PageBean getPageBean(String key,String searchKey, int curPage) {
 		long total = 0;
 		if (StringUtils.isEmpty(searchKey))
 			total = House.count();
 		else
-			total = House.find("address like ?", "%" + searchKey + "%").fetch()
+			total = House.find(key+" like ?", "%" + searchKey + "%").fetch()
 					.size();
 		return PageBean.getInstance(curPage, total, 5);
 	}

@@ -18,7 +18,7 @@ public class Houses extends Controller {
 		render();
 	}
 	public static void addHouse(){
-		List<House> baseHouseList=House.findHouses("",1);
+		List<House> baseHouseList=House.findHouses("","",1);
 		render(baseHouseList);
 	}
     /*
@@ -28,7 +28,7 @@ public class Houses extends Controller {
     public static void showHouseInfo(String id){
     	House house=House.findById(id);
     	String[] photo = house.photoUrl.toString().split("\\.\\$\\.");
-    	List<House> baseHouseList=House.findHouses("",1);
+    	List<House> baseHouseList=House.findHouses("","",1);
     	render(house,photo,baseHouseList);
     }
     /*
@@ -38,14 +38,14 @@ public class Houses extends Controller {
     public static void showHouses(){
     	int curPage=Integer.parseInt(params.get("page")==null?"1":params.get("page"));
     	String searchKey=params.get("searchKey")==null?"":params.get("searchKey");
-    	PageBean pageBean=House.getPageBean(searchKey, curPage);
-    	List<House> houseList=House.findHouses(searchKey,curPage);
+    	PageBean pageBean=House.getPageBean("address",searchKey, curPage);
+    	List<House> houseList=House.findHouses("address",searchKey,curPage);
     	String[] firstPhotoUrl=new String[6];
     	 for(int i=0;i<houseList.size();i++){   
     	       String[] a=houseList.get(i).photoUrl.split("\\.\\$\\.");
     	       firstPhotoUrl[i]=a[0];
     	   }
-    	List<House> baseHouseList=House.findHouses("",1);
+    	List<House> baseHouseList=House.findHouses("","",1);
     	render(houseList,pageBean,firstPhotoUrl,baseHouseList);
     }
     /*

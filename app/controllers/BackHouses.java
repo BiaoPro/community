@@ -12,10 +12,9 @@ public class BackHouses extends Controller {
 	 */
 	public static void housesVerify(){
 		int curPage=Integer.parseInt(params.get("page")==null?"1":params.get("page"));
-    	//PageBean pageBean=House.getPageBean(curPage,);
-    	//List<House> houseList=House.findUnVerifHouses(curPage);   	
-    	//render(houseList,pageBean);
-		render();
+    	PageBean pageBean=House.getPageBean("audit","1",curPage);
+    	List<House> houseList=House.findHouses("audit","1",curPage);
+    	render(houseList,pageBean);
 	}
 	public static void housesManager(){
 		render();
