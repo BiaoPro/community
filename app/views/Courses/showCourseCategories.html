@@ -14,7 +14,6 @@
 </style>
 #{/set}
 
-	<div class=" nav-tabs box-div">
 		<h2>课程类目</h2>
 		<table class="table">
 			<thead>
@@ -40,7 +39,7 @@
 						style="color: #000;"> 未显示</a> #{/else} </select>
 					</td>
 					<td><a href="@{CourseCategories.showCourseCategoryInfo(courseCategory.id)}" style="color: #08c;">编辑</a>
-					    /<a href="@{CourseCategories.delCourseCategory(courseCategory.id,type)}" onclick="return confirm('删除类别：${courseCategory.name}?')"style="color: #08c;">删除</a>
+					    /<a href="@{CourseCategories.delCourseCategory(courseCategory.id,type)}" onclick="return confirm('该类目下所有课程也会被删除，是否是否删除类目：${courseCategory.name}?')"style="color: #08c;">删除</a>
 					</td>
 				</tr>
 				#{/list}
@@ -63,8 +62,3 @@
 
 			</tbody>
 		</table>
-	
-	</div>
-
-
-

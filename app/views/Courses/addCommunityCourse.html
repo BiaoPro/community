@@ -10,7 +10,6 @@
 </li>
 #{/set}
 		
-	<div class=" nav-tabs box-div">
 	    
 				<form id="form" action="@{Courses.saveCommunityCourse }" method="post" role="form" enctype="multipart/form-data">
 					<input type="hidden" name="course.categoryId" value='${categoryId}'>
@@ -26,6 +25,10 @@
 						<input class="form-group" type="text" name="course.title" required="required"></p>
 					<p class="form-group">课程图片：<input type="file" name="photo" onchange="checkImgType(this)" required="required"></p>
 					<p class="form-group">
+						<label for="course.info">课程简介：</label>
+						<input class="form-group" type="text" name="course.info" required="required">
+					</p>
+					<p class="form-group">
 						<label for="course.body">内容：</label>
 						<textarea  style="width:70%;height:100%;" class="form-control" name="course.body" required="required"></textarea>
 					</p>
@@ -37,7 +40,6 @@
 				</form>
 				
 	
-		</div>
 		
 	</div>
 

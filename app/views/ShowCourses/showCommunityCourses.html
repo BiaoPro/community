@@ -4,7 +4,7 @@
   <li><a href="@{Application.index}">首页</a></li>
   <li class="active">社区课堂</li>
   #{if category}
-  <li class="active">${category.name }</li>
+  <li class="active">${category?.name }</li>
   #{/if}
 </ol>	
 		
@@ -13,16 +13,20 @@
 	  <!-- Nav tabs -->
 	  <ul class="nav nav-tabs">
 	    #{list items:listCategory,as:'categoryOne'}
-	    <li role="presentation" class="${categoryOne.id==category.id?'active':''}"><a href="/showcourses/showCommunitycourses?categoryId=${categoryOne.id}" >${categoryOne.name}</a></li>
+	    <li role="presentation" class="${categoryOne.id==category?.id?'active':''}"><a href="/showcourses/showCommunitycourses?categoryId=${categoryOne.id}" >${categoryOne?.name}</a></li>
 	    #{/list}
-	    <a class="pull-right" href="@{ShowCourses.ShowCourses}">更多</a>
 	  </ul>
-	  
+	  #{if listCategory.size()==0}
+	  <div  class="alert alert-danger alert-dismissible fade in" role="alert">
+  		<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+  		<strong>暂时木有数据哦~</strong>
+	  </div>
+	  #{/if}
     <div class="col-md-12 course-intro" style="padding-bottom:2em">
-				<h2>社区课堂：${category.name }</h2>
-				<form class="navbar-search" action="@{ShowCourses.showOnlineCourses}" method="get">
+				<h2>社区课堂：${category?.name }</h2>
+				<form class="navbar-search" action="@{ShowCourses.showCommunityCourses}" method="get">
 			     <div class="form-group">
-				 	<input type="hidden" name="categoryId" value="${category.id}" />
+				 	<input type="hidden" name="categoryId" value="${category?.id}" />
 				 	<input type="text" name="searchKey" id="keyword" class="search-query" value="${searchKey}"  placeholder="请输入关键字" />
 				 	<input type="submit" class="btn btn-default" value="搜索" />
 				  </div>	
@@ -32,15 +36,17 @@
 				#{list items:list,as:'course'}
 					<div class="col-sm-12 col-md-4 course-item">
 					  <div class="thumbnail">
-					    <img src="${course.photo}" alt="..."  >
+					    <img src="${course?.photo}" alt="..."  >
 					    <div class="caption">
-					      <h5>&nbsp;<a>(${course_index+(curPage-1)*pageBean.perPage}):${course.title}</a></h5>
-					      <p><span class="glyphicon glyphicon-user"></span><span class="author">&nbsp;${course.getAuthorName()}</span>
-					          <br/><span class="glyphicon glyphicon-time"> </span><span class="time">&nbsp;${course.showPubTime()}发布</span> 
+					      <h5>&nbsp;<a>(${course_index+(curPage-1)*pageBean.perPage}):${course?.title}</a></h5>
+					      <p><span class="glyphicon glyphicon-user"></span><span class="author">&nbsp;${course?.getAuthorName()}</span>
+					          <br/><span class="glyphicon glyphicon-time"> </span><span class="time">&nbsp;${course?.showPubTime()}发布</span> 
+					          <br/><span class="glyphicon glyphicon-time"> </span><span class="time">&nbsp;${course?.getStartTime()}开始</span> 
+					          <br/><span class="glyphicon glyphicon-time"> </span><span class="time">&nbsp;${course?.getEndTime()}结束</span> 
 					      </p>  
 					      <div class="discription">
-					       <p class="blog">简介：${course.info}</p>
-					       <p class="text-center"><a target="_blank" href="${course.url}" class="btn btn-default go">查看课程</a></p>
+					       <p class="blog"></p>
+					       <p class="text-center"><a target="_blank" href="/ShowCourses/showCourseInfo?id=${course?.id }" class="btn btn-default go">查看课程</a></p>
 					     </div>
 					   </div>
 					 </div>
@@ -55,7 +61,7 @@
     <h3>即将开始</h3>
   </div>
   <div class="col-md-10 course-coming">
-    <div class="course-coming-item">
+    <div class="course-end-item">
       <div class="col-md-5">
         <img src="../public/images/teach.jpg" alt="" class="img-responsive">
       </div>
@@ -65,28 +71,21 @@
       </div>
       <div class="clearfix"></div>
     </div>
+    #{list items:courseGet?.getTopCourse(2),as:'course'}
     <div class="course-coming-item">
       <div class="col-md-5">
-        <img src="../public/images/drink.jpg" alt="" class="img-responsive">
+        <img src="${course.photo }" alt="" class="img-responsive">
       </div>
       <div class="col-md-7">
-        <h5 class="lead"><a>做个彬彬有“礼”的绅士</a></h5>
-        <p>礼仪不仅仅是有礼貌懂谦让，是你只知其一不知其精髓！本期，小编送上礼仪小贴士，慢慢学起来吧。</p>
+        <h5 class="lead"><a href="@{ShowCourses.showCourseInfo(course.id)}">${course.title }</a></h5>
+        <p>${course.info }</p>
       </div>
       <div class="clearfix"></div>
     </div>
-    <div class="course-coming-item">
-      <div class="col-md-5">
-        <img src="../public/images/training.jpg" alt="" class="img-responsive">
-      </div>
-      <div class="col-md-7">
-        <h5 class="lead"><a>做个彬彬有“礼”的绅士</a></h5>
-        <p>礼仪不仅仅是有礼貌懂谦让，是你只知其一不知其精髓！本期，小编送上礼仪小贴士，慢慢学起来吧。</p>
-      </div>
-      <div class="clearfix"></div>
-    </div>
+    #{/list}
+    
   </div>
-  <a class="pull-right">更多&nbsp;&gt;&gt;</a>
+  <a class="pull-right" href="@{ShowCourses.showCommunityCourses}">更多&nbsp;&gt;&gt;</a>
 </div>
 
 <div class="col-md-12 course-intro">
@@ -95,29 +94,21 @@
     <h3>已经结束</h3>
   </div>
    <div class="col-md-10 course-end">
-    <div class="course-end-item">
+     #{list items:courseGet?.getEndCourse(2),as:'course'}
+    <div class="course-coming-item">
       <div class="col-md-5">
-        <img src="../public/images/teach.jpg" alt="" class="img-responsive">
+        <img src="${course.photo }" alt="" class="img-responsive">
       </div>
       <div class="col-md-7">
-        <h5 class="lead"><a>做个彬彬有“礼”的绅士</a></h5>
-        <p>礼仪不仅仅是有礼貌懂谦让，是你只知其一不知其精髓！本期，小编送上礼仪小贴士，慢慢学起来吧。</p>
+        <h5 class="lead"><a href="@{ShowCourses.showCourseInfo(course.id)}">${course.title }</a></h5>
+        <p>${course.info }</p>
       </div>
       <div class="clearfix"></div>
     </div>
+    #{/list}
     <div class="course-end-item">
       <div class="col-md-5">
         <img src="../public/images/drink.jpg" alt="" class="img-responsive">
-      </div>
-      <div class="col-md-7">
-        <h5 class="lead"><a>做个彬彬有“礼”的绅士</a></h5>
-        <p>礼仪不仅仅是有礼貌懂谦让，是你只知其一不知其精髓！本期，小编送上礼仪小贴士，慢慢学起来吧。</p>
-      </div>
-      <div class="clearfix"></div>
-    </div>
-    <div class="course-end-item">
-      <div class="col-md-5">
-        <img src="../public/images/training.jpg" alt="" class="img-responsive">
       </div>
       <div class="col-md-7">
         <h5 class="lead"><a>做个彬彬有“礼”的绅士</a></h5>

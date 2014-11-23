@@ -18,6 +18,7 @@ import play.mvc.Controller;
 import play.mvc.With;
 import utils.FileUtils;
 import utils.PageBean;
+import utils.SessionManager;
 import utils.StringUtils;
 import utils.Uploader;
 import utils.enumvalue.Config;
@@ -173,6 +174,7 @@ public class Courses extends Controller {
          course.photo = "/public/images/no_pic.jpg";
        
      }
+     
         course.save();
         showOnlineCourses(course.categoryId,"",1,5);
    }
@@ -220,19 +222,18 @@ public class Courses extends Controller {
    }
 
    public static void changeOnlineAudit(String id,String categoryId,int audit){
-     CourseOnline.deleteById(id);
      CourseOnline course = CourseOnline.findById(id);
      course.audit = audit;
+     course.auditId = SessionManager.getLoginedId(session);
      course.save();
      showOnlineCourses(categoryId,"",1,5);
      
    }
    
    public static void changeCommunityAudit(String id,String categoryId,int audit){
-     CourseOnline.deleteById(id);
-     
      Course course = Course.findById(id);
      course.audit = audit;
+     course.auditId = SessionManager.getLoginedId(session);
      course.save();
      showCommunityCourses(categoryId,"",1,5);
      

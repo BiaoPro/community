@@ -20,7 +20,7 @@
       </div>
       <div class="col-md-4 col-xs-12">
         <aside class="aside">
-          <form method="get" action="@{ShowCourses.showOnlineCourses}"  role="form">
+          <form method="get" action="@{ShowCourses.showCommunityCourses}"  role="form">
             <input type="hidden" name="categoryId" value="all" >
             <input type="text" name="searchKey" class="form-control" >
             <button type="submit" class="btn btn-default">搜索</button>
@@ -30,7 +30,7 @@
             <ul class="aside-styled-ul">
             #{list items:courseGet?.getTopCourse(4),as:'course'}
               <li>
-                <a href="@{ShowCourses.showCourseInfo(course.id)}" target="_blank">${course.title }</a>
+                <a href="${course.url }">${course.title }</a>
               </li>
               #{/list}
             </ul>
