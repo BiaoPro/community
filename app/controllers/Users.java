@@ -27,7 +27,7 @@ public class Users extends Controller {
    * 跳转基本页面，用于测试样例
    */
     public static void index(){
-      showUserInfo();
+      showUserInfo("");
     }
 
 	
@@ -66,13 +66,7 @@ public class Users extends Controller {
       
       
         user.save();
-        Users.showUserInfo();
-	}
-	
-	
-	public static void showUsers() {
-	  showUsers("",1,5);
-	  
+        Users.showUserInfo("");
 	}
 	
 	/**
@@ -121,7 +115,7 @@ public class Users extends Controller {
        User vo = User.findById(userId);
        vo.password = "1234";
        vo.save();
-       showUsers();
+       showUsers("",1,5);
     }
     
     /**
@@ -129,10 +123,15 @@ public class Users extends Controller {
      * @param userId
      */
     public static void changeUserType(String id, Integer type) {
-      User vo = User.findById(id);
-      vo.type = type;
-      vo.save();
-      showUsers();
+      if(User.count("select count(*) from User where type=3")<=1){
+          flash.error("请保留至少一个管理员");
+      }
+      else{
+          User vo = User.findById(id);
+          vo.type = type;
+          vo.save();
+      }
+      showUsers("",1,5);
     }
     
     
@@ -143,7 +142,7 @@ public class Users extends Controller {
 	 */
 	public static void deleteUser(String userId) {
 		User.delete("id", userId);
-		showUsers();
+		 showUsers("",1,5);
 	}
 	
 	/*
@@ -156,8 +155,11 @@ public class Users extends Controller {
 	}
 	
 	
-	public static void showUserInfo() {
-      User user = SessionManager.getLoginedUser(session);
+	public static void showUserInfo(String id) {
+	  User user;
+	  if(id==null||id.equals(""))
+        user = SessionManager.getLoginedUser(session);
+      else  user = User.findById(id);
       render(user);
   }
 
