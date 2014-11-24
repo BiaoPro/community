@@ -5,6 +5,7 @@ $(document).ready(function(){
 	hoverOpen();
 	// 回到顶部
 	$(window).scroll(function(event) {
+
 		if($(".main-container").offset() != null){
 			var showHight = $(".main-container").offset().top;
 

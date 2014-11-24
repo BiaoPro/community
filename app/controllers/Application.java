@@ -1,13 +1,15 @@
 package controllers;
 
-import play.*;
+import java.util.List;
+
+import models.BackMessage;
+import models.News;
+import models.User;
 import play.libs.Codec;
-import play.mvc.*;
+import play.mvc.Controller;
+import utils.NewsBean;
+import utils.PageBeanFactory;
 import utils.SessionManager;
-
-import java.util.*;
-
-import models.*;
 
 public class Application extends Controller {
 
@@ -20,9 +22,16 @@ public class Application extends Controller {
       if(Course.count()>0)
        courseGet = (Course) Course.findAll().get(0);
       else courseGet=null;
-      
 
-        render(user,courseGet);
+      //新闻文章
+      List newsList = News.getIndexNews(new PageBeanFactory(1,7),0);
+      NewsBean firNews = (NewsBean)newsList.get(0);
+      String id = firNews.getNewsId();
+      News impNews = News.findById(id);
+
+      
+        render(user,newsList,impNews,courseGet);
+
     }
     
     

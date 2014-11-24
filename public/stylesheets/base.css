@@ -487,3 +487,10 @@ dd label input{
 				margin-bottom: 10px;
 			}
 	}
+	/*
+	@author:kingda
+	@description:新闻展示布局发现溢出，添加样式
+	*/
+	.shownews-content{
+	  max-width:960px; 
+	}

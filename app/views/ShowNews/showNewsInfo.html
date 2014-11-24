@@ -6,10 +6,11 @@
 	  <li><a href="@{ShowNews.news}">社区新闻</a></li>
 	  <li class="active">新闻</li>
 	</ol>
-	<div class="main-content">
+	<div class="main-content shownews-content">
 			<h2>
 				${news.newsTitle}
 			</h2>
-			<p class="sub"><small>作者:${authorName}</small><small>审稿人：${auditName}</small><small >${news.newsCreateDate}</small></p>
+			
+			<p class="sub"><small>作者:${authorName}</small>&nbsp;<small>审稿人：${auditName}</small>&nbsp;<small>${news.newsCreateDate}</small></p>
 			${news.newsContent.raw()}
 	</div>

@@ -4,6 +4,7 @@
  * @location static/back_news/src/main.js
  */
 define(function(require){
+	require("./dropdown.js");
 	var editor = require("./kindEditor");
 	var editorinstance = new editor();
 	//初始化kindEditor
