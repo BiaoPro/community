@@ -18,18 +18,20 @@ backgound:white;
 		        #{if session.userCategory != "0"}
 				<!-- 只有文章管理员和超级用户有权 -->
 					<a href="@{Users.showUserInfo}" class="list-group-item #{get 'UserManager' /}" >用户管理</a>
-					<a href="@{Backnews.newsmanager}" class="list-group-item #{get 'ArticleManager' /}" >文章管理</a>
-
-					<a href="@{Courses.showCourseCategories}" class="list-group-item #{get 'CourseManager' /}" >课堂管理</a>
+					<a href="@{Backnews.userNewsManager }" class="list-group-item #{get 'ArticleManager' /}" >文章管理</a>
 					<a href="@{BackHouses.housesHistory}" class="list-group-item #{get 'HouseManager' /}" >租房管理</a>
 					<a href="@{BackWorks.WorksHistory}" class="list-group-item #{get 'WorkManager' /}" >招工管理</a>
 				#{/if}
-				#{if session.userCategory == "2"||session.userCategory == "3"}
-				<!-- 系统设置，只有社区管理员以上有权限 -->
+				#{if session.userCategory == "2" || session.userCategory == "3"}
+				<a href="@{Courses.showCourseCategories}" class="list-group-item #{get 'CourseManager' /}" >课堂管理</a>
+				<a href="@{BackMessages.showMessages }" class="list-group-item #{get 'MessageManager' /}" >信息反馈</a>
+				#{/if}
+				#{if session.userCategory == "3"}
+				<!-- 系统设置，只有管理员才有权限 -->
 					<a href="@{SystemSettings.index}" class="list-group-item #{get 'SettingManager' /}" >版权设置</a>
 					<a href="@{Links.showLinkCategories}" class="list-group-item #{get 'LinkManager' /}" >链接管理</a>
-					<a href="@{BackMessages.showMessages }" class="list-group-item #{get 'MessageManager' /}" >信息反馈</a>
 				#{/if}
+				
 			</div>
 			<div class="col-sm-10">
 				     #{doLayout /}
@@ -38,5 +40,15 @@ backgound:white;
 			</div>
 		</div>
 
+#{if flash.backMessage }
+<script type="text/javascript"">
+alert('${flash.backMessage }');
+</script>
+#{/if}
+#{if flash.error }
+<script type="text/javascript"">
+alert('${flash.error }');
+</script>
+#{/if}
 
 <script type="text/javascript" src="/public/javascripts/manage.js"></script>

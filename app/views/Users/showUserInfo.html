@@ -8,9 +8,19 @@
 		        <input type="hidden" name="user.type" value="${user.type }">
 		        <input type="hidden" name="user.status" value="${user.status }">
 	    <div class="form-group">
-		    <label class="col-sm-2 control-label" for="user。rname">真实姓名</label>
+		    <label class="col-sm-2 control-label" for="user。rname">用户名</label>
 		    <div class="col-sm-5">
 		        <label type="text" class="form-control" name="user.account" readonly="readonly">${user.account }</label>
+		    </div>
+		</div>
+	    <div class="form-group">
+		    <label class="col-sm-2 control-label" for="user。rname">用户身份</label>
+		    <div class="col-sm-5">
+		        <label type="text" class="form-control" readonly="readonly">
+								${user.type==1?'普通用户':'' } 
+						        ${user.type==2?'社工':'' }
+						        ${user.type==3?'管理员':'' }
+                </label>
 		    </div>
 		</div>
 	    <div class="form-group">

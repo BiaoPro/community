@@ -97,7 +97,7 @@
             </tr>
           </thread>
           <tbody>
-          #{list item:courseGet?.getEndCourse(5),as:'course'}
+          #{list items:courseGet.getEndCourse(5),as:'course'}
 	      <tr>
 	        <td>${course.place }华农</td>
 	        <td><a target="_blank" href="/showCourses/showCourseInfo?id=${course.id }">${course.title }</a></td>
@@ -121,7 +121,7 @@
         </tr>
       </thread>
       <tbody>
-      #{list item:courseGet?.getInCourse(5),as:'course'}
+      #{list items:courseGet?.getInCourse(5),as:'course'}
       <tr>
         <td>${course.place }华农</td>
         <td><a target="_blank" href="/showCourses/showCourseInfo?id=${course.id }">${course.title }</a></td>
@@ -144,7 +144,7 @@
     </tr>
   </thread>
   <tbody>
-             #{list item:courseGet?.getStartCourse(5),as:'course'}
+             #{list items:courseGet?.getStartCourse(5),as:'course'}
 	      <tr>
 	        <td>${course.place }华农</td>
 	        <td><a target="_blank" href="/showCourses/showCourseInfo?id=${course.id }">${course.title }</a></td>

@@ -61,17 +61,7 @@
     <h3>即将开始</h3>
   </div>
   <div class="col-md-10 course-coming">
-    <div class="course-end-item">
-      <div class="col-md-5">
-        <img src="../public/images/teach.jpg" alt="" class="img-responsive">
-      </div>
-      <div class="col-md-7">
-        <h5 class="lead"><a>做个彬彬有“礼”的绅士</a></h5>
-        <p>礼仪不仅仅是有礼貌懂谦让，是你只知其一不知其精髓！本期，小编送上礼仪小贴士，慢慢学起来吧。</p>
-      </div>
-      <div class="clearfix"></div>
-    </div>
-    #{list items:courseGet?.getTopCourse(2),as:'course'}
+    #{list items:courseGet?.getStartCourse(3),as:'course'}
     <div class="course-coming-item">
       <div class="col-md-5">
         <img src="${course.photo }" alt="" class="img-responsive">
@@ -94,7 +84,7 @@
     <h3>已经结束</h3>
   </div>
    <div class="col-md-10 course-end">
-     #{list items:courseGet?.getEndCourse(2),as:'course'}
+     #{list items:courseGet?.getEndCourse(3),as:'course'}
     <div class="course-coming-item">
       <div class="col-md-5">
         <img src="${course.photo }" alt="" class="img-responsive">
@@ -106,16 +96,6 @@
       <div class="clearfix"></div>
     </div>
     #{/list}
-    <div class="course-end-item">
-      <div class="col-md-5">
-        <img src="../public/images/drink.jpg" alt="" class="img-responsive">
-      </div>
-      <div class="col-md-7">
-        <h5 class="lead"><a>做个彬彬有“礼”的绅士</a></h5>
-        <p>礼仪不仅仅是有礼貌懂谦让，是你只知其一不知其精髓！本期，小编送上礼仪小贴士，慢慢学起来吧。</p>
-      </div>
-      <div class="clearfix"></div>
-    </div>
   </div>
   <a class="pull-right">更多&nbsp;&gt;&gt;</a>
   </div>

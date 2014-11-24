@@ -123,13 +123,17 @@ public class Users extends Controller {
      * @param userId
      */
     public static void changeUserType(String id, Integer type) {
-      if(User.count("select count(*) from User where type=3")<=1){
-          flash.error("请保留至少一个管理员");
+      if(User.count("select count(*) from User where type=3")>1){
+        User vo = User.findById(id);
+        vo.type = type;
+        vo.save();
       }
-      else{
-          User vo = User.findById(id);
-          vo.type = type;
-          vo.save();
+      else if(type!=3){
+        flash.error("请保留至少一个管理员");
+      }else{
+        User vo = User.findById(id);
+        vo.type = type;
+        vo.save();
       }
       showUsers("",1,5);
     }
@@ -141,6 +145,9 @@ public class Users extends Controller {
 	 * @param userId
 	 */
 	public static void deleteUser(String userId) {
+	    if(SessionManager.getLoginedId(session).equals(userId)){
+	      flash.error("不能把自己删除了哦~");
+	    }else
 		User.delete("id", userId);
 		 showUsers("",1,5);
 	}
