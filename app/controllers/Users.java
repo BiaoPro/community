@@ -5,6 +5,7 @@ import play.*;
 import play.libs.Codec;
 import play.mvc.*;
 import utils.FileUtils;
+import utils.PageBean;
 import utils.SessionManager;
 import utils.StringUtils;
 import utils.Uploader;
@@ -68,20 +69,74 @@ public class Users extends Controller {
         Users.showUserInfo();
 	}
 	
-	/*
-	 * 显示所有用户（管理员用）
-	 */
+	
 	public static void showUsers() {
-//		if(SessionManager.getLoginedUser(session) != null) {
-			User user = SessionManager.getLoginedUser(session);
-//			if(user != null && user.isAdmin()) {
-				// 是管理员
-				List<User> userList = User.findAll();
-				render(userList,user);
-//			}
-//		}
+	  showUsers("",1,5);
+	  
 	}
 	
+	/**
+     * 根据关键字和页数显示用户列表 关键字或搜索范围为null时显示所有用户 默认每页显示5个用户
+     * 
+     * @param searchScope
+     * @param searchKey
+     * @param curPage
+     */
+    public static void showUsers(String searchKey,Integer curPage, Integer perPage) {
+      
+      PageBean pageBean = null;
+      List<User> list = null;   
+      long total = 0;
+      if(curPage == null ) curPage = 1;
+      if(perPage == null)  perPage = 5;
+
+      if (StringUtils.isEmpty(searchKey)) {
+          // 非搜索模式
+          total = User.count();
+          list = User.all()
+                     .fetch(curPage, perPage);
+          
+      } else {
+          // 搜索模式
+              total = User
+                      .count("select count(*) from User where account like ? or rname like ?","%" + searchKey + "%","%" + searchKey + "%");
+              list = User
+                      .find("from User where account like ? or rname like ?","%" + searchKey + "%","%" + searchKey + "%")
+                      .fetch(curPage,perPage);
+      }
+      
+      pageBean = PageBean.getInstance(curPage, total, perPage);
+      
+      render(list, curPage, perPage, pageBean);
+
+
+    }
+	
+    
+    /**
+     * 重置用户密码为1234 
+     * @param userId
+     */
+    public static void resetPassword(String userId) {
+       User vo = User.findById(userId);
+       vo.password = "1234";
+       vo.save();
+       showUsers();
+    }
+    
+    /**
+     * 修改用户类型 
+     * @param userId
+     */
+    public static void changeUserType(String id, Integer type) {
+      User vo = User.findById(id);
+      vo.type = type;
+      vo.save();
+      showUsers();
+    }
+    
+    
+    
 	/*
 	 * 删除用户 
 	 * @param userId

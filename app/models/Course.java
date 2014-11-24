@@ -229,7 +229,7 @@ public class Course extends GenericModel{
   }
   
   public List<Course> getInCourse(int size){
-    return Course.find("startTime>=? and ?<=sysdate ORDER BY pubTime DESC",getSystemTime(),getSystemTime()).fetch(size);
+    return Course.find("startTime<=? and endTime>=? ORDER BY pubTime DESC",getSystemTime(),getSystemTime()).fetch(size);
   }
   
   public List<Course> getEndCourse(int size){

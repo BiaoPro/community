@@ -1,0 +1,53 @@
+#{extends 'Users/base.html' /}
+#{set showUsers : 'class=active' /}
+
+
+	<div class=" nav-tabs box-div">
+		<h4>用户列表</h4>
+		<hr>
+	   <form class="navbar-search" action="@{Users.showUsers}" method="get">
+	     <div class="form-group">
+		 	<input type="text" name="searchKey" id="keyword" class="search-query" value="${searchKey}"  placeholder="请输入关键字" />
+		 	<input type="submit" class="btn btn-default" value="搜索" />
+		  </div>	
+		  #{page pageBean:pageBean,params:params/}
+	   </form>
+	  	<hr>
+		<table class="table">
+			<thead>
+			    <th>序号</th>
+				<th>用户名</th>
+				<th>用户姓名</th>
+				<th>权限</th>
+				<th>操作</th>
+			</thead>
+			<tbody>
+				#{list items:list,as:'user'}
+				<tr>
+					<td>${user_index+(curPage-1)*pageBean.perPage}:</td>
+					<td>${user.account}</td>
+					<td>${user.rname}  </td>
+					<td>
+						<form action="@{Users.changeUserType }" method="get">
+							<input type="hidden" name="id" value="${user.id }" />
+							<select class="span2" name="type" onchange="submit()">
+								<option value="1" ${user.type==1?'selected':'' } >普通用户</option>
+						        <option value="2" ${user.type==2?'selected':'' } >社工</option>
+						        <option value="3" ${user.type==3?'selected':'' } >管理员</option>
+							</select>
+						</form>
+					</td>
+					<td><a
+						href="@{Users.resetPassword(user.id)}" onclick="return confirm('重置用户：${user.account}?重置后密码为1234.')"
+						style="color: #08c;">重置</a>/
+						<a href="@{Users.deleteUser(user.id)}" onclick="return confirm('删除用户：${user.account}?')"
+						style="color: #08c;">删除</a></td>
+				</tr>
+				#{/list}
+
+			</tbody>
+		</table>
+	
+	</div>	
+
+

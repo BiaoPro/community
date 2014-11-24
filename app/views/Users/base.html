@@ -4,9 +4,10 @@
 		<li #{get 'showUserInfo' /}>
 			<a href="@{Users.showUserInfo}" >个人信息</a>
 		</li>
-		 #{get 'showLinkCategoryInfo' /}
-		
+		 #{if session.userCategory == "3"}
+		<li #{get 'showUsers' /}>
+			<a href="@{Users.showUsers}" >用户列表</a>
+		</li>
+		#{/if }
 	</ul>
-	<div class="nav-tabs box-div">
 	#{doLayout /}
-	</div>
