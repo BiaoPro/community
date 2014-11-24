@@ -1,28 +1,67 @@
 ﻿#{extends 'Works/base.html' /}
 #{set title:'Works' /}
-#{set "moreSubpageStyles"}
-<style type="text/css">
-	dt{
-		padding-right: 20px;
-	}
-	.panel-body form{
-		display: inline-block;
-		width:200px;
-		margin-left:5px;		
-	}
-	.form-control{
-		display: inline-block;
-		width:70%;
-	}
-	.moreitem-box{
-		margin:0px 0px 10px 10px;
-	}
-	.table > tbody > tr > td,.table>tbody>tr>td a{
-		font-size: 12px;
-	}
-</style>
-#{/set}
+	<ol class="breadcrumb">
+		<li><a href="#">首页</a></li>
+		<li class="active">社区招工</li>
+	</ol>
 		<div class="panel panel-default">
+				  <div class="panel-body">
+		   		<dl>
+		   		<!-- 	<dt>筛选条件</dt> -->
+		   			<dd>
+		   			<div class="moreitem-box">
+			   				<div class="moreitem-btn"><a name="duration">不限</a>
+			   				</div>
+				   			<ul class="moreitem" >
+				   				<li><a>不限</a></li>
+				   				<li><a>短期</a></li>
+				   				<li><a>长期</a></li>
+				   			</ul>
+			   			</div>
+						<div class="moreitem-box">
+			   				<div class="moreitem-btn"><a name="salary">薪资</a>
+			   				</div>
+				   			<ul class="moreitem" style="width:120px;">
+				   				<li><a>不限</a></li>
+				   				<li><a>1000-2000元</a></li>
+				   				<li><a>2000-3000元</a></li>
+				   				<li><a>3000-5000元</a></li>
+				   				<li><a>5000-8000元</a></li>
+				   				<li><a>8000元以上</a></li>
+				   			</ul>
+			   			</div>
+			   			<div class="moreitem-box">
+			   			<div class="moreitem-btn"><a name="education">学历</a>
+			   				</div>
+				   			<ul class="moreitem" >
+				   				<li><a>不限</a></li>
+				   				<li><a>高中以下</a></li>
+				   				<li><a>高中</a></li>
+				   				<li><a>技校</a></li>
+				   				<li><a>中专</a></li>
+				   				<li><a>大专</a></li>
+				   				<li><a>本科</a></li>
+				   				<li><a >本科以上</a></li>
+				   			</ul>
+			   			</div>
+			   			<div class="moreitem-box" >
+			   			<div class="moreitem-btn"><a name="time">发布时间</a>
+			   				</div>
+				   			<ul class="moreitem" >
+				   				<li><a>不限</a></li>
+				   				<li><a>一天以内</a></li>
+				   				<li><a>三天以内</a></li>
+				   				<li><a>五天以内</a></li>
+				   				<li><a>七天以内</a></li>
+				   				<li><a>十五天以内</a></li>
+				   				<li><a>一个月以内</a></li>
+				   			</ul>
+			   			</div>
+							<input type="text" class="form-control" name="keyword" style="width:100px"/>
+							<button type="submit" class="btn btn-default" id="submit">搜索</button>
+			   		</dd>
+			   	</dl>
+			</div>
 		</div>
 		<div class="main-content">
 			<table class="table table-hover">

@@ -1,5 +1,5 @@
-	#{extends 'BackHouses/base.html'/}
-	#{set housesManager : 'class=active' /}
+	#{extends 'BackWorks/base.html'/}
+	#{set worksManager : 'class=active' /}
 	<table class="table table-condensed">
    <thead>
       <tr>
@@ -10,27 +10,27 @@
       </tr>
    </thead>
    <tbody>
-      #{list items:houseList,as : 'house'}
+      #{list items:workList,as : 'work'}
       <tr>  
-         <td><a href="@{BackHouses.showHouseInfo(house.id)}">
-            ${house.community}${house.address}
+         <td><a href="@{BackWorks.showWorkInfo(work.id)}">
+            ${work.community}${work.address}
          </a></td>
          <td>
-            #{if house.status==0} 
-            <a href="@{BackHouses.changeStatus(house.id,1)}" 	style="color: #000;">
+            #{if work.status==0} 
+            <a href="@{BackWorks.changeStatus(work.id,1)}" 	style="color: #000;">
            	不显示</a>
             #{/if} 
             #{else}
-             <a href="@{BackHouses.changeStatus(house.id,0)}">
+             <a href="@{BackWorks.changeStatus(work.id,0)}">
           	显示
           	</a>
             #{/else}
          </td>
          
          <td>
-            #{if house.audit==1} 
+            #{if work.audit==1} 
             未审核
-            #{/if} #{elseif house.audit==2}
+            #{/if} #{elseif work.audit==2}
            不通过
             #{/elseif}
             #{else}
@@ -38,8 +38,8 @@
             #{/else}
          </td>
          <td>
-            <a class="btn btn"href="@{BackHouses.editHouseInfo(house.id)}">编辑</a>
-            <a class="btn btn"href="@{BackHouses.housesDelete(house.id)}">删除</a>
+            <a class="btn btn"href="@{BackWorks.editWorkInfo(work.id)}">编辑</a>
+            <a class="btn btn"href="@{BackWorks.worksDelete(work.id)}">删除</a>
          </td>
       </tr>
       #{/list}

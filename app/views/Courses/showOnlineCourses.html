@@ -5,19 +5,18 @@
 </li>
 #{/set}
 		
-	<div class=" nav-tabs box-div">
 	    <h2>类别名称：</h2>
 	    <hr>
 		<form class="form-inline"  action="@{CourseCategories.changeCategoryName }">
-            <input type='hidden' name='id' value='${category.id}'>
+            <input type='hidden' name='id' value='${category?.id}'>
             <div class="form-group">
 	    				<label for="name"></label>
-	    				<input type="text" name="name" value='${category.name}' class="form-control" placeholder="输入新类别名称：" required="required">
+	    				<input type="text" name="name" value='${category?.name}' class="form-control" placeholder="输入新类别名称：" required="required">
 	  		</div>
             <div class="form-group">
 		   				<button class='btn btn-success' type='submit' >保存</button>
-		   				<a class='btn btn-primary'  href='@{CourseCategories.showCourseCategories(1) }' >返回</a>
-		   				<a class='btn btn-primary'  href='@{Courses.addOnlineCourse(category.id) }' >发布在线课程</a>
+		   				<a class='btn btn-primary'  href='@{CourseCategories?.showCourseCategories(1) }' >返回</a>
+		   				<a class='btn btn-primary'  href='@{Courses?.addOnlineCourse(category.id) }' >发布在线课程</a>
 		   </div>
 		</form>
 	    <hr>
@@ -26,7 +25,7 @@
 	 	<hr>
 	   <form class="navbar-search" action="@{Courses.showOnlineCourses}" method="get">
 	     <div class="form-group">
-		 	<input type="hidden" name="categoryId" value="${category.id}" />
+		 	<input type="hidden" name="categoryId" value="${category?.id}" />
 		 	<input type="text" name="searchKey" id="keyword" class="search-query" value="${searchKey}"  placeholder="请输入关键字" />
 		 	<input type="submit" class="btn btn-default" value="搜索" />
 		  </div>	
@@ -46,9 +45,12 @@
 					<p>发布者：${course.getAuthorName()}</p>
 					<p>发布时间：${course.showPubTime()}</p>
 					<p>操作：
-					    <!-- 
-						<a href="@{Courses.delOnlineCourse(course.id,category.id)}" onclick="return confirm('删除视频链接：${course.title}?')" class="btn btn-success">审核</a>
-					    -->
+					 #{if course.audit>=1 }   
+						<a href="@{Courses.changeOnlineAudit(course.id,category.id,0)}"  class="btn btn-success">已审核</a>
+					 #{/if}
+					 #{else}
+					    <a href="@{Courses.changeOnlineAudit(course.id,category.id,1)}"  class="btn btn-primary">未审核</a>
+					 #{/else}
 					    <a href="@{Courses.delOnlineCourse(course.id,category.id)}" onclick="return confirm('删除视频链接：${course.title}?')" class="btn btn-danger">删除</a>
 					</p>
 				</div>	
@@ -56,4 +58,3 @@
 				#{/list}
 				
 				#{page pageBean:pageBean,params:params/}
-	</div>

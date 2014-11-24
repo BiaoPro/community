@@ -5,16 +5,16 @@ $(document).ready(function(){
 	hoverOpen();
 	// 回到顶部
 	$(window).scroll(function(event) {
-		var showHightOffset = $(".main-container").offset();
-		if(showHightOffset==null){
-			return;
-		}
-		var showHight = showHightOffset.top;
-		var scrollTop = $(window).scrollTop(); 
-		if(scrollTop > showHight) {
-			$(".scrollTop").fadeIn(200);
-		}else {
-			$(".scrollTop").fadeOut(200);
+
+		if($(".main-container").offset() != null){
+			var showHight = $(".main-container").offset().top;
+
+			var scrollTop = $(window).scrollTop(); 
+			if(scrollTop > showHight) {
+				$(".scrollTop").fadeIn(200);
+			}else {
+				$(".scrollTop").fadeOut(200);
+			}
 		}
 	});
 

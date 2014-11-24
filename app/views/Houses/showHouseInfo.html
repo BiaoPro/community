@@ -72,14 +72,19 @@
 	}
 </style>
 #{/set}
+<!-- 路径导航 -->
+<ol class="breadcrumb">
+	<li><a href="#">首页</a></li>
+	<li ><a href="">社区租房</a></li>
+	<li class="active">租房详细</li>
+</ol>
 		<div class="main-content row">
+
 			<div class="col-md-12">
-		<h2>南洲花园两房 低楼层 有匙即看</h2>
-		<p class="sub col-md-12">
+			<h2>${house.community}${house.decorationSituation}${house.classSituation}&nbsp&nbsp&nbsp有匙即看</h2>
+			<p class="sub col-md-12">
 				<small>发布时间：${house.date}</small>
 		 </p> 
-			<h2>${house.community}${house.decorationSituation}${house.classSituation}&nbsp&nbsp&nbsp有匙即看</h2>
-		
 			<div class="show-box col-md-5 col-sm-12">
 			<div class="show-img">
 				<a href="#" class="thumbnail"><img src="${photo[0]}"   alt="房子内部图"></a>
@@ -89,7 +94,7 @@
 				<a id="next"></a>
 				<div class="img-small">
 
-					<ul class="list-inline">
+					<ul>
 						#{list items:photo,as:'photo1'}
 						<li><img src="${photo1}"  alt="房子内部图"></li>
 						
@@ -236,4 +241,4 @@
 				</div>
 			</div>
 		</div>
-	</div></div>
+	</div>

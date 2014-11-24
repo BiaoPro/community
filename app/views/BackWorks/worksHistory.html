@@ -1,0 +1,49 @@
+	#{extends 'BackWorks/base.html'/}
+	#{set worksHistory : 'class=active' /}
+<table class="table table-condensed">
+   <thead>
+      <tr>
+         <th>标题</th>
+         <th>显示状态</th>
+         <th>审核状态</th>
+         <th>操作</th>
+      </tr>
+   </thead>
+   <tbody>
+      #{list items:workList,as : 'work'}
+      <tr>  
+         <td><a href="@{BackWorks.showWorkInfo(work.id)}">
+            ${work.title}
+         </a></td>
+         <td>
+            #{if work.status==0} 
+            <a href="@{BackWorks.changeHistoryStatus(work.id,1)}" 	style="color: #000;">
+           	不显示</a>
+            #{/if} 
+            #{else}
+             <a href="@{BackWorks.changeHistoryStatus(work.id,0)}">
+          	显示
+          	</a>
+            #{/else}
+         </td>
+         
+         <td>
+            #{if work.audit==1} 
+            未审核
+            #{/if} #{elseif work.audit==2}
+           不通过
+            #{/elseif}
+            #{else}
+            通过
+            #{/else}
+         </td>
+         <td>
+            <a class="btn btn"href="@{BackWorks.editWorkInfo(work.id)}">编辑</a>
+            <a class="btn btn"href="@{BackWorks.worksHistoryDelete(work.id)}">删除</a>
+         </td>
+      </tr>
+      #{/list}
+   </tbody>
+</table>
+<!-- 分页页面链接 -->
+	#{page pageBean:pageBean,params:params/}

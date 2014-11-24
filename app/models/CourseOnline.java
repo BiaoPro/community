@@ -46,6 +46,9 @@ public class CourseOnline  extends GenericModel{
   public String authorId;//发布用户id
   
   
+  @Column(name="audit_id")
+  public String auditId;//审核人id
+  
   @Column(name="audit")
   public int audit;//0代表待审核，-1为审核不通过，1为审核通过,2为后台插入
   
@@ -64,7 +67,6 @@ public class CourseOnline  extends GenericModel{
     this.pubTime = getSystemTime();
   }
   
-  
   /**
    * 获取课堂类别
    * @return
@@ -74,12 +76,32 @@ public class CourseOnline  extends GenericModel{
   }
   
   /**
+   * 获取课堂类别名称
+   * @return
+   */
+  public String getCategoryName() {
+      return getCourseCategory()==null?"":getCourseCategory().name;
+  }
+  
+  /**
    * 获取作者名称
    * @return
    */
   public String getAuthorName() {
     
      User vo = User.find("id", this.authorId).first();
+     if(vo == null) return "";
+     else return vo.rname;
+     
+  }
+  
+  /**
+   * 获取审核人名称
+   * @return
+   */
+  public String getAuditName() {
+    
+     User vo = User.find("id", this.auditId).first();
      if(vo == null) return "";
      else return vo.rname;
      
@@ -166,4 +188,10 @@ public class CourseOnline  extends GenericModel{
       return DateUtils.getDateTimeStr(pubTime);
   }
 
+  
+  
+  public List<CourseOnline> getTopCourse(int size){
+      return CourseOnline.find("").fetch(size);
+  }
+  
 }

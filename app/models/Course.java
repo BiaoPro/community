@@ -32,6 +32,9 @@ public class Course extends GenericModel{
   @Column(name="title")
   public String title;//课程标题
   
+  @Column(name="info")
+  public String info;//课程标题
+  
   @Column(name="photo")
   public String photo;//课程标题
   
@@ -44,10 +47,10 @@ public class Course extends GenericModel{
   public String phoneNumber;//联系人电话
   
   @Column(name="start_time")
-  private String startTime;//开始时间
+  private long startTime;//开始时间
   
   @Column(name="end_time")
-  private String endTime;//结束时间
+  private long endTime;//结束时间
   
   @Column(name="pub_time")
   public long pubTime;//结束时间
@@ -60,6 +63,8 @@ public class Course extends GenericModel{
   @Column(name="author_id")
   public String authorId;//发布用户id
   
+  @Column(name="audit_id")
+  public String auditId;//审核人id
   
   @Column(name="audit")
   public int audit;//0代表待审核，-1为审核不通过，1为审核通过,2为后台插入
@@ -83,7 +88,13 @@ public class Course extends GenericModel{
   public CourseCategory getCourseCategory() {
       return CourseCategory.find("id", this.categoryId).first();
   }
-  
+  /**
+   * 获取课堂类别名称
+   * @return
+   */
+  public String getCategoryName() {
+      return getCourseCategory()==null?"":getCourseCategory().name;
+  }
   /**
    * 获取作者名称
    * @return
@@ -91,7 +102,18 @@ public class Course extends GenericModel{
   public String getAuthorName() {
     
      User vo = User.find("id", this.authorId).first();
-     if(vo == null) return "";
+     if(vo == null) return "无";
+     else return vo.rname;
+     
+  }
+  /**
+   * 获取审核人名称
+   * @return
+   */
+  public String getAuditName() {
+    
+     User vo = User.find("id", this.auditId).first();
+     if(vo == null) return "无";
      else return vo.rname;
      
   }
@@ -132,7 +154,7 @@ public class Course extends GenericModel{
       if (StringUtils.isEmpty(searchKey))
           total = Course.count();
       else
-          total = Course.find("link_name like ?", "%" + searchKey + "%").fetch()
+          total = Course.find("name like ?", "%" + searchKey + "%").fetch()
                   .size();
       return PageBean.getInstance(curPage, total, 5);
   }
@@ -175,7 +197,7 @@ public class Course extends GenericModel{
    * @return long
    */
   private String showPubTime() {
-      return DateUtils.getDateTimeStr(pubTime);
+      return DateUtils.getDateStr(pubTime);
   }
   private String showStartTime() {
       return getStartTime();
@@ -183,23 +205,39 @@ public class Course extends GenericModel{
   private String showEndTime() {
     return getEndTime();
   }
-
   public String getStartTime() {
-    return startTime;
+    return DateUtils.getDateTimeStr(startTime);
   }
-
   public void setStartTime(String startTime) {
-    this.startTime = startTime.replace("T", " ");
+    this.startTime = DateUtils.getTimeByDateStr(startTime.replace("T", " "));
   }
-
   public String getEndTime() {
-    return endTime;
+    return DateUtils.getDateTimeStr(endTime);
   }
-
   public void setEndTime(String endTime) {
-    this.endTime = endTime.replace("T", " ");
+    this.endTime = DateUtils.getTimeByDateStr(endTime.replace("T", " "));
   }
   
   
-
+  public List<Course> getTopCourse(int size){
+    int num = (int)(Math.random()%4);
+    if(num==0) return Course.find("ORDER BY pubTime DESC").fetch(size);
+    if(num==1) return getInCourse(size);
+    if(num==2) return getEndCourse(size);
+    //if(num==3)
+      return getStartCourse(size);
+  }
+  
+  public List<Course> getInCourse(int size){
+    return Course.find("startTime>=? and ?<=sysdate ORDER BY pubTime DESC",getSystemTime(),getSystemTime()).fetch(size);
+  }
+  
+  public List<Course> getEndCourse(int size){
+    return Course.find("endTime<=? ORDER BY pubTime DESC",getSystemTime()).fetch(size);
+  }
+  
+  public List<Course> getStartCourse(int size){
+    return Course.find("startTime>=? ORDER BY pubTime DESC",getSystemTime()).fetch(size);
+  }
+  
 }

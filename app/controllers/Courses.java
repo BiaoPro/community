@@ -6,6 +6,8 @@ package controllers;
 import java.io.File;
 import java.util.List;
 
+import play.libs.Codec;
+
 import models.BackMessage;
 import models.Course;
 import models.CourseCategory;
@@ -16,6 +18,7 @@ import play.mvc.Controller;
 import play.mvc.With;
 import utils.FileUtils;
 import utils.PageBean;
+import utils.SessionManager;
 import utils.StringUtils;
 import utils.Uploader;
 import utils.enumvalue.Config;
@@ -114,6 +117,8 @@ public class Courses extends Controller {
       PageBean pageBean = null;
       List<CourseOnline> list = null;   
       long total = 0;
+      if(curPage == null) curPage = 1;
+      if(perPage == null) perPage = 5;
       
       if (StringUtils.isEmpty(searchKey)) {
         // 非搜索模式
@@ -169,6 +174,7 @@ public class Courses extends Controller {
          course.photo = "/public/images/no_pic.jpg";
        
      }
+     
         course.save();
         showOnlineCourses(course.categoryId,"",1,5);
    }
@@ -210,9 +216,26 @@ public class Courses extends Controller {
      CourseOnline.deleteById(id);
      showOnlineCourses(categoryId,"",1,5);
    }
-   public static void delCommunityCourse(String id,String categoryId){
+   public static void delCommunityCourse(String id,String categoryId,int audit){
      Course.deleteById(id);
      showCommunityCourses(categoryId,"",1,5);
    }
 
+   public static void changeOnlineAudit(String id,String categoryId,int audit){
+     CourseOnline course = CourseOnline.findById(id);
+     course.audit = audit;
+     course.auditId = SessionManager.getLoginedId(session);
+     course.save();
+     showOnlineCourses(categoryId,"",1,5);
+     
+   }
+   
+   public static void changeCommunityAudit(String id,String categoryId,int audit){
+     Course course = Course.findById(id);
+     course.audit = audit;
+     course.auditId = SessionManager.getLoginedId(session);
+     course.save();
+     showCommunityCourses(categoryId,"",1,5);
+     
+   }
 }

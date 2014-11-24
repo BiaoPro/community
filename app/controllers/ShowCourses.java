@@ -16,9 +16,10 @@ public class ShowCourses extends Controller{
   public static void ShowCourses(){
     render();
   }
-  public static void ShowCoursesInfo(String id){
+  public static void showCourseInfo(String id){
     Course course = Course.findById(id);
-    render(course);
+    Course courseGet = course;
+    render(course,courseGet);
   }
   
   
@@ -28,18 +29,35 @@ public class ShowCourses extends Controller{
         PageBean pageBean = null;
         List<CourseOnline> list = null;   
         long total = 0;
+        if(curPage == null) curPage = 1;
+        if(perPage == null) perPage = 6;
         
+        List<CourseCategory> listCategory = CourseCategory.find("type=? ORDER BY sequence",2).fetch();
+        if(listCategory.size()==0) categoryId="";
+        if(categoryId == null){ categoryId = listCategory.get(0).id; }
+       
         if (StringUtils.isEmpty(searchKey)) {
         // 非搜索模式
-        total = Course.count("category_id = ? ORDER BY END_TIME DESC",categoryId);
-        list = Course.find("category_id = ? ORDER BY END_TIME DESC",categoryId).fetch(curPage, perPage);
+        total = Course.count("status=1 and audit>=1 and category_id = ? ORDER BY END_TIME DESC",categoryId);
+        list = Course.find("status=1 and audit>=1 and category_id = ? ORDER BY END_TIME DESC",categoryId).fetch(curPage, perPage);
         } else {
         // 搜索模式
-        total = Course
-        .count("select count(*) from Course where category_id = ? and title like ? ORDER BY END_TIME DESC",categoryId,"%" + searchKey + "%");
-        list = Course
-        .find("from Course where category_id = ? and title like ? ORDER BY END_TIME DESC",categoryId,"%" + searchKey + "%")
-        .fetch(curPage,perPage);
+          
+        if(categoryId.equals("all")){  
+          total = Course
+              .count("select count(*) from Course where status=1 and audit>=1 and title like ? ORDER BY END_TIME DESC","%" + searchKey + "%");
+              list = Course
+              .find("from Course where status=1 and audit>=1  and title like ? ORDER BY END_TIME DESC","%" + searchKey + "%")
+              .fetch(curPage,perPage);
+          
+        }else{
+          
+          total = Course
+              .count("select count(*) from Course where status=1 and audit>=1 and category_id = ? and title like ? ORDER BY END_TIME DESC",categoryId,"%" + searchKey + "%");
+              list = Course
+              .find("from Course where status=1 and audit>=1 and category_id = ? and title like ? ORDER BY END_TIME DESC",categoryId,"%" + searchKey + "%")
+              .fetch(curPage,perPage);
+          }
         
         }
         
@@ -47,7 +65,12 @@ public class ShowCourses extends Controller{
         
         CourseCategory category = CourseCategory.findById(categoryId);
         
-        render(category, list, searchKey, curPage, perPage, pageBean);
+        Course courseGet;
+        if(Course.count()>0)
+         courseGet = (Course) Course.findAll().get(0);
+        else courseGet=null;
+        
+        render(listCategory,category,courseGet, list, searchKey, curPage, perPage, pageBean);
 
 
     }
@@ -59,18 +82,23 @@ public class ShowCourses extends Controller{
         List<CourseOnline> list = null;   
         long total = 0;
         if(curPage == null) curPage = 1;
-        if(perPage == null) perPage = 5;
+        if(perPage == null) perPage = 6;
+        
+        List<CourseCategory> listCategory = CourseCategory.find("type=? ORDER BY sequence",1).fetch();
+        
+        if(listCategory.size()==0) categoryId="";
+        if(categoryId == null){ categoryId = listCategory.get(0).id; }
         
         if (StringUtils.isEmpty(searchKey)) {
           // 非搜索模式
-          total = CourseOnline.count("category_id = ? ORDER BY PUB_TIME DESC",categoryId);
-          list = CourseOnline.find("category_id = ? ORDER BY PUB_TIME DESC",categoryId).fetch(curPage, perPage);
+          total = CourseOnline.count("status=1 and audit>=1 and category_id = ? ORDER BY PUB_TIME DESC",categoryId);
+          list = CourseOnline.find("status=1 and audit>=1 and category_id = ? ORDER BY PUB_TIME DESC",categoryId).fetch(curPage, perPage);
       } else {
           // 搜索模式
               total = Course
-                      .count("select count(*) from CourseOnline where category_id = ? and title like ? ORDER BY PUB_TIME DESC",categoryId,"%" + searchKey + "%");
+                      .count("select count(*) from CourseOnline where status=1 and audit>=1 and category_id = ? and title like ? ORDER BY PUB_TIME DESC",categoryId,"%" + searchKey + "%");
               list = Course
-                      .find("from CourseOnline where category_id = ? and title like ? ORDER BY PUB_TIME DESC",categoryId,"%" + searchKey + "%")
+                      .find("from CourseOnline where status=1 and audit>=1 and category_id = ? and title like ? ORDER BY PUB_TIME DESC",categoryId,"%" + searchKey + "%")
                       .fetch(curPage,perPage);
       
       }
@@ -79,7 +107,12 @@ public class ShowCourses extends Controller{
       
       CourseCategory category = CourseCategory.findById(categoryId);
       
-      render(category, list, searchKey, curPage, perPage, pageBean);
+      CourseOnline courseGet;
+      if(CourseOnline.count()>0)
+       courseGet = (CourseOnline) CourseOnline.findAll().get(0);
+      else courseGet=null;
+      
+      render(listCategory, category, courseGet, list, searchKey, curPage, perPage, pageBean);
     
     
   }
