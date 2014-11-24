@@ -256,8 +256,8 @@
      <img src="../public/images/grace.jpg" alt="...">
      <div class="caption">
       <h4>社区头条</h4>
-      <p >2014年我市积分入户于8月1日全面铺开，天河区进一步完善了来穗人员积分入户服务体系，选定了石牌、车陂和龙洞三条街道作为业务的受理点。据悉，今年是天河区首次将业务受理点下沉到街道组织，开展多个基层服务点...</p>
-      <p><a href="#" class="btn btn-primary pull-right" role="button">获取更多</a></p>
+      <p >${impNews.newsSummary}</p>
+      <p><a href="@{showNews.showNewsInfo(impNews.newsId)}" class="btn btn-primary pull-right" role="button">获取更多</a></p>
       <div class="clearfix"></div>
     </div>
   </div>
@@ -265,38 +265,16 @@
     <div class="table-responsive">
      <table class="table table-hover">
       <tbody>
+      #{list items:newsList,as:'item'}
        <tr>
-        <td><a>【公共新闻】消防安全知识（一）</a></td>
-        <td class="hidden-xs">14-5-07</td>
+        <td><a href="@{ShowNews.showNewsInfo(item.newsId)}">【${item.newClassType}】${item.newsTitle}</a></td>
+        <td class="hidden-xs">${item.newsCreateDate}</td>
       </tr>
-      <tr>
-        <td><a>【公共新闻】北京市社区服务中心社会化项目委托协议正式签署</a></td>
-        <td class="hidden-xs">14-5-11</td>
-      </tr>
-      <tr>
-        <td><a>【公共新闻】共建公益事业 锦旗表感谢</a></td>
-        <td class="hidden-xs">14-5-24</td>
-      </tr>
-      <tr>
-        <td><a>【公共新闻】“空巢老人家居维护”专项行动启动</a></td>
-        <td class="hidden-xs">14-2-11</td>
-      </tr>
-      <tr>
-        <td><a>【公共新闻】员工制家政服务试点企业</a></td>
-        <td class="hidden-xs">14-1-04</td>
-      </tr>
-      <tr>
-        <td><a>【公共新闻】“空巢老人家居维护”专项行动启动</a></td>
-        <td class="hidden-xs">14-2-11</td>
-      </tr>
-      <tr>
-        <td><a>【公共新闻】员工制家政服务试点企业</a></td>
-        <td class="hidden-xs">14-1-04</td>
-      </tr>
+      #{/list}
     </tbody>
   </table>
 </div>
-<a class="btn more pull-right">更多 >></a>
+<a class="btn more pull-right" href="@{ShowNews.news}">更多 >></a>
 </section>
 </div>
 <!-- 信息咨询 -->

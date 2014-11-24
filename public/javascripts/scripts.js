@@ -5,8 +5,11 @@ $(document).ready(function(){
 	hoverOpen();
 	// 回到顶部
 	$(window).scroll(function(event) {
-		var showHight = $(".main-container").offset().top;
-
+		var showHightOffset = $(".main-container").offset();
+		if(showHightOffset==null){
+			return;
+		}
+		var showHight = showHightOffset.top;
 		var scrollTop = $(window).scrollTop(); 
 		if(scrollTop > showHight) {
 			$(".scrollTop").fadeIn(200);

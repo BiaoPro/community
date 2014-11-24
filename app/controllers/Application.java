@@ -1,21 +1,27 @@
 package controllers;
 
-import play.*;
+import java.util.List;
+
+import models.BackMessage;
+import models.News;
+import models.User;
 import play.libs.Codec;
-import play.mvc.*;
+import play.mvc.Controller;
+import utils.NewsBean;
+import utils.PageBeanFactory;
 import utils.SessionManager;
-
-import java.util.*;
-
-import models.*;
 
 public class Application extends Controller {
 
     public static void index() {
       SessionManager.setFooter(session);
       User user = SessionManager.getLoginedUser(session);
-
-        render(user);
+      //新闻文章
+      List newsList = News.getIndexNews(new PageBeanFactory(1,7),0);
+      NewsBean firNews = (NewsBean)newsList.get(0);
+      String id = firNews.getNewsId();
+      News impNews = News.findById(id);
+        render(user,newsList,impNews);
     }
     
     
