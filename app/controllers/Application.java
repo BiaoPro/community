@@ -14,8 +14,15 @@ public class Application extends Controller {
     public static void index() {
       SessionManager.setFooter(session);
       User user = SessionManager.getLoginedUser(session);
+      
+      //获取课程信息
+      Course courseGet;
+      if(Course.count()>0)
+       courseGet = (Course) Course.findAll().get(0);
+      else courseGet=null;
+      
 
-        render(user);
+        render(user,courseGet);
     }
     
     

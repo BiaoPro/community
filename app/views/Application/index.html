@@ -97,9 +97,16 @@
             </tr>
           </thread>
           <tbody>
+          #{list item:courseGet?.getEndCourse(5),as:'course'}
+	      <tr>
+	        <td>${course.place }华农</td>
+	        <td><a target="_blank" href="/showCourses/showCourseInfo?id=${course.id }">${course.title }</a></td>
+	        <td>${course.showStartTime() }</td>
+	      </tr>
+	      #{/list}
           </tbody>
         </table>
-        <a class="btn pull-right more">更多 >></a>
+        <a class="btn pull-right more" href="/ShowCourses/showCommunityCourses?categoryId=all }">更多 >></a>
       </div>
     </div>
     <div class="tab-pane active fade in" id="now">
@@ -114,49 +121,16 @@
         </tr>
       </thread>
       <tbody>
-       <tr>
-        <td>华农</td>
-        <td><a>web讲座</a></td>
-        <td>14-5-07</td>
-      </tr>
+      #{list item:courseGet?.getInCourse(5),as:'course'}
       <tr>
-        <td>深圳</td>
-        <td><a>社区手工培训</a></td>
-        <td>14-5-11</td>
+        <td>${course.place }华农</td>
+        <td><a target="_blank" href="/showCourses/showCourseInfo?id=${course.id }">${course.title }</a></td>
+        <td>${course.showStartTime() }</td>
       </tr>
-      <tr>
-        <td>福建</td>
-        <td><a>花卉采集</a></td>
-        <td>14-5-24</td>
-      </tr>
-      <tr>
-        <td>厦门</td>
-        <td><a>呵呵2</a></td>
-        <td>14-2-11</td>
-      </tr>
-      <tr>
-        <td>昆明</td>
-        <td><a>呵呵</a></td>
-        <td>14-1-04</td>
-      </tr>
-      <tr>
-        <td>福建</td>
-        <td><a>花卉采集</a></td>
-        <td>14-5-24</td>
-      </tr>
-      <tr>
-        <td>厦门</td>
-        <td><a>呵呵2</a></td>
-        <td>14-2-11</td>
-      </tr>
-      <tr>
-        <td>昆明</td>
-        <td><a>呵呵</a></td>
-        <td>14-1-04</td>
-      </tr>
+      #{/list}
     </tbody>
   </table>
-  <a class="btn pull-right more">更多 >></a>
+  <a class="btn pull-right more" href="/ShowCourses/showCommunityCourses?categoryId=all }">更多 >></a>
 </div>
 </div>
 <div class="tab-pane fade" id="future">
@@ -170,49 +144,16 @@
     </tr>
   </thread>
   <tbody>
-   <tr>
-    <td>华农</td>
-    <td><a>web讲座</a></td>
-    <td>14-5-07</td>
-  </tr>
-  <tr>
-    <td>深圳</td>
-    <td><a>社区手工培训</a></td>
-    <td>14-5-11</td>
-  </tr>
-  <tr>
-    <td>福建</td>
-    <td><a>花卉采集</a></td>
-    <td>14-5-24</td>
-  </tr>
-  <tr>
-    <td>厦门</td>
-    <td><a>呵呵2</a></td>
-    <td>14-2-11</td>
-  </tr>
-  <tr>
-    <td>昆明</td>
-    <td><a>呵呵</a></td>
-    <td>14-1-04</td>
-  </tr>
-  <tr>
-    <td>福建</td>
-    <td><a>花卉采集</a></td>
-    <td>14-5-24</td>
-  </tr>
-  <tr>
-    <td>厦门</td>
-    <td><a>呵呵2</a></td>
-    <td>14-2-11</td>
-  </tr>
-  <tr>
-    <td>昆明</td>
-    <td><a>呵呵</a></td>
-    <td>14-1-04</td>
-  </tr>
+             #{list item:courseGet?.getStartCourse(5),as:'course'}
+	      <tr>
+	        <td>${course.place }华农</td>
+	        <td><a target="_blank" href="/showCourses/showCourseInfo?id=${course.id }">${course.title }</a></td>
+	        <td>${course.showStartTime() }</td>
+	      </tr>
+	      #{/list}
 </tbody>
 </table>
-<a class="btn more pull-right">更多 >></a>
+<a class="btn pull-right more" href="/ShowCourses/showCommunityCourses?categoryId=all }">更多 >></a>
 </div>
 </div>
 </div> 
