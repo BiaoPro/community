@@ -97,7 +97,7 @@
             </tr>
           </thread>
           <tbody>
-          #{list items:courseGet.getEndCourse(5),as:'course'}
+          #{list items:courseGet?.getEndCourse(5),as:'course'}
 	      <tr>
 	        <td>${course.place }华农</td>
 	        <td><a target="_blank" href="/showCourses/showCourseInfo?id=${course.id }">${course.title }</a></td>
@@ -197,8 +197,8 @@
      <img src="../public/images/grace.jpg" alt="...">
      <div class="caption">
       <h4>社区头条</h4>
-      <p >${impNews.newsSummary}</p>
-      <p><a href="@{showNews.showNewsInfo(impNews.newsId)}" class="btn btn-primary pull-right" role="button">获取更多</a></p>
+      <p >${impNews?.newsSummary}</p>
+      <p><a href="@{showNews.News}" class="btn btn-primary pull-right" role="button">获取更多</a></p>
       <div class="clearfix"></div>
     </div>
   </div>

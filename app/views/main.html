@@ -111,14 +111,9 @@
           <h4>友情链接</h4>
           <hr>
             <ul class="list-inline">
-              <li><a data-toggle="modal" data-target="#myModal">五套班子</a></li>
-              <li><a data-toggle="modal" data-target="#myModal">区委/区政府系统</a></li>
-              <li><a data-toggle="modal" data-target="#myModal">政法系统</a></li>
-              <li><a data-toggle="modal" data-target="#myModal">人民团体</a></li>
-              <li><a data-toggle="modal" data-target="#myModal">计划/经济/商业系统</a></li>
-              <li><a data-toggle="modal" data-target="#myModal">科教文体卫系统</a></li>
-              <li><a data-toggle="modal" data-target="#myModal">城建/城管系统</a></li>
-              <li><a data-toggle="modal" data-target="#myModal">街道办事处</a></li>
+              #{list items:linkCategoryList,as:'category'}
+               <li><a data-toggle="modal" data-target="#myModal">${category.name }</a></li>
+              #{/list}
             </ul> 
           </aside>
           <div class="col-md-4 col-md-push-2">

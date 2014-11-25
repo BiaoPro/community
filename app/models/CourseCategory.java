@@ -45,6 +45,14 @@ public class CourseCategory extends GenericModel{
     this.status = 1;
   }
   
+  public CourseCategory(String name,int type){
+    this.id = Codec.UUID();
+    this.sequence = new Date().getTime();
+    this.type = type;
+    this.status = 1;
+    this.name = name;
+  }
+  
   public static void deleteById(String id) {
     Course.delete("categoryId", id);
     CourseOnline.delete("categoryId", id);

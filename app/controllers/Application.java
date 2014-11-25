@@ -4,6 +4,7 @@ import java.util.List;
 
 import models.BackMessage;
 import models.Course;
+import models.LinkCategory;
 import models.News;
 import models.User;
 import play.libs.Codec;
@@ -16,6 +17,7 @@ public class Application extends Controller {
 
     public static void index() {
       SessionManager.setFooter(session);
+      SessionManager.setLinkCategory(session);
       User user = SessionManager.getLoginedUser(session);
       
       //获取课程信息
@@ -26,12 +28,23 @@ public class Application extends Controller {
 
       //新闻文章
       List newsList = News.getIndexNews(new PageBeanFactory(1,7),0);
-      NewsBean firNews = (NewsBean)newsList.get(0);
-      String id = firNews.getNewsId();
-      News impNews = News.findById(id);
+      News impNews = null;
+      try{
+        NewsBean firNews = (NewsBean)newsList.get(0);
+        String id = firNews.getNewsId();
+        impNews = News.findById(id);
+      }catch(Exception e){
+        
+      }
+      
+      //新闻文章
+      List linkCategoryList = LinkCategory.find("status=1 ORDER BY sequence").fetch();
+     
+     
+     
 
       
-        render(user,newsList,impNews,courseGet);
+        render(user,newsList,linkCategoryList,impNews,courseGet);
 
     }
     
