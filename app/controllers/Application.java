@@ -3,6 +3,7 @@ package controllers;
 import play.*;
 import play.libs.Codec;
 import play.mvc.*;
+import utils.PageBean;
 import utils.SessionManager;
 
 import java.util.*;
@@ -14,11 +15,10 @@ public class Application extends Controller {
     public static void index() {
       SessionManager.setFooter(session);
       User user = SessionManager.getLoginedUser(session);
-
-        render(user);
+      List<House> houseList=House.find("status", 1).fetch(1,5);//租房信息
+      List<Work> workList=Work.find("status", 1).fetch(1,9);//租房信息
+        render(user,houseList,workList);  
     }
-    
-    
     public static void manager() {
         SessionManager.setFooter(session);
 
