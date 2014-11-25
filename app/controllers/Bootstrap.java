@@ -18,6 +18,7 @@ public class Bootstrap extends Job {
 	@Override
 	public void doJob() throws Exception {
 		
+	  //用户初始化
 		User adminUser = User.findByAccount("admin");
 		if (adminUser == null) {
 			adminUser = new User("admin", "sys", 3);
@@ -48,7 +49,8 @@ public class Bootstrap extends Job {
 	                adminUserInfo.save();
 	                
 	            }
-		
+	            
+	    //版权信息初始化
 		if(SystemSetting.count() == 0) {
 			new SystemSetting().save();
 		}
