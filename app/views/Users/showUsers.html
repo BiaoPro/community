@@ -25,7 +25,7 @@
 				#{list items:list,as:'user'}
 				<tr>
 					<td>${user_index+(curPage-1)*pageBean.perPage}:</td>
-					<td>${user.account}</td>
+					<td><a href="@{Users.showUserInfo(user.id)}">${user.account}</a></td>
 					<td>${user.rname}  </td>
 					<td>
 						<form action="@{Users.changeUserType }" method="get">

@@ -77,6 +77,11 @@ public class Courses extends Controller {
       render(categoryId);
     }
     
+    public static void showCommunityCourseInfo(String id){ 
+      Course course = Course.findById(id);
+      render(course);
+    }
+    
      
     public static void showOnlineCourses(String categoryId,
         String searchKey, Integer curPage, Integer perPage) {

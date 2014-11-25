@@ -19,7 +19,7 @@
           <div class="carousel-caption carousel-inner-col">
             <h1>热烈欢迎广场舞大妈</h1>
             <p></p>
-            <a class="btn btn-large btn-success" href="">查看更多</a>
+            <a class="btn btn-large btn-success" href="@{ShowNews.News}">查看更多</a>
           </div>
         </div>
       </div>
@@ -31,7 +31,7 @@
           <div class="carousel-caption  carousel-inner-col">
             <h1>暑期第二课堂顺利结束</h1>
             <p>新广州人网站旨在为新广州人提供便利的帮助。据悉于7月5号开展的为期10天的暑期第二课堂顺利结束，学员们表示收获颇丰</p>
-            <p><a class="btn btn-large btn-success" href="#">查看全文</a></p>
+            <p><a class="btn btn-large btn-success" href="@{ShowCourses.showCommunityCourses}">查看更多</a></p>
           </div>
         </div>
       </div>
@@ -43,7 +43,7 @@
         <div class="carousel-caption  carousel-inner-col">
           <h1>华山区房屋出租</h1>
           <p>一房一厅一厕所一阳台，你值得拥有</p>
-          <p><a class="btn btn-large btn-success" href="#">查看全文</a></p>
+          <p><a class="btn btn-large btn-success" href="@{Houses.showHouses}">查看更多</a></p>
         </div>
       </div>
     </div>
@@ -59,9 +59,9 @@
 <!-- /.carousel -->
 <!-- search frame float , visible only above 768-->
 <div class="search hidden-xs">
-  <form class="navbar-form " role="search">
+  <form class="navbar-form " role="search" method="get" action="/ShowCourses/showCommunityCourses?categoryId=all">
     <div class="form-group">
-      <input type="text" class="form-control" />
+      <input type="text" name="searchKey" class="form-control" />
     </div> 
     <button type="submit" class="btn btn-large btn-danger">搜索</button>
   </form>
@@ -106,7 +106,7 @@
 	      #{/list}
           </tbody>
         </table>
-        <a class="btn pull-right more" href="/ShowCourses/showCommunityCourses?categoryId=all }">更多 >></a>
+        <a class="btn pull-right more" href="/ShowCourses/showCommunityCourses?categoryId=all">更多 >></a>
       </div>
     </div>
     <div class="tab-pane active fade in" id="now">

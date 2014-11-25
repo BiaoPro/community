@@ -51,6 +51,7 @@
 					 #{else}
 					    <a href="@{Courses.changeCommunityAudit(course.id,category.id,1)}"  class="btn btn-primary">未审核</a>
 					 #{/else}
+					    <a href="@{Courses.showCommunityCourseInfo(course.id)}" class="btn btn-success">编辑</a>
 					    <a href="@{Courses.delCommunityCourse(course.id,category.id)}" onclick="return confirm('删除视频链接：${course.title}?')" class="btn btn-danger">删除</a>
 					</p>
 				</div>	

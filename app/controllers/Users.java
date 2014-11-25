@@ -66,7 +66,7 @@ public class Users extends Controller {
       
       
         user.save();
-        Users.showUserInfo("");
+        Users.showUserInfo(user.id);
 	}
 	
 	/**

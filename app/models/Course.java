@@ -53,7 +53,7 @@ public class Course extends GenericModel{
   private long endTime;//结束时间
   
   @Column(name="pub_time")
-  public long pubTime;//结束时间
+  public long pubTime;//发布时间
   
   
   @Column(name="place")
@@ -208,11 +208,17 @@ public class Course extends GenericModel{
   public String getStartTime() {
     return DateUtils.getDateTimeStr(startTime);
   }
+  public String getStartTime1() {
+    return DateUtils.getDateTimeStr(startTime).replace(" ", "T");
+  }
   public void setStartTime(String startTime) {
     this.startTime = DateUtils.getTimeByDateStr(startTime.replace("T", " "));
   }
   public String getEndTime() {
     return DateUtils.getDateTimeStr(endTime);
+  }
+  public String getEndTime1() {
+    return DateUtils.getDateTimeStr(endTime).replace(" ", "T");
   }
   public void setEndTime(String endTime) {
     this.endTime = DateUtils.getTimeByDateStr(endTime.replace("T", " "));
