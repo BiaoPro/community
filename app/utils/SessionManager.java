@@ -60,7 +60,11 @@ public class SessionManager {
      */
     public static void setLinkCategory(Session session) {
         List<LinkCategory> lc=LinkCategory.find("status=1 ORDER BY sequence").fetch();
-        session.put("linkCategoryList",lc);
+        for(int i=1;i<=30;i++){
+          session.remove("linkCategory"+i);
+        }
+        for(int i=1;i<=lc.size();i++)
+        session.put("linkCategory"+i,lc.get(i-1).name);
         
     }
 	

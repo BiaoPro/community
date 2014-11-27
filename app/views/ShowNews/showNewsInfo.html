@@ -7,10 +7,10 @@
 	  <li class="active">新闻</li>
 	</ol>
 	<div class="main-content shownews-content">
-			<h2>
+			<h3 style="color:font-size: 24px;text-align: center;line-height: 30px;color: #039">
 				${news.newsTitle}
-			</h2>
+			</h3>
 			
-			<p class="sub"><small>作者:${authorName}</small>&nbsp;<small>审稿人：${auditName}</small>&nbsp;<small>${news.newsCreateDate}</small></p>
+			<p class="sub"><small>作者:${authorName}</small>&nbsp;&nbsp;<small>审稿人：${auditName}</small>&nbsp;<small class="pull-right">发布时间：${news.newsCreateDate}&nbsp;&nbsp;</small></p>
 			${news.newsContent.raw()}
 	</div>

@@ -1,6 +1,5 @@
 	#{extends 'BackNewsClass/base.html'/}
 	#{set userNewsManager : 'class=active' /}
-		<div style="margin-top:20px;" class="container">
 		<form action="@{BackNews.userFilter}" class="form-inline">
 			<select id="patchSelect" class="form-control">
 				<option value="">批量操作</option>
@@ -72,7 +71,6 @@
     	</form>
     		#{doLayout /}
     		
-		</div>
 	#{set 'moreScripts' }
 		<script charset="utf-8" src="@{'/public/javascripts/sea.js'}"></script>
 		<script>

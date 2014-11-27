@@ -111,9 +111,9 @@
           <h4>友情链接</h4>
           <hr>
             <ul class="list-inline">
-              #{list items:linkCategoryList,as:'category'}
-               <li><a data-toggle="modal" data-target="#myModal">${category.name }</a></li>
-              #{/list}
+              %{for(int i=1;session.get('linkCategory'+i)!=null;i++){ }%
+               <li><a data-toggle="modal" data-target="#myModal">${session.get('linkCategory'+i) }</a></li>
+              %{} }%
             </ul> 
           </aside>
           <div class="col-md-4 col-md-push-2">

@@ -2,6 +2,7 @@ package controllers;
 import models.LinkCategory;
 import play.*;
 import play.mvc.*;
+import utils.SessionManager;
 
 import java.util.List;
 
@@ -19,7 +20,7 @@ public class LinkCategories extends Controller {
 	 * 显示所有链接类别
 	 */
 	public static void showLinkCategories() {
-
+	  SessionManager.setLinkCategory(session);
 		Links.showLinkCategories();
 	}
 	
@@ -59,7 +60,6 @@ public class LinkCategories extends Controller {
 	public static void showLinkCategoryInfo(String categoryId) {
 		Links.showLinkCategoryInfo(categoryId);
 	}
-	
 	
 	
 	/**
