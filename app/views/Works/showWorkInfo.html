@@ -2,8 +2,6 @@
 #{set title:'Show works info' /}	
 		<div class="main-content row">
 			<h2>${work.title}</h2>
-			<strong><a class="pull-right" style="color:#F6790E;">下一条 ></a></strong>
-			
 				<small>发布时间：${work.date}</small>		
 				<table class="table table-hover show-job-info">
 					<tbody>
@@ -64,10 +62,9 @@
 			<div class="col-md-12">
 			<ul class="nav nav-tabs col-md-12" role="tablist">
 			  <li class="active"><a href="#describe" role="tab" data-toggle="tab">职位描述</a></li>
-			  <li><a href="#profile" role="tab" data-toggle="tab">公司介绍</a></li>
 			  <li><a href="#resource" role="tab" data-toggle="tab">其他职位</a></li>
 			</ul>
-			<div class="alert alert-success col-md-12" role="alert">如果发现招聘有任何虚假地方，欢迎<a>举报</a></div>
+			<div class="alert alert-success col-md-12" role="alert">如果发现招聘有任何虚假地方，欢迎<a href="@{Application.back}">举报</a></div>
 			</div>
 			<div class="tab-content row col-md-11 col-md-push-1">
 			  <div class="tab-pane active" id="describe">
@@ -75,83 +72,23 @@
 			  		<li>${work.details}</li>
 			  	</ol>
 			  </div>
-			  <div class="tab-pane row" id="profile">
-				  <div class="col-md-5">
-				  	<img src="../public/images/community.jpg" class="img-responsive" data-src="holder.js/100%x180" alt="community">
-				  </div>
-				  <div class="col-md-6">
-				  	<p>长沙创飞凡房地产投资咨询有限公司（简称“创飞凡地产”）成立于2012年11月。主要从事房地产咨询、营销策划、销售代理、银行按揭等业务，是一家专业提供房地产投资咨询机构。在激烈的市场竞争中，创飞凡地产不断提高自己，完善自己，依靠强有力的领导班子，高素质的员工队伍以及团结求实的精神，逐步建立起完善的服务体系。我公司秉承着“创高品质，飞跃全球，凡人不凡”的服务理念，竭诚为每一位客户提供安全、专业、高效、优质的服务，通过规范化、专业化、现代化、透明化的全新管理模式，打造全新的服务品牌。</p>
-					</div>
-			  </div>
 			  <div class="tab-pane col-md-12" id="resource">
 			<table class="table table-hover table-condensed">
 				<thead>
 					<th>职位</th>
 					<th>公司</th>
-					<th>地址</th>
+					<th>联系人</th>
 					<th>时间</th>
 				</thead>
 				<tbody>
+				#{list items:WorksList,as : 'work'}
 					<tr>
-						<td><strong><a href="@{ShowWorks.showWorksInfo}">房产销售+五险一金+高薪</a></strong></td>
-						<td><a>长沙创飞凡地产</a></td>
-						<td>新星小区</td>
-						<td>今天</td>
+						<td><strong><a>${work.position}</a></strong></td>
+						<td><a>${work.unit}</a></td>
+						<td>${work.linkman}</td>
+						<td>${work.showDate()}</td>
 					</tr>
-					<tr>
-						<td><strong><a>创飞凡地产急聘房产经纪人</a></strong></td>
-						<td><a>长沙创飞凡地产</a></td>
-						<td>新星小区</td>
-						<td>今天</td>
-					</tr>
-					<tr>
-						<td><strong><a>普工学徒工</a></strong></td>
-						<td><a>长沙铝业门窗厂</a></td>
-						<td>新星小区</td>
-						<td>今天</td>
-					</tr>
-					<tr>
-						<td><strong><a>技师</a></strong></td>
-						<td><a>长沙保利休闲会所</a></td>
-						<td>新星小区</td>
-						<td>今天</td>
-					</tr>
-					<tr>
-						<td><strong><a>招学徒</a></strong></td>
-						<td><a>三码头嗦螺</a></td>
-						<td>新星小区</td>
-						<td>2个小时</td>
-					</tr>
-					<tr>
-						<td><strong><a>店长</a></strong></td>
-						<td><a>星辰眼镜</a></td>
-						<td>新星小区</td>
-						<td>3个小时</td>
-					</tr>
-					<tr>
-						<td><strong><a>收银员</a></strong></td>
-						<td><a>梦缘网络会所</a></td>
-						<td>新星小区</td>
-						<td>4个小时</td>
-					</tr>
-					<tr>
-						<td><strong><a>教务老师</a></strong></td>
-						<td><a>长沙大升教育咨询有限公司</a></td>
-						<td>新星小区</td>
-						<td>6个小时</td>
-					</tr>
-					<tr>
-						<td><strong><a>秩序维护员</a></strong></td>
-						<td><a>融科物业</a></td>
-						<td>新星小区</td>
-						<td>11个小时</td>
-					</tr>
-					<tr>
-						<td><strong><a>销售顾问</a></strong></td>
-						<td><a>南京超丰机械工程有限公司</a></td>
-						<td>新星小区</td>
-						<td>2014-05-12</td>
-					</tr>
+					#{/list}
 				</tbody>
 			</table>	
 			  </div>

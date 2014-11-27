@@ -9,12 +9,14 @@ import models.LinkCategory;
 import models.News;
 import models.User;
 import models.Work;
+
 import play.libs.Codec;
 import play.mvc.*;
 import utils.PageBean;
 import play.mvc.Controller;
 import utils.NewsBean;
 import utils.PageBeanFactory;
+
 import utils.SessionManager;
 
 public class Application extends Controller {
@@ -23,9 +25,9 @@ public class Application extends Controller {
       SessionManager.setFooter(session);
       SessionManager.setLinkCategory(session);
       User user = SessionManager.getLoginedUser(session);
-      List<House> houseList=House.find("status", 1).fetch(1,5);//租房信息
-      List<Work> workList=Work.find("status", 1).fetch(1,9);//租房信息
-        render(user,houseList,workList);  
+
+      List<House> houseList=House.find("status", 1).fetch(1,4);//租房信息
+      List<Work> workList=Work.find("status", 1).fetch(1,5);//租房信息
       
       //获取课程信息
       Course courseGet;
@@ -47,11 +49,8 @@ public class Application extends Controller {
       //新闻文章
       List linkCategoryList = LinkCategory.find("status=1 ORDER BY sequence").fetch();
      
-     
-     
+        render(user,houseList,workList,newsList,linkCategoryList,impNews,courseGet);
 
-      
-        render(user,newsList,linkCategoryList,impNews,courseGet);
 
     }
     public static void manager() {

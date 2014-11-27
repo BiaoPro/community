@@ -163,19 +163,25 @@
   <div class="show-house col-md-6 col-md-push-6">
   <h2 class="title">社区租房</h2>
   <!-- 为了提高页面的信息展示率，减少空白，此处分为两个列表，可用条件判断，举例 比如有10条信息，第一个列表展示1~6条，第二个列表展示7~10 ;次重要信息在移动端不展示 -->
-    <ol>
-      
-       #{list items:houseList,as : 'house'}
-     <li><a href="@{Houses.showHouseInfo(house.id)}">${house.community},${house.bedRoom}室${house.livingRoom}厅${house.bathRoom}卫,(${house.price}元/月)</a><br><small>发布时间：${house.date}</small></li>
-     #{/list}  
-   </ol>				    
+     <table class="table table-hover table-condensed">
+        <thread>
+         <tr style="border:0;">
+          <th class="col-md-4">内容</th>
+          <th class="col-md-2">发布时间</th>
+        </tr>
+      </thread>
+      <tbody>
+     #{list items:houseList,as : 'house'}
+       <tr>
+       		<td><a href="@{Houses.showHouseInfo(house.id)}">${house.community},${house.bedRoom}室${house.livingRoom}厅${house.bathRoom}卫,(${house.price}元/月)</a></td>
+       		<td><small>${house.showDate()}</small></td>
+       </tr>
+#{/list}
+    </tbody>
+    </table>
  </div>
    <div class="show-house col-md-6 col-md-pull-6">
     <img class="img-responsive"  src="../public/images/house2.jpg" alt="">
-    <ol class="hidden-xs">
-     <li><a>动物园地铁,公交动物园南门站,正规小区一室一厅转租(5800元/月)</a></li>
-   </ol>
-   
   </div>
   <div class="clearfix"></div>
  <div class="pull-right">
@@ -218,7 +224,7 @@
 <div class="col-md-12">
   <section class="consult">
     <form action="">
-     <img src="../public/images/email.png" alt="" class="visible-lg-inline">
+     <img src="../public/images/email.png" alt="" class="visible-lg-inline" >
      <span>有任何问题都可以咨询哦</span>
      <label class="sr-only" for="">咨询信息</label>
      <input type="text" >
@@ -230,21 +236,31 @@
 <div class="col-md-8" style="border-right:1px dashed #ddd">
   <section class="job section-line">
   <div class="col-md-6">
-      <h2 class="title">招工信息</h2>
-        <!-- 为了提高页面的信息展示率，减少空白，此处分为两个列表，可用条件判断，举例 比如有10条信息，第一个列表展示1~6条，第二个列表展示7~10 -->
-      <ol>
-#{list items : workList,as : 'work'}
-       <li><a href="@{Works.showWorkInfo(work.id)}">${work.title}</a><br><small>${work.date}</small></li>
-#{/list}
-     </ol>
+
+      <img class="img-responsive" src="../public/images/job2.jpg" alt="" style="margin-top:
+      30px;">
   </div>	
- <div class="show-house col-md-6$">
-  <img class="img-responsive" src="../public/images/job2.jpg" alt="">
+ <div class="show-house col-md-6">
+   <h2 class="title">招工信息</h2>
+        <!-- 为了提高页面的信息展示率，减少空白，此处分为两个列表，可用条件判断，举例 比如有10条信息，第一个列表展示1~6条，第二个列表展示7~10 -->
+
   <ol class="hidden-xs">
-       <li><a>广东矿工招聘(企业)</a></li>
-       <li><a>蓝思科技(包住)高薪诚聘男女普工</a></li>
-       <li><a>健兴梅家政长期诚聘保姆护工</a></li>
-       <li><a>深圳机械加工厂的铣床操作技工</a></li>
+       <table class="table table-hover table-condensed">
+        <thread>
+         <tr style="border:0;">
+          <th class="col-md-4">内容</th>
+          <th class="col-md-2">发布时间</th>
+        </tr>
+      </thread>
+      <tbody>
+#{list items : workList,as : 'work'}
+       <tr>
+       		<td><a href="@{Works.showWorkInfo(work.id)}">${work.title}</a></td>
+       		<td><small>${work.showDate()}</small></td>
+       </tr>
+#{/list}
+    </tbody>
+    </table>
    </ol>
 </div>
 <div class="clearfix"></div>
@@ -264,10 +280,7 @@
         <li><a>蓝思科技(包住)高薪诚聘男女普工</a></li>
         <li><a>健兴梅家政长期诚聘保姆护工</a></li>
         <li><a>深圳机械加工厂的铣床操作技工</a></li>
-        <li><a>深圳安心家政集团育婴师月嫂保姆</a></li>
-        <li><a>名硕电脑免费诚招普工可当天入住</a></li>
         <li><a class="disabled">剧组拍戏需要招聘剧组服务人员</a><span style="color:red;">--已结束</span></li>
-        <li><a class="disabled">诚招全国校园寒暑假招聘代理员</a></li>
       </ol>
       <a class="btn more pull-right">我要维权 >></a>	
 </section>
