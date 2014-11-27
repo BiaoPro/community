@@ -10,7 +10,7 @@
 		<li><a href="@{ShowNews.showNewsInfo(item.newsId)}" target="_bank">${item.newsTitle}</a></li>
 	#{/list}
 	%{ if (number==0){ }%
-		<li>结果为空</li>
+		<li>没有收到结果哦！</li>
 	%{}}%
 	</ul>
 	<a href="@{ShowNews.news(1)}">返回新闻栏目</a>
