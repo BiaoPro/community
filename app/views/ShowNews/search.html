@@ -1,0 +1,17 @@
+#{extends 'ShowNews/base.html' /}
+#{set title:'News_seach' /}
+
+<div class="container">
+	<h2>搜索结果</h2>
+	<ul>
+	%{number=0;}%
+	#{list items:searchList,as:'item'} 
+	%{number++;}%
+		<li><a href="@{ShowNews.showNewsInfo(item.newsId)}" target="_bank">${item.newsTitle}</a></li>
+	#{/list}
+	%{ if (number==0){ }%
+		<li>没有收到结果哦！</li>
+	%{}}%
+	</ul>
+	<a href="@{ShowNews.news(1)}">返回新闻栏目</a>
+</div>
