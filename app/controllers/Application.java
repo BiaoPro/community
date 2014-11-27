@@ -4,18 +4,17 @@ import java.util.List;
 
 import models.BackMessage;
 import models.Course;
+import models.House;
 import models.LinkCategory;
 import models.News;
 import models.User;
+import models.Work;
 import play.libs.Codec;
-<<<<<<< HEAD
 import play.mvc.*;
 import utils.PageBean;
-=======
 import play.mvc.Controller;
 import utils.NewsBean;
 import utils.PageBeanFactory;
->>>>>>> 4a899d106bdf47e043d150dd7f21035bc4cc737e
 import utils.SessionManager;
 
 public class Application extends Controller {
@@ -24,11 +23,9 @@ public class Application extends Controller {
       SessionManager.setFooter(session);
       SessionManager.setLinkCategory(session);
       User user = SessionManager.getLoginedUser(session);
-<<<<<<< HEAD
       List<House> houseList=House.find("status", 1).fetch(1,5);//租房信息
       List<Work> workList=Work.find("status", 1).fetch(1,9);//租房信息
         render(user,houseList,workList);  
-=======
       
       //获取课程信息
       Course courseGet;
@@ -56,7 +53,6 @@ public class Application extends Controller {
       
         render(user,newsList,linkCategoryList,impNews,courseGet);
 
->>>>>>> 4a899d106bdf47e043d150dd7f21035bc4cc737e
     }
     public static void manager() {
         SessionManager.setFooter(session);
