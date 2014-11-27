@@ -85,4 +85,19 @@ public class ShowNews extends Controller{
 		render(news,auditName,authorName);
 	}
 	
+	//搜索文章
+	public static void search(){
+		String title = params.get("title");
+		if(title==null){
+			News(1);
+		}
+		else{
+			//获取首页文章
+			PageBeanFactory pageBean= new PageBeanFactory(0,7);
+			List currentList = News.getIndexNews(pageBean,0);
+			List searchList = News.getNewsByTitle(pageBean, title,0);
+			render(searchList,currentList);
+		}
+	}
+	
 }
