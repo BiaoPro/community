@@ -1,5 +1,6 @@
 package models;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -12,6 +13,7 @@ import javax.persistence.Table;
 
 import play.db.jpa.GenericModel;
 import play.libs.Codec;
+import utils.DateUtils;
 import utils.PageBean;
 import utils.StringUtils;
 /*
@@ -75,4 +77,9 @@ public class Work extends GenericModel {
 						.size();
 			return PageBean.getInstance(curPage, total, 5);
 		}
+
+		private String showDate() {
+		      return new SimpleDateFormat("yyyy-MM-dd").format(date);
+		}
+
 }

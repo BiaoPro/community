@@ -108,4 +108,3 @@ function linkModal(title,num){
 }
 });
 
-

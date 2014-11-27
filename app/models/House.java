@@ -1,5 +1,6 @@
 package models;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -111,4 +112,9 @@ public class House extends GenericModel{
 	public boolean isShow(){
 		return status==2;
 	}
+ 
+	private String showDate() {
+      return new SimpleDateFormat("yyyy-MM-dd").format(date);
+	}
+	
 }

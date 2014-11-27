@@ -8,7 +8,9 @@
 		
 <div class="alert alert-info alert-dismissible" role="alert">
   <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-  <p class="bg-info">如果您有账号，可点击<a>登录</a>再填写 ; 或者点击<a>注册</a></p>
+  #{if flash.backMessage }
+	 <p class="bg-info">${flash.backMessage }</p>
+  #{/if}
 </div>
 <div class="main-content">
 	<form action="@{Works.saveWork}" class="form-fill" method="post">
@@ -122,6 +124,10 @@
 				</tr>
 			</tbody>
 		</table>
-		<input class="btn btn-danger btn-lg pull-right" value="确认并发布"/>
+		<input type="submit" class="btn btn-danger btn-lg pull-right" value="确认并发布"/>
 		</form>
 		</div>
+#{if flash.backMessage }
+
+#{/if}
+	
