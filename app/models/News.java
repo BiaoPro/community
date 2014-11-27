@@ -38,6 +38,9 @@ public class News extends GenericModel{
 	@Column(name="news_content",length=100000)
 	public String newsContent;
 	
+	@Column(name="news_summary")
+	public String newsSummary;
+	
 	@Column(name="news_create_date")
 	public String newsCreateDate;
 	

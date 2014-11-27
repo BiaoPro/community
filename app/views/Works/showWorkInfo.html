@@ -1,28 +1,5 @@
-#{extends 'ShowWorks/base.html' /}
-#{set title:'Show works info' /}
-#{set "moreSubpageStyles"}
-<style type="text/css">
-	.table{
-		padding-right: 20px;
-	}
-	.table>tbody>tr>td{
-		border-top: none;
-		width: auto;
-	}
-	.table strong{
-		margin-right: 10px;
-		font-weight: normal;
-		font-size: 16px;
-	}
-	#describe ol{
-		clear: both;
-	}
-/*	#profile .thumbnail{
-		border: none;
-	}*/
-</style>
-#{/set}
-		
+#{extends 'Works/base.html' /}
+#{set title:'Show works info' /}	
 		<div class="main-content row">
 			<h2>${work.title}</h2>
 			<strong><a class="pull-right" style="color:#F6790E;">下一条 ></a></strong>

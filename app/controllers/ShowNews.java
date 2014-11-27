@@ -70,8 +70,16 @@ public class ShowNews extends Controller{
 	// 展示单个新闻
 	public static void showNewsInfo(String id){
 		News news = News.findById(id); 
-		User audit = User.findById(news.newsAuditId);
-		String auditName = audit.rname;
+		String auditName;
+		if(news.newsAuditId==null){
+			
+			auditName="未审核";
+		}else{
+			
+			User audit = User.findById(news.newsAuditId);
+			auditName = audit.rname;
+		}
+		
 		User user= User.findById(news.newsAuthorId);
 		String authorName = user.rname;
 		render(news,auditName,authorName);

@@ -1,0 +1,39 @@
+#{extends 'ShowCourses/base.html' /}
+#{set title:'ShowCoursesInfo' /}
+#{set 'moreSubpageStyles'}
+<style type="text/css">
+  .course-period,.brief,.table-responsive,.teacher{
+    margin-top:2em;
+  }
+</style>
+#{/set}
+<ol class="breadcrumb">
+  <li><a href="@{Application.index}">首页</a></li>
+  <li >社区课堂</li>
+  <li >${course?.getCategoryName()}</li>
+  <li class="active">${course?.title}</li>
+</ol>
+<div class="main-content">
+  <img class="img-responsive show-img"  src="${course.photo}" alt="">
+  <h2>${course.title}</h2>
+  <p class="sub col-md-12"><small class="col-md-4">作者:${course.getAuthorName()}</small><small class="col-md-4">审批人：${course.getAuditName()}</small><small class="col-md-4">${course.showPubTime()}</small></p>
+  <div class="clearfix"></div>
+  <div class="course-period">
+  <div class="col-sm-6">
+  	<h4>开课时间：${course.getStartTime()}</h4><h4>结束时间：${course.getEndTime()}</h4>
+  </div>
+  <div class="col-sm-6">
+ 	 <h4>地点：${course.place}</h4><h4>课程联系电话：${course.phoneNumber}</h4>
+  </div>
+  <div class="brief col-sm-12">
+    <h4>课程简介:</h4>
+    <p> ${course.info }</p>
+  </div>
+  <div class="course-arrangement">
+    <div class="table-responsive">
+   		 ${course.body}
+    </div>
+  </div>
+  
+</div>
+</div>

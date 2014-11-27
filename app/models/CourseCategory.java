@@ -12,6 +12,7 @@ import javax.persistence.Table;
 
 import play.db.jpa.GenericModel;
 import play.libs.Codec;
+import utils.enumvalue.ConfigValue;
 /**
  * 课程信息表
  * @author 吴泽标
@@ -42,6 +43,14 @@ public class CourseCategory extends GenericModel{
     this.sequence = new Date().getTime();
     this.type = 2;
     this.status = 1;
+  }
+  
+  public CourseCategory(String name,int type){
+    this.id = Codec.UUID();
+    this.sequence = new Date().getTime();
+    this.type = type;
+    this.status = 1;
+    this.name = name;
   }
   
   public static void deleteById(String id) {
@@ -106,13 +115,19 @@ public CourseCategory getBackCategory(int type) {
             .find("type=? and sequence>? ORDER BY sequence ", type, this.sequence).first();
 }
 
-public List<Course> getCourses(boolean isVisable) {
-    if (isVisable) {
-        return Course.find("status=1 AND categoryId=?",
-                this.id).fetch();
-    } else {
-        return Course.find("categoryId=?", this.id).fetch();
+/**获取类目下的课程列表
+ * @param size
+ * @return
+ */
+public List getCourses(String size) {
+  
+    if (this.type ==ConfigValue.COURSE_ONLINE  ) {
+        return CourseOnline.find("status=1 AND categoryId=? where LIMIT 0,?",this.id,size).fetch();
+    }else if(this.type ==ConfigValue.COURSE_COMMUNITY  ) {
+        return Course.find("status=1 AND categoryId=? where LIMIT 0, ?", this.id, size).fetch();
     }
+    return Course.find("status=1 AND categoryId=? where LIMIT 0, ?", this.id, size).fetch();
+    
 }
   
   

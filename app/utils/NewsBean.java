@@ -25,7 +25,10 @@ public class NewsBean {
 	
 	public String getNewsAuthorName() {
 		User user = User.findById(this.newsAuthorId);
-		this.newsAuthorName=user.rname;
+		if(user==null){
+			return null;
+		}
+			this.newsAuthorName=user.rname;
 		return newsAuthorName;
 	}
 

@@ -15,7 +15,8 @@ a:hover{
 	color:#ff9700;
 	text-decoration: none;
 }
-ul, ol{
+ul, 
+ol {
 	list-style: none;
 }
 ol>li>a.disabled,td>a.disabled{
@@ -246,6 +247,8 @@ footer .list-inline {
 		max-width: 1260px;
 	}
 	.main-container {
+		margin-top:3em;
+		margin-bottom:2em;
 		background : #fff;
 	}
 }

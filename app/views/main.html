@@ -5,7 +5,7 @@
         <meta charset="${_response_encoding}"> 
         <meta name="renderer" content="webkit">
         <meta name="viewport" content="width=device-width, initial-scale=1.0 ,user-scalable=no">
-         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <meta name="description" content="community">
         <meta name="author" content="">
 
@@ -61,7 +61,13 @@
                   
                     <li><a href="@{Application.index}">Home</a></li>
                     <li><a href="@{ShowNews.News}">社区新闻</a></li>
-                    <li><a href="@{ShowCourses.Courses}">社区课堂</a></li>
+                    <li class="dropdown">
+                      <a href="@{ShowCourses.showOnlineCourses }" class="dropdown-toggle" data-toggle="dropdown">免费课堂</a>
+                      <ul class="dropdown-menu hidden-xs" role="menu">
+                      	<li><a href="@{ShowCourses.showCommunityCourses}">社区课堂</a></li>
+                        <li><a href="@{ShowCourses.showOnlineCourses}">在线课堂</a></li>
+                      </ul>
+                    </li>
                     <li class="dropdown">
                       <a href="@{Houses.showHouses}" class="dropdown-toggle" data-toggle="dropdown">社区租房</a>
                       <ul class="dropdown-menu hidden-xs" role="menu">
@@ -105,14 +111,9 @@
           <h4>友情链接</h4>
           <hr>
             <ul class="list-inline">
-              <li><a data-toggle="modal" data-target="#myModal">五套班子</a></li>
-              <li><a data-toggle="modal" data-target="#myModal">区委/区政府系统</a></li>
-              <li><a data-toggle="modal" data-target="#myModal">政法系统</a></li>
-              <li><a data-toggle="modal" data-target="#myModal">人民团体</a></li>
-              <li><a data-toggle="modal" data-target="#myModal">计划/经济/商业系统</a></li>
-              <li><a data-toggle="modal" data-target="#myModal">科教文体卫系统</a></li>
-              <li><a data-toggle="modal" data-target="#myModal">城建/城管系统</a></li>
-              <li><a data-toggle="modal" data-target="#myModal">街道办事处</a></li>
+              #{list items:linkCategoryList,as:'category'}
+               <li><a data-toggle="modal" data-target="#myModal">${category.name }</a></li>
+              #{/list}
             </ul> 
           </aside>
           <div class="col-md-4 col-md-push-2">

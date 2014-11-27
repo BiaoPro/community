@@ -27,6 +27,11 @@ public class NewsClass extends GenericModel{
 		this.newClassId=Codec.UUID();
 	}
 	
+	public NewsClass(String name){
+      this.newClassId=Codec.UUID();
+      this.newClassType=name;
+  }
+	
 	/*
 	 * 
 	 * @description 得到newsClass对象

@@ -1,5 +1,8 @@
 package utils;
 
+import java.util.List;
+
+import models.LinkCategory;
 import models.SystemSetting;
 import models.User;
 import play.mvc.Scope.Session;
@@ -50,6 +53,16 @@ public class SessionManager {
 		session.put("telephone",sp.telephone);
 		session.put("mailbox",sp.mailbox);
 	}
+	
+	/**
+     * 设置页面底部链接类别
+     * @return
+     */
+    public static void setLinkCategory(Session session) {
+        List<LinkCategory> lc=LinkCategory.find("status=1 ORDER BY sequence").fetch();
+        session.put("linkCategoryList",lc);
+        
+    }
 	
 	
 }

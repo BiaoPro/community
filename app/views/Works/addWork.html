@@ -1,95 +1,24 @@
 #{extends 'Works/base.html' /}
 #{set title:'recruit' /}
-#{set "moreSubpageStyles"}
-	<style type="text/css">
-		.table > tbody > tr > td,.table>tbody>tr>th{
-			border-top:none;
-			font-size: 1.1em;
-			color: #333;
-			vertical-align: top;
-			margin: 10px 0px 0px 10px;
-		}
-		.table>tbody>tr>th{
-			width: 20%;
-			text-align: right;
-			padding-right:5%;
-		}
-		.main-content label,.table td a{
-			margin-right:10px;
-			font-weight: normal;
-		}
-		.form-control{
-			display: inline-block;
-			width: 50%;
-		}
-		.table th em{
-			color:red;
-			margin-right: 5px;
-		}
-		.moreitem a{
-			display: inline-block;
-			padding: 8px 10px;
-		}
-		td label input[type="text"]{		
-			width: 50px;
-			padding-right: 5px;
-		}
-		ul.sub{
-			padding-left: 0;
-			border-bottom: none;
-		}
-		ul.sub li{
-			margin:10px 0px 0px 10px;
-		}
-		.chose-all{
-			margin-left: 10px;
-		}
-		form:after{
-			content: '';
-			display: block;
-			height: 0;
-			clear: both;
-		}
-		.btn.chosen{
-			border: 2px solid green;
-		}
-		.btn-lg{
-			margin:10px;
-		}
-		span.ok{
-			background: url(../public/images/ok.png);
-			width:16px;
-			height: 16px;
-			display: inline-block;
-		}
-		@media screen and (max-width: 480px){
-			.table>tbody>tr>th,.table>tbody>tr>td{
-				border-top: 1px solid #ccc;
-			}
-			.table>tbody>tr>th{
-				width: 35%;
-			}
-			.moreitem-box{
-				margin-bottom: 10px;
-			}
-		}
-	</style>
-#{/set}
+		<ol class="breadcrumb">
+			<li><a href="#">首页</a></li>
+			<li ><a href="">社区招聘</a></li>
+			<li class="active">招聘信息填写</li>
+		</ol>
 		
 <div class="alert alert-info alert-dismissible" role="alert">
   <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
   <p class="bg-info">如果您有账号，可点击<a>登录</a>再填写 ; 或者点击<a>注册</a></p>
 </div>
 <div class="main-content">
-	<form action="@{Works.saveWork}" method="post">
+	<form action="@{Works.saveWork}" class="form-fill" method="post">
 		<table class="table table-hover  table-condensed">
 			<tbody>
 				<tr>
 					<th><em>*</em><span>标题</span></th>
 					<td>
 						<label class="sr-only" for="title">标题</label>
-	    				<input type="text" class="form-control" id="title" name="work.title">
-						<span></span>
+	    				<input type="text" class="form-control  required" id="title" name="work.title">
 					</td>
 				</tr>
 				<tr>
@@ -97,24 +26,21 @@
 					<th><em>*</em><span>公司</span></th>
 					<td>
 						<label class="sr-only" for="title">公司</label>
-	    				<input type="text" class="form-control"  name="work.unit">
-						<span></span>
+	    				<input type="text" class="form-control  required"  name="work.unit">
 					</td>
 				</tr>
 				<tr>
 					<th><em>*</em><span>职位类别</span></th>
 					<td>
 						<label class="sr-only" for="category">小区地址</label>
-	    				<input type="text" class="form-control"  name="work.position">
-	    				<span></span>
+	    				<input type="text" class="form-control  required"  name="work.position">
 					</td>
 				</tr>
 				<tr>
 					<th><em>*</em><span>招聘人数</span></th>
 					<td>
-						<label class="sr-only" for="recruitNumber">招聘人数</label>
-	    				<input type="number" class="form-control"  name="work.number">
-	    				<span></span>
+						<label class="sr-only" for="recruitNumber ">招聘人数</label>
+	    				<input type="number" class="form-control  required"  name="work.number">
 					</td>
 				</tr>
 				<tr>
@@ -149,8 +75,8 @@
 				<tr>
 					<th><em>*</em><span>性别</span></th>
 					<td>
-						<input type="radio" name="work.sex" value="男女均可"  checked>男女均可&nbsp&nbsp
-						<input type="radio" name="work.sex" value="男" >男&nbsp&nbsp
+						<input type="radio" name="work.sex" value="男女均可"  checked>男女均可&nbsp;&nbsp;
+						<input type="radio" name="work.sex" value="男" >男&nbsp;&nbsp;
 						<input type="radio" name="work.sex" value="女" >女
 					</td>
 				</tr>
@@ -167,31 +93,31 @@
 				</tr>
 				<tr>
 					<th><em>*</em><span>月薪</span></th>
-					<td>
-						<input type="text" class="form-control" name="work.minsalary" style="width:10%;">
+					<td class="beLegal">
+						<input type="text" class="form-control  required" name="work.minsalary" style="width:10%;">
 						<label>到</label>
-						<input type="text" class="form-control" name="work.maxsalary" style="width:10%;">
+						<input type="text" class="form-control  required" name="work.maxsalary" style="width:10%;">
 						<label>元</label>
 					</td>
 				</tr>
 				<tr>
 					<th><em>*</em><span> 职位描述</span></th>
 					<td>
-						<textarea class="form-control" rows="5" style="width:80%" name="work.details"></textarea>
+						<textarea class="form-control  required" rows="5" style="width:80%" name="work.details"></textarea>
 					</td>
 				</tr>		
 				<tr>
 					<th><em>*</em><span>联系人</span></th>
 					<td>
 						<label class="sr-only" for="contact">联系人</label>
-	    				<input type="text" class="form-control" name="work.linkman">
+	    				<input type="text" id="contract" class="form-control  required" name="work.linkman">
 					</td>
 				</tr>
 				<tr>
 					<th><em>*</em><span>联系电话</span></th>
 					<td>
 						<label class="sr-only" for="phone">联系电话</label>
-	    				<input type="text" class="form-control" name="work.phone">
+	    				<input type="text" id="phone" class="form-control  required" name="work.phone">
 					</td>
 				</tr>
 			</tbody>

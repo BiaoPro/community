@@ -1,23 +1,62 @@
 package controllers;
 
-import play.*;
+import java.util.List;
+
+import models.BackMessage;
+import models.Course;
+import models.LinkCategory;
+import models.News;
+import models.User;
 import play.libs.Codec;
+<<<<<<< HEAD
 import play.mvc.*;
 import utils.PageBean;
+=======
+import play.mvc.Controller;
+import utils.NewsBean;
+import utils.PageBeanFactory;
+>>>>>>> 4a899d106bdf47e043d150dd7f21035bc4cc737e
 import utils.SessionManager;
-
-import java.util.*;
-
-import models.*;
 
 public class Application extends Controller {
 
     public static void index() {
       SessionManager.setFooter(session);
+      SessionManager.setLinkCategory(session);
       User user = SessionManager.getLoginedUser(session);
+<<<<<<< HEAD
       List<House> houseList=House.find("status", 1).fetch(1,5);//租房信息
       List<Work> workList=Work.find("status", 1).fetch(1,9);//租房信息
         render(user,houseList,workList);  
+=======
+      
+      //获取课程信息
+      Course courseGet;
+      if(Course.count()>0)
+       courseGet = (Course) Course.findAll().get(0);
+      else courseGet=null;
+
+      //新闻文章
+      List newsList = News.getIndexNews(new PageBeanFactory(1,7),0);
+      News impNews = null;
+      try{
+        NewsBean firNews = (NewsBean)newsList.get(0);
+        String id = firNews.getNewsId();
+        impNews = News.findById(id);
+      }catch(Exception e){
+        
+      }
+      
+      //新闻文章
+      List linkCategoryList = LinkCategory.find("status=1 ORDER BY sequence").fetch();
+     
+     
+     
+
+      
+        render(user,newsList,linkCategoryList,impNews,courseGet);
+
+>>>>>>> 4a899d106bdf47e043d150dd7f21035bc4cc737e
     }
     public static void manager() {
         SessionManager.setFooter(session);

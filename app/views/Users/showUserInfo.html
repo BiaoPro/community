@@ -1,51 +1,92 @@
 #{extends 'Users/base.html' /}
 #{set showUserInfo : 'class=active' /}
-
-<div class="nav-tabs box-div">
+<div class=" nav-tabs box-div">
 	<form class="form-horizontal" action="@{Users.editUser}" method="post" role="form" enctype="multipart/form-data">
 		<legend>信息修改</legend>
-		<ol class="well">
-		         
+		<ol>
 		        <input type="hidden" name="user.id"   value="${user.id }">
 		        <input type="hidden" name="user.type" value="${user.type }">
 		        <input type="hidden" name="user.status" value="${user.status }">
-	            <li><strong>账号&nbsp&nbsp:</strong>
-	              <label type="text" name="user.account" readonly="readonly">${user.account }</label>
-	            </li>
-	            <li><strong>密码:</strong>
-	              <input class="btn btn-default" type="password" value="${user.password }" maxLength="10">
-	            </li>
-	            <li><strong>重复密码:</strong>
-	              <input class="btn btn-default" type="password"  value="${user.password }" required="required" maxLength="10">
-	            </li>
-	            <li><strong>真是姓名:</strong>
-	              <input class="btn btn-default" type="text" name="user.rname"  value="${user.rname }" required="required" maxLength="10">
-	            </li>
-	            <li><strong>身份证号:</strong>
-	              <input class="btn btn-default" type="text" name="user.prc" value="${user.prc }" required="required" maxLength="10">
-	            </li>
-	            <li><strong>性别:</strong>
-	              <select name="user.sex" class="btn btn-default">
-	                  <option value="1" ${user.sex==1?'checked':''}>男</option>
-	                  <option value="2" ${user.sex==2?'checked':''}>女</option>
-	              </select>
-	            </li>
-	            <li><strong>邮箱:</strong>
-	              <input class="btn btn-default" type="text" name="user.email" value="${user.email }" required="required">
-	            </li>
-	            <li><strong>生日:</strong>
-	              <input class="btn btn-default" type="text" name="user.birthday" value="${user.birthday }" required="required">
-	            </li>
-	            <li><strong>个人头像:</strong>
-	              <img alt="photo" src="${user.photo }" width="200px" height="200px" >
+	    <div class="form-group">
+		    <label class="col-sm-2 control-label" for="user。rname">用户名</label>
+		    <div class="col-sm-5">
+		        <label type="text" class="form-control" name="user.account" readonly="readonly">${user.account }</label>
+		    </div>
+		</div>
+	    <div class="form-group">
+		    <label class="col-sm-2 control-label" for="user。rname">用户身份</label>
+		    <div class="col-sm-5">
+		        <label type="text" class="form-control" readonly="readonly">
+								${user.type==1?'普通用户':'' } 
+						        ${user.type==2?'社工':'' }
+						        ${user.type==3?'管理员':'' }
+                </label>
+		    </div>
+		</div>
+	    <div class="form-group">
+		    <label class="col-sm-2 control-label" for="user.password">密码</label>
+		    <div class="col-sm-5">
+		        <input  class="form-control" type="password" name="user.password" required="required" value="${user.password }" placeholder="请输入密码" maxLength="12" >          
+		    </div>
+		</div>
+		<div class="form-group">
+		    <label class="col-sm-2 control-label" >确认密码</label>
+		    <div class="col-sm-5">
+		        <input  class="form-control" type="password" name="confirmPassword" required="required" value="${user.password }"     placeholder="请再次输入密码" >          
+		    </div>
+		</div>
+		
+		<div class="form-group">
+		    <label class="col-sm-2 control-label" for="user。rname">真实姓名</label>
+		    <div class="col-sm-5">
+		        <input type="text" class="form-control" name="user.rname" required="required" value="${user.rname }"  placeholder="请输入真实姓名" >              
+		    </div>
+		</div>
+		<div class="form-group">
+		    <label class="col-sm-2 control-label" for="user.prc" >身份证</label>
+		    <div class="col-sm-5">
+		        <input type="text" class="form-control" name="user.prc" required="required" value="${user.prc }" value="" maxlength="18"    placeholder="请输入身份证" >              
+		    </div>
+		</div>
+		<div class="form-group">
+		    <label class="col-sm-2 control-label" for="user.email" >邮箱</label>
+		    <div class="col-sm-5">
+		        <input type="text" class="form-control" name="user.email" required="required" value="${user.email }"   placeholder="请输入邮箱" >              
+		    </div>
+		</div>
+		<div class="form-group">
+		    <label class="col-sm-2 control-label" for="user.sex">性别</label>
+		    <div class="col-sm-5 btn-default" >
+		        <select name="user.sex"   >
+		            <option value="1"  ${user.sex==1?'':'selected' } >男</option>
+		            <option value="2"  ${user.sex==2?'':'selected' } >女</option>
+		        </select>
+		        
+		    </div>
+		</div>
+		<div class="form-group">
+		    <label class="col-sm-2 control-label" for="user.birthday">出生日期</label>
+		    <div class="col-sm-5">
+		        <input type="date" class="form-control" name="user.birthday" required="required" value="${user.birthday }" placeholder="请输入出生年月 如：1996/08/02" >          
+		    </div>
+		</div>
+		<div class="form-group">
+		    <label class="col-sm-2 control-label" for="photo">个人头像</label>
+		    <div class="col-sm-5">
 	              <input type="hidden" name="user.photo" value="${user.photo }">
-	              <input class="btn btn-default" type="file" name="photo" onChange="checkImgType(this)">
-	            </li>
+	              <input  class="form-control" type="file" name="photo" onChange="checkImgType(this)">
+	              <img alt="photo" src="${user.photo }" width="400px" height="300px" >
+		    </div>
+		
+		</div>
+
 	            
-	             <li>
+	   <div class="form-group">
+	   	   <label class="col-sm-4 control-label" for="submit"></label>
+		    <div class="col-sm-5">
 	             <button type="submit" class="btn btn-success">保存</button>
-	            </li>
-	      </ol>
+	        </div>
+	   </div>
 	</form>
 </div>
 

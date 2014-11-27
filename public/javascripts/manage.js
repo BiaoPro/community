@@ -28,3 +28,14 @@ function checkUrl(obj){
    if(str.match(pattern)==null) obj.value="http://"+obj.value;
 }
 
+
+#{if flash.backMessage }
+<script type="text/javascript"">
+alert('${flash.backMessage }');
+</script>
+#{/if}
+	#{if flash.error }
+	<script type="text/javascript"">
+	alert('${flash.error }');
+	</script>
+	#{/if}

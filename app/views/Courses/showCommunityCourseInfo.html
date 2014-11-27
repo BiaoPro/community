@@ -1,0 +1,61 @@
+#{extends 'Courses/base.html' /}
+#{set 'showOnlineCourseInfo'}
+<li>
+	<a href="/Courses/showCommunityCourses?categoryId=${categoryId}" >信息页（community）</a>
+</li>
+#{/set}
+#{set 'addOnlineCourse'}
+<li class='active'>
+	<a href="#" >课程编辑（community）</a>
+</li>
+#{/set}
+		
+	    
+				<form id="form" action="@{Courses.saveCommunityCourse }" method="post" role="form" enctype="multipart/form-data">
+					<input type="hidden" name="course.id" value='${course.id}'>
+					<input type="hidden" name="course.categoryId" value='${course.categoryId}'>
+					<input type="hidden" name="course.authorId" value='${course.authorId }'>
+					<input type="hidden" name="course.auditId" value='${course.auditId }'>
+					<input type="hidden" name="course.audit" value='${course.audit }'>
+					<input type="hidden" name="course.pubTime" value='${course.pubTime }'>
+					<div class="form-group">
+						<label for="course.title">课程名称：</label>
+						<input class="form-group" type="text" name="course.title"  value='${course.title }' required="required"></div>
+					<div class="form-group"><label for="course.photo">课程图片：</label>
+						<input type="hidden" name="course.photo" value='${course.photo }'>
+						<input type="file" name="photo" onchange="checkImgType(this)">
+						<img alt="" src="${course.photo}" width="400px" height="300px"></div>
+					<div class="form-group">
+						<label for="course.info">课程简介：</label>
+						<input class="form-group" type="text" name="course.info" value='${course.info }' required="required">
+					</div>
+					<div class="form-group">
+						<label for="course.body">内容：</label>
+						<textarea  style="width:70%;height:100%;" class="form-control" name="course.body" required="required">${course.body }</textarea>
+					</div>
+					<div class="form-group"><label for="course.phoneNumber">课程联系人电话：</label><input type="text" name="course.phoneNumber" value='${course.phoneNumber }'  required="required"></div>
+					<div class="form-group"><label for="course.startTime">开始时间：</label><input type="datetime-local" name="course.startTime" value='${course.getStartTime1() }' required="required"></div>
+					<div class="form-group"><label for="course.endTime">结束时间：</label><input type="datetime-local" name="course.endTime" value='${course.getEndTime1() }' required="required"></div>
+					<div class="form-group"><label for="course.place">开课地址：</label><input type="text" name="course.place" value='${course.place }'  required="required"></div>
+ 					<div><button id="submitbutton" type="submit" class="btn btn-success" >保存</button></div>
+				</form>
+				
+	
+		
+	</div>
+
+#{set 'moreScripts' }
+		<script charset="utf-8" src="@{'/public/javascripts/sea.js'}"></script>
+		<script>
+			seajs.config({
+				base:"../public/javascripts/module/",
+				alias:{
+					"jquery":"jquery/jquery-1.7.1.min.js",
+					"kindeditor":"kindeditor/kindeditor-all-min.js",
+					"bootstrap":"bootstrap/main.js"
+				}
+			});
+			seajs.use("../public/javascripts/static/back_news/src/send_main");
+		</script>
+		#{/set}
+

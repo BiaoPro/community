@@ -30,7 +30,7 @@
             <ul class="aside-styled-ul">
             #{list items:courseGet?.getTopCourse(4),as:'course'}
               <li>
-                <a href="@{ShowCourses.showCourseInfo(course.id)}" target="_blank">${course.title }</a>
+                <a href="${course.url }">${course.title }</a>
               </li>
               #{/list}
             </ul>

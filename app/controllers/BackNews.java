@@ -41,6 +41,7 @@ public class BackNews extends Controller{
 		news.newsContent=params.get("content");
 		news.newsTitle=params.get("title");
 		news.newsClassId=params.get("classId");
+		news.newsSummary=params.get("summary");
 		news.newsAuthorId=SessionManager.getLoginedId(session);
 		Long time = DateUtils.getTimeByDate(new Date());
 		String timeStr = DateUtils.getDateTimeStr(time);
