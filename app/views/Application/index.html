@@ -164,28 +164,24 @@
   <h2 class="title">社区租房</h2>
   <!-- 为了提高页面的信息展示率，减少空白，此处分为两个列表，可用条件判断，举例 比如有10条信息，第一个列表展示1~6条，第二个列表展示7~10 ;次重要信息在移动端不展示 -->
     <ol>
-     <li><a>动物园地铁,公交动物园南门站,正规小区一室一厅转租(5800元/月)</a></li>
-     <li><a>绝世好房急转 仅1900可租到商住两用淘宝天堂（4800元/月）</a></li>
-     <li><a>棠下棠东丰乐路带空调 一房一厅6楼,单房出租（600元/月）</a></li>
-     <li><a>房东有近珠村公交总站全新空调一房一厅出租(200元/月)</a></li>
-     <li><a>杨箕中山一路水均大街 2室1厅50平米（700元/月）</a></li>
-     <li><a>动物园地铁,公交动物园南门站,正规小区一室一厅转租(3200元/月)</a></li>
+      
+       #{list items:houseList,as : 'house'}
+     <li><a href="@{Houses.showHouseInfo(house.id)}">${house.community},${house.bedRoom}室${house.livingRoom}厅${house.bathRoom}卫,(${house.price}元/月)</a><br><small>发布时间：${house.date}</small></li>
+     #{/list}  
    </ol>				    
  </div>
    <div class="show-house col-md-6 col-md-pull-6">
     <img class="img-responsive"  src="../public/images/house2.jpg" alt="">
     <ol class="hidden-xs">
      <li><a>动物园地铁,公交动物园南门站,正规小区一室一厅转租(5800元/月)</a></li>
-     <li><a>绝世好房急转 仅1900可租到商住两用淘宝天堂（4800元/月）</a></li>
-     <li><a>棠下棠东丰乐路带空调 一房一厅6楼,单房出租（600元/月）</a></li>
-     <li><a>房东有近珠村公交总站全新空调一房一厅出租(200元/月)</a></li>
-   </ol>  
+   </ol>
+   
   </div>
   <div class="clearfix"></div>
  <div class="pull-right">
-     <a class="btn more">我要出租</a>	
+     <a class="btn more" href="@{Houses.addHouse}">我要出租</a>	
      <span>|</span>
-     <a class="btn more">更多 >></a>	
+     <a class="btn more" href="@{Houses.showHouses}">更多 >></a>	
 </div>
 </section>   			
 </div>
@@ -237,17 +233,12 @@
       <h2 class="title">招工信息</h2>
         <!-- 为了提高页面的信息展示率，减少空白，此处分为两个列表，可用条件判断，举例 比如有10条信息，第一个列表展示1~6条，第二个列表展示7~10 -->
       <ol>
-       <li><a>广东矿工招聘(企业)</a></li>
-       <li><a>蓝思科技(包住)高薪诚聘男女普工</a></li>
-       <li><a>健兴梅家政长期诚聘保姆护工</a></li>
-       <li><a>深圳机械加工厂的铣床操作技工</a></li>
-        <li><a>健兴梅家政长期诚聘保姆护工</a></li>
-       <li><a>深圳机械加工厂的铣床操作技工</a></li>
-       <li><a class="disabled">剧组拍戏需要招聘剧组服务人员</a><span style="color:red;">--已结束</span></li>
-       <li><a class="disabled">诚招全国校园寒暑假招聘代理员</a></li>
+#{list items : workList,as : 'work'}
+       <li><a href="@{Works.showWorkInfo(work.id)}">${work.title}</a><br><small>${work.date}</small></li>
+#{/list}
      </ol>
   </div>	
- <div class="show-house col-md-6">
+ <div class="show-house col-md-6$">
   <img class="img-responsive" src="../public/images/job2.jpg" alt="">
   <ol class="hidden-xs">
        <li><a>广东矿工招聘(企业)</a></li>
@@ -258,9 +249,9 @@
 </div>
 <div class="clearfix"></div>
  <div class="pull-right">
-  <a class="btn more">我要出租</a>  
+  <a class="btn more" href="@{Works.addWork}">我要招工</a>  
    <span>|</span>
-   <a class="btn more">更多 >></a>
+   <a class="btn more" href="@{Works.showWorks}">更多 >></a>
  </div>
 </section>
 </div>

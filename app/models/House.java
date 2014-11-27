@@ -26,7 +26,7 @@ public class House extends GenericModel{
 	//出租方
 		@ManyToOne
 		public User author;
-	//1为隐藏，2为显示
+	//0为隐藏，1为显示
 	@Column(name="status",columnDefinition="int default 1")
 	public int status;
 	
