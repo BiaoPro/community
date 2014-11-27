@@ -181,7 +181,7 @@
     </table>
  </div>
    <div class="show-house col-md-6 col-md-pull-6">
-    <img class="img-responsive"  src="../public/images/house2.jpg" alt="">
+    <img class="img-responsive"  src="../public/images/house2.jpg" alt="" style="margin-top:40px;">
   </div>
   <div class="clearfix"></div>
  <div class="pull-right">
@@ -199,8 +199,7 @@
      <img src="../public/images/grace.jpg" alt="...">
      <div class="caption">
       <h4>社区头条</h4>
-      <p >${impNews?.newsSummary}</p>
-      <p><a href="@{showNews.News}" class="btn btn-primary pull-right" role="button">获取更多</a></p>
+      <p ><a href="@{ShowNews.showNewsInfo(impNews.newsId)}">${impNews?.newsSummary}</a></p>
       <div class="clearfix"></div>
     </div>
   </div>

@@ -36,7 +36,7 @@ public class Application extends Controller {
       else courseGet=null;
 
       //新闻文章
-      List newsList = News.getIndexNews(new PageBeanFactory(1,7),0);
+      List newsList = News.getIndexNews(new PageBeanFactory(1,3),0);
       News impNews = null;
       try{
         NewsBean firNews = (NewsBean)newsList.get(0);

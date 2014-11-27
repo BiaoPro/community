@@ -38,12 +38,12 @@
 					<p>序号：${course_index+(curPage-1)*pageBean.perPage}:</p>
 					<p>课程名称：${course.title}</p>
 					<p>课程图片：<img alt="" src="${course.photo}" width="200px" height="150px"></p>
-					<p>课程概述：${course.body}</p>
+					<!-- <p>课程概述：${course.body}</p> -->
 					<p>课程类目：${course.getCourseCategory()?.name}</p>
 					<p>发布者：${course.getAuthorName()}</p>
 					<p>发布时间：${course.showPubTime()}</p>
-					<p>发布开始：${course.showStartTime()}</p>
-					<p>发布结束：${course.showEndTime()}</p>
+					<p>开始时间：${course.showStartTime()}</p>
+					<p>结束时间：${course.showEndTime()}</p>
 					<p>操作：
 					 #{if course.audit>=1 }   
 						<a href="@{Courses.changeCommunityAudit(course.id,category.id,0)}"  class="btn btn-success">已审核</a>

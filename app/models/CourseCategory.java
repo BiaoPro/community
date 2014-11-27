@@ -53,6 +53,8 @@ public class CourseCategory extends GenericModel{
     this.name = name;
   }
   
+ 
+  
   public static void deleteById(String id) {
     Course.delete("categoryId", id);
     CourseOnline.delete("categoryId", id);

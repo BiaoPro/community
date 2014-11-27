@@ -3,7 +3,7 @@
 	<table class="table table-condensed">
    <thead>
       <tr>
-         <th>地址</th>
+         <th>公司/工作内容</th>
          <th>显示状态</th>
          <th>审核状态</th>
          <th>操作</th>
@@ -13,7 +13,7 @@
       #{list items:workList,as : 'work'}
       <tr>  
          <td><a href="@{BackWorks.showWorkInfo(work.id)}">
-            ${work.community}${work.address}
+            ${work.unit}/${work.title}
          </a></td>
          <td>
             #{if work.status==0} 

@@ -200,7 +200,7 @@ public class Course extends GenericModel{
       return DateUtils.getDateStr(pubTime);
   }
   private String showStartTime() {
-      return DateUtils.getDateStr(startTime);
+      return getStartTime();
   }
   private String showEndTime() {
     return getEndTime();

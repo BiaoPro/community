@@ -4,7 +4,7 @@
    <thead>
       <tr>
          <th>联系人</th>
-         <th>租房地址</th>
+         <th>公司/工作内容</th>
          <th>审核状态</th>
          <th>操作</th>
       </tr>
@@ -12,9 +12,9 @@
    <tbody>
       #{list items:workList,as : 'work'}
       <tr>
-         <td>${work.contacts}(${work.indentity})</td>
+         <td>${work.linkman}</td>
          <td><a href="@{BackWorks.showWorkInfo(work.id)}">
-            ${work.community}${work.address}
+            ${work.unit}/${work.title}
          </a></td>
          <td>
             #{if work.audit==1} 

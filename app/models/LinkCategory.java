@@ -41,6 +41,22 @@ public class LinkCategory extends GenericModel {
 		this.sequence = new Date().getTime();
 	}
 
+	
+	 public String getCommunityCoursesStr(){
+	      List<Link> list = Link.find("categoryId=?",this.id).fetch();
+	      String rsStr = "[";
+	      
+	      for (Link link : list) {
+	        rsStr+=link.toStringLink()+",";
+          }
+	      rsStr.substring(0, rsStr.lastIndexOf(","));
+	      rsStr+="]";
+	      
+	      return rsStr;
+	      
+	  }
+	
+	
 	public static void deleteById(String id) {
 		Link.delete("categoryId", id);
 		LinkCategory.delete("id", id);

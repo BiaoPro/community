@@ -57,7 +57,7 @@ function link(){
 	linkSix = ['区科技和信息化局（区知识产权局）','http://www.thst.gov.cn/','区教育局','http://www.tianhe.org.cn/','区教育局教研室','http://www.thjy.org' ,'区文化广电新闻出版局（区版权局）','http://wenhua.thnet.gov.cn/' ,'区体育发展中心（体育局）','http://tiyu.thnet.gov.cn/' ,'区卫生局','http://weisheng.thnet.gov.cn/' ,'区卫生监督所' ,'http://thwjs.thnet.gov.cn/','区疾病预防控制中心' ,'http://jibingyufang.thnet.gov.cn/','区人口和计划生育局','http://jisheng.thnet.gov.cn/' ,'区妇幼保健院' ,'http://www.gzthfy.com','区中医医院（区中心医院）' ,'http://zxyy.thnet.gov.cn/','天河区人民医院','http://hszhyy.thnet.gov.cn/'],
 	linkSev = ['区城改办','http://chenggai.thnet.gov.cn/lgbib/index.jsp','区环境保护局','http://epb.thnet.gov.cn/','区建设和水务局','http://jianshe.thnet.gov.cn/','区建设工程质量安全监督站' ,'http://jsza.thnet.gov.cn' ,'区农业和园林局' ,'http://nlsl.thnet.gov.cn/','区城市管理局' ,'http://csgl.thnet.gov.cn/' ,'区民防办（人防办）','http://renfang.thnet.gov.cn' ,'市国土资源和房屋管理局天河区分局' ,'http://tianhe.laho.gov.cn','市规划局天河分局','http://guihua.thnet.gov.cn' ,'市城市管理综合执法局天河分局','http://gzthcg.thnet.gov.cn/','区广州火车东站地区管理委员会办公室','http://dzdq.thnet.gov.cn/'],
 	linkEig = ['沙河街','http://shahe.thnet.gov.cn/' ,'五山街','http://wushan.thnet.gov.cn/','员村街','http://yuancun.thnet.gov.cn/','车陂街','http://chebei.thnet.gov.cn/' ,'石牌街','http://shipai.thnet.gov.cn/','天河南街','http://tianhenan.thnet.gov.cn/','林和街','http://linhe.thnet.gov.cn/','沙东街','http://shadong.thnet.gov.cn','兴华街','http://xinghua.thnet.gov.cn','棠下街','http://tangxia.thnet.gov.cn/','天园街','http://tianyuan.thnet.gov.cn/','冼村街' ,'http://xiancun.thnet.gov.cn/','猎德街' ,'http://liede.thnet.gov.cn/','元岗街' ,'http://yuangang.thnet.gov.cn/' ,'黄村街' ,'http://huangcun.thnet.gov.cn/','龙洞街','http://longdong.thnet.gov.cn/','长兴街','http://changxing.thnet.gov.cn','凤凰街','http://fenghuang.thnet.gov.cn/','前进街','http://qianjin.thnet.gov.cn/','新塘街','http://xintang.thnet.gov.cn/','珠吉街' ,'http://zhuji.thnet.gov.cn/' ] ;
-
+    linkNin = ['新社区','http://localhost:9000/']
 	$link.click(function(){
 		switch(this.innerHTML){
 			case '五套班子' : 
@@ -83,6 +83,9 @@ function link(){
 			break;
 			case '街道办事处' :
 			linkModal('街道办事处',linkEig);
+			break;
+			case '新广州人社区网站' :
+			linkModal('新广州人社区网站',linkNin);
 			break;
 			default:
 			break;

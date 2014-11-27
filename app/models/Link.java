@@ -46,6 +46,10 @@ public class Link  extends GenericModel{
 		this.sequence=new Date().getTime();
 	}
 	
+	  public String toStringLink(){
+	    return "'"+this.name+"','"+this.url+"'";
+	  }
+	
 	/**
 	 * 获取链接类别
 	 * @return
